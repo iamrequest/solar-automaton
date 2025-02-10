@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtxc5idplu3ct"]
+[gd_scene load_steps=5 format=3 uid="uid://dtxc5idplu3ct"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_iejhh"]
 [ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_rptvl"]
 [ext_resource type="PackedScene" uid="uid://c12yha7ag7sbx" path="res://assets/prefabs/player/ship.tscn" id="2_t87os"]
+[ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_slow-fire.tscn" id="4_oej6o"]
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_iejhh")
@@ -12,4 +13,12 @@ script = ExtResource("1_iejhh")
 [node name="Ship" parent="." instance=ExtResource("2_t87os")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.517912, -3.12606)
 move_speed = 2.0
-rotation_lerp_speed = 0.2
+
+[node name="Enemy" parent="." instance=ExtResource("4_oej6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15892, 0, -0.312148)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_oej6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99842, 0, -2.6456)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_oej6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21808, 0, -1.81589)

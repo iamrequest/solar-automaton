@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0pifhsxo0gj4"]
+[gd_scene load_steps=5 format=3 uid="uid://d0pifhsxo0gj4"]
 
-[ext_resource type="Script" path="res://assets/scripts/bullet.gd" id="1_o4you"]
+[ext_resource type="Script" path="res://assets/scripts/combat/bullet.gd" id="1_o4you"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g204r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbmt0"]
+albedo_color = Color(1, 0.311672, 0.421603, 1)
+emission_enabled = true
+emission = Color(0.807976, 0.173344, 0.366522, 1)
+emission_energy_multiplier = 2.03
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xo0x"]
 radius = 0.114043
@@ -11,16 +17,19 @@ height = 0.50866
 [node name="Bullet" type="Area3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_o4you")
+damage = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.255725, 0, 0, 0, -1.04558e-08, 0.255725, 0, -0.2392, -1.11781e-08, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_g204r")
+surface_material_override/0 = SubResource("StandardMaterial3D_gbmt0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_5xo0x")
 
 [node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

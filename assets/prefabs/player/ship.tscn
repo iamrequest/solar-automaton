@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://c12yha7ag7sbx"]
+[gd_scene load_steps=10 format=3 uid="uid://c12yha7ag7sbx"]
 
-[ext_resource type="Script" path="res://assets/scripts/ship.gd" id="1_4wwgh"]
+[ext_resource type="Script" path="res://assets/scripts/combat/ship.gd" id="1_4wwgh"]
 [ext_resource type="Script" path="res://assets/prefabs/player/ship_blaster.gd" id="1_lmt4p"]
+[ext_resource type="Texture2D" uid="uid://dk2ye8qq4qgkj" path="res://assets/textures/prototype/Red/texture_05.png" id="2_4rib0"]
 [ext_resource type="PackedScene" uid="uid://d0pifhsxo0gj4" path="res://assets/prefabs/bullet.tscn" id="2_fecgs"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00nc1"]
+albedo_texture = ExtResource("2_4rib0")
+
 [sub_resource type="BoxMesh" id="BoxMesh_y2qyf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqcp4"]
+albedo_texture = ExtResource("2_4rib0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofo4p"]
+albedo_texture = ExtResource("2_4rib0")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xbllq"]
 size = Vector3(0.2, 0.2, 0.2)
@@ -18,14 +28,17 @@ rotation_lerp_speed = 0.8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.199539, 0, 0, 0, 0.199539, 0, 0, 0, 0.199539, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_00nc1")
 mesh = SubResource("BoxMesh_y2qyf")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.570458, 0, 0, 0, 0.0190306, 0, 0, 0, 0.12189, 0, 0, 0.0016441)
+material_override = SubResource("StandardMaterial3D_hqcp4")
 mesh = SubResource("BoxMesh_y2qyf")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0882317, 0, 0, 0, 0.0882317, 0, 0, 0, 0.0882317, 0, 0, -0.0999383)
+material_override = SubResource("StandardMaterial3D_ofo4p")
 mesh = SubResource("BoxMesh_y2qyf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -36,7 +49,7 @@ script = ExtResource("1_lmt4p")
 bullet_prefab = ExtResource("2_fecgs")
 bullet_spawn_points = [NodePath("Marker3D"), NodePath("Marker3D2")]
 fire_rate = 0.1
-bullet_speed = 5.0
+bullet_speed = 10.0
 
 [node name="Marker3D" type="Marker3D" parent="Blaster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, -0.179)

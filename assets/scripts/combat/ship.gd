@@ -24,6 +24,18 @@ func update_position(delta: float):
 		global_position = lerp(global_position, target_pos, move_lerp_speed)
 
 func update_rotation(delta: float):
+	rotate_to_face_non_dominant_hand(delta)
+
+func rotate_to_dominant_hand(delta: float):
+	var dominant_hand = Globals.xr_rig.get_dominant_hand() as Node3D
+	
+	if(dominant_hand):
+		# TODO: Also snap rotation to a point on the game plane?
+		quaternion = quaternion.slerp(dominant_hand.quaternion, rotation_lerp_speed)
+		
+		
+# Lookat non-dominant hand, up is dominant hand
+func rotate_to_face_non_dominant_hand(delta: float):
 	var dominant_hand = Globals.xr_rig.get_dominant_hand() as Node3D
 	var non_dominant_hand = Globals.xr_rig.get_non_dominant_hand() as Node3D
 	
@@ -34,4 +46,3 @@ func update_rotation(delta: float):
 		
 		quaternion = target_rot
 		quaternion = quaternion.slerp(target_rot, rotation_lerp_speed * delta)
-		#rotation = transform.interpolate_with(target_rot, rotation_lerp_speed * delta).basis.get_euler()

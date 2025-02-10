@@ -9,8 +9,6 @@
 
 [node name="Staging" type="Node3D"]
 script = ExtResource("1")
-main_scene = "res://assets/prefabs/flight_scene_base.tscn"
-prompt_for_continue = false
 
 [node name="Fade" parent="." instance=ExtResource("2_htugy")]
 
