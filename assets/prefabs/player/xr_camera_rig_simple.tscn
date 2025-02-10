@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt25pg66rpmen"]
+
+[ext_resource type="Script" path="res://assets/scripts/xr_rig.gd" id="1_keop2"]
+[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_r8ejh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_is43q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kttsd"]
+transparency = 1
+albedo_color = Color(0.522669, 0.656012, 0.925147, 0.423529)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6drj"]
+transparency = 1
+albedo_color = Color(0.989649, 0.462004, 0.579172, 0.423529)
+
+[node name="XROrigin3D" type="XROrigin3D"]
+script = ExtResource("1_keop2")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+far = 300.0
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_is43q")
+skeleton = NodePath("../../RightHand")
+surface_material_override/0 = SubResource("StandardMaterial3D_kttsd")
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RightHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_is43q")
+surface_material_override/0 = SubResource("StandardMaterial3D_x6drj")
+
+[node name="VRCommonShaderCache" parent="." instance=ExtResource("2_r8ejh")]

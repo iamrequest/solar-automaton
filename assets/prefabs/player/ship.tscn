@@ -14,6 +14,7 @@ can_sleep = false
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_4wwgh")
+rotation_lerp_speed = 0.8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.199539, 0, 0, 0, 0.199539, 0, 0, 0, 0.199539, 0, 0, 0)
@@ -30,15 +31,20 @@ mesh = SubResource("BoxMesh_y2qyf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xbllq")
 
-[node name="Blaster" type="Node3D" parent="." node_paths=PackedStringArray("bullet_spawn_point")]
+[node name="Blaster" type="Node3D" parent="." node_paths=PackedStringArray("bullet_spawn_points")]
 script = ExtResource("1_lmt4p")
 bullet_prefab = ExtResource("2_fecgs")
-bullet_spawn_point = NodePath("Marker3D")
-fire_rate = 1.0
+bullet_spawn_points = [NodePath("Marker3D"), NodePath("Marker3D2")]
+fire_rate = 0.1
+bullet_speed = 5.0
 
 [node name="Marker3D" type="Marker3D" parent="Blaster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.179088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, -0.179)
+
+[node name="Marker3D2" type="Marker3D" parent="Blaster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, -0.179)
 
 [node name="FireCooldownTimer" type="Timer" parent="Blaster"]
+wait_time = 0.1
 
 [connection signal="timeout" from="Blaster/FireCooldownTimer" to="Blaster" method="_on_fire_cooldown_timer_timeout"]

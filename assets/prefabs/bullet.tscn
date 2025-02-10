@@ -9,6 +9,7 @@ radius = 0.114043
 height = 0.50866
 
 [node name="Bullet" type="Area3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_o4you")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -20,6 +21,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 shape = SubResource("CapsuleShape3D_5xo0x")
 
 [node name="LifetimeTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

@@ -9,6 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Add initial velocity?
 	position = position - global_transform.basis.z * speed * delta
 
 
@@ -20,4 +21,4 @@ func _on_body_entered(body: Node3D) -> void:
 	destroy_self()
 
 func destroy_self():
-	pass
+	queue_free()
