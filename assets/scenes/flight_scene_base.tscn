@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtxc5idplu3ct"]
+[gd_scene load_steps=11 format=3 uid="uid://dtxc5idplu3ct"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_iejhh"]
 [ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_rptvl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_slow-fire.tscn" id="4_oej6o"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/hitbox.gd" id="5_g60su"]
 [ext_resource type="PackedScene" uid="uid://dkio6gw8dd46u" path="res://assets/prefabs/ui/viewport_game_over.tscn" id="6_v01oq"]
+[ext_resource type="Script" path="res://assets/scripts/ui/viewport_game_over.gd" id="7_n4hma"]
 [ext_resource type="Script" path="res://assets/scripts/game_manager.gd" id="8_skkc6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wxrj8"]
@@ -22,7 +23,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5
 move_speed = 2.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_oej6o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15892, 0, -0.312148)
+transform = Transform3D(0.188341, 0, -0.982104, 0, 1, 0, 0.982104, 0, 0.188341, -2.15892, 0, -0.312148)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_oej6o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99842, 0, -2.6456)
@@ -45,7 +46,8 @@ mesh = SubResource("SphereMesh_2vakt")
 
 [node name="ViewportGameOver" parent="." instance=ExtResource("6_v01oq")]
 transform = Transform3D(0.559921, 0, 0, 0, 0.559921, 0, 0, 0, 0.559921, -0.0831011, 1.08876, -2.27967)
-unshaded = true
+script = ExtResource("7_n4hma")
+scene = null
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true

@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c12yha7ag7sbx"]
+[gd_scene load_steps=11 format=3 uid="uid://c12yha7ag7sbx"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/player/ship.gd" id="1_4wwgh"]
 [ext_resource type="Texture2D" uid="uid://dk2ye8qq4qgkj" path="res://assets/textures/prototype/Red/texture_05.png" id="2_4rib0"]
-[ext_resource type="PackedScene" uid="uid://d0pifhsxo0gj4" path="res://assets/prefabs/player/bullet_player.tscn" id="2_fecgs"]
-[ext_resource type="Script" path="res://assets/scripts/combat/player/ship_blaster.gd" id="3_he35s"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="5_7ui5s"]
+[ext_resource type="PackedScene" uid="uid://67xkondkqmyr" path="res://assets/prefabs/player/ship_blaster.tscn" id="5_rt6io"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/hurtbox.gd" id="6_eqqm2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00nc1"]
@@ -66,22 +65,7 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 shape = SubResource("BoxShape3D_xbllq")
 
-[node name="Blaster" type="Node3D" parent="." node_paths=PackedStringArray("bullet_spawn_points")]
-script = ExtResource("3_he35s")
-bullet_prefab = ExtResource("2_fecgs")
-bullet_spawn_points = [NodePath("Marker3D"), NodePath("Marker3D2")]
-fire_rate = 0.1
-bullet_speed = 10.0
-
-[node name="Marker3D" type="Marker3D" parent="Blaster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, -0.179)
-
-[node name="Marker3D2" type="Marker3D" parent="Blaster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, -0.179)
-
-[node name="FireCooldownTimer" type="Timer" parent="Blaster"]
-wait_time = 0.1
+[node name="ShipBlaster" parent="." instance=ExtResource("5_rt6io")]
 
 [connection signal="on_damage_recieved" from="HealthComponent" to="." method="_on_health_component_on_damage_recieved"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
-[connection signal="timeout" from="Blaster/FireCooldownTimer" to="Blaster" method="_on_fire_cooldown_timer_timeout"]

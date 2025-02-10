@@ -1,14 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://43o1w333a816"]
+[gd_scene load_steps=13 format=3 uid="uid://43o1w333a816"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="1_dh1ev"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/base_enemy.gd" id="1_obmh5"]
 [ext_resource type="Texture2D" uid="uid://d3aa1da44juoy" path="res://assets/textures/prototype/Orange/texture_02.png" id="2_hp0em"]
+[ext_resource type="Texture2D" uid="uid://cs1jpcsfo3jqi" path="res://assets/textures/prototype/Orange/texture_08.png" id="3_mhem5"]
 [ext_resource type="PackedScene" uid="uid://giqbijy4makk" path="res://assets/prefabs/health/hurtbox.tscn" id="4_6d6dm"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/enemy_blaster.gd" id="6_k6311"]
+[ext_resource type="PackedScene" uid="uid://dilga1cajf2jy" path="res://assets/prefabs/enemies/bullet_enemy.tscn" id="7_jrlem"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jnpdl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lth8j"]
 albedo_texture = ExtResource("2_hp0em")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjp3j"]
+albedo_texture = ExtResource("3_mhem5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qoptg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
 
@@ -24,6 +32,11 @@ script = ExtResource("1_obmh5")
 mesh = SubResource("CapsuleMesh_jnpdl")
 surface_material_override/0 = SubResource("StandardMaterial3D_lth8j")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.345764, 0, 0, 0, 0.345764, 0, 0, 0, 0.345764, 0, 0, -0.460002)
+material_override = SubResource("StandardMaterial3D_yjp3j")
+mesh = SubResource("BoxMesh_qoptg")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_4sr6u")
 
@@ -36,5 +49,17 @@ health_component = NodePath("../HealthComponent")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="EnemyBlaster" type="Node3D" parent="." node_paths=PackedStringArray("bullet_spawn_points")]
+script = ExtResource("6_k6311")
+bullet_prefab = ExtResource("7_jrlem")
+bullet_spawn_points = [NodePath("Marker3D")]
+
+[node name="Marker3D" type="Marker3D" parent="EnemyBlaster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.865201)
+
+[node name="FireCooldownTimer" type="Timer" parent="EnemyBlaster"]
+
+[connection signal="timeout" from="EnemyBlaster/FireCooldownTimer" to="EnemyBlaster" method="_on_fire_cooldown_timer_timeout"]
 
 [editable path="Hurtbox"]

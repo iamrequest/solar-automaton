@@ -1,7 +1,11 @@
 extends Node
 
-func _ready() -> void:
-	$"../ViewportGameOver".visible = false
-	
+signal on_player_ship_destroyed
+signal on_level_completed
+
+signal on_paused
+signal on_unpaused
+
+
 func _on_ship_on_death() -> void:
-	$"../ViewportGameOver".visible = true
+	on_player_ship_destroyed.emit()

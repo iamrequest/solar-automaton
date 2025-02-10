@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0bt1hmnq7q6w"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ja2qs"]
+[ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_6v0qr"]
+
+[node name="SceneBase" type="Node3D"]
+script = ExtResource("1_ja2qs")
+
+[node name="XROrigin3D" parent="." instance=ExtResource("2_6v0qr")]

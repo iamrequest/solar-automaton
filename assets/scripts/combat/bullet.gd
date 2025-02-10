@@ -17,7 +17,7 @@ func _on_lifetime_timer_timeout() -> void:
 	destroy_self()
 
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_body_entered(_body: Node3D) -> void:
 	destroy_self()
 
 func destroy_self():

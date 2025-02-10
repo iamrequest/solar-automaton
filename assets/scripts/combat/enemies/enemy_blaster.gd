@@ -4,13 +4,25 @@ extends Node3D
 @export var bullet_spawn_points : Array[Node3D]
 @export var fire_rate := 0.5
 @export var bullet_speed := 0.5
+@export var sight_radius := 3
 
 var is_on_cooldown = false
 	
 func _process(delta: float) -> void:
-	if(Globals.xr_rig.get_dominant_hand().is_button_pressed("trigger_click")):
-		if(!is_on_cooldown):
-			fire_bullet()
+	# TODO: Wait for player to be in radius
+	if(!is_on_cooldown):
+		fire_bullet()
+
+func can_fire() -> bool:
+	if(is_on_cooldown):
+		return false
+	
+	if(Globals.xr_rig.get_dominant_hand()):
+		var dist = Globals.xr_rig.get_dominant_hand().global_position.distance_to(global_position)
+		if(dist > sight_radius):
+			return false
+			
+	return true
 
 func fire_bullet():
 	for spawn_point in bullet_spawn_points:

@@ -55,6 +55,7 @@ func _on_health_component_on_death() -> void:
 	$DeathTimer.start()
 	await $DeathTimer.timeout
 	on_death.emit()
+	queue_free()
 	
 
 
