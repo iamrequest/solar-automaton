@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://43o1w333a816"]
 
-[ext_resource type="Script" path="res://assets/scripts/combat/health_component.gd" id="1_dh1ev"]
+[ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="1_dh1ev"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/base_enemy.gd" id="1_obmh5"]
 [ext_resource type="Texture2D" uid="uid://d3aa1da44juoy" path="res://assets/textures/prototype/Orange/texture_02.png" id="2_hp0em"]
-[ext_resource type="Script" path="res://assets/scripts/combat/hurtbox.gd" id="2_xn58l"]
+[ext_resource type="PackedScene" uid="uid://giqbijy4makk" path="res://assets/prefabs/health/hurtbox.tscn" id="4_6d6dm"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jnpdl"]
 
@@ -13,6 +13,8 @@ albedo_texture = ExtResource("2_hp0em")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
 
 [node name="Enemy" type="RigidBody3D"]
+collision_layer = 512
+collision_mask = 256
 can_sleep = false
 freeze = true
 freeze_mode = 1
@@ -29,12 +31,10 @@ shape = SubResource("CapsuleShape3D_4sr6u")
 script = ExtResource("1_dh1ev")
 health_max = 10
 
-[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
-script = ExtResource("2_xn58l")
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_6d6dm")]
 health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CapsuleShape3D_4sr6u")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[editable path="Hurtbox"]

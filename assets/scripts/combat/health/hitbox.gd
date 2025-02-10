@@ -4,6 +4,7 @@ class_name Hitbox
 signal on_damage_dealth(int)
 
 @export var damage: int
+#@export var team_alignment: HealthComponent.HEALTH_TEAM
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://clujaf3u776a3"]
+[gd_scene load_steps=6 format=3 uid="uid://clujaf3u776a3"]
 
-[ext_resource type="Script" path="res://assets/scripts/debug/debug_menu.gd" id="1_3wmum"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="2"]
 
 [sub_resource type="QuadMesh" id="1"]
@@ -21,7 +20,6 @@ resource_local_to_scene = true
 size = Vector3(3, 2, 0.02)
 
 [node name="Viewport2Din3D" type="Node3D"]
-script = ExtResource("1_3wmum")
 
 [node name="Viewport" type="SubViewport" parent="."]
 disable_3d = true

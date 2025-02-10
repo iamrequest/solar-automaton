@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt25pg66rpmen"]
+[gd_scene load_steps=7 format=3 uid="uid://bt25pg66rpmen"]
 
 [ext_resource type="Script" path="res://assets/scripts/xr_rig.gd" id="1_keop2"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="2_355kr"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_r8ejh"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_is43q"]
@@ -40,5 +41,7 @@ pose = &"aim"
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = SubResource("SphereMesh_is43q")
 surface_material_override/0 = SubResource("StandardMaterial3D_x6drj")
+
+[node name="FunctionPointer" parent="RightHand" instance=ExtResource("2_355kr")]
 
 [node name="VRCommonShaderCache" parent="." instance=ExtResource("2_r8ejh")]

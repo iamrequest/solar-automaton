@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+signal on_death
+
 @export var move_speed := 1.0
 @export var move_lerp_speed = 0.9
 @export var rotation_lerp_speed = 1.0
@@ -24,7 +26,7 @@ func update_position(delta: float):
 		global_position = lerp(global_position, target_pos, move_lerp_speed)
 
 func update_rotation(delta: float):
-	rotate_to_face_non_dominant_hand(delta)
+	rotate_to_dominant_hand(delta)
 
 func rotate_to_dominant_hand(delta: float):
 	var dominant_hand = Globals.xr_rig.get_dominant_hand() as Node3D
@@ -46,3 +48,23 @@ func rotate_to_face_non_dominant_hand(delta: float):
 		
 		quaternion = target_rot
 		quaternion = quaternion.slerp(target_rot, rotation_lerp_speed * delta)
+
+
+func _on_health_component_on_death() -> void:
+	time_slow(0.5, 0.5)
+	$DeathTimer.start()
+	await $DeathTimer.timeout
+	on_death.emit()
+	
+
+
+func _on_health_component_on_damage_recieved(int: Variant) -> void:
+	time_slow(0.5, 0.5)
+	
+
+func time_slow(time_scale: float, duration: float):
+	Engine.time_scale = time_scale
+	await get_tree().create_timer(duration).timeout
+	
+	# TODO: Should lerp this back
+	Engine.time_scale = 1.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0pifhsxo0gj4"]
 
-[ext_resource type="Script" path="res://assets/scripts/combat/bullet.gd" id="1_o4you"]
+[ext_resource type="Script" path="res://assets/scripts/combat/bullet.gd" id="1_23y3q"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g204r"]
 
@@ -16,7 +16,9 @@ height = 0.50866
 
 [node name="Bullet" type="Area3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-script = ExtResource("1_o4you")
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("1_23y3q")
 damage = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
