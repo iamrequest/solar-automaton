@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c12yha7ag7sbx"]
+
+[ext_resource type="Script" path="res://assets/scripts/ship.gd" id="1_4wwgh"]
+[ext_resource type="Script" path="res://assets/prefabs/player/ship_blaster.gd" id="1_lmt4p"]
+[ext_resource type="PackedScene" uid="uid://d0pifhsxo0gj4" path="res://assets/prefabs/bullet.tscn" id="2_fecgs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y2qyf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbllq"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Ship" type="RigidBody3D"]
+can_sleep = false
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_4wwgh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.199539, 0, 0, 0, 0.199539, 0, 0, 0, 0.199539, 0, 0, 0)
+mesh = SubResource("BoxMesh_y2qyf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.570458, 0, 0, 0, 0.0190306, 0, 0, 0, 0.12189, 0, 0, 0.0016441)
+mesh = SubResource("BoxMesh_y2qyf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0882317, 0, 0, 0, 0.0882317, 0, 0, 0, 0.0882317, 0, 0, -0.0999383)
+mesh = SubResource("BoxMesh_y2qyf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xbllq")
+
+[node name="Blaster" type="Node3D" parent="." node_paths=PackedStringArray("bullet_spawn_point")]
+script = ExtResource("1_lmt4p")
+bullet_prefab = ExtResource("2_fecgs")
+bullet_spawn_point = NodePath("Marker3D")
+fire_rate = 1.0
+
+[node name="Marker3D" type="Marker3D" parent="Blaster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.179088)
+
+[node name="FireCooldownTimer" type="Timer" parent="Blaster"]
+
+[connection signal="timeout" from="Blaster/FireCooldownTimer" to="Blaster" method="_on_fire_cooldown_timer_timeout"]

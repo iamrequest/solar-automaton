@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtxc5idplu3ct"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_8rw1g"]
+[ext_resource type="Script" path="res://assets/scripts/game_manager.gd" id="2_fbu1a"]
+[ext_resource type="Script" path="res://assets/scripts/xr_rig.gd" id="2_onure"]
+[ext_resource type="PackedScene" uid="uid://c12yha7ag7sbx" path="res://assets/prefabs/player/ship.tscn" id="2_t87os"]
+[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_tda5q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_is43q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kttsd"]
+transparency = 1
+albedo_color = Color(0.522669, 0.656012, 0.925147, 0.423529)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6drj"]
+transparency = 1
+albedo_color = Color(0.989649, 0.462004, 0.579172, 0.423529)
+
+[node name="SceneBase" instance=ExtResource("1_8rw1g")]
+
+[node name="XROrigin3D" parent="." index="0"]
+script = ExtResource("2_onure")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand" index="0"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_is43q")
+skeleton = NodePath("../../RightHand")
+surface_material_override/0 = SubResource("StandardMaterial3D_kttsd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHand" index="0"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_is43q")
+surface_material_override/0 = SubResource("StandardMaterial3D_x6drj")
+
+[node name="VRCommonShaderCache" parent="XROrigin3D" index="3" instance=ExtResource("2_tda5q")]
+
+[node name="GameManager" type="Node" parent="." index="1" node_paths=PackedStringArray("xr_rig")]
+unique_name_in_owner = true
+script = ExtResource("2_fbu1a")
+xr_rig = NodePath("../XROrigin3D")
+
+[node name="Ship" parent="." index="2" instance=ExtResource("2_t87os")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.517912, -3.12606)
+move_speed = 2.0
+rotation_lerp_speed = 0.2
