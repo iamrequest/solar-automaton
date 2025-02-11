@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1txy7yhhxtl0"
-path.s3tc="res://.godot/imported/texture_05.png-c2fdf5f2d115d491d4f7253d7f1b0acf.s3tc.ctex"
-path.etc2="res://.godot/imported/texture_05.png-c2fdf5f2d115d491d4f7253d7f1b0acf.etc2.ctex"
+uid="uid://bt3s3woyfms0c"
+path.s3tc="res://.godot/imported/ring_64x64.png-5a588fa2aa2be802deaac56ae0f8874c.s3tc.ctex"
+path.etc2="res://.godot/imported/ring_64x64.png-5a588fa2aa2be802deaac56ae0f8874c.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/prototype/Light/texture_05.png"
-dest_files=["res://.godot/imported/texture_05.png-c2fdf5f2d115d491d4f7253d7f1b0acf.s3tc.ctex", "res://.godot/imported/texture_05.png-c2fdf5f2d115d491d4f7253d7f1b0acf.etc2.ctex"]
+source_file="res://assets/textures/vfx/request/ring_64x64.png"
+dest_files=["res://.godot/imported/ring_64x64.png-5a588fa2aa2be802deaac56ae0f8874c.s3tc.ctex", "res://.godot/imported/ring_64x64.png-5a588fa2aa2be802deaac56ae0f8874c.etc2.ctex"]
 
 [params]
 

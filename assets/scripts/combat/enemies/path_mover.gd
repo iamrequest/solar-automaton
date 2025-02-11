@@ -10,6 +10,10 @@ extends Path3D
 
 signal path_completed
 
+func _ready() -> void:
+	# Bake the curve, so we gaet better interpolation
+	curve.sample_baked()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():

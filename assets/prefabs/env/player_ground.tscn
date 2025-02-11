@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dypf7c8mc28nt"]
+
+[ext_resource type="Texture2D" uid="uid://726ui7g204w0" path="res://assets/textures/vfx/request/glow-circle_64x64.png" id="1_jmy7k"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1scex"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jim2q"]
+render_priority = 3
+transparency = 1
+blend_mode = 1
+disable_fog = true
+albedo_color = Color(0.882353, 0.541176, 0.0313726, 1)
+albedo_texture = ExtResource("1_jmy7k")
+texture_filter = 0
+
+[node name="PlayerGround" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1scex")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jim2q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.4992, 0, 0, 0, 1.4992, 0, 0, 0, 1.4992, 0, -0.0398543, 0)
+mesh = SubResource("PlaneMesh_1scex")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jim2q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.05735, 0, 0, 0, 2.05735, 0, 0, 0, 2.05735, 0, -0.160856, 0)
+mesh = SubResource("PlaneMesh_1scex")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jim2q")

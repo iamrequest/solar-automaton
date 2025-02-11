@@ -1,22 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkio6gw8dd46u"]
+[gd_scene load_steps=10 format=3 uid="uid://dkio6gw8dd46u"]
 
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_vj0wm"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="2_b06td"]
 [ext_resource type="PackedScene" uid="uid://dxmuc8yxbwi7y" path="res://assets/prefabs/ui/ui_game_over.tscn" id="3_jnwrw"]
 [ext_resource type="PackedScene" uid="uid://du6j6v52hhjg2" path="res://assets/scenes/staging.tscn" id="4_wjnve"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bofy"]
+render_priority = 127
+transparency = 1
+shading_mode = 0
+
 [sub_resource type="QuadMesh" id="QuadMesh_k0vrl"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jc76r"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_71cil"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ofoa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2k60y"]
+render_priority = 127
 transparency = 1
-cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_jc76r")
-texture_filter = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_71cil")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dlj88"]
 resource_local_to_scene = true
@@ -25,15 +30,16 @@ size = Vector3(3, 2, 0.02)
 [node name="Viewport2Din3D" instance=ExtResource("1_vj0wm")]
 script = ExtResource("2_b06td")
 scene = ExtResource("3_jnwrw")
+material = SubResource("StandardMaterial3D_7bofy")
 alpha_scissor_threshold = 0.25
-unshaded = false
+unshaded = true
 filter = true
 scene_properties_keys = PackedStringArray("ui_game_over.gd", "main_scene")
 main_scene = ExtResource("4_wjnve")
 
 [node name="Screen" parent="." index="1"]
 mesh = SubResource("QuadMesh_k0vrl")
-surface_material_override/0 = SubResource("StandardMaterial3D_8ofoa")
+surface_material_override/0 = SubResource("StandardMaterial3D_2k60y")
 
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_dlj88")

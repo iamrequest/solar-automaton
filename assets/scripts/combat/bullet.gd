@@ -1,6 +1,7 @@
 extends Hitbox
 class_name Bullet
 
+var initial_velocity := Vector3.ZERO
 var speed := 1.0
 
 # Called when the node enters the scene tree for the first time.
@@ -9,8 +10,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# Add initial velocity?
+	position += initial_velocity * delta
 	position = position - global_transform.basis.z * speed * delta
+	$MeshInstance3D.look_at(Globals.xr_rig.hmd.global_position, Vector3.UP, true)
 
 
 func _on_lifetime_timer_timeout() -> void:

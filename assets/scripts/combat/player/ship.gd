@@ -51,10 +51,10 @@ func rotate_to_face_non_dominant_hand(delta: float):
 
 
 func _on_health_component_on_death() -> void:
+	on_death.emit()
 	time_slow(0.5, 0.5)
 	$DeathTimer.start()
 	await $DeathTimer.timeout
-	on_death.emit()
 	queue_free()
 	
 

@@ -54,6 +54,8 @@ wait_time = 0.3
 script = ExtResource("6_k6311")
 bullet_prefab = ExtResource("7_jrlem")
 bullet_spawn_points = [NodePath("Marker3D")]
+fire_mode = 1
+apply_initial_bullet_velocity = false
 
 [node name="Marker3D" type="Marker3D" parent="EnemyBlaster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.865201)

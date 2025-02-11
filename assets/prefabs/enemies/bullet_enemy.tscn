@@ -1,34 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://dilga1cajf2jy"]
+[gd_scene load_steps=6 format=3 uid="uid://dilga1cajf2jy"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/bullet.gd" id="1_faxv5"]
+[ext_resource type="Texture2D" uid="uid://726ui7g204w0" path="res://assets/textures/vfx/request/glow-circle_64x64.png" id="2_3p43k"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_g204r"]
+[sub_resource type="QuadMesh" id="QuadMesh_elcne"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmj5w"]
-albedo_color = Color(0.429179, 0.218738, 0.560844, 1)
+render_priority = 10
+transparency = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.465327, 0.242224, 0.605504, 1)
+albedo_texture = ExtResource("2_3p43k")
 emission_enabled = true
 emission = Color(0.598112, 0.21885, 0.903172, 1)
-emission_energy_multiplier = 0.84
+texture_filter = 0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xo0x"]
-radius = 0.114043
-height = 0.50866
+[sub_resource type="SphereShape3D" id="SphereShape3D_kygyo"]
 
 [node name="Bullet" type="Area3D"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 collision_layer = 512
 collision_mask = 256
 script = ExtResource("1_faxv5")
 damage = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.255725, 0, 0, 0, -1.04558e-08, 0.255725, 0, -0.2392, -1.11781e-08, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_g204r")
+transform = Transform3D(0.255725, 0, 0, 0, -0.2392, -2.23562e-08, 0, 2.09115e-08, -0.255725, 0, 0, 0)
+mesh = SubResource("QuadMesh_elcne")
 surface_material_override/0 = SubResource("StandardMaterial3D_jmj5w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_5xo0x")
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0)
+shape = SubResource("SphereShape3D_kygyo")
 
 [node name="LifetimeTimer" type="Timer" parent="."]
 wait_time = 3.0
