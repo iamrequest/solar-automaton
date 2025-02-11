@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beuveof7xtm23"
-path.s3tc="res://.godot/imported/texture_10.png-cd60bab5d4272346609c6b5487c681aa.s3tc.ctex"
-path.etc2="res://.godot/imported/texture_10.png-cd60bab5d4272346609c6b5487c681aa.etc2.ctex"
+uid="uid://dkqp7qw13utxp"
+path.s3tc="res://.godot/imported/trail_02.png-c3a0aaeb89552cf5cc7235495dcb3e5d.s3tc.ctex"
+path.etc2="res://.godot/imported/trail_02.png-c3a0aaeb89552cf5cc7235495dcb3e5d.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/prototype/Dark/texture_10.png"
-dest_files=["res://.godot/imported/texture_10.png-cd60bab5d4272346609c6b5487c681aa.s3tc.ctex", "res://.godot/imported/texture_10.png-cd60bab5d4272346609c6b5487c681aa.etc2.ctex"]
+source_file="res://assets/textures/vfx/request/trail_02.png"
+dest_files=["res://.godot/imported/trail_02.png-c3a0aaeb89552cf5cc7235495dcb3e5d.s3tc.ctex", "res://.godot/imported/trail_02.png-c3a0aaeb89552cf5cc7235495dcb3e5d.etc2.ctex"]
 
 [params]
 

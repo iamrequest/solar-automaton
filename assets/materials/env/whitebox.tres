@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dogmlywm000t1"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.943208, 0.805791, 0.75183, 1)
+texture_filter = 0
+disable_receive_shadows = true
+grow_amount = -0.95

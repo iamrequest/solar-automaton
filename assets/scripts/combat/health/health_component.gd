@@ -20,13 +20,13 @@ func _ready() -> void:
 func apply_damage(damage: int):
 	health_current -= damage
 	
-	print("Taking damage")
+	#print("Taking damage")
 	on_damage_recieved.emit(damage)
 	if(health_current <= 0):
 		die()
 
 func die():
-	print("Dying")
+	#print("Dying")
 	on_death.emit()
 	
 # TODO: This would be better as composition
