@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw8aox52warf7"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/combat_zone.gd" id="1_yro7u"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/linear_mover.gd" id="2_iurox"]
+
+[node name="CombatZone" type="Node3D" node_paths=PackedStringArray("linear_mover")]
+script = ExtResource("1_yro7u")
+linear_mover = NodePath("MovingEnv")
+
+[node name="CombatZoneStart" type="Marker3D" parent="."]
+
+[node name="CombatZoneEnd" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="MovingEnv" type="Node3D" parent="."]
+script = ExtResource("2_iurox")
+
+[node name="StaticEnv" type="Node3D" parent="."]

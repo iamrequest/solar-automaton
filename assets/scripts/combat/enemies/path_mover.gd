@@ -1,5 +1,6 @@
 @tool
 extends Path3D
+class_name PathMover
 
 @export var update_in_process:= true
 
@@ -26,7 +27,7 @@ func _process(delta: float) -> void:
 func do_move(delta):
 	if(!is_instance_valid(target_node)):
 		return
-		
+	
 	$PathFollow3D.progress += speedCurve.sample($PathFollow3D.progress_ratio) * speed * delta
 	target_node.global_position = target_node.global_position.slerp($PathFollow3D.global_position, lerp_speed)
 	

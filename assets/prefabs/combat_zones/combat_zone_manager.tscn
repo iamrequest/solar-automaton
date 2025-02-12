@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2lli8sr4ipqb"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/combat_zone_manager.gd" id="1_rvpgo"]
+
+[node name="CombatZoneManager" type="Node3D"]
+script = ExtResource("1_rvpgo")
+move_speed = 10.0
