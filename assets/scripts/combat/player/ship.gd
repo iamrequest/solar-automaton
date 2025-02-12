@@ -64,8 +64,10 @@ func _on_health_component_on_damage_recieved(int: Variant) -> void:
 	
 
 func time_slow(time_scale: float, duration: float):
-	Engine.time_scale = time_scale
+	%GameManager.request_time_scale(time_scale)
 	await get_tree().create_timer(duration).timeout
 	
 	# TODO: Should lerp this back
-	Engine.time_scale = 1.0
+	if(%GameManager.is_paused):
+		return
+	%GameManager.request_time_scale(1.0)

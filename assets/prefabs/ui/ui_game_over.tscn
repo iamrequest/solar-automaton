@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dxmuc8yxbwi7y"]
 
 [ext_resource type="Script" path="res://assets/scripts/ui/ui_game_over.gd" id="1_xaff6"]
-[ext_resource type="PackedScene" uid="uid://c0bt1hmnq7q6w" path="res://assets/scenes/title.tscn" id="2_q3kxc"]
+[ext_resource type="Resource" uid="uid://db6206trw3846" path="res://assets/scenes/scene_references.tres" id="2_c34sl"]
 [ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="3_871tv"]
 
 [sub_resource type="Theme" id="Theme_gxnqu"]
@@ -16,7 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xaff6")
-main_scene = ExtResource("2_q3kxc")
+scenes = ExtResource("2_c34sl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

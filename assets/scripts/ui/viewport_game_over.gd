@@ -1,11 +1,12 @@
-extends "res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd"
+extends ViewportBase
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	$"../ViewportGameOver".visible = false
+	toggle(false)
 	%GameManager.on_level_failed.connect(_on_level_failed)
 
 func _on_level_failed():
-	$"../ViewportGameOver".visible = true
+	toggle(true)
+	

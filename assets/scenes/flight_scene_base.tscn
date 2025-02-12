@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c12yha7ag7sbx" path="res://assets/prefabs/player/ship.tscn" id="2_t87os"]
 [ext_resource type="PackedScene" uid="uid://dypf7c8mc28nt" path="res://assets/prefabs/env/player_ground.tscn" id="3_07k2w"]
 [ext_resource type="PackedScene" uid="uid://dkio6gw8dd46u" path="res://assets/prefabs/ui/viewport_game_over.tscn" id="6_v01oq"]
-[ext_resource type="Script" path="res://assets/scripts/ui/viewport_game_over.gd" id="7_n4hma"]
+[ext_resource type="PackedScene" uid="uid://ur217qymsbc" path="res://assets/prefabs/ui/viewport_pause.tscn" id="7_51rlp"]
 [ext_resource type="Script" path="res://assets/scripts/game_manager.gd" id="8_skkc6"]
 [ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="11_l64i8"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="12_ikgcn"]
@@ -72,13 +72,14 @@ script = ExtResource("1_iejhh")
 [node name="PlayerGround" parent="XROrigin3D" instance=ExtResource("3_07k2w")]
 
 [node name="Ship" parent="." instance=ExtResource("2_t87os")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.517912, -3.12606)
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -2.38419e-07, 1.0249, -0.951186)
 move_speed = 2.0
 
 [node name="ViewportGameOver" parent="." instance=ExtResource("6_v01oq")]
-transform = Transform3D(0.559921, 0, 0, 0, 0.559921, 0, 0, 0, 0.559921, -0.0831011, 1.12701, -2.27967)
-visible = false
-script = ExtResource("7_n4hma")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339712, 1.35978, -3.01541)
+
+[node name="ViewportPause" parent="." instance=ExtResource("7_51rlp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3.38116)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -212,9 +213,10 @@ light_energy = 0.849
 light_bake_mode = 1
 directional_shadow_mode = 0
 
-[node name="CombatZoneManager" parent="." instance=ExtResource("16_8ua7x")]
+[node name="CombatZoneManager" parent="." node_paths=PackedStringArray("despawn_marker") instance=ExtResource("16_8ua7x")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -149)
 level_config = SubResource("Resource_4fkhu")
+despawn_marker = NodePath("Marker3D")
 
 [node name="Marker3D" type="Marker3D" parent="CombatZoneManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -155.904)

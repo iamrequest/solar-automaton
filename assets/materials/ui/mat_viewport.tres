@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bmabweb2f316b"]
+
+[resource]
+render_priority = 127
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
