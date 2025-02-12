@@ -1,0 +1,292 @@
+[gd_scene load_steps=5 format=3 uid="uid://brs12cb6ocvtw"]
+
+[ext_resource type="Script" path="res://assets/scripts/ui/ui_pause.gd" id="1_vocfe"]
+[ext_resource type="Resource" uid="uid://db6206trw3846" path="res://assets/scenes/scene_references.tres" id="2_lvjtr"]
+[ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="3_o178x"]
+
+[sub_resource type="Theme" id="Theme_gxnqu"]
+default_font = ExtResource("3_o178x")
+default_font_size = 45
+
+[node name="UIStore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vocfe")
+scenes = ExtResource("2_lvjtr")
+
+[node name="Money" type="Label" parent="."]
+layout_mode = 1
+offset_right = 98.0
+offset_bottom = 23.0
+text = "Money: $100"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_gxnqu")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "Take a look at my wares!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer4/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer4/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer4"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer3/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer4/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer3/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer4/MarginContainer"]
+layout_mode = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer4"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+text = "$100"
+horizontal_alignment = 1
