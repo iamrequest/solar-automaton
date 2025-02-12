@@ -8,6 +8,9 @@ signal on_zone_end_reached
 # TODO: Support path movers when necessary
 #@export var path_mover: PathMover
 
+func _ready() -> void:
+	process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
+
 func init(spawn_position: Vector3, current_combat_speed: float, despawn_marker_pos: Vector3) -> void:
 	# Move this node so that the combat zone start aligns with the spawn position
 	var dirToStart = $CombatZoneStart.global_position - global_position

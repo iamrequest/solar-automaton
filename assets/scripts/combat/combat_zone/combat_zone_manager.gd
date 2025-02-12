@@ -10,6 +10,7 @@ var num_zones_spawned:= 0
 var current_combat_zone: CombatZone
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	spawn_combat_zone()
 
 

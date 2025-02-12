@@ -17,6 +17,7 @@ transparency = 1
 albedo_color = Color(0.989649, 0.462004, 0.579172, 0.423529)
 
 [node name="XROrigin3D" type="XROrigin3D"]
+process_mode = 3
 script = ExtResource("1_keop2")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]

@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	
 	get_target().global_position -= global_transform.basis.z * speed * delta
 	
-	distance_elapsed += speed * delta
+	distance_elapsed += speed * delta * Engine.time_scale
 	if(distance_elapsed >= distance_max):
 		is_active = !disable_at_end
 		end_reached.emit()

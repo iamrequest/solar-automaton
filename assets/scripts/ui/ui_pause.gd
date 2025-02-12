@@ -12,6 +12,12 @@ func _on_retry_button_pressed() -> void:
 	reload_scene()
 
 
+func _on_unpause_button_pressed() -> void:
+	unpause()
+
+func unpause():
+	# Viewport isn't in the tree I guess?
+	Globals.game_manager.toggle_pause(false)
 
 func reload_scene():
 	# Find the XRToolsSceneBase ancestor of the current node
@@ -19,6 +25,7 @@ func reload_scene():
 	if not scene_base:
 		print("Unable to reload scene - can't find XRToolsSceneBase")
 		return
+	unpause()
 	scene_base.reset_scene()
 
 func quit_game():
@@ -26,4 +33,5 @@ func quit_game():
 	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
 	if not scene_base:
 			return
+	unpause()
 	scene_base.load_scene(scenes.title.resource_path)

@@ -11,6 +11,11 @@ func _on_quit_button_pressed() -> void:
 func _on_retry_button_pressed() -> void:
 	reload_scene()
 
+func _on_unpause_button_pressed() -> void:
+	unpause()
+
+func unpause():
+	%GameManager.toggle_pause(false)
 
 
 func reload_scene():

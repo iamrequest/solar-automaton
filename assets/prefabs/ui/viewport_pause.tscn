@@ -25,11 +25,8 @@ size = Vector3(3, 2, 0.02)
 [node name="ViewportPause" instance=ExtResource("1_xm3ui")]
 script = ExtResource("2_mjeuv")
 scene = ExtResource("2_exnyr")
-viewport_size = Vector2(375, 250)
+viewport_size = Vector2(400, 250)
 material = ExtResource("4_pwexw")
-
-[node name="Viewport" parent="." index="0"]
-size = Vector2i(375, 250)
 
 [node name="Screen" parent="." index="1"]
 mesh = SubResource("QuadMesh_xnqwg")
