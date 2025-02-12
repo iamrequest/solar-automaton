@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt25pg66rpmen"]
+[gd_scene load_steps=10 format=3 uid="uid://bt25pg66rpmen"]
 
 [ext_resource type="Script" path="res://assets/scripts/xr_rig.gd" id="1_keop2"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="2_355kr"]
+[ext_resource type="PackedScene" uid="uid://nqiyqnx42m61" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_physics_hand.tscn" id="2_hr3lj"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_r8ejh"]
+[ext_resource type="Material" uid="uid://cyrclf6gf0r3d" path="res://assets/materials/player/mat_hand.tres" id="3_dl3ik"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="3_xr3kk"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_is43q"]
 
@@ -34,6 +37,12 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = SubResource("SphereMesh_is43q")
 skeleton = NodePath("../../RightHand")
 surface_material_override/0 = SubResource("StandardMaterial3D_kttsd")
+
+[node name="LeftPhysicsHand" parent="LeftHand" instance=ExtResource("2_hr3lj")]
+hand_material_override = ExtResource("3_dl3ik")
+
+[node name="XRToolsFunctionPickup" type="Node3D" parent="LeftHand"]
+script = ExtResource("3_xr3kk")
 
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)

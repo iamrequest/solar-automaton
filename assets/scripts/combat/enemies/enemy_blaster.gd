@@ -8,6 +8,7 @@ enum FireMode { FollowMarker, AimAtShip }
 @export var fire_rate := 0.5
 @export var bullet_speed := 0.5
 @export var fire_mode: FireMode
+@export var fire_mode_grabbed: FireMode
 @export var apply_initial_bullet_velocity := true
 
 var rb : RigidBody3D
@@ -65,3 +66,6 @@ func init_bullet(bullet: Bullet, spawn_point: Node3D):
 
 func _on_fire_cooldown_timer_timeout() -> void:
 	is_on_cooldown = false
+
+func on_grabbed() -> void:
+	fire_mode = fire_mode_grabbed
