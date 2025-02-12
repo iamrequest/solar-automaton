@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2uk2xiqpck2v"]
+[gd_scene load_steps=24 format=3 uid="uid://d2uk2xiqpck2v"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_fyyyt"]
 [ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_aobdw"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d2lli8sr4ipqb" path="res://assets/prefabs/combat_zones/combat_zone_manager.tscn" id="11_uaqmh"]
 [ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="12_paur5"]
 [ext_resource type="PackedScene" uid="uid://c5fn8yvjl8k2l" path="res://assets/scenes/combat_zones/lv1/cz_01.tscn" id="13_o5aan"]
+[ext_resource type="PackedScene" uid="uid://cqutydvbsb6d5" path="res://assets/prefabs/store/currency_1.tscn" id="14_y5r73"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5prr5"]
 
@@ -63,6 +64,14 @@ volumetric_fog_albedo = Color(0.667028, 0.451124, 0.75044, 1)
 script = ExtResource("12_paur5")
 num_zones = 2
 spawnable_zones = Array[PackedScene]([ExtResource("13_o5aan"), ExtResource("13_o5aan")])
+
+[sub_resource type="Curve" id="Curve_t3l6r"]
+_data = [Vector2(0.62381, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_3arc8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.00394046), -2.13813, 0.0, 0, 0]
+point_count = 2
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_fyyyt")
@@ -221,6 +230,14 @@ despawn_marker = NodePath("Marker3D")
 
 [node name="Marker3D" type="Marker3D" parent="CombatZoneManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -155.904)
+
+[node name="Currency" parent="." instance=ExtResource("14_y5r73")]
+transform = Transform3D(6.65316, 0, 0, 0, 6.65316, 0, 0, 0, 6.65316, -2.95457, 1.96346, -13.4986)
+lerp_time = 3.0
+pos_curve = SubResource("Curve_t3l6r")
+scale_curve = SubResource("Curve_3arc8")
+projectile_velocity = Vector3(-5, 20, 0)
+gravity_amount = 4.905
 
 [connection signal="on_death" from="Ship" to="GameManager" method="_on_ship_on_death"]
 [connection signal="on_level_end" from="CombatZoneManager" to="GameManager" method="_on_combat_zone_manager_on_level_end"]

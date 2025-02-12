@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqutydvbsb6d5"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/store/currency.gd" id="1_xrc5h"]
+[ext_resource type="Texture2D" uid="uid://bt3s3woyfms0c" path="res://assets/textures/vfx/request/ring_64x64.png" id="2_p540d"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_miet1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j15ll"]
+render_priority = 9
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.994684, 0.603121, 3.85046e-07, 1)
+albedo_texture = ExtResource("2_p540d")
+texture_filter = 0
+
+[node name="Currency" type="Node3D"]
+script = ExtResource("1_xrc5h")
+rotate_speed = 2
+lerp_time = 2.0
+projectile_velocity = Vector3(0, 3, 1)
+gravity_amount = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.271828, 0, 0, 0, 0.271828, 0, 0, 0, 0.271828, 0, 0, 0)
+mesh = SubResource("QuadMesh_miet1")
+surface_material_override/0 = SubResource("StandardMaterial3D_j15ll")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

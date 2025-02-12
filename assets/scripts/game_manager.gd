@@ -10,6 +10,8 @@ signal on_unpaused
 var is_paused:= false
 var is_game_over:= false
 
+var currency:= 0
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Globals.game_manager = self
