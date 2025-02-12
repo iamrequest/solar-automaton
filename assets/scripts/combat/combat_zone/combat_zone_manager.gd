@@ -17,17 +17,18 @@ func _ready() -> void:
 func spawn_combat_zone():
 	if(%GameManager.is_game_over):
 		return
-		
-	if(is_instance_valid(current_combat_zone)):
-		current_combat_zone = current_combat_zone
 	
 	# If we fail loading the combat zone, just end the level
 	if(!try_instantiate_combat_zone()):
 		on_level_end.emit()
-	
-	# Actually init the zone
 	current_combat_zone.init(global_position, move_speed, despawn_marker.global_position)
-	current_combat_zone.on_zone_end_reached.connect(on_combat_zone_end)
+	
+	# If we're on the last zone, finish the level at the end of it
+	# Otherwise, spawn the next zone at a point that lines up with the current one
+	if(num_zones_spawned >= level_config.spawnable_zones.size()):
+		current_combat_zone.zone_completed.connect(on_last_combat_zone_completed)
+	else:
+		current_combat_zone.on_zone_end_reached.connect(on_combat_zone_end)
 
 func try_instantiate_combat_zone() -> bool:
 	var prefab = level_config.get_zone(num_zones_spawned)
@@ -42,20 +43,8 @@ func try_instantiate_combat_zone() -> bool:
 	return false
 
 
-func on_combat_zone_end():
-	destroy_combat_zone(current_combat_zone)
-	
-	if(num_zones_spawned >= level_config.num_zones):
-		on_level_end.emit()
-	else:
-		# TODO: If nothing left, end round
-		spawn_combat_zone()
-
-func destroy_combat_zone(combat_zone: CombatZone):
-	if(!is_instance_valid(combat_zone)):
-		return
-	
-	if(combat_zone.on_zone_end_reached.is_connected(on_combat_zone_end)):
-		combat_zone.on_zone_end_reached.disconnect(on_combat_zone_end)
-	
-	combat_zone.destroy_self()
+func on_combat_zone_end(zone: CombatZone):
+	spawn_combat_zone()
+		
+func on_last_combat_zone_completed(zone: CombatZone):
+	on_level_end.emit()

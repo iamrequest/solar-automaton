@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw8aox52warf7"]
+[gd_scene load_steps=4 format=3 uid="uid://cw8aox52warf7"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/combat_zone.gd" id="1_yro7u"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/linear_mover.gd" id="2_iurox"]
+[ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/linear_mover_distance_tracker.gd" id="3_6dfau"]
 
-[node name="CombatZone" type="Node3D" node_paths=PackedStringArray("linear_mover")]
+[node name="CombatZone" type="Node3D" node_paths=PackedStringArray("linear_mover", "distance_tracker")]
 script = ExtResource("1_yro7u")
 linear_mover = NodePath("MovingEnv")
+distance_tracker = NodePath("DistanceTracker")
 
 [node name="CombatZoneStart" type="Marker3D" parent="."]
 
@@ -16,3 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 script = ExtResource("2_iurox")
 
 [node name="StaticEnv" type="Node3D" parent="."]
+
+[node name="DistanceTracker" type="Node" parent="." node_paths=PackedStringArray("linear_mover")]
+script = ExtResource("3_6dfau")
+linear_mover = NodePath("../MovingEnv")

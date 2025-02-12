@@ -62,7 +62,6 @@ volumetric_fog_albedo = Color(0.667028, 0.451124, 0.75044, 1)
 
 [sub_resource type="Resource" id="Resource_4fkhu"]
 script = ExtResource("12_paur5")
-num_zones = 2
 spawnable_zones = Array[PackedScene]([ExtResource("13_o5aan"), ExtResource("13_o5aan")])
 
 [sub_resource type="Curve" id="Curve_t3l6r"]

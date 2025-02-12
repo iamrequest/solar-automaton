@@ -1,9 +1,11 @@
 extends Node3D
 class_name CombatZone
 
-signal on_zone_end_reached
+signal on_zone_end_reached(CombatZone)
+signal zone_completed(CombatZone)
 
 @export var linear_mover: LinearMover
+@export var distance_tracker: LinearMoverDistanceTracker
 
 # TODO: Support path movers when necessary
 #@export var path_mover: PathMover
@@ -22,18 +24,25 @@ func init(spawn_position: Vector3, current_combat_speed: float, despawn_marker_p
 	if(linear_mover):
 		linear_mover.speed = current_combat_speed
 		
-		linear_mover.distance_max = ($CombatZoneEnd.global_position - despawn_marker_pos).length()
-		if(linear_mover.distance_max == 0.0):
-			linear_mover.distance_max = 0.1
+		distance_tracker.combat_zone_length = ($CombatZoneEnd.global_position - $CombatZoneStart.global_position).length()
+		distance_tracker.dist_to_despawn_marker = ($CombatZoneEnd.global_position - despawn_marker_pos).length()
 		
-		linear_mover.end_reached.connect(on_mover_complete)
+		if(distance_tracker.combat_zone_length == 0.0):
+			distance_tracker.combat_zone_length = 0.1		
+		if(distance_tracker.dist_to_despawn_marker == 0.0):
+			distance_tracker.dist_to_despawn_marker = 0.1
+		
+		distance_tracker.end_of_combat_zone_reached.connect(_on_mover_complete)
+		distance_tracker.despawn_marker_reached.connect(_on_depawn_marker_reached)
 #	elif(path_mover):
 #		path_mover.speed = current_combat_speed
 #		path_mover.path_completed.connect(on_mover_complete)
 
-func on_mover_complete() -> void:
-	on_zone_end_reached.emit()
+func _on_mover_complete() -> void:
+	on_zone_end_reached.emit(self)
 
-func destroy_self():
+func _on_depawn_marker_reached():
+	zone_completed.emit(self)
+	
 	# TODO: Maybe have a short delay before queueing free, to let static env fade out?
 	queue_free()
