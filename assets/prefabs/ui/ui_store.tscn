@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://brs12cb6ocvtw"]
 
-[ext_resource type="Script" path="res://assets/scripts/ui/ui_pause.gd" id="1_vocfe"]
+[ext_resource type="Script" path="res://assets/scripts/ui/ui_combat_menu.gd" id="1_vocfe"]
 [ext_resource type="Resource" uid="uid://db6206trw3846" path="res://assets/scenes/scene_references.tres" id="2_lvjtr"]
 [ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="3_o178x"]
 

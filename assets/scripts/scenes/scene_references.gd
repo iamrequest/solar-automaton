@@ -1,6 +1,11 @@
 extends Resource
 class_name SceneReferences
 
-@export var title := PackedScene
+enum Scenes { Title, Sunset }
 
-@export var lv01_sunset := PackedScene
+func get_scene_path(scene_name: Scenes):
+	match scene_name:
+		Scenes.Title:
+			return "res://assets/scenes/title.tscn"
+		Scenes.Sunset:
+			return "res://assets/scenes/lv0_sunset.tscn"

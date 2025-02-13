@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=3 uid="uid://k82wb6l85mwt"]
+
+[ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="1_ld5w1"]
+[ext_resource type="PackedScene" uid="uid://nqiyqnx42m61" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_physics_hand.tscn" id="2_d1tvh"]
+[ext_resource type="Script" path="res://assets/scripts/combat/player/xr_rig_combat.gd" id="2_dt3wl"]
+[ext_resource type="Script" path="res://assets/scripts/combat/player/godhand.gd" id="2_g7atm"]
+[ext_resource type="Material" uid="uid://cyrclf6gf0r3d" path="res://assets/materials/player/mat_hand.tres" id="3_w1jyv"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="4_ilel4"]
+
+[node name="XROrigin3D" instance=ExtResource("1_ld5w1")]
+script = ExtResource("2_dt3wl")
+
+[node name="Godhand" type="Node3D" parent="LeftHand" index="1"]
+script = ExtResource("2_g7atm")
+
+[node name="LeftPhysicsHand" parent="LeftHand/Godhand" index="0" instance=ExtResource("2_d1tvh")]
+hand_material_override = ExtResource("3_w1jyv")
+
+[node name="XRToolsFunctionPickup" type="Node3D" parent="LeftHand/Godhand" index="1"]
+script = ExtResource("4_ilel4")

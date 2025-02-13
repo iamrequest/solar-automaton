@@ -29,6 +29,10 @@ project/assembly_name="2024-09-21_xr-whitebox"
 
 enabled=PackedStringArray("res://addons/LineRenderer/plugin.cfg", "res://addons/godot-xr-toggle/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
 
+[global_group]
+
+xr_rig_hand="Used for the godhand ability. This is every node that can collide with enemies"
+
 [input]
 
 katamari_spawn={

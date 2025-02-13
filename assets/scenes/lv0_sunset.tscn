@@ -1,25 +1,20 @@
-[gd_scene load_steps=33 format=3 uid="uid://d2uk2xiqpck2v"]
+[gd_scene load_steps=23 format=3 uid="uid://d2uk2xiqpck2v"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_fyyyt"]
-[ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_aobdw"]
+[ext_resource type="PackedScene" uid="uid://k82wb6l85mwt" path="res://assets/prefabs/player/xr_camera_rig_combat.tscn" id="2_fxwin"]
 [ext_resource type="PackedScene" uid="uid://dypf7c8mc28nt" path="res://assets/prefabs/env/player_ground.tscn" id="3_qfnk4"]
 [ext_resource type="PackedScene" uid="uid://c12yha7ag7sbx" path="res://assets/prefabs/player/ship.tscn" id="4_1nwdr"]
 [ext_resource type="PackedScene" uid="uid://dkio6gw8dd46u" path="res://assets/prefabs/ui/viewport_game_over.tscn" id="5_n5gk7"]
 [ext_resource type="PackedScene" uid="uid://ur217qymsbc" path="res://assets/prefabs/ui/viewport_pause.tscn" id="6_ugh2m"]
 [ext_resource type="Script" path="res://assets/scripts/game_manager.gd" id="7_7715j"]
+[ext_resource type="PackedScene" uid="uid://ld3e3ild5far" path="res://assets/prefabs/ui/viewport_level_complete.tscn" id="7_xs3tq"]
 [ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="8_676dg"]
 [ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="9_mfq7p"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="10_c6u3h"]
 [ext_resource type="PackedScene" uid="uid://d2lli8sr4ipqb" path="res://assets/prefabs/combat_zones/combat_zone_manager.tscn" id="11_uaqmh"]
 [ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="12_paur5"]
 [ext_resource type="PackedScene" uid="uid://c5fn8yvjl8k2l" path="res://assets/scenes/combat_zones/lv1/cz_01.tscn" id="13_o5aan"]
-[ext_resource type="Script" path="res://assets/scripts/combat/enemies/pickable_enemy.gd" id="14_ls222"]
-[ext_resource type="Texture2D" uid="uid://d3aa1da44juoy" path="res://assets/textures/prototype/Orange/texture_02.png" id="15_86g11"]
-[ext_resource type="Texture2D" uid="uid://cs1jpcsfo3jqi" path="res://assets/textures/prototype/Orange/texture_08.png" id="16_i2jcn"]
-[ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="17_0pqua"]
-[ext_resource type="PackedScene" uid="uid://giqbijy4makk" path="res://assets/prefabs/health/hurtbox.tscn" id="18_rwx1a"]
-[ext_resource type="Script" path="res://assets/scripts/combat/enemies/enemy_blaster.gd" id="19_uxwjg"]
-[ext_resource type="PackedScene" uid="uid://dilga1cajf2jy" path="res://assets/prefabs/enemies/bullet_enemy.tscn" id="20_k8k7c"]
+[ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_slow-fire.tscn" id="21_v014a"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5prr5"]
 
@@ -70,22 +65,10 @@ volumetric_fog_albedo = Color(0.667028, 0.451124, 0.75044, 1)
 script = ExtResource("12_paur5")
 spawnable_zones = Array[PackedScene]([ExtResource("13_o5aan"), ExtResource("13_o5aan")])
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_jnpdl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lth8j"]
-albedo_texture = ExtResource("15_86g11")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjp3j"]
-albedo_texture = ExtResource("16_i2jcn")
-
-[sub_resource type="BoxMesh" id="BoxMesh_qoptg"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
-
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_fyyyt")
 
-[node name="XROrigin3D" parent="." instance=ExtResource("2_aobdw")]
+[node name="XROrigin3D" parent="." instance=ExtResource("2_fxwin")]
 
 [node name="PlayerGround" parent="XROrigin3D" instance=ExtResource("3_qfnk4")]
 
@@ -98,6 +81,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339712, 1.35978, -3.01541)
 
 [node name="ViewportPause" parent="." instance=ExtResource("6_ugh2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3.38116)
+
+[node name="ViewportLevelComplete" parent="." instance=ExtResource("7_xs3tq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.928037, 1.1166, -3.86529)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -236,66 +222,13 @@ directional_shadow_mode = 0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -149)
 level_config = SubResource("Resource_4fkhu")
 despawn_marker = NodePath("Marker3D")
+move_speed = 30.0
 
 [node name="Marker3D" type="Marker3D" parent="CombatZoneManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -155.904)
 
-[node name="XRToolsPickable" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503855, 1.93173, -0.955173)
-collision_layer = 516
-collision_mask = 196864
-gravity_scale = 0.0
-can_sleep = false
-lock_rotation = true
-contact_monitor = true
-max_contacts_reported = 10
-linear_damp_mode = 1
-linear_damp = 1.0
-script = ExtResource("14_ls222")
-picked_up_layer = 66048
-release_mode = 0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XRToolsPickable"]
-mesh = SubResource("CapsuleMesh_jnpdl")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_lth8j")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XRToolsPickable/MeshInstance3D"]
-transform = Transform3D(0.345764, 0, 0, 0, 0.345764, 0, 0, 0, 0.345764, 0, 0, -0.460002)
-material_override = SubResource("StandardMaterial3D_yjp3j")
-mesh = SubResource("BoxMesh_qoptg")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XRToolsPickable"]
-shape = SubResource("CapsuleShape3D_4sr6u")
-
-[node name="HealthComponent" type="Node" parent="XRToolsPickable"]
-script = ExtResource("17_0pqua")
-health_max = 10
-
-[node name="Hurtbox" parent="XRToolsPickable" node_paths=PackedStringArray("health_component") instance=ExtResource("18_rwx1a")]
-health_component = NodePath("../HealthComponent")
-
-[node name="DeathTimer" type="Timer" parent="XRToolsPickable"]
-wait_time = 0.3
-
-[node name="OnDroppedDeathTimer" type="Timer" parent="XRToolsPickable"]
-wait_time = 0.6
-one_shot = true
-
-[node name="EnemyBlaster" type="Node3D" parent="XRToolsPickable" node_paths=PackedStringArray("bullet_spawn_points")]
-script = ExtResource("19_uxwjg")
-bullet_prefab = ExtResource("20_k8k7c")
-bullet_spawn_points = [NodePath("Marker3D")]
-fire_mode = 1
-apply_initial_bullet_velocity = false
-
-[node name="Marker3D" type="Marker3D" parent="XRToolsPickable/EnemyBlaster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.865201)
-
-[node name="FireCooldownTimer" type="Timer" parent="XRToolsPickable/EnemyBlaster"]
+[node name="Enemy" parent="." instance=ExtResource("21_v014a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47301, 1.43144, -1.76247)
 
 [connection signal="on_death" from="Ship" to="GameManager" method="_on_ship_on_death"]
 [connection signal="on_level_end" from="CombatZoneManager" to="GameManager" method="_on_combat_zone_manager_on_level_end"]
-[connection signal="timeout" from="XRToolsPickable/EnemyBlaster/FireCooldownTimer" to="XRToolsPickable/EnemyBlaster" method="_on_fire_cooldown_timer_timeout"]
-
-[editable path="XRToolsPickable/Hurtbox"]

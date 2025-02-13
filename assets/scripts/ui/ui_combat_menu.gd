@@ -1,8 +1,6 @@
 extends Control
 
-
 @export var scenes: SceneReferences
-
 
 func _on_quit_button_pressed() -> void:
 	quit_game()
@@ -14,6 +12,9 @@ func _on_retry_button_pressed() -> void:
 
 func _on_unpause_button_pressed() -> void:
 	unpause()
+	
+func _on_next_level_button_pressed() -> void:
+	Globals.game_manager.load_next_level()
 
 func unpause():
 	# Viewport isn't in the tree I guess?
@@ -32,6 +33,6 @@ func quit_game():
 	# Find the XRToolsSceneBase ancestor of the current node
 	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
 	if not scene_base:
-			return
+		return
 	unpause()
-	scene_base.load_scene(scenes.title.resource_path)
+	scene_base.load_scene(scenes.get_scene_path(SceneReferences.Scenes.Title))

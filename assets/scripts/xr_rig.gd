@@ -12,11 +12,6 @@ func _ready() -> void:
 	Globals.xr_rig = self
 	toggle_laser(false)
 	
-	%GameManager.on_level_completed.connect(_on_level_completed)
-	%GameManager.on_level_failed.connect(_on_level_completed)
-	%GameManager.on_paused.connect(_on_paused)
-	%GameManager.on_unpaused.connect(_on_unpaused)
-
 func get_dominant_hand() -> XRController3D:
 	if(is_right_handed):
 		return $RightHand
@@ -37,16 +32,3 @@ func set_handedness(is_right_handed: bool):
 func toggle_laser(is_enabled: bool) -> void:
 	$RightHand/FunctionPointer.enabled = is_enabled
 	$RightHand/FunctionPointer.visible = is_enabled
-
-
-func _on_level_completed() -> void:
-	toggle_laser(true)
-	
-func _on_level_failed() -> void:
-	toggle_laser(true)
-	
-func _on_paused() -> void:
-	toggle_laser(true)
-	
-func _on_unpaused() -> void:
-	toggle_laser(false)

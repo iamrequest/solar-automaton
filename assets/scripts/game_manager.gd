@@ -30,6 +30,17 @@ func _on_combat_zone_manager_on_level_end() -> void:
 	on_level_completed.emit()
 
 
+@export var next_level: SceneReferences.Scenes
+func load_next_level() -> void:
+	# Find the XRToolsSceneBase ancestor of the current node
+	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
+	if not scene_base:
+		return
+		
+	var scenes = load("res://assets/scenes/scene_references.tres") as SceneReferences
+	scene_base.load_scene(scenes.get_scene_path(next_level))
+	
+
 #region Pausing	
 func on_non_dominant_input_pressed(name: String):
 	if(name == "ax_button"):

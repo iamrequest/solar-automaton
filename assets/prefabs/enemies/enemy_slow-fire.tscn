@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://43o1w333a816"]
 
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/pickable_enemy.gd" id="1_1qw0c"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="1_dh1ev"]
-[ext_resource type="Script" path="res://assets/scripts/combat/enemies/base_enemy.gd" id="1_obmh5"]
 [ext_resource type="Texture2D" uid="uid://d3aa1da44juoy" path="res://assets/textures/prototype/Orange/texture_02.png" id="2_hp0em"]
 [ext_resource type="Texture2D" uid="uid://cs1jpcsfo3jqi" path="res://assets/textures/prototype/Orange/texture_08.png" id="3_mhem5"]
 [ext_resource type="PackedScene" uid="uid://giqbijy4makk" path="res://assets/prefabs/health/hurtbox.tscn" id="4_6d6dm"]
@@ -21,12 +21,18 @@ albedo_texture = ExtResource("3_mhem5")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
 
 [node name="Enemy" type="RigidBody3D"]
-collision_layer = 512
-collision_mask = 256
+collision_layer = 516
+collision_mask = 196864
+gravity_scale = 0.0
 can_sleep = false
-freeze = true
-freeze_mode = 1
-script = ExtResource("1_obmh5")
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp_mode = 1
+linear_damp = 1.0
+script = ExtResource("1_1qw0c")
+picked_up_layer = 66048
+release_mode = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_jnpdl")
@@ -49,6 +55,9 @@ health_component = NodePath("../HealthComponent")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="OnDroppedDeathTimer" type="Timer" parent="."]
+wait_time = 0.6
 
 [node name="EnemyBlaster" type="Node3D" parent="." node_paths=PackedStringArray("bullet_spawn_points")]
 script = ExtResource("6_k6311")
