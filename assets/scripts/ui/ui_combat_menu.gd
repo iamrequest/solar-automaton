@@ -1,7 +1,5 @@
 extends Control
 
-@export var scenes: SceneReferences
-
 func _on_quit_button_pressed() -> void:
 	quit_game()
 
@@ -26,6 +24,7 @@ func reload_scene():
 		print("Unable to reload scene - can't find XRToolsSceneBase")
 		return
 	unpause()
+	
 	scene_base.reset_scene()
 
 func quit_game():
@@ -34,6 +33,7 @@ func quit_game():
 	if not scene_base:
 		return
 	unpause()
+	var scenes = load("res://assets/scenes/scene_references.tres") as SceneReferences
 	scene_base.load_scene(scenes.get_scene_path(SceneReferences.Scenes.Title))
 
 func recenter():

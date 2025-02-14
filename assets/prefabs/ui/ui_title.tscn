@@ -1,0 +1,227 @@
+[gd_scene load_steps=6 format=3 uid="uid://4xl10jq3jsr3"]
+
+[ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="1_4nocl"]
+[ext_resource type="Script" path="res://assets/scripts/ui/ui_title.gd" id="2_kmtto"]
+
+[sub_resource type="Theme" id="Theme_h3wh4"]
+default_font = ExtResource("1_4nocl")
+default_font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_j2elv"]
+font_size = 80
+outline_size = 15
+outline_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+shadow_size = 31
+shadow_color = Color(0.12549, 0.12549, 0.12549, 0.447059)
+shadow_offset = Vector2(6.095, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vhi5"]
+font_size = 32
+
+[node name="UiTitle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.03503
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h3wh4")
+script = ExtResource("2_kmtto")
+
+[node name="TitlePage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitlePage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h3wh4")
+
+[node name="TitleSpacing" type="MarginContainer" parent="TitlePage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30.625)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TitlePage/VBoxContainer"]
+layout_mode = 2
+text = "Game Name"
+label_settings = SubResource("LabelSettings_j2elv")
+horizontal_alignment = 1
+
+[node name="TitleSpacing2" type="MarginContainer" parent="TitlePage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30.625)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitlePage/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="StartButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Start"
+
+[node name="GoToLevelSelectPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="GoToCreditsPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="MarginContainer" type="MarginContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 163.02)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Quit"
+
+[node name="TitleSpacing" type="MarginContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30.625)
+layout_mode = 2
+
+[node name="LevelSelectPage" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoToTitlePageButton" type="Button" parent="LevelSelectPage"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 53.0
+grow_horizontal = 0
+size_flags_horizontal = 10
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelectPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h3wh4")
+theme_override_constants/separation = 0
+
+[node name="Title2" type="Label" parent="LevelSelectPage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Select"
+horizontal_alignment = 1
+
+[node name="Lv1" type="Button" parent="LevelSelectPage/VBoxContainer"]
+layout_mode = 2
+text = "Sunset"
+
+[node name="Lv2" type="Button" parent="LevelSelectPage/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "???"
+
+[node name="Lv3" type="Button" parent="LevelSelectPage/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "???"
+
+[node name="CreditsPage" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoToTitlePageButton" type="Button" parent="CreditsPage"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 53.0
+grow_horizontal = 0
+size_flags_horizontal = 10
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h3wh4")
+theme_override_constants/separation = 0
+
+[node name="CreditsTitle" type="Label" parent="CreditsPage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="CreditsEntry" type="HBoxContainer" parent="CreditsPage/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CreditsPage/VBoxContainer/CreditsEntry"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pixel font"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="Name2" type="Label" parent="CreditsPage/VBoxContainer/CreditsEntry"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "chequered-ink"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CreditsEntry2" type="HBoxContainer" parent="CreditsPage/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CreditsPage/VBoxContainer/CreditsEntry2"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Everything else"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="Name2" type="Label" parent="CreditsPage/VBoxContainer/CreditsEntry2"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Request"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToLevelSelectPageButton" to="." method="_on_go_to_level_select_page_button_pressed"]
+[connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToCreditsPageButton" to="." method="_on_go_to_level_select_page_button_pressed"]
+[connection signal="pressed" from="LevelSelectPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]
+[connection signal="pressed" from="LevelSelectPage/VBoxContainer/Lv1" to="." method="_on_lv_1_pressed"]
+[connection signal="pressed" from="CreditsPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]
