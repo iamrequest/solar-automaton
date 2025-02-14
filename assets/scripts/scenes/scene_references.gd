@@ -8,4 +8,4 @@ func get_scene_path(scene_name: Scenes):
 		Scenes.Title:
 			return "res://assets/scenes/title.tscn"
 		Scenes.Sunset:
-			return "res://assets/scenes/lv0_sunset.tscn"
+			return "res://assets/scenes/lv01_sunset.tscn"

@@ -32,3 +32,6 @@ func set_handedness(is_right_handed: bool):
 func toggle_laser(is_enabled: bool) -> void:
 	$RightHand/FunctionPointer.enabled = is_enabled
 	$RightHand/FunctionPointer.visible = is_enabled
+
+func recenter() -> void:
+	pass

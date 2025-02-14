@@ -19,6 +19,8 @@ script = ExtResource("2_iurox")
 
 [node name="StaticEnv" type="Node3D" parent="."]
 
+[node name="PersistentStaticEnv" type="Node3D" parent="."]
+
 [node name="DistanceTracker" type="Node" parent="." node_paths=PackedStringArray("linear_mover")]
 script = ExtResource("3_6dfau")
 linear_mover = NodePath("../MovingEnv")

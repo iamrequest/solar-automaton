@@ -7,6 +7,13 @@ func _ready() -> void:
 	%GameManager.on_level_failed.connect(_on_level_completed)
 	%GameManager.on_paused.connect(_on_paused)
 	%GameManager.on_unpaused.connect(_on_unpaused)
+	recenter()
+
+func recenter() -> void:
+	super()
+	# TODO: Need to align based on HMD
+	global_position = %GameManager.combat_zone_manager.xr_rig_marker.global_position 
+	global_rotation = %GameManager.combat_zone_manager.xr_rig_marker.global_rotation 
 
 func _on_level_completed() -> void:
 	toggle_laser(true)

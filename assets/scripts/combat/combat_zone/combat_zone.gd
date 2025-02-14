@@ -13,19 +13,24 @@ signal zone_completed(CombatZone)
 func _ready() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
 
-func init(spawn_position: Vector3, current_combat_speed: float, despawn_marker_pos: Vector3) -> void:
+func init(combat_zone_manager: CombatZoneManager) -> void:
 	# Move this node so that the combat zone start aligns with the spawn position
 	var dirToStart = $CombatZoneStart.global_position - global_position
-	global_position = spawn_position + dirToStart
+	global_position = combat_zone_manager.spawn_marker.global_position + dirToStart
 	
-	# TODO: Move static env relative to player?
+	# Move static env relative to player
+	$StaticEnv.global_position = combat_zone_manager.xr_rig_marker.global_position
+	
+	# Rebase persistent static env to sit in the main scene
+	# TODO: Would be cool to have a way to send signals through CombatZoneManager to tween out persistent env bsaed on area trigger in level
+	$PersistentStaticEnv.reparent(combat_zone_manager.xr_rig_marker, false)
 	
 	# Configure linear/path mover
 	if(linear_mover):
-		linear_mover.speed = current_combat_speed
+		linear_mover.speed = combat_zone_manager.move_speed
 		
 		distance_tracker.combat_zone_length = ($CombatZoneEnd.global_position - $CombatZoneStart.global_position).length()
-		distance_tracker.dist_to_despawn_marker = ($CombatZoneEnd.global_position - despawn_marker_pos).length()
+		distance_tracker.dist_to_despawn_marker = ($CombatZoneEnd.global_position - combat_zone_manager.despawn_marker.global_position).length()
 		
 		if(distance_tracker.combat_zone_length == 0.0):
 			distance_tracker.combat_zone_length = 0.1		

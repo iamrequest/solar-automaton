@@ -9,7 +9,6 @@ func _on_quit_button_pressed() -> void:
 func _on_retry_button_pressed() -> void:
 	reload_scene()
 
-
 func _on_unpause_button_pressed() -> void:
 	unpause()
 	
@@ -36,3 +35,7 @@ func quit_game():
 		return
 	unpause()
 	scene_base.load_scene(scenes.get_scene_path(SceneReferences.Scenes.Title))
+
+func recenter():
+	# Viewport isn't in the tree I guess?
+	Globals.xr_rig.recenter()

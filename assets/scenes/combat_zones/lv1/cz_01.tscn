@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5fn8yvjl8k2l"]
+[gd_scene load_steps=13 format=3 uid="uid://c5fn8yvjl8k2l"]
 
 [ext_resource type="PackedScene" uid="uid://cw8aox52warf7" path="res://assets/prefabs/combat_zones/combat_zone_base.tscn" id="1_niayp"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="2_06nnr"]
@@ -31,6 +31,8 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
+
+[sub_resource type="BoxMesh" id="BoxMesh_5k2qm"]
 
 [node name="CombatZone" instance=ExtResource("1_niayp")]
 
@@ -229,3 +231,13 @@ transform = Transform3D(0.084586, 0.380302, 0.920956, 1.49008e-08, 0.924273, -0.
 
 [node name="Enemy" parent="MovingEnv/Path3D2" index="1" instance=ExtResource("5_onwmh")]
 transform = Transform3D(0.0380987, 0, -0.198665, 0, 0.202285, 0, 0.198665, 0, 0.0380987, -1.89732, 1.53766, -1.0889)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PersistentStaticEnv" index="0"]
+transform = Transform3D(7.30542, 0, 0, 0, 7.30542, 0, 0, 0, 7.30542, 8, 0, 0)
+mesh = SubResource("BoxMesh_5k2qm")
+skeleton = NodePath("../../StaticEnv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PersistentStaticEnv" index="1"]
+transform = Transform3D(7.30542, 0, 0, 0, 7.30542, 0, 0, 0, 7.30542, -8, 0, 0)
+mesh = SubResource("BoxMesh_5k2qm")
+skeleton = NodePath("../../StaticEnv")

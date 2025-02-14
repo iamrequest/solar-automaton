@@ -1,11 +1,14 @@
 extends Node3D
+class_name CombatZoneManager
 
 signal on_level_end
 
-@export var level_config: LevelConfig
+@export var spawn_marker: Marker3D
 @export var despawn_marker: Marker3D
-@export var move_speed:= 1.0
+@export var xr_rig_marker: Marker3D
 
+@export var level_config: LevelConfig
+@export var move_speed:= 1.0
 var num_zones_spawned:= 0
 var current_combat_zone: CombatZone
 
@@ -21,7 +24,7 @@ func spawn_combat_zone():
 	# If we fail loading the combat zone, just end the level
 	if(!try_instantiate_combat_zone()):
 		on_level_end.emit()
-	current_combat_zone.init(global_position, move_speed, despawn_marker.global_position)
+	current_combat_zone.init(self)
 	
 	# If we're on the last zone, finish the level at the end of it
 	# Otherwise, spawn the next zone at a point that lines up with the current one

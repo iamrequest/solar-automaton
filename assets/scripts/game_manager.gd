@@ -7,9 +7,11 @@ signal on_level_failed
 signal on_paused
 signal on_unpaused
 
+@export var next_level: SceneReferences.Scenes
+@export var combat_zone_manager: CombatZoneManager
+
 var is_paused:= false
 var is_game_over:= false
-
 var currency:= 0
 
 func _ready() -> void:
@@ -32,7 +34,6 @@ func _on_combat_zone_manager_on_level_end() -> void:
 	on_level_completed.emit()
 
 
-@export var next_level: SceneReferences.Scenes
 func load_next_level() -> void:
 	# Find the XRToolsSceneBase ancestor of the current node
 	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
