@@ -6,7 +6,7 @@ signal zone_completed(CombatZone)
 
 @export var linear_mover: LinearMover
 @export var distance_tracker: LinearMoverDistanceTracker
-
+var combat_zone_manager: CombatZoneManager
 # TODO: Support path movers when necessary
 #@export var path_mover: PathMover
 
@@ -14,6 +14,8 @@ func _ready() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
 
 func init(combat_zone_manager: CombatZoneManager) -> void:
+	self.combat_zone_manager = combat_zone_manager
+	
 	# Move this node so that the combat zone start aligns with the spawn position
 	var dirToStart = $CombatZoneStart.global_position - global_position
 	global_position = combat_zone_manager.spawn_marker.global_position + dirToStart
@@ -27,7 +29,8 @@ func init(combat_zone_manager: CombatZoneManager) -> void:
 	
 	# Configure linear/path mover
 	if(linear_mover):
-		linear_mover.speed = combat_zone_manager.move_speed
+		_on_speed_updated()
+		combat_zone_manager.on_speed_updated.connect(_on_speed_updated)
 		
 		distance_tracker.combat_zone_length = ($CombatZoneEnd.global_position - $CombatZoneStart.global_position).length()
 		distance_tracker.dist_to_despawn_marker = ($CombatZoneEnd.global_position - combat_zone_manager.despawn_marker.global_position).length()
@@ -51,3 +54,6 @@ func _on_depawn_marker_reached():
 	
 	# TODO: Maybe have a short delay before queueing free, to let static env fade out?
 	queue_free()
+
+func _on_speed_updated() -> void:
+	linear_mover.speed = combat_zone_manager.move_speed

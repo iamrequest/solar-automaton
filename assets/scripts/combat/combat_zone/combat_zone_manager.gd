@@ -2,6 +2,7 @@ extends Node3D
 class_name CombatZoneManager
 
 signal on_level_end
+signal on_speed_updated()
 
 @export var spawn_marker: Marker3D
 @export var despawn_marker: Marker3D
@@ -12,10 +13,17 @@ signal on_level_end
 var num_zones_spawned:= 0
 var current_combat_zone: CombatZone
 
+# Debug
+var move_speed_turbo := 30
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	spawn_combat_zone()
 
+func _process(delta: float) -> void:
+	if(Globals.debug_mode_enabled):
+		if(Globals.xr_rig.get_non_dominant_hand().get_input("secondary_click")):
+			update_speed(move_speed_turbo)
 
 func spawn_combat_zone():
 	if(%GameManager.is_game_over):
@@ -51,3 +59,7 @@ func on_combat_zone_end(zone: CombatZone):
 		
 func on_last_combat_zone_completed(zone: CombatZone):
 	on_level_end.emit()
+
+func update_speed(speed: float):
+	move_speed = speed
+	on_speed_updated.emit()
