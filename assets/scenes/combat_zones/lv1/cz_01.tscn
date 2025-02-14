@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5fn8yvjl8k2l"]
+[gd_scene load_steps=14 format=3 uid="uid://c5fn8yvjl8k2l"]
 
 [ext_resource type="PackedScene" uid="uid://cw8aox52warf7" path="res://assets/prefabs/combat_zones/combat_zone_base.tscn" id="1_niayp"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="2_06nnr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://dokgeocndpwt5" path="res://assets/materials/env/env-hitbox.tres" id="4_ud51o"]
 [ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_slow-fire.tscn" id="5_onwmh"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/path_mover.gd" id="6_a1c2g"]
+[ext_resource type="PackedScene" uid="uid://cdgmcil1bee2l" path="res://assets/prefabs/enemies/enemy_activation_zone.tscn" id="6_u3roo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ajl6f"]
 
@@ -15,22 +16,16 @@ size = Vector3(7.52656, 22.1584, 7.80971)
 [sub_resource type="Curve3D" id="Curve3D_uk6y8"]
 bake_interval = 14.64
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.82889, -0.418844, -2.51338, 0, 0, 0, 0, 0, 0, -2.09855, 1.20879, -2.84679, 0, 0, 0, 0, 0, 0, -0.796731, 1.91922, 1.35107, 0, 0, 0, 0, 0, 0, 2.25191, 1.26848, 1.05204, 0, 0, 0, 0, 0, 0, 1.23676, 1.26974, -1.36397, 0, 0, 0, 0, 0, 0, -2.24054, -1.05214, -2.11862, 0, 0, 0, 0, 0, 0, 1.82889, -0.418844, -2.51338),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -10.7562, -20.9929, 8.23566, 0, 0, 0, 0, 0, 0, 5.33295, -14.9834, 6.40223, 0, 0, 0, 0, 0, 0, 14.2608, -17.9568, 5.67071),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 7
-
-[sub_resource type="Curve" id="Curve_5kq45"]
-_data = [Vector2(0.0138889, 1), 0.0, 0.0, 0, 0, Vector2(0.509259, 0.760946), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Curve3D" id="Curve3D_6bhci"]
-bake_interval = 14.64
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.82889, -0.418844, -2.51338, 0, 0, 0, 0, 0, 0, -2.09855, 1.20879, -2.84679, 0, 0, 0, 0, 0, 0, -0.796731, 1.91922, 1.35107, 0, 0, 0, 0, 0, 0, 2.25191, 1.26848, 1.05204, 0, 0, 0, 0, 0, 0, 1.23676, 1.26974, -1.36397, 0, 0, 0, 0, 0, 0, -2.24054, -1.05214, -2.11862, 0, 0, 0, 0, 0, 0, 1.82889, -0.418844, -2.51338),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
+[sub_resource type="Curve" id="Curve_5kq45"]
+_data = [Vector2(0.0138889, 1), 0.0, 0.0, 0, 0, Vector2(0.502381, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="BoxMesh" id="BoxMesh_6m8xy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5k2qm"]
 
@@ -154,90 +149,89 @@ mesh = SubResource("BoxMesh_ajl6f")
 surface_material_override/0 = ExtResource("4_ud51o")
 
 [node name="Enemy7" parent="MovingEnv" index="12" instance=ExtResource("5_onwmh")]
-transform = Transform3D(2.66065e-07, 0, 0.869549, 0, 0.869549, 0, -0.869549, 0, 2.66065e-07, 2.45759, 2.58993, 115.873)
+transform = Transform3D(3.13916e-07, 0, 1, 0, 1, 0, -1, 0, 3.13916e-07, 2.45759, 2.58993, 115.873)
 
 [node name="Enemy8" parent="MovingEnv" index="13" instance=ExtResource("5_onwmh")]
-transform = Transform3D(2.66065e-07, 0, 0.869549, 0, 0.869549, 0, -0.869549, 0, 2.66065e-07, 2.45759, 2.58993, 116.873)
+transform = Transform3D(3.13916e-07, 0, 1, 0, 1, 0, -1, 0, 3.13916e-07, 2.45759, 2.58993, 116.873)
 
 [node name="Enemy9" parent="MovingEnv" index="14" instance=ExtResource("5_onwmh")]
-transform = Transform3D(2.66065e-07, 0, 0.869549, 0, 0.869549, 0, -0.869549, 0, 2.66065e-07, 2.45759, 0.589929, 113.873)
+transform = Transform3D(3.13916e-07, 0, 1, 0, 1, 0, -1, 0, 3.13916e-07, 2.45759, 0.589929, 113.873)
 
 [node name="Enemy10" parent="MovingEnv" index="15" instance=ExtResource("5_onwmh")]
-transform = Transform3D(2.66065e-07, 0, 0.869549, 0, 0.869549, 0, -0.869549, 0, 2.66065e-07, 2.45759, 0.589929, 114.873)
+transform = Transform3D(3.13916e-07, 0, 1, 0, 1, 0, -1, 0, 3.13916e-07, 2.45759, 0.589929, 114.873)
 
 [node name="Enemy11" parent="MovingEnv" index="16" instance=ExtResource("5_onwmh")]
-transform = Transform3D(-1.90046e-07, 0, -0.869549, 0, 0.869549, 0, 0.869549, 0, -1.90046e-07, -2.54241, 0.589929, 118.873)
+transform = Transform3D(-1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.54241, 0.589929, 118.873)
 
 [node name="Enemy12" parent="MovingEnv" index="17" instance=ExtResource("5_onwmh")]
-transform = Transform3D(-1.90046e-07, 0, -0.869549, 0, 0.869549, 0, 0.869549, 0, -1.90046e-07, -2.54241, 0.589929, 117.873)
+transform = Transform3D(-1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.54241, 0.589929, 117.873)
 
 [node name="Enemy13" parent="MovingEnv" index="18" instance=ExtResource("5_onwmh")]
-transform = Transform3D(-1.90046e-07, 0, -0.869549, 0, 0.869549, 0, 0.869549, 0, -1.90046e-07, -2.54241, 2.58993, 112.873)
+transform = Transform3D(-1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.54241, 2.58993, 112.873)
 
 [node name="Enemy14" parent="MovingEnv" index="19" instance=ExtResource("5_onwmh")]
-transform = Transform3D(-1.90046e-07, 0, -0.869549, 0, 0.869549, 0, 0.869549, 0, -1.90046e-07, -2.54241, 2.58993, 111.873)
+transform = Transform3D(-1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.54241, 2.58993, 111.873)
 
 [node name="Enemy3" parent="MovingEnv" index="20" instance=ExtResource("5_onwmh")]
-transform = Transform3D(-0.869549, 0, 1.52037e-07, 0, 0.869549, 0, -1.52037e-07, 0, -0.869549, 2.18339, 0.525771, 102.116)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 2.18339, 0.525771, 102.116)
 
-[node name="Path3D3" type="Path3D" parent="MovingEnv" index="21" node_paths=PackedStringArray("target_node")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.576995, -0.016634, 64.1027)
+[node name="EnemyActivationZone" parent="MovingEnv" index="21" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_u3roo")]
+path_mover = NodePath("../../StaticEnv/Path3D3")
+
+[node name="EnemyActivationZone2" parent="MovingEnv" index="22" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_u3roo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.5352)
+path_mover = NodePath("../../StaticEnv/Path3D4")
+
+[node name="EnemyActivationZone3" parent="MovingEnv" index="23" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_u3roo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.5715)
+path_mover = NodePath("../../StaticEnv/Path3D5")
+
+[node name="Path3D3" type="Path3D" parent="StaticEnv" index="0" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -3.77165, 14.957, -2.73057)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
 target_node = NodePath("Enemy")
 speedCurve = SubResource("Curve_5kq45")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="MovingEnv/Path3D3" index="0"]
-transform = Transform3D(0.084586, 0.380302, 0.920956, 1.49008e-08, 0.924273, -0.381668, -0.996391, 0.0322848, 0.0781821, 1.82889, -0.418844, -2.51338)
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D3" index="0"]
+transform = Transform3D(0.113218, -0.345676, -0.931452, 0, 0.937488, -0.34791, 0.993537, 0.0393913, 0.106143, -10.7562, -20.9929, 8.23566)
+loop = false
 
-[node name="Enemy" parent="MovingEnv/Path3D3" index="1" instance=ExtResource("5_onwmh")]
-transform = Transform3D(0.0380987, 0, -0.198665, 0, 0.202285, 0, 0.198665, 0, 0.0380987, -1.89732, 1.53766, -1.08891)
+[node name="Enemy" parent="StaticEnv/Path3D3" index="1" instance=ExtResource("5_onwmh")]
+transform = Transform3D(0.188342, 0, -0.982104, 0, 1, 0, 0.982104, 0, 0.188342, -10.7562, -20.9929, 8.23566)
 
-[node name="Path3D4" type="Path3D" parent="MovingEnv" index="22" node_paths=PackedStringArray("target_node")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -5.21013, -0.016634, 70.5112)
+[node name="Path3D4" type="Path3D" parent="StaticEnv" index="1" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -3.77165, 14.957, -1.01174)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
 target_node = NodePath("Enemy")
 speedCurve = SubResource("Curve_5kq45")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="MovingEnv/Path3D4" index="0"]
-transform = Transform3D(0.084586, 0.380302, 0.920956, 1.49008e-08, 0.924273, -0.381668, -0.996391, 0.0322848, 0.0781821, 1.82889, -0.418844, -2.51338)
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D4" index="0"]
+transform = Transform3D(0.113218, -0.345676, -0.931452, 0, 0.937488, -0.34791, 0.993537, 0.0393913, 0.106143, -10.7562, -20.9929, 8.23566)
+loop = false
 
-[node name="Enemy" parent="MovingEnv/Path3D4" index="1" instance=ExtResource("5_onwmh")]
-transform = Transform3D(0.0380987, 0, -0.198665, 0, 0.202285, 0, 0.198665, 0, 0.0380987, -1.89732, 1.53766, -1.0889)
+[node name="Enemy" parent="StaticEnv/Path3D4" index="1" instance=ExtResource("5_onwmh")]
+transform = Transform3D(0.188342, 0, -0.982104, 0, 1, 0, 0.982104, 0, 0.188342, -10.7562, -20.9929, 8.23566)
 
-[node name="Path3D5" type="Path3D" parent="MovingEnv" index="23" node_paths=PackedStringArray("target_node")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0.086577, -0.016634, 77.6384)
+[node name="Path3D5" type="Path3D" parent="StaticEnv" index="2" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -3.77165, 14.957, 1.0533)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
 target_node = NodePath("Enemy")
 speedCurve = SubResource("Curve_5kq45")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="MovingEnv/Path3D5" index="0"]
-transform = Transform3D(0.084586, 0.380302, 0.920956, 1.49008e-08, 0.924273, -0.381668, -0.996391, 0.0322848, 0.0781821, 1.82889, -0.418844, -2.51338)
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D5" index="0"]
+transform = Transform3D(0.113218, -0.345676, -0.931452, 0, 0.937488, -0.34791, 0.993537, 0.0393913, 0.106143, -10.7562, -20.9929, 8.23566)
+loop = false
 
-[node name="Enemy" parent="MovingEnv/Path3D5" index="1" instance=ExtResource("5_onwmh")]
-transform = Transform3D(0.0380987, 0, -0.198665, 0, 0.202285, 0, 0.198665, 0, 0.0380987, -1.89732, 1.53766, -1.0889)
-
-[node name="Path3D2" type="Path3D" parent="MovingEnv" index="24" node_paths=PackedStringArray("target_node")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.576993, -0.016634, 44.6609)
-curve = SubResource("Curve3D_6bhci")
-script = ExtResource("6_a1c2g")
-target_node = NodePath("Enemy")
-speedCurve = SubResource("Curve_5kq45")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="MovingEnv/Path3D2" index="0"]
-transform = Transform3D(0.084586, 0.380302, 0.920956, 1.49008e-08, 0.924273, -0.381668, -0.996391, 0.0322848, 0.0781821, 1.82889, -0.418844, -2.51338)
-
-[node name="Enemy" parent="MovingEnv/Path3D2" index="1" instance=ExtResource("5_onwmh")]
-transform = Transform3D(0.0380987, 0, -0.198665, 0, 0.202285, 0, 0.198665, 0, 0.0380987, -1.89732, 1.53766, -1.0889)
+[node name="Enemy" parent="StaticEnv/Path3D5" index="1" instance=ExtResource("5_onwmh")]
+transform = Transform3D(0.188342, 0, -0.982104, 0, 1, 0, 0.982104, 0, 0.188342, -10.7562, -20.9929, 8.23566)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PersistentStaticEnv" index="0"]
 transform = Transform3D(7.30542, 0, 0, 0, 7.30542, 0, 0, 0, 7.30542, 8, 0, 0)
-mesh = SubResource("BoxMesh_5k2qm")
-skeleton = NodePath("../../StaticEnv")
+mesh = SubResource("BoxMesh_6m8xy")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="PersistentStaticEnv" index="1"]
 transform = Transform3D(7.30542, 0, 0, 0, 7.30542, 0, 0, 0, 7.30542, -8, 0, 0)
 mesh = SubResource("BoxMesh_5k2qm")
-skeleton = NodePath("../../StaticEnv")

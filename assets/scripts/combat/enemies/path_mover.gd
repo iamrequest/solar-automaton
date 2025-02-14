@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		_process_editor()
 		return
-	
+
 	if(update_in_process):
 		do_move(delta)
 

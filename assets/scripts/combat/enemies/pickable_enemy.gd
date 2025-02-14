@@ -1,4 +1,5 @@
 extends XRToolsPickable
+class_name PickableEnemy
 
 # Emitted when health is depleted, or is grabbed
 signal on_marked_for_death
@@ -14,7 +15,6 @@ var is_godhand_smackable := true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	process_mode = Node.PROCESS_MODE_PAUSABLE
 	$HealthComponent.on_death.connect(_on_death)
 	$DeathTimer.timeout.connect(_on_death_timer_timeout)
 	grabbed.connect(_on_grab)

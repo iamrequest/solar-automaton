@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdgmcil1bee2l"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/enemy_activator_area.gd" id="1_ty3j0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_844dn"]
+size = Vector3(11.667, 13.7168, 1)
+
+[node name="EnemyActivationZone" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.4966)
+collision_mask = 256
+script = ExtResource("1_ty3j0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_844dn")
