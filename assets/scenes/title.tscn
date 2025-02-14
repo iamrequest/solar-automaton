@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0bt1hmnq7q6w"]
+[gd_scene load_steps=14 format=3 uid="uid://c0bt1hmnq7q6w"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ja2qs"]
 [ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_6v0qr"]
@@ -7,7 +7,6 @@
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="5_era21"]
 [ext_resource type="PackedScene" uid="uid://dho7f41yokfuj" path="res://assets/prefabs/ui/viewport_title.tscn" id="6_q30k7"]
 [ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="6_xi52p"]
-[ext_resource type="Material" uid="uid://bmabweb2f316b" path="res://assets/materials/ui/mat_viewport.tres" id="8_5bov6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ax2p"]
 sky_top_color = Color(0.867338, 0.526165, 0.0738397, 1)
@@ -183,7 +182,5 @@ surface_material_override/0 = ExtResource("5_era21")
 [node name="Sun" parent="StaticEnv" instance=ExtResource("6_xi52p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -84)
 
-[node name="ViewportPause" parent="." instance=ExtResource("6_q30k7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
-viewport_size = Vector2(300, 600)
-material = ExtResource("8_5bov6")
+[node name="ViewportTitle" parent="." instance=ExtResource("6_q30k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45453, -4.29699)

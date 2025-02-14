@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dho7f41yokfuj"]
+[gd_scene load_steps=9 format=3 uid="uid://dho7f41yokfuj"]
 
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_nkmrd"]
 [ext_resource type="Script" path="res://assets/scripts/ui/viewport_title.gd" id="2_hqs7q"]
 [ext_resource type="PackedScene" uid="uid://4xl10jq3jsr3" path="res://assets/prefabs/ui/ui_title.tscn" id="3_6abhp"]
+[ext_resource type="Material" uid="uid://bmabweb2f316b" path="res://assets/materials/ui/mat_viewport.tres" id="4_f0amt"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_xnqwg"]
 resource_local_to_scene = true
@@ -24,6 +25,8 @@ size = Vector3(3, 2, 0.02)
 [node name="ViewportTitle" instance=ExtResource("1_nkmrd")]
 script = ExtResource("2_hqs7q")
 scene = ExtResource("3_6abhp")
+viewport_size = Vector2(700, 600)
+material = ExtResource("4_f0amt")
 
 [node name="Screen" parent="." index="1"]
 mesh = SubResource("QuadMesh_xnqwg")

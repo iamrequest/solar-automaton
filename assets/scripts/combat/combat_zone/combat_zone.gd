@@ -29,7 +29,7 @@ func init(combat_zone_manager: CombatZoneManager) -> void:
 	
 	# Configure linear/path mover
 	if(linear_mover):
-		_on_speed_updated()
+		linear_mover.speed = combat_zone_manager.move_speed
 		combat_zone_manager.on_speed_updated.connect(_on_speed_updated)
 		
 		distance_tracker.combat_zone_length = ($CombatZoneEnd.global_position - $CombatZoneStart.global_position).length()
@@ -55,5 +55,5 @@ func _on_depawn_marker_reached():
 	# TODO: Maybe have a short delay before queueing free, to let static env fade out?
 	queue_free()
 
-func _on_speed_updated() -> void:
-	linear_mover.speed = combat_zone_manager.move_speed
+func _on_speed_updated(speed: float) -> void:
+	linear_mover.speed = speed
