@@ -9,6 +9,7 @@ signal on_death
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	%GameManager.on_level_completed.connect(_on_level_completed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,12 +58,13 @@ func _on_health_component_on_death() -> void:
 	await $DeathTimer.timeout
 	queue_free()
 	
-
-
 func _on_health_component_on_damage_recieved(int: Variant) -> void:
 	time_slow(0.5, 0.5)
 	
 
+func _on_level_completed() -> void:
+	visible = false
+	
 func time_slow(time_scale: float, duration: float):
 	%GameManager.request_time_scale(time_scale)
 	await get_tree().create_timer(duration).timeout

@@ -67,5 +67,12 @@ func init_bullet(bullet: Bullet, spawn_point: Node3D):
 func _on_fire_cooldown_timer_timeout() -> void:
 	is_on_cooldown = false
 
-func on_grabbed() -> void:
+func _on_enemy_on_godhand_kill() -> void:
 	fire_mode = fire_mode_grabbed
+
+func _on_enemy_grabbed(pickable: Variant, by: Variant) -> void:
+	fire_mode = fire_mode_grabbed
+
+
+func _on_enemy_on_marked_for_death() -> void:
+	pass # Replace with function body.

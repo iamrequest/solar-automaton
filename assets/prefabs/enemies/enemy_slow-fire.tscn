@@ -56,9 +56,6 @@ health_component = NodePath("../HealthComponent")
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.3
 
-[node name="OnDroppedDeathTimer" type="Timer" parent="."]
-wait_time = 0.6
-
 [node name="EnemyBlaster" type="Node3D" parent="." node_paths=PackedStringArray("bullet_spawn_points")]
 script = ExtResource("6_k6311")
 bullet_prefab = ExtResource("7_jrlem")
@@ -71,6 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.865201)
 
 [node name="FireCooldownTimer" type="Timer" parent="EnemyBlaster"]
 
+[connection signal="on_marked_for_death" from="." to="EnemyBlaster" method="_on_enemy_on_marked_for_death"]
 [connection signal="timeout" from="EnemyBlaster/FireCooldownTimer" to="EnemyBlaster" method="_on_fire_cooldown_timer_timeout"]
 
 [editable path="Hurtbox"]

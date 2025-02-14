@@ -68,6 +68,14 @@ spawnable_zones = Array[PackedScene]([ExtResource("13_o5aan"), ExtResource("13_o
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_fyyyt")
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_7715j")
+
+[node name="LevelFailedTimer" type="Timer" parent="GameManager"]
+process_mode = 3
+one_shot = true
+
 [node name="XROrigin3D" parent="." instance=ExtResource("2_fxwin")]
 
 [node name="PlayerGround" parent="XROrigin3D" instance=ExtResource("3_qfnk4")]
@@ -84,14 +92,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3.38116)
 
 [node name="ViewportLevelComplete" parent="." instance=ExtResource("7_xs3tq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.928037, 1.1166, -3.86529)
-
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("7_7715j")
-
-[node name="LevelFailedTimer" type="Timer" parent="GameManager"]
-process_mode = 3
-one_shot = true
 
 [node name="BaseLevelEnv" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00274301, 0.016634, -0.0049181)
@@ -228,7 +228,7 @@ move_speed = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -155.904)
 
 [node name="Enemy" parent="." instance=ExtResource("21_v014a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47301, 1.43144, -1.76247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.892986, 1.43144, -1.15548)
 
 [connection signal="on_death" from="Ship" to="GameManager" method="_on_ship_on_death"]
 [connection signal="on_level_end" from="CombatZoneManager" to="GameManager" method="_on_combat_zone_manager_on_level_end"]

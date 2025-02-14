@@ -15,6 +15,8 @@ var currency:= 0
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Globals.game_manager = self
+	
+	await get_tree().process_frame 
 	Globals.xr_rig.get_non_dominant_hand().button_pressed.connect(on_non_dominant_input_pressed)
 
 
