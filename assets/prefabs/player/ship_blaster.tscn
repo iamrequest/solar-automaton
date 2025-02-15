@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://67xkondkqmyr"]
+[gd_scene load_steps=6 format=3 uid="uid://67xkondkqmyr"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/player/ship_blaster.gd" id="1_yxqq3"]
 [ext_resource type="PackedScene" uid="uid://d0pifhsxo0gj4" path="res://assets/prefabs/player/bullet_player.tscn" id="2_8ko2d"]
+[ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="3_j4v4r"]
+[ext_resource type="AudioStream" uid="uid://cny7n4drnmif6" path="res://assets/audio/sfx/player/weapons/Pixel Punch 001.wav" id="4_g2qli"]
+[ext_resource type="AudioStream" uid="uid://d3aei2vxdpfmu" path="res://assets/audio/sfx/player/weapons/Pixel Punch 002.wav" id="5_l4b2q"]
 
 [node name="ShipBlaster" type="Node3D" node_paths=PackedStringArray("bullet_spawn_points")]
 script = ExtResource("1_yxqq3")
@@ -19,5 +22,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, -0.179)
 
 [node name="FireCooldownTimer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("3_j4v4r")
+sfx = Array[AudioStream]([ExtResource("4_g2qli"), ExtResource("5_l4b2q")])
+pitch_scale_variance = 0.05
 
 [connection signal="timeout" from="FireCooldownTimer" to="." method="_on_fire_cooldown_timer_timeout"]

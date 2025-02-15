@@ -63,7 +63,7 @@ func center_player_on(p_transform : Transform3D):
 	var view_direction = camera_transform.basis.z
 	view_direction.y = 0
 
-	# Now create the transform that we will use to offset our input with
+	# Now create the transform that we will use to offset our input with25	
 	var transform : Transform3D
 	transform = transform.looking_at(-view_direction, Vector3.UP)
 	transform.origin = camera_transform.origin

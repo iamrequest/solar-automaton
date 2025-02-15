@@ -1,8 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://43o1w333a816"]
+[gd_scene load_steps=20 format=3 uid="uid://43o1w333a816"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/pickable_enemy.gd" id="1_1qw0c"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="1_dh1ev"]
+[ext_resource type="Resource" uid="uid://chkmktm47qd0" path="res://assets/prefabs/enemies/haptics_enemy_damaged.tres" id="2_0twyc"]
+[ext_resource type="Resource" uid="uid://bk0lp233gblxe" path="res://assets/prefabs/enemies/haptics_enemy_death.tres" id="3_hgh3f"]
 [ext_resource type="PackedScene" uid="uid://giqbijy4makk" path="res://assets/prefabs/health/hurtbox.tscn" id="4_6d6dm"]
+[ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="4_10xj4"]
+[ext_resource type="AudioStream" uid="uid://da1psskbq21ei" path="res://assets/audio/sfx/enemy/death/Security Drone Angry A.wav" id="5_qvtt8"]
+[ext_resource type="AudioStream" uid="uid://rytkt35u0oqc" path="res://assets/audio/sfx/enemy/death/Security Drone Angry B.wav" id="6_wcrbf"]
+[ext_resource type="AudioStream" uid="uid://vm4ytx56f5oa" path="res://assets/audio/sfx/enemy/damage/Punch Heavy A.wav" id="7_t6h4u"]
+[ext_resource type="AudioStream" uid="uid://xq4b7wqo6wef" path="res://assets/audio/sfx/enemy/damage/Punch Heavy B.wav" id="8_jj56s"]
+[ext_resource type="AudioStream" uid="uid://ds2sxm5hkfr5m" path="res://assets/audio/sfx/enemy/damage/Punch Heavy C.wav" id="9_au12m"]
+[ext_resource type="AudioStream" uid="uid://dl5pnbh4xcra7" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 001.wav" id="10_k3xom"]
+[ext_resource type="AudioStream" uid="uid://cfe8jx4glqbqn" path="res://assets/audio/sfx/enemy/godhand_death/Massive Punch A.wav" id="10_uq5ey"]
+[ext_resource type="AudioStream" uid="uid://bdsktaap35hc3" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 002.wav" id="11_0hqog"]
+[ext_resource type="AudioStream" uid="uid://dc6wa4h4ckb8w" path="res://assets/audio/sfx/enemy/godhand_death/Massive Punch B.wav" id="11_5s6ee"]
+[ext_resource type="AudioStream" uid="uid://cm42biio4hkgi" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 003.wav" id="12_et0n3"]
+[ext_resource type="AudioStream" uid="uid://bc88kx44guj6t" path="res://assets/audio/sfx/enemy/godhand_death/Massive Punch C.wav" id="12_wyenc"]
+[ext_resource type="AudioStream" uid="uid://bpq5coiya4jkg" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 004.wav" id="13_p4bp3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
 
@@ -17,6 +32,9 @@ max_contacts_reported = 10
 linear_damp_mode = 1
 linear_damp = 1.0
 script = ExtResource("1_1qw0c")
+kill_duration_health_depleted = 0.75
+haptics_on_death = ExtResource("2_0twyc")
+haptics_on_godhand_smack = ExtResource("3_hgh3f")
 picked_up_layer = 66048
 release_mode = 0
 
@@ -32,5 +50,28 @@ health_component = NodePath("../HealthComponent")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.3
+one_shot = true
+
+[node name="DeathSFX" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+script = ExtResource("4_10xj4")
+sfx = Array[AudioStream]([ExtResource("5_qvtt8"), ExtResource("6_wcrbf")])
+
+[node name="DmgSFX" type="AudioStreamPlayer3D" parent="."]
+max_polyphony = 10
+bus = &"SFX"
+script = ExtResource("4_10xj4")
+sfx = Array[AudioStream]([ExtResource("7_t6h4u"), ExtResource("8_jj56s"), ExtResource("9_au12m")])
+pitch_scale_base = 1.201
+
+[node name="GodhandDeathSFX" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+script = ExtResource("4_10xj4")
+sfx = Array[AudioStream]([ExtResource("10_uq5ey"), ExtResource("11_5s6ee"), ExtResource("12_wyenc")])
+
+[node name="ExplosionSFX" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+script = ExtResource("4_10xj4")
+sfx = Array[AudioStream]([ExtResource("10_k3xom"), ExtResource("11_0hqog"), ExtResource("12_et0n3"), ExtResource("13_p4bp3")])
 
 [editable path="Hurtbox"]

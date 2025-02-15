@@ -5,6 +5,7 @@ class_name PickableEnemy
 signal on_marked_for_death
 var is_godhand_smackable := true
 
+@export var mesh: Node3D
 @export var godhand_collision_kill_velocity := 0.015
 @export var godhand_kill_force_ceiling := 4
 
@@ -12,23 +13,30 @@ var is_godhand_smackable := true
 @export var kill_duration_godhand_smack := 0.5
 @export var kill_duration_godhand_drop := 0.75
 
-@export_range(0.0, 1.0) var haptics_intensity_on_death = 0.5
-@export_range(0.0, 1.0) var haptics_duration_on_death = 0.5
+@export var haptics_on_death: HapticsProfile
+@export var haptics_on_godhand_smack: HapticsProfile
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	$HealthComponent.on_damage_recieved.connect(_on_damaged)
 	$HealthComponent.on_death.connect(_on_death)
 	$DeathTimer.timeout.connect(_on_death_timer_timeout)
 	grabbed.connect(_on_grab)
 	dropped.connect(_on_drop)
 
+func _on_damaged(damage: int) -> void:
+	if($HealthComponent.is_alive()):
+		$DmgSFX.play_random_sfx()
+	
 func _on_death() -> void:
 	# Disable grabbing
 	enabled = false
 	is_godhand_smackable = false
+	$CollisionShape3D.disabled = true
+	$EnemyBlaster.is_active = false
 	
-	# TODO Explosion
+	$DeathSFX.play_random_sfx()
 	$DeathTimer.start(kill_duration_health_depleted)
 
 func _on_grab(pickable: XRToolsPickable, by) -> void:
@@ -37,7 +45,6 @@ func _on_grab(pickable: XRToolsPickable, by) -> void:
 	
 func _on_drop(pickable: XRToolsPickable) -> void:
 	# TODO: Kill gravity if dropped fast enough? Increase throw speed?
-	# TODO Explosion
 	linear_damp = 0.0
 	gravity_scale = 0.25
 	$DeathTimer.start(kill_duration_godhand_drop)
@@ -46,8 +53,15 @@ func _on_drop(pickable: XRToolsPickable) -> void:
 
 func _on_death_timer_timeout() -> void:
 	drop()
-	Globals.xr_rig.trigger_haptics(true, haptics_intensity_on_death, haptics_duration_on_death)
-	Globals.xr_rig.trigger_haptics(false, haptics_intensity_on_death, haptics_duration_on_death)
+	mesh.visible = false
+	$CollisionShape3D.disabled = true
+	#process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	
+	# Play FX, free when done
+	haptics_on_death.fire()
+	$ExplosionSFX.play_random_sfx()
+	await get_tree().create_timer($ExplosionSFX.stream.get_length()).timeout
+	
 	queue_free()
 
 func _on_godhand_entered(godhand: GodHand) -> void:
@@ -63,6 +77,9 @@ func _on_godhand_entered(godhand: GodHand) -> void:
 		gravity_scale = 0.25
 		var force_magnitude = godhand_kill_force_ceiling
 		apply_central_impulse(relative_velocity.normalized() * force_magnitude)
+		
+		haptics_on_godhand_smack.fire()
+		$ExplosionSFX.play_random_sfx()
 		
 		is_godhand_smackable = true
 		on_marked_for_death.emit()

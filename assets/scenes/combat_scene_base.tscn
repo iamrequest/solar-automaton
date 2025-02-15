@@ -73,6 +73,7 @@ level_failed_bgm = ExtResource("4_w4eue")
 level_failed_intensity = 0.4
 level_complete_bgm = ExtResource("5_c5lku")
 PlayInEditor = true
+Bus = &"BGM"
 LoopQueue = true
 
 [node name="XROrigin3D" parent="." instance=ExtResource("3_eaxon")]

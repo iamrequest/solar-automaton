@@ -23,6 +23,8 @@ func fire_bullet():
 		init_bullet(bullet, spawn_point)
 	
 	Globals.xr_rig.trigger_haptics(Globals.xr_rig.is_right_handed, haptics_intensity, haptics_duration)
+	$AudioStreamPlayer3D.play_random_sfx()
+	
 	is_on_cooldown = true
 	$FireCooldownTimer.start(fire_rate)
 	

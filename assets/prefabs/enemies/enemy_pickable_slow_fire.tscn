@@ -16,7 +16,8 @@ albedo_texture = ExtResource("3_364ye")
 
 [sub_resource type="BoxMesh" id="BoxMesh_w43nu"]
 
-[node name="Enemy_SlowBullet" instance=ExtResource("1_tgkm4")]
+[node name="Enemy_SlowBullet" node_paths=PackedStringArray("mesh") instance=ExtResource("1_tgkm4")]
+mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="4"]
 mesh = SubResource("CapsuleMesh_w0gjv")

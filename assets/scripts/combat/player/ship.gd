@@ -60,6 +60,8 @@ func rotate_to_face_non_dominant_hand(delta: float):
 
 func _on_health_component_on_death() -> void:
 	on_death.emit()
+	
+	$DeathSFX.play_random_sfx()
 	Globals.xr_rig.trigger_haptics(Globals.xr_rig.is_right_handed, haptics_primary_intensity_on_death, haptics_duration_on_death)
 	Globals.xr_rig.trigger_haptics(!Globals.xr_rig.is_right_handed, haptics_secondary_intensity_on_death, haptics_duration_on_death)
 	
@@ -70,8 +72,10 @@ func _on_health_component_on_death() -> void:
 	
 func _on_health_component_on_damage_recieved(int: Variant) -> void:
 	time_slow(0.5, 0.5)
-	Globals.xr_rig.trigger_haptics(Globals.xr_rig.is_right_handed, haptics_primary_intensity_on_dmg, haptics_duration_on_death)
-	Globals.xr_rig.trigger_haptics(!Globals.xr_rig.is_right_handed, haptics_secondary_intensity_on_dmg, haptics_duration_on_death)
+	if($HealthComponent.is_alive()):
+		$DmgSFX.play_random_sfx()
+		Globals.xr_rig.trigger_haptics(Globals.xr_rig.is_right_handed, haptics_primary_intensity_on_dmg, haptics_duration_on_death)
+		Globals.xr_rig.trigger_haptics(!Globals.xr_rig.is_right_handed, haptics_secondary_intensity_on_dmg, haptics_duration_on_death)
 	
 
 func _on_level_completed() -> void:

@@ -73,6 +73,10 @@ func toggle_pause(is_paused: bool, force:= false) -> void:
 	
 	self.is_paused = is_paused
 	get_tree().paused = is_paused
+	
+	# Some bug w/ the retry button I think
+	request_time_scale(1.0)
+	
 	if(!force):
 		if(is_paused):
 			on_paused.emit()

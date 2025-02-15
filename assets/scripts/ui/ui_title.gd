@@ -26,7 +26,6 @@ func _on_go_to_title_page_button_pressed() -> void:
 	go_to_page($TitlePage)
 
 func go_to_page(page: Control) -> void:
-	print("asdf")
 	$TitlePage.visible = false
 	$LevelSelectPage.visible = false
 	$CreditsPage.visible = false

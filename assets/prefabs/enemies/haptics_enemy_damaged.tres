@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HapticsProfile" load_steps=2 format=3 uid="uid://chkmktm47qd0"]
+
+[ext_resource type="Script" path="res://assets/scripts/haptics/haptics_profile.gd" id="1_qimeh"]
+
+[resource]
+script = ExtResource("1_qimeh")
+intensity_primary = 0.2
+intensity_secondary = 0.2
+intensity_duration = 0.2

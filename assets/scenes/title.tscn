@@ -63,6 +63,7 @@ script = ExtResource("1_ja2qs")
 script = ExtResource("2_kqoks")
 QueuedSongs = Array[ExtResource("3_0f6mi")]([ExtResource("4_3ad67")])
 Intensity = 1.0
+Bus = &"BGM"
 
 [node name="XROrigin3D" parent="." instance=ExtResource("2_6v0qr")]
 

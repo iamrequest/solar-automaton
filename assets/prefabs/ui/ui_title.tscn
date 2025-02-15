@@ -197,6 +197,26 @@ label_settings = SubResource("LabelSettings_3vhi5")
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="CreditsEntry3" type="HBoxContainer" parent="CreditsPage/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CreditsPage/VBoxContainer/CreditsEntry3"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BGM, SFX, BGM Plugin"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="Name2" type="Label" parent="CreditsPage/VBoxContainer/CreditsEntry3"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ovani"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="CreditsEntry2" type="HBoxContainer" parent="CreditsPage/VBoxContainer"]
 layout_mode = 2
 

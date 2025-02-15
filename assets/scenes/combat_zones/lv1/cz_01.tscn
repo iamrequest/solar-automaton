@@ -199,10 +199,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 86)
 [node name="Enemy_SlowBullet6" parent="MovingEnv" index="25" instance=ExtResource("5_bilff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 86)
 
-[node name="Path3D3" type="Path3D" parent="StaticEnv" index="0"]
+[node name="Path3D3" type="Path3D" parent="StaticEnv" index="0" node_paths=PackedStringArray("target_node")]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -3.77165, 14.957, -2.73057)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
+target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D3" index="0"]
@@ -212,10 +213,11 @@ loop = false
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D3" index="1" instance=ExtResource("5_bilff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9671, -21.7547, 8.72168)
 
-[node name="Path3D4" type="Path3D" parent="StaticEnv" index="1"]
+[node name="Path3D4" type="Path3D" parent="StaticEnv" index="1" node_paths=PackedStringArray("target_node")]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -3.77165, 16.6653, -1.01174)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
+target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D4" index="0"]
@@ -225,10 +227,11 @@ loop = false
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D4" index="1" instance=ExtResource("5_bilff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9671, -21.7547, 8.72168)
 
-[node name="Path3D5" type="Path3D" parent="StaticEnv" index="2"]
+[node name="Path3D5" type="Path3D" parent="StaticEnv" index="2" node_paths=PackedStringArray("target_node")]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -3.77165, 17.7587, 1.0533)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
+target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D5" index="0"]
@@ -238,10 +241,11 @@ loop = false
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D5" index="1" instance=ExtResource("5_bilff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9671, -21.7547, 8.72168)
 
-[node name="Path3D6" type="Path3D" parent="StaticEnv" index="3"]
+[node name="Path3D6" type="Path3D" parent="StaticEnv" index="3" node_paths=PackedStringArray("target_node")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.22835, 14.957, 18.9379)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
+target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D6" index="0"]
@@ -251,10 +255,11 @@ loop = false
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D6" index="1" instance=ExtResource("5_bilff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9671, -21.7547, 8.72168)
 
-[node name="Path3D7" type="Path3D" parent="StaticEnv" index="4"]
+[node name="Path3D7" type="Path3D" parent="StaticEnv" index="4" node_paths=PackedStringArray("target_node")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.22835, 16.6653, 17.2191)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
+target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D7" index="0"]
@@ -264,10 +269,11 @@ loop = false
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D7" index="1" instance=ExtResource("5_bilff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9671, -21.7547, 8.72168)
 
-[node name="Path3D8" type="Path3D" parent="StaticEnv" index="5"]
+[node name="Path3D8" type="Path3D" parent="StaticEnv" index="5" node_paths=PackedStringArray("target_node")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.22835, 17.7587, 15.154)
 curve = SubResource("Curve3D_uk6y8")
 script = ExtResource("6_a1c2g")
+target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D8" index="0"]

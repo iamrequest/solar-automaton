@@ -1,6 +1,7 @@
 extends Node3D
 
 enum FireMode { FollowMarker, AimAtShip }
+var is_active := true
 
 @export var sight_radius := 3
 @export var bullet_prefab: PackedScene
@@ -19,6 +20,9 @@ func _ready() -> void:
 	rb = get_parent()
 	
 func _process(delta: float) -> void:
+	if(!is_active):
+		return
+		
 	# TODO: Wait for player to be in radius
 	if(!is_on_cooldown):
 		fire_bullet()

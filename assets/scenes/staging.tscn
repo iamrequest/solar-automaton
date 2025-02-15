@@ -3,5 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://bnqnnnet4dw12" path="res://addons/godot-xr-tools/staging/staging.tscn" id="1_tfjvh"]
 
 [node name="Staging" instance=ExtResource("1_tfjvh")]
-main_scene_ref = 0
 prompt_for_continue = false

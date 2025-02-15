@@ -1,6 +1,8 @@
 extends Node
 class_name HealthComponent
 
+# TODO: Differentiating between fatal and non-fatal damage via signals would be nice
+# Too much refactoring now tho
 signal on_damage_recieved(int)
 signal on_death
 signal iframes_started
@@ -18,6 +20,9 @@ func _ready() -> void:
 	health_current = health_max
 
 func apply_damage(damage: int):
+	if(iframes_active):
+		return
+		
 	health_current -= damage
 	
 	#print("Taking damage")
