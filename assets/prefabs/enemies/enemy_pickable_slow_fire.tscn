@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://cuakaxl5b30is"]
+
+[ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_pickable_base.tscn" id="1_tgkm4"]
+[ext_resource type="Texture2D" uid="uid://d3aa1da44juoy" path="res://assets/textures/prototype/Orange/texture_02.png" id="2_dnhq2"]
+[ext_resource type="Texture2D" uid="uid://cs1jpcsfo3jqi" path="res://assets/textures/prototype/Orange/texture_08.png" id="3_364ye"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/enemy_blaster.gd" id="4_8qs2l"]
+[ext_resource type="PackedScene" uid="uid://dilga1cajf2jy" path="res://assets/prefabs/enemies/bullet_enemy.tscn" id="5_f4ubh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w0gjv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcjxk"]
+albedo_texture = ExtResource("2_dnhq2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_falrr"]
+albedo_texture = ExtResource("3_364ye")
+
+[sub_resource type="BoxMesh" id="BoxMesh_w43nu"]
+
+[node name="Enemy_SlowBullet" instance=ExtResource("1_tgkm4")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="4"]
+mesh = SubResource("CapsuleMesh_w0gjv")
+surface_material_override/0 = SubResource("StandardMaterial3D_pcjxk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" index="0"]
+transform = Transform3D(0.345764, 0, 0, 0, 0.345764, 0, 0, 0, 0.345764, 0, 0, -0.460002)
+material_override = SubResource("StandardMaterial3D_falrr")
+mesh = SubResource("BoxMesh_w43nu")
+
+[node name="EnemyBlaster" type="Node3D" parent="." index="5" node_paths=PackedStringArray("bullet_spawn_points")]
+script = ExtResource("4_8qs2l")
+bullet_prefab = ExtResource("5_f4ubh")
+bullet_spawn_points = [NodePath("Marker3D")]
+bullet_speed = 2.0
+fire_mode = 1
+
+[node name="Marker3D" type="Marker3D" parent="EnemyBlaster" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.865201)
+
+[node name="FireCooldownTimer" type="Timer" parent="EnemyBlaster" index="1"]
+
+[connection signal="timeout" from="EnemyBlaster/FireCooldownTimer" to="EnemyBlaster" method="_on_fire_cooldown_timer_timeout"]
+
+[editable path="Hurtbox"]

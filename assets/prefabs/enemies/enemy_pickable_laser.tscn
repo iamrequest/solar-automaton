@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://b42vpwk3srcj1"]
+
+[ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_pickable_base.tscn" id="1_lq4t8"]
+[ext_resource type="Texture2D" uid="uid://d3aa1da44juoy" path="res://assets/textures/prototype/Orange/texture_02.png" id="2_fgrty"]
+[ext_resource type="Texture2D" uid="uid://cs1jpcsfo3jqi" path="res://assets/textures/prototype/Orange/texture_08.png" id="3_84u7c"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/enemy_blaster_laser.gd" id="6_qdon1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w0gjv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcjxk"]
+albedo_texture = ExtResource("2_fgrty")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_falrr"]
+albedo_texture = ExtResource("3_84u7c")
+
+[sub_resource type="BoxMesh" id="BoxMesh_w43nu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_du8ct"]
+height = 10.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_12mps"]
+height = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8aoub"]
+render_priority = 5
+transparency = 1
+albedo_color = Color(0.745189, 0.379815, 0.529288, 0.439216)
+
+[node name="Enemy" instance=ExtResource("1_lq4t8")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="4"]
+mesh = SubResource("CapsuleMesh_w0gjv")
+surface_material_override/0 = SubResource("StandardMaterial3D_pcjxk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" index="0"]
+transform = Transform3D(0.345764, 0, 0, 0, 0.345764, 0, 0, 0, 0.345764, 0, 0, -0.460002)
+material_override = SubResource("StandardMaterial3D_falrr")
+mesh = SubResource("BoxMesh_w43nu")
+
+[node name="LaserBlaster" type="Node3D" parent="." index="5"]
+script = ExtResource("6_qdon1")
+fire_rate = 1.0
+
+[node name="Laser" type="Node3D" parent="LaserBlaster" index="0"]
+
+[node name="Area3D" type="Area3D" parent="LaserBlaster/Laser" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.4621)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LaserBlaster/Laser/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_du8ct")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaserBlaster/Laser/Area3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_12mps")
+surface_material_override/0 = SubResource("StandardMaterial3D_8aoub")
+
+[node name="FireCooldownTimer" type="Timer" parent="LaserBlaster" index="1"]
+
+[connection signal="timeout" from="LaserBlaster/FireCooldownTimer" to="LaserBlaster" method="_on_fire_cooldown_timer_timeout"]
+
+[editable path="Hurtbox"]

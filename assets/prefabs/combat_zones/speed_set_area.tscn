@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://covdv0d0l27gw"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/combat_zone_speed_setter.gd" id="1_tg8iw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_844dn"]
+size = Vector3(11.667, 13.7168, 1)
+
+[node name="SpeedSetArea" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.4966)
+collision_mask = 256
+script = ExtResource("1_tg8iw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_844dn")

@@ -128,7 +128,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_vl68n")
 
 [node name="CombatZoneManager" parent="." index="7"]
-move_speed = 5
+move_speed = 3
 
 [node name="Sun" parent="CombatZoneManager/SpawnMarker" index="0" instance=ExtResource("2_elror")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00273383, 0.016634, -43.9581)

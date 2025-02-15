@@ -7,6 +7,7 @@ enum FireMode { FollowMarker, AimAtShip }
 @export var bullet_spawn_points : Array[Node3D]
 @export var fire_rate := 0.5
 @export var bullet_speed := 0.5
+@export var bullet_lifetime := 5
 @export var fire_mode: FireMode
 @export var fire_mode_grabbed: FireMode
 @export var apply_initial_bullet_velocity := true
@@ -47,6 +48,7 @@ func fire_bullet():
 func init_bullet(bullet: Bullet, spawn_point: Node3D):
 	get_tree().root.add_child(bullet)
 	bullet.global_position = spawn_point.global_position
+	bullet.set_lifetime(bullet_lifetime)
 	
 	match fire_mode:
 		FireMode.FollowMarker:

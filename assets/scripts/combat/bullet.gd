@@ -14,6 +14,9 @@ func _process(delta: float) -> void:
 	position = position - global_transform.basis.z * speed * delta
 	$MeshInstance3D.look_at(Globals.xr_rig.hmd.global_position, Vector3.UP, true)
 
+func set_lifetime(lifetime: float) -> void:
+	$LifetimeTimer.stop()
+	$LifetimeTimer.start(lifetime)
 
 func _on_lifetime_timer_timeout() -> void:
 	destroy_self()

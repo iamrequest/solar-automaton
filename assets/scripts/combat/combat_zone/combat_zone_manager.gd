@@ -14,7 +14,6 @@ var current_combat_zone: CombatZone
 
 # Debug
 @export var move_speed := 5
-var is_turbo_active
 var move_speed_turbo_multiplier := 10
 
 func _ready() -> void:
@@ -23,8 +22,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if(Globals.debug_mode_enabled):
-		if(Globals.xr_rig.get_non_dominant_hand().get_input("secondary_click")):
-			is_turbo_active = !is_turbo_active
+		if(Globals.xr_rig.get_non_dominant_hand().get_input("primary_click")):
+			update_speed(move_speed * move_speed_turbo_multiplier)
+		else:
 			update_speed(move_speed)
 
 func spawn_combat_zone():
@@ -67,7 +67,4 @@ func set_speed(speed: float):
 	update_speed(speed)
 	
 func update_speed(speed: float):
-	if(is_turbo_active):
-		on_speed_updated.emit(speed * move_speed_turbo_multiplier)
-	else:
-		on_speed_updated.emit(speed)
+	on_speed_updated.emit(speed)

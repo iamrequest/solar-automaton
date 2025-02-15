@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://43o1w333a816"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/pickable_enemy.gd" id="1_1qw0c"]
+[ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="1_dh1ev"]
+[ext_resource type="PackedScene" uid="uid://giqbijy4makk" path="res://assets/prefabs/health/hurtbox.tscn" id="4_6d6dm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
+
+[node name="Enemy" type="RigidBody3D"]
+collision_layer = 516
+collision_mask = 196864
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp_mode = 1
+linear_damp = 1.0
+script = ExtResource("1_1qw0c")
+picked_up_layer = 66048
+release_mode = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4sr6u")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("1_dh1ev")
+health_max = 10
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_6d6dm")]
+health_component = NodePath("../HealthComponent")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[editable path="Hurtbox"]
