@@ -207,7 +207,7 @@ target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D3" index="0"]
-transform = Transform3D(0.214171, -0.712221, -0.668422, 2.98013e-08, 0.684308, -0.729134, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
+transform = Transform3D(0.214171, -0.71222, -0.668423, -5.96026e-08, 0.684309, -0.729133, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D3" index="1" instance=ExtResource("5_bilff")]
@@ -221,7 +221,7 @@ target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D4" index="0"]
-transform = Transform3D(0.214171, -0.712221, -0.668422, 2.98013e-08, 0.684308, -0.729134, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
+transform = Transform3D(0.214171, -0.71222, -0.668423, -5.96026e-08, 0.684309, -0.729133, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D4" index="1" instance=ExtResource("5_bilff")]
@@ -235,7 +235,7 @@ target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D5" index="0"]
-transform = Transform3D(0.214171, -0.712221, -0.668422, 2.98013e-08, 0.684308, -0.729134, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
+transform = Transform3D(0.214171, -0.71222, -0.668423, -5.96026e-08, 0.684309, -0.729133, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D5" index="1" instance=ExtResource("5_bilff")]
@@ -249,7 +249,7 @@ target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D6" index="0"]
-transform = Transform3D(0.214171, -0.712221, -0.668422, 2.98013e-08, 0.684308, -0.729134, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
+transform = Transform3D(0.214171, -0.71222, -0.668423, -5.96026e-08, 0.684309, -0.729133, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D6" index="1" instance=ExtResource("5_bilff")]
@@ -263,7 +263,7 @@ target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D7" index="0"]
-transform = Transform3D(0.214171, -0.712221, -0.668422, 2.98013e-08, 0.684308, -0.729134, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
+transform = Transform3D(0.214171, -0.71222, -0.668423, -5.96026e-08, 0.684309, -0.729133, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D7" index="1" instance=ExtResource("5_bilff")]
@@ -277,7 +277,7 @@ target_node = NodePath("Enemy_SlowBullet")
 speedCurve = SubResource("Curve_5kq45")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Path3D8" index="0"]
-transform = Transform3D(0.214171, -0.712221, -0.668422, 2.98013e-08, 0.684308, -0.729134, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
+transform = Transform3D(0.214171, -0.71222, -0.668423, -5.96026e-08, 0.684309, -0.729133, 0.976761, 0.156166, 0.146563, -3.02869, -24.1045, 8.23566)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Path3D8" index="1" instance=ExtResource("5_bilff")]

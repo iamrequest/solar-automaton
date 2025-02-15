@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="2_s512r"]
 [ext_resource type="Material" uid="uid://d183w2h1ec1g0" path="res://assets/materials/enemies/small_enemy/mat_enemy_body.tres" id="3_caawn"]
 [ext_resource type="Material" uid="uid://d4jh38jkkfufw" path="res://assets/materials/enemies/small_enemy/mat_enemy_rings.tres" id="4_2cpib"]
-[ext_resource type="Material" uid="uid://x13860fm8vxa" path="res://assets/materials/enemies/small_enemy/mat_enemy_eyes.tres" id="5_vj8mt"]
+[ext_resource type="Material" uid="uid://x13860fm8vxa" path="res://assets/materials/enemies/mat_enemy_eyes.tres" id="5_vj8mt"]
 
 [sub_resource type="Curve" id="Curve_hegd3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.514151, 0), 0.0, 0.0, 0, 0, Vector2(0.985849, 0), 0.0, 0.0, 0, 0]

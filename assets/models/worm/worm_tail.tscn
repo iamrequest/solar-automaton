@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch1noxjor3gdj"]
+
+[ext_resource type="PackedScene" uid="uid://cnqak6tnohp24" path="res://assets/models/worm/worm_tail.glb" id="1_8ktek"]
+[ext_resource type="Material" uid="uid://djcyepfaj5nbm" path="res://assets/materials/enemies/worm/mat_worm_body.tres" id="2_t2sru"]
+[ext_resource type="Material" uid="uid://d4jh38jkkfufw" path="res://assets/materials/enemies/small_enemy/mat_enemy_rings.tres" id="3_y51hg"]
+
+[node name="WormTail" type="Node3D"]
+
+[node name="worm_tail" parent="." instance=ExtResource("1_8ktek")]
+
+[node name="SpineJoint_001" parent="worm_tail" index="0"]
+surface_material_override/0 = ExtResource("2_t2sru")
+surface_material_override/1 = ExtResource("3_y51hg")
+
+[editable path="worm_tail"]

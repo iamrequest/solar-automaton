@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxto61pufeto"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_spine_blaster.gd" id="1_4l1re"]
+[ext_resource type="PackedScene" uid="uid://cooqg6aupfjd5" path="res://assets/models/worm/worm_spine-blaster.glb" id="1_uqn6k"]
+[ext_resource type="Material" uid="uid://djcyepfaj5nbm" path="res://assets/materials/enemies/worm/mat_worm_body.tres" id="2_p3nw6"]
+[ext_resource type="Material" uid="uid://x13860fm8vxa" path="res://assets/materials/enemies/mat_enemy_eyes.tres" id="3_y851k"]
+[ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="4_of5qe"]
+[ext_resource type="Script" path="res://assets/scripts/combat/health/hurtbox.gd" id="5_wdsxn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
+radius = 0.730765
+height = 1.46153
+
+[node name="WormSpineBlaster" type="Node3D"]
+script = ExtResource("1_4l1re")
+
+[node name="mesh" parent="." instance=ExtResource("1_uqn6k")]
+
+[node name="SpineFin" parent="mesh" index="0"]
+surface_material_override/0 = ExtResource("2_p3nw6")
+surface_material_override/1 = ExtResource("3_y851k")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_of5qe")
+health_max = 5
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 512
+collision_mask = 768
+script = ExtResource("5_wdsxn")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(3.35463, 0.370852, -0.0208479, 0.00801167, 0.11715, 3.37309, 0.371351, -3.35265, 0.115558, 0.0492388, 0.413175, -7.19541)
+shape = SubResource("CapsuleShape3D_4sr6u")
+
+[editable path="mesh"]
