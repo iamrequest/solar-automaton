@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2uk2xiqpck2v"]
+[gd_scene load_steps=18 format=3 uid="uid://d2uk2xiqpck2v"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_v4p7m"]
 [ext_resource type="Script" path="res://assets/scripts/game_manager.gd" id="2_xp1kf"]
 [ext_resource type="PackedScene" uid="uid://k82wb6l85mwt" path="res://assets/prefabs/player/xr_camera_rig_combat.tscn" id="3_eaxon"]
+[ext_resource type="Script" path="res://assets/scripts/audio/bgm_manager.gd" id="3_kgnjx"]
+[ext_resource type="Resource" uid="uid://parg0q45o20j" path="res://assets/audio/bgm/elec_ambient_zen/elec_ambient_zen.tres" id="4_w4eue"]
+[ext_resource type="Resource" uid="uid://b8horq8clu7cf" path="res://assets/audio/bgm/synthwave_blue_sunset/synthwave_blue_sunset.tres" id="5_c5lku"]
 [ext_resource type="PackedScene" uid="uid://c12yha7ag7sbx" path="res://assets/prefabs/player/ship.tscn" id="5_xki2l"]
 [ext_resource type="PackedScene" uid="uid://dkio6gw8dd46u" path="res://assets/prefabs/ui/viewport_game_over.tscn" id="6_2tx8f"]
 [ext_resource type="PackedScene" uid="uid://ur217qymsbc" path="res://assets/prefabs/ui/viewport_pause.tscn" id="7_nge64"]
@@ -61,6 +64,17 @@ combat_zone_manager = NodePath("../CombatZoneManager")
 [node name="LevelFailedTimer" type="Timer" parent="GameManager"]
 process_mode = 3
 one_shot = true
+
+[node name="OvaniPlayer" type="Node" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("3_kgnjx")
+pause_volume = -10.0
+level_failed_bgm = ExtResource("4_w4eue")
+level_failed_intensity = 0.4
+level_complete_bgm = ExtResource("5_c5lku")
+PlayInEditor = true
+LoopQueue = true
 
 [node name="XROrigin3D" parent="." instance=ExtResource("3_eaxon")]
 

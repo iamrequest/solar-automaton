@@ -11,6 +11,7 @@ signal on_unpaused
 @export var combat_zone_manager: CombatZoneManager
 
 var is_paused:= false
+var can_toggle_pause:= true
 var is_game_over:= false
 var currency:= 0
 
@@ -53,6 +54,9 @@ func on_non_dominant_input_pressed(name: String):
 			
 			
 func toggle_pause(is_paused: bool) -> void:
+	if(!can_toggle_pause):
+		return
+		
 	if(self.is_paused == is_paused):
 		return
 	

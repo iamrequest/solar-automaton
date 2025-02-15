@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0bt1hmnq7q6w"]
+[gd_scene load_steps=17 format=3 uid="uid://c0bt1hmnq7q6w"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ja2qs"]
 [ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_6v0qr"]
+[ext_resource type="Script" path="res://addons/ovani/OvaniPlayer.gd" id="2_kqoks"]
+[ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="3_0f6mi"]
 [ext_resource type="PackedScene" uid="uid://dypf7c8mc28nt" path="res://assets/prefabs/env/player_ground.tscn" id="3_tdgf1"]
+[ext_resource type="Resource" uid="uid://c2bf6hwmn54ev" path="res://assets/audio/bgm/synthwave_fantasy_morning/synthwave_fantasy_morning.tres" id="4_3ad67"]
 [ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="4_8hwag"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="5_era21"]
 [ext_resource type="PackedScene" uid="uid://dho7f41yokfuj" path="res://assets/prefabs/ui/viewport_title.tscn" id="6_q30k7"]
@@ -55,6 +58,11 @@ texture_filter = 0
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_ja2qs")
+
+[node name="OvaniPlayer" type="Node" parent="."]
+script = ExtResource("2_kqoks")
+QueuedSongs = Array[ExtResource("3_0f6mi")]([ExtResource("4_3ad67")])
+Intensity = 1.0
 
 [node name="XROrigin3D" parent="." instance=ExtResource("2_6v0qr")]
 

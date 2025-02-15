@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://2rvih8pagkx8"]
+[gd_scene load_steps=11 format=3 uid="uid://2rvih8pagkx8"]
 
 [ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="1_30vi4"]
 [ext_resource type="PackedScene" uid="uid://d2uk2xiqpck2v" path="res://assets/scenes/combat_scene_base.tscn" id="1_ywbp1"]
 [ext_resource type="PackedScene" uid="uid://dypf7c8mc28nt" path="res://assets/prefabs/env/player_ground.tscn" id="2_8m3dp"]
 [ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="2_elror"]
+[ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="2_xudlf"]
+[ext_resource type="Resource" uid="uid://ho11of71h2yt" path="res://assets/audio/bgm/synthpop_sunset_strip/synthpop_sunset-strip.tres" id="3_nansp"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="3_vl68n"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mr7fh"]
@@ -17,6 +19,9 @@ texture_filter = 0
 [sub_resource type="BoxMesh" id="BoxMesh_xauvp"]
 
 [node name="SceneBase" instance=ExtResource("1_ywbp1")]
+
+[node name="OvaniPlayer" parent="." index="1"]
+QueuedSongs = Array[ExtResource("2_xudlf")]([ExtResource("3_nansp")])
 
 [node name="StaticEnv" type="Node3D" parent="BaseLevelEnv" index="0"]
 
@@ -127,7 +132,7 @@ mesh = SubResource("BoxMesh_xauvp")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_vl68n")
 
-[node name="CombatZoneManager" parent="." index="7"]
+[node name="CombatZoneManager" parent="." index="8"]
 move_speed = 3
 
 [node name="Sun" parent="CombatZoneManager/SpawnMarker" index="0" instance=ExtResource("2_elror")]

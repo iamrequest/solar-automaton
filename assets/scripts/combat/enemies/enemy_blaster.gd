@@ -46,7 +46,13 @@ func fire_bullet():
 	$FireCooldownTimer.start(fire_rate)
 	
 func init_bullet(bullet: Bullet, spawn_point: Node3D):
-	get_tree().root.add_child(bullet)
+	# Instantiate as a child of the scene base
+	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
+	if not scene_base:
+		return
+		
+	scene_base.add_child(bullet)
+	
 	bullet.global_position = spawn_point.global_position
 	bullet.set_lifetime(bullet_lifetime)
 	
