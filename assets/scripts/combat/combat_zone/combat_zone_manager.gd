@@ -15,6 +15,7 @@ var current_combat_zone: CombatZone
 # Debug
 @export var move_speed := 5
 var move_speed_turbo_multiplier := 10
+var is_turbo_active := false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE

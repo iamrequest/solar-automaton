@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func _on_pause():
 	toggle(true)
+	$SFXPlayer.play()
 
 func _on_unpause():
 	toggle(false)

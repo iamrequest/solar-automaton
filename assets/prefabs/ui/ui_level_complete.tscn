@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d28fywe8r5x3a"]
+[gd_scene load_steps=8 format=3 uid="uid://d28fywe8r5x3a"]
 
 [ext_resource type="Script" path="res://assets/scripts/ui/ui_combat_menu.gd" id="1_184eg"]
 [ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="3_eo1lx"]
 [ext_resource type="Script" path="res://assets/scripts/ui/xr_button.gd" id="3_wyy18"]
+[ext_resource type="AudioStream" uid="uid://btpj0qqkajlvn" path="res://assets/audio/sfx/ui/Scroll Wheel A.wav" id="4_qc67k"]
+[ext_resource type="AudioStream" uid="uid://cwnjwga41x0ms" path="res://assets/audio/sfx/ui/Update Purr C.wav" id="5_xjxus"]
+[ext_resource type="PackedScene" uid="uid://dih0k1r7s4wvb" path="res://assets/prefabs/ui/sfx_player_ui.tscn" id="6_gkfbl"]
 
 [sub_resource type="Theme" id="Theme_gxnqu"]
 default_font = ExtResource("3_eo1lx")
@@ -45,22 +48,33 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 163.02)
 layout_mode = 2
 
-[node name="NextLevelButton" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer"]
+[node name="NextLevelButton" type="Button" parent="VBoxContainer/VBoxContainer/MarginContainer" node_paths=PackedStringArray("audio_player")]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 0
 text = "Next Level"
 script = ExtResource("3_wyy18")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_qc67k")
+sfx_select = ExtResource("5_xjxus")
 
-[node name="RetryButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="RetryButton" type="Button" parent="VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
 text = "Restart Level"
 script = ExtResource("3_wyy18")
+audio_player = NodePath("../../../SFXPlayer")
+sfx_hover = ExtResource("4_qc67k")
+sfx_select = ExtResource("5_xjxus")
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("3_wyy18")
+audio_player = NodePath("../../../SFXPlayer")
+sfx_hover = ExtResource("4_qc67k")
+sfx_select = ExtResource("5_xjxus")
+
+[node name="SFXPlayer" parent="." instance=ExtResource("6_gkfbl")]
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/MarginContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]

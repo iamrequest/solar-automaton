@@ -16,6 +16,7 @@ func _on_next_level_button_pressed() -> void:
 func unpause():
 	# Viewport isn't in the tree I guess?
 	Globals.game_manager.toggle_pause(false)
+	Globals.game_manager.request_time_scale
 
 func reload_scene():
 	# Find the XRToolsSceneBase ancestor of the current node

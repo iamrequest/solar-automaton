@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://4xl10jq3jsr3"]
+[gd_scene load_steps=11 format=3 uid="uid://4xl10jq3jsr3"]
 
 [ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="1_4nocl"]
 [ext_resource type="Script" path="res://assets/scripts/ui/ui_title.gd" id="2_kmtto"]
 [ext_resource type="Script" path="res://assets/scripts/ui/xr_button.gd" id="3_6w5eg"]
+[ext_resource type="AudioStream" uid="uid://btpj0qqkajlvn" path="res://assets/audio/sfx/ui/Scroll Wheel A.wav" id="4_mm3qq"]
+[ext_resource type="AudioStream" uid="uid://bkrxodo5h8q67" path="res://assets/audio/sfx/ui/Update Purr A.wav" id="5_rg2kk"]
+[ext_resource type="AudioStream" uid="uid://cwnjwga41x0ms" path="res://assets/audio/sfx/ui/Update Purr C.wav" id="6_07exd"]
+[ext_resource type="PackedScene" uid="uid://dih0k1r7s4wvb" path="res://assets/prefabs/ui/sfx_player_ui.tscn" id="7_u40cs"]
 
 [sub_resource type="Theme" id="Theme_h3wh4"]
 default_font = ExtResource("1_4nocl")
@@ -65,32 +69,44 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="StartButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 0
 text = "Start"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("5_rg2kk")
 
-[node name="GoToLevelSelectPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
+[node name="GoToLevelSelectPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
 text = "Level Select"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
 
-[node name="GoToCreditsPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
+[node name="GoToCreditsPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
 text = "Credits"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
 
 [node name="MarginContainer" type="MarginContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 163.02)
 layout_mode = 2
 
-[node name="QuitButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Quit"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
 
 [node name="TitleSpacing" type="MarginContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30.625)
@@ -122,24 +138,33 @@ size_flags_horizontal = 3
 text = "Level Select"
 horizontal_alignment = 1
 
-[node name="Lv1" type="Button" parent="LevelSelectPage/VBoxContainer"]
+[node name="Lv1" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
 text = "Sunset"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
 
-[node name="Lv2" type="Button" parent="LevelSelectPage/VBoxContainer"]
+[node name="Lv2" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 visible = false
 layout_mode = 2
 text = "???"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
 
-[node name="Lv3" type="Button" parent="LevelSelectPage/VBoxContainer"]
+[node name="Lv3" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 visible = false
 layout_mode = 2
 text = "???"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
 
-[node name="GoToTitlePageButton" type="Button" parent="LevelSelectPage"]
+[node name="GoToTitlePageButton" type="Button" parent="LevelSelectPage" node_paths=PackedStringArray("audio_player")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -150,6 +175,9 @@ grow_horizontal = 0
 size_flags_horizontal = 10
 text = "Back"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
 
 [node name="CreditsPage" type="Control" parent="."]
 visible = false
@@ -217,6 +245,26 @@ label_settings = SubResource("LabelSettings_3vhi5")
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="CreditsEntry4" type="HBoxContainer" parent="CreditsPage/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CreditsPage/VBoxContainer/CreditsEntry4"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Announcer SFX"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="Name2" type="Label" parent="CreditsPage/VBoxContainer/CreditsEntry4"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kenney"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="CreditsEntry2" type="HBoxContainer" parent="CreditsPage/VBoxContainer"]
 layout_mode = 2
 
@@ -237,7 +285,7 @@ label_settings = SubResource("LabelSettings_3vhi5")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="GoToTitlePageButton" type="Button" parent="CreditsPage"]
+[node name="GoToTitlePageButton" type="Button" parent="CreditsPage" node_paths=PackedStringArray("audio_player")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -248,6 +296,11 @@ grow_horizontal = 0
 size_flags_horizontal = 10
 text = "Back"
 script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
+
+[node name="SFXPlayer" parent="." instance=ExtResource("7_u40cs")]
 
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToLevelSelectPageButton" to="." method="_on_go_to_level_select_page_button_pressed"]
