@@ -69,6 +69,8 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("BoxShape3D_xbllq")
 
 [node name="ShipBlaster" parent="." instance=ExtResource("5_rt6io")]
+bullet_speed = 20.0
+haptics_intensity = 0.05
 
 [node name="DeathSFX" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"

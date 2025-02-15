@@ -40,14 +40,9 @@ func die():
 	
 # TODO: This would be better as composition
 func try_set_iframes():
-	if(!is_instance_valid($IFrameTimer)):
+	if(get_node_or_null("IFrameTimer") == null):
 		return
-		
-	# TODO: Support stacking iframes	
-	#if(iframes_active):
-	#	$IFrameTimer.stop()
-	# Don't init iframe message
-		
+
 	iframes_active = true
 	iframes_started.emit()
 	$IFrameTimer.start()
