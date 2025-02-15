@@ -1,4 +1,5 @@
 extends OvaniPlayer
+class_name BGMManager
 
 @export_category("Pause")
 var pre_pause_volume:= 0.0

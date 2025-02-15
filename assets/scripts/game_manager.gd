@@ -8,7 +8,15 @@ signal on_paused
 signal on_unpaused
 
 @export var next_level: SceneReferences.Scenes
-@export var combat_zone_manager: CombatZoneManager
+
+# Yes @OnReady exists, but I was getting race conditions between when @onready was initializing the var
+var combat_zone_manager: CombatZoneManager:
+	get:
+		return %CombatZoneManager
+		
+var bgm_manager: BGMManager:
+	get:
+		return %OvaniPlayer
 
 var is_paused:= false
 var can_toggle_pause:= true
@@ -27,12 +35,14 @@ func _on_ship_on_death() -> void:
 	is_game_over = true
 	$LevelFailedTimer.start()
 	await $LevelFailedTimer.timeout
+	toggle_pause(true, true)
 	on_level_failed.emit()
 
 
 func _on_combat_zone_manager_on_level_end() -> void:
 	is_game_over = true
 	on_level_completed.emit()
+	toggle_pause(true, true)
 
 
 func load_next_level() -> void:
@@ -41,6 +51,7 @@ func load_next_level() -> void:
 	if not scene_base:
 		return
 		
+	toggle_pause(false, true)
 	var scenes = load("res://assets/scenes/scene_references.tres") as SceneReferences
 	scene_base.load_scene(scenes.get_scene_path(next_level))
 	
@@ -53,7 +64,7 @@ func on_non_dominant_input_pressed(name: String):
 		toggle_pause(true)
 			
 			
-func toggle_pause(is_paused: bool) -> void:
+func toggle_pause(is_paused: bool, force:= false) -> void:
 	if(!can_toggle_pause):
 		return
 		
@@ -62,10 +73,11 @@ func toggle_pause(is_paused: bool) -> void:
 	
 	self.is_paused = is_paused
 	get_tree().paused = is_paused
-	if(is_paused):
-		on_paused.emit()
-	else:
-		on_unpaused.emit()
+	if(!force):
+		if(is_paused):
+			on_paused.emit()
+		else:
+			on_unpaused.emit()
 
 func request_time_scale(time_scale: float) -> bool:
 	Engine.time_scale = time_scale

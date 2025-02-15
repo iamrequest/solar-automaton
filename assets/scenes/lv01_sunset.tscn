@@ -20,6 +20,9 @@ texture_filter = 0
 
 [node name="SceneBase" instance=ExtResource("1_ywbp1")]
 
+[node name="GameManager" parent="." index="0"]
+next_level = 0
+
 [node name="OvaniPlayer" parent="." index="1"]
 QueuedSongs = Array[ExtResource("2_xudlf")]([ExtResource("3_nansp")])
 

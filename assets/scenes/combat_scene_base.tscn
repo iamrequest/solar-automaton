@@ -56,10 +56,9 @@ spawnable_zones = Array[PackedScene]([ExtResource("11_ytf4l"), ExtResource("11_y
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_v4p7m")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("combat_zone_manager")]
+[node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_xp1kf")
-combat_zone_manager = NodePath("../CombatZoneManager")
 
 [node name="LevelFailedTimer" type="Timer" parent="GameManager"]
 process_mode = 3
@@ -105,6 +104,7 @@ light_bake_mode = 1
 directional_shadow_mode = 0
 
 [node name="CombatZoneManager" parent="." node_paths=PackedStringArray("spawn_marker", "despawn_marker", "xr_rig_marker") instance=ExtResource("9_ssecv")]
+unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 spawn_marker = NodePath("SpawnMarker")
 despawn_marker = NodePath("DespawnMarker")
