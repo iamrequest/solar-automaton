@@ -17,6 +17,7 @@ signal on_death
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	%GameManager.on_level_completed.connect(_on_level_completed)
+	$HealthComponent.invincibility_enabled = Globals.invincibility_enabled
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

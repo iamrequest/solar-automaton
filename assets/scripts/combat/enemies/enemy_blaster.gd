@@ -23,12 +23,14 @@ func _process(delta: float) -> void:
 	if(!is_active):
 		return
 		
-	# TODO: Wait for player to be in radius
-	if(!is_on_cooldown):
+	if(can_fire()):
 		fire_bullet()
 
 func can_fire() -> bool:
 	if(is_on_cooldown):
+		return false
+	
+	if(is_behind_player()):
 		return false
 	
 	if(Globals.xr_rig.get_dominant_hand()):
@@ -37,6 +39,13 @@ func can_fire() -> bool:
 			return false
 			
 	return true
+
+func is_behind_player() -> bool:
+	var czm = Globals.game_manager.combat_zone_manager
+	var dir_to_spawn = (czm.spawn_marker.global_position - global_position).normalized()
+	var dir_to_rig = (czm.xr_rig_marker.global_position - global_position).normalized()
+	
+	return dir_to_spawn.dot(dir_to_rig) > 0.5
 
 func fire_bullet():
 	for spawn_point in bullet_spawn_points:

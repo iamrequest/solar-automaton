@@ -12,6 +12,7 @@ var health_current: int
 @export var health_max: int
 
 var iframes_active:= false
+var invincibility_enabled := false
 
 #enum HEALTH_TEAM { Player, Enemy } 
 #@export var team: HEALTH_TEAM
@@ -22,7 +23,10 @@ func _ready() -> void:
 func apply_damage(damage: int):
 	if(iframes_active):
 		return
-		
+	if(invincibility_enabled):
+		return
+	try_set_iframes()
+	
 	health_current -= damage
 	
 	#print("Taking damage")
@@ -35,8 +39,8 @@ func die():
 	on_death.emit()
 	
 # TODO: This would be better as composition
-func set_iframes():
-	if($IFrameTimer != null):
+func try_set_iframes():
+	if(!is_instance_valid($IFrameTimer)):
 		return
 		
 	# TODO: Support stacking iframes	
@@ -46,7 +50,8 @@ func set_iframes():
 		
 	iframes_active = true
 	iframes_started.emit()
-	await $IFrameTimer.start().timeout
+	$IFrameTimer.start()
+	await $IFrameTimer.timeout
 	iframes_active = false
 	iframes_ended.emit()
 	

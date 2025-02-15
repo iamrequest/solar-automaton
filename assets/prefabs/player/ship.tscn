@@ -57,6 +57,7 @@ script = ExtResource("5_7ui5s")
 health_max = 3
 
 [node name="IFrameTimer" type="Timer" parent="HealthComponent"]
+one_shot = true
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 256
