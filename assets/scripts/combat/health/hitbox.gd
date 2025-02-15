@@ -13,8 +13,11 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	var hurtbox = area as Hurtbox
-	if(hurtbox):
+	if(hurtbox && can_damage_target(hurtbox)):
 		hurtbox.on_hitbox_collision(self)
 
 func calculate_damage(hurtbox: Hurtbox) -> int:
 	return damage
+
+func can_damage_target(hurtbox: Hurtbox):
+	return true

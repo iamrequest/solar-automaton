@@ -3,7 +3,8 @@ extends Node3D
 enum FireMode { FollowMarker, AimAtShip }
 var is_active := true
 
-@export var sight_radius := 3
+@export var health_component: HealthComponent
+@export var sight_radius := 5
 @export var bullet_prefab: PackedScene
 @export var bullet_spawn_points : Array[Node3D]
 @export var fire_rate := 0.5
@@ -33,6 +34,9 @@ func can_fire() -> bool:
 	if(is_behind_player()):
 		return false
 	
+	if(is_below_xr_marker()):
+		return false
+	
 	if(Globals.xr_rig.get_dominant_hand()):
 		var dist = Globals.xr_rig.get_dominant_hand().global_position.distance_to(global_position)
 		if(dist > sight_radius):
@@ -47,6 +51,9 @@ func is_behind_player() -> bool:
 	
 	return dir_to_spawn.dot(dir_to_rig) > 0.5
 
+func is_below_xr_marker() -> bool:
+	return global_position.y < Globals.game_manager.combat_zone_manager.xr_rig_marker.global_position.y
+		
 func fire_bullet():
 	for spawn_point in bullet_spawn_points:
 		var bullet = bullet_prefab.instantiate() as Node3D
@@ -56,6 +63,7 @@ func fire_bullet():
 		init_bullet(bullet, spawn_point)
 	
 	is_on_cooldown = true
+	$BlasterSFX.play_random_sfx()
 	$FireCooldownTimer.start(fire_rate)
 	
 func init_bullet(bullet: Bullet, spawn_point: Node3D):
@@ -68,6 +76,7 @@ func init_bullet(bullet: Bullet, spawn_point: Node3D):
 	
 	bullet.global_position = spawn_point.global_position
 	bullet.set_lifetime(bullet_lifetime)
+	bullet.owner_health_component = health_component
 	
 	match fire_mode:
 		FireMode.FollowMarker:

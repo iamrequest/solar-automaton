@@ -13,8 +13,14 @@ extends AudioStreamPlayer3D
 func _ready() -> void:
 	%GameManager.on_level_completed.connect(_on_level_completed)
 	%GameManager.on_level_failed.connect(_on_level_failed)
+	$Ready.visible = false
+	$go.visible = false
+	
+	$Timer.start(0.5)
+	await $Timer.timeout
 	
 	play_sfx(sfx_ready)
+	$Ready.visible = true
 	$Timer.start(1.5)
 	await $Timer.timeout
 	
@@ -31,7 +37,13 @@ func _ready() -> void:
 	#await $Timer.timeout
 	
 	play_sfx(sfx_go)
+	$Ready.visible = false
+	$go.visible = true
 	process_mode = ProcessMode.PROCESS_MODE_ALWAYS	
+	
+	$Timer.start(1.5)
+	await $Timer.timeout
+	$go.visible = false
 
 func _on_level_completed() -> void:
 	play_sfx(sfx_level_completed)

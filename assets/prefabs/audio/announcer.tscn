@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbdultc8sgvx5"]
+[gd_scene load_steps=11 format=3 uid="uid://dbdultc8sgvx5"]
 
 [ext_resource type="Script" path="res://assets/scripts/audio/announcer.gd" id="1_ihb1e"]
 [ext_resource type="AudioStream" uid="uid://ctkqw3omkl3ly" path="res://assets/audio/sfx/announcer/ready.ogg" id="2_f57ud"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bp7cf22sppad8" path="res://assets/audio/sfx/announcer/go.ogg" id="6_om8oy"]
 [ext_resource type="AudioStream" uid="uid://bg52fom3nwit1" path="res://assets/audio/sfx/announcer/mission_completed.ogg" id="7_rkp0q"]
 [ext_resource type="AudioStream" uid="uid://bo6ll2ho0nvm6" path="res://assets/audio/sfx/announcer/game_over.ogg" id="8_2ddpf"]
+[ext_resource type="PackedScene" uid="uid://cguo2bttdyp7x" path="res://assets/models/announcer_text/ready.tscn" id="9_ygsg5"]
+[ext_resource type="PackedScene" uid="uid://dpin74x07lf4g" path="res://assets/models/announcer_text/go.tscn" id="10_3sppx"]
 
 [node name="Announcer" type="AudioStreamPlayer3D"]
 volume_db = -24.679
@@ -24,3 +26,7 @@ sfx_level_failed = ExtResource("8_2ddpf")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Ready" parent="." instance=ExtResource("9_ygsg5")]
+
+[node name="go" parent="." instance=ExtResource("10_3sppx")]

@@ -79,6 +79,12 @@ LoopQueue = true
 
 [node name="Announcer" parent="." instance=ExtResource("6_m6mut")]
 
+[node name="Ready" parent="Announcer" index="1"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 2, -4)
+
+[node name="go" parent="Announcer" index="2"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 2, -4)
+
 [node name="XROrigin3D" parent="." instance=ExtResource("3_eaxon")]
 
 [node name="Ship" parent="." instance=ExtResource("5_xki2l")]
@@ -127,3 +133,5 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 
 [connection signal="on_death" from="Ship" to="GameManager" method="_on_ship_on_death"]
 [connection signal="on_level_end" from="CombatZoneManager" to="GameManager" method="_on_combat_zone_manager_on_level_end"]
+
+[editable path="Announcer"]

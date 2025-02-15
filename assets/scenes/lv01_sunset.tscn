@@ -139,3 +139,5 @@ move_speed = 3
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00273383, 0.016634, -43.9581)
 
 [node name="PlayerGround" parent="CombatZoneManager/XRRigMarker" index="0" instance=ExtResource("2_8m3dp")]
+
+[editable path="Announcer"]
