@@ -20,6 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://bpq5coiya4jkg" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 004.wav" id="13_p4bp3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
+radius = 0.130049
+height = 0.35574
 
 [node name="Enemy" type="RigidBody3D"]
 collision_layer = 516

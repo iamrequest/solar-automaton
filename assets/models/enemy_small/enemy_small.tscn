@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://d21ghr4qqcrj1"]
+
+[ext_resource type="PackedScene" uid="uid://debp4oohh8l6v" path="res://assets/models/enemy_small/enemy_small.glb" id="1_eg2oo"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/small_enemy_mesh_rotator.gd" id="2_n824c"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="2_s512r"]
+[ext_resource type="Material" uid="uid://d183w2h1ec1g0" path="res://assets/materials/enemies/small_enemy/mat_enemy_body.tres" id="3_caawn"]
+[ext_resource type="Material" uid="uid://d4jh38jkkfufw" path="res://assets/materials/enemies/small_enemy/mat_enemy_rings.tres" id="4_2cpib"]
+
+[sub_resource type="Curve" id="Curve_hegd3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.514151, 0), 0.0, 0.0, 0, 0, Vector2(0.985849, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_3f0bb"]
+script = ExtResource("2_s512r")
+rotation_amount = Vector3(0, 1, 0)
+curve = SubResource("Curve_hegd3")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("2_n824c")
+head_rotation = SubResource("Resource_3f0bb")
+body_rotation = SubResource("Resource_3f0bb")
+ring_lower_rotation = SubResource("Resource_3f0bb")
+ring_upper_rotation = SubResource("Resource_3f0bb")
+
+[node name="enemy_small" parent="." instance=ExtResource("1_eg2oo")]
+
+[node name="body" parent="enemy_small" index="0"]
+surface_material_override/0 = ExtResource("3_caawn")
+
+[node name="head" parent="enemy_small" index="1"]
+surface_material_override/0 = ExtResource("3_caawn")
+
+[node name="ring_lower" parent="enemy_small" index="2"]
+surface_material_override/0 = ExtResource("4_2cpib")
+
+[node name="ring_upper" parent="enemy_small" index="3"]
+surface_material_override/0 = ExtResource("4_2cpib")
+
+[editable path="enemy_small"]
