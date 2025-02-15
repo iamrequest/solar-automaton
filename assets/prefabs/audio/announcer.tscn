@@ -1,0 +1,26 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbdultc8sgvx5"]
+
+[ext_resource type="Script" path="res://assets/scripts/audio/announcer.gd" id="1_ihb1e"]
+[ext_resource type="AudioStream" uid="uid://ctkqw3omkl3ly" path="res://assets/audio/sfx/announcer/ready.ogg" id="2_f57ud"]
+[ext_resource type="AudioStream" uid="uid://co66g5wq2hxci" path="res://assets/audio/sfx/announcer/3.ogg" id="3_b2vhl"]
+[ext_resource type="AudioStream" uid="uid://b33k68cc7arug" path="res://assets/audio/sfx/announcer/2.ogg" id="4_ltdu4"]
+[ext_resource type="AudioStream" uid="uid://dj4n0ckjgmla8" path="res://assets/audio/sfx/announcer/1.ogg" id="5_ifve0"]
+[ext_resource type="AudioStream" uid="uid://bp7cf22sppad8" path="res://assets/audio/sfx/announcer/go.ogg" id="6_om8oy"]
+[ext_resource type="AudioStream" uid="uid://bg52fom3nwit1" path="res://assets/audio/sfx/announcer/mission_completed.ogg" id="7_rkp0q"]
+[ext_resource type="AudioStream" uid="uid://bo6ll2ho0nvm6" path="res://assets/audio/sfx/announcer/game_over.ogg" id="8_2ddpf"]
+
+[node name="Announcer" type="AudioStreamPlayer3D"]
+volume_db = -24.679
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("1_ihb1e")
+sfx_ready = ExtResource("2_f57ud")
+sfx_3 = ExtResource("3_b2vhl")
+sfx_2 = ExtResource("4_ltdu4")
+sfx_1 = ExtResource("5_ifve0")
+sfx_go = ExtResource("6_om8oy")
+sfx_level_completed = ExtResource("7_rkp0q")
+sfx_level_failed = ExtResource("8_2ddpf")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
