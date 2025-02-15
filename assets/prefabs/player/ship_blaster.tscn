@@ -9,6 +9,7 @@ bullet_prefab = ExtResource("2_8ko2d")
 bullet_spawn_points = [NodePath("Marker3D"), NodePath("Marker3D2")]
 fire_rate = 0.1
 bullet_speed = 10.0
+haptics_duration = 0.3
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, -0.179)

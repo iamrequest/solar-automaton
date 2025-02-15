@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4xl10jq3jsr3"]
+[gd_scene load_steps=7 format=3 uid="uid://4xl10jq3jsr3"]
 
 [ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="1_4nocl"]
 [ext_resource type="Script" path="res://assets/scripts/ui/ui_title.gd" id="2_kmtto"]
+[ext_resource type="Script" path="res://assets/scripts/ui/xr_button.gd" id="3_6w5eg"]
 
 [sub_resource type="Theme" id="Theme_h3wh4"]
 default_font = ExtResource("1_4nocl")
@@ -69,14 +70,17 @@ custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 0
 text = "Start"
+script = ExtResource("3_6w5eg")
 
 [node name="GoToLevelSelectPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Level Select"
+script = ExtResource("3_6w5eg")
 
 [node name="GoToCreditsPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
+script = ExtResource("3_6w5eg")
 
 [node name="MarginContainer" type="MarginContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 163.02)
@@ -86,6 +90,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 8
 text = "Quit"
+script = ExtResource("3_6w5eg")
 
 [node name="TitleSpacing" type="MarginContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30.625)
@@ -120,16 +125,19 @@ horizontal_alignment = 1
 [node name="Lv1" type="Button" parent="LevelSelectPage/VBoxContainer"]
 layout_mode = 2
 text = "Sunset"
+script = ExtResource("3_6w5eg")
 
 [node name="Lv2" type="Button" parent="LevelSelectPage/VBoxContainer"]
 visible = false
 layout_mode = 2
 text = "???"
+script = ExtResource("3_6w5eg")
 
 [node name="Lv3" type="Button" parent="LevelSelectPage/VBoxContainer"]
 visible = false
 layout_mode = 2
 text = "???"
+script = ExtResource("3_6w5eg")
 
 [node name="GoToTitlePageButton" type="Button" parent="LevelSelectPage"]
 layout_mode = 1
@@ -141,6 +149,7 @@ offset_bottom = 53.0
 grow_horizontal = 0
 size_flags_horizontal = 10
 text = "Back"
+script = ExtResource("3_6w5eg")
 
 [node name="CreditsPage" type="Control" parent="."]
 visible = false
@@ -218,6 +227,7 @@ offset_bottom = 53.0
 grow_horizontal = 0
 size_flags_horizontal = 10
 text = "Back"
+script = ExtResource("3_6w5eg")
 
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToLevelSelectPageButton" to="." method="_on_go_to_level_select_page_button_pressed"]

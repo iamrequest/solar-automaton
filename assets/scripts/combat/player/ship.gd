@@ -7,6 +7,12 @@ signal on_death
 @export var move_lerp_speed = 0.9
 @export var rotation_lerp_speed = 1.0
 
+@export_range(0.0, 1.0) var haptics_primary_intensity_on_dmg = 0.75
+@export_range(0.0, 1.0) var haptics_secondary_intensity_on_dmg = 0.5
+@export_range(0.0, 1.0) var haptics_primary_intensity_on_death = 1.0
+@export_range(0.0, 1.0) var haptics_secondary_intensity_on_death = 0.5
+@export_range(0.0, 1.0) var haptics_duration_on_death = 0.5
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -54,6 +60,9 @@ func rotate_to_face_non_dominant_hand(delta: float):
 
 func _on_health_component_on_death() -> void:
 	on_death.emit()
+	Globals.xr_rig.trigger_haptics(Globals.xr_rig.is_right_handed, haptics_primary_intensity_on_death, haptics_duration_on_death)
+	Globals.xr_rig.trigger_haptics(!Globals.xr_rig.is_right_handed, haptics_secondary_intensity_on_death, haptics_duration_on_death)
+	
 	time_slow(0.5, 0.5)
 	$DeathTimer.start()
 	await $DeathTimer.timeout
@@ -61,6 +70,8 @@ func _on_health_component_on_death() -> void:
 	
 func _on_health_component_on_damage_recieved(int: Variant) -> void:
 	time_slow(0.5, 0.5)
+	Globals.xr_rig.trigger_haptics(Globals.xr_rig.is_right_handed, haptics_primary_intensity_on_dmg, haptics_duration_on_death)
+	Globals.xr_rig.trigger_haptics(!Globals.xr_rig.is_right_handed, haptics_secondary_intensity_on_dmg, haptics_duration_on_death)
 	
 
 func _on_level_completed() -> void:

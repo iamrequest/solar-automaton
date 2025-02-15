@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxmuc8yxbwi7y"]
+[gd_scene load_steps=5 format=3 uid="uid://dxmuc8yxbwi7y"]
 
 [ext_resource type="Script" path="res://assets/scripts/ui/ui_combat_menu.gd" id="2_ktng1"]
+[ext_resource type="Script" path="res://assets/scripts/ui/xr_button.gd" id="3_472dt"]
 [ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="3_871tv"]
 
 [sub_resource type="Theme" id="Theme_gxnqu"]
@@ -43,10 +44,12 @@ size_flags_horizontal = 4
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Quit"
+script = ExtResource("3_472dt")
 
 [node name="RetryButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Retry"
+script = ExtResource("3_472dt")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]

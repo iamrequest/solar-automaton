@@ -12,6 +12,9 @@ var is_godhand_smackable := true
 @export var kill_duration_godhand_smack := 0.5
 @export var kill_duration_godhand_drop := 0.75
 
+@export_range(0.0, 1.0) var haptics_intensity_on_death = 0.5
+@export_range(0.0, 1.0) var haptics_duration_on_death = 0.5
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -43,6 +46,8 @@ func _on_drop(pickable: XRToolsPickable) -> void:
 
 func _on_death_timer_timeout() -> void:
 	drop()
+	Globals.xr_rig.trigger_haptics(true, haptics_intensity_on_death, haptics_duration_on_death)
+	Globals.xr_rig.trigger_haptics(false, haptics_intensity_on_death, haptics_duration_on_death)
 	queue_free()
 
 func _on_godhand_entered(godhand: GodHand) -> void:

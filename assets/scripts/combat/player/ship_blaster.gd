@@ -4,6 +4,8 @@ extends Node3D
 @export var bullet_spawn_points : Array[Node3D]
 @export var fire_rate := 0.5
 @export var bullet_speed := 0.5
+@export_range(0.0, 1.0) var haptics_intensity = 0.1
+@export_range(0.0, 1.0) var haptics_duration = 0.5
 
 var is_on_cooldown = false
 	
@@ -20,6 +22,7 @@ func fire_bullet():
 			return
 		init_bullet(bullet, spawn_point)
 	
+	Globals.xr_rig.trigger_haptics(Globals.xr_rig.is_right_handed, haptics_intensity, haptics_duration)
 	is_on_cooldown = true
 	$FireCooldownTimer.start(fire_rate)
 	

@@ -35,3 +35,14 @@ func toggle_laser(is_enabled: bool) -> void:
 
 func recenter() -> void:
 	pass
+
+func trigger_haptics(is_right_hand: bool, intensity: float, duration: float, delay:= 0.0):
+	var hand: XRController3D
+	if(is_right_hand): 
+		hand = $RightHand
+	else:
+		hand = $LeftHand
+		
+	# Passing a frequency of 0.0 to let OpenXR determine a good vibration frequency for the controller
+	# https://forum.godotengine.org/t/haptic-feedback/67112/2
+	hand.trigger_haptic_pulse("haptic", 0.0, intensity, duration, delay)
