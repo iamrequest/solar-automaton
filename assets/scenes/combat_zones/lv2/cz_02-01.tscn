@@ -11,13 +11,13 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
 
 [node name="SetSpeedArea" parent="MovingEnv" index="0" instance=ExtResource("2_q2ygi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 speed = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MovingEnv" index="1"]
-transform = Transform3D(1, 0, 0, 0, 7.41448, 0, 0, 0, 1, 5.03557, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 7.41448, 0, 0, 0, 1, 5.03557, 0, 32)
 mesh = SubResource("BoxMesh_3bfm3")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MovingEnv" index="2"]
-transform = Transform3D(1, 0, 0, 0, 7.41448, 0, 0, 0, 1, 5.03557, 0, 12)
+transform = Transform3D(1, 0, 0, 0, 7.41448, 0, 0, 0, 1, 5.03557, 0, 36)
 mesh = SubResource("BoxMesh_3bfm3")

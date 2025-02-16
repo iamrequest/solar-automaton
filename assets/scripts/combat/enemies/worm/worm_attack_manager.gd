@@ -22,6 +22,9 @@ func _ready() -> void:
 	on_dead_attack.on_attack_started.connect(_on_death_attack_started)
 	start_attack(initial_attack)
 	
+	await get_tree().create_timer(10.0).timeout
+	(%GameManager.bgm_manager as BGMManager).FadeIntensity(0.5, 10.0)
+	
 
 func start_attack(attack: WormAttack) -> void:
 	current_attack = attack
@@ -39,9 +42,14 @@ func _on_attack_finished(last_attack: WormAttack):
 			start_attack(last_attack.next_attack_options.pick_random())
 
 func _on_death_attack_started(attack: WormAttack) -> void:
+	# TODO: Death SFX
+	await get_tree().create_timer(15.0).timeout
+	(%GameManager.bgm_manager as BGMManager).FadeIntensity(0.0, 10.0)
+	await get_tree().create_timer(15.0).timeout
+	%GameManager.set_level_completed()
 	# Resume combat zone speed, to complete the level after a short delay
-	var combat_zone_manager = (Globals.game_manager.combat_zone_manager as CombatZoneManager)
-	if(combat_zone_manager):
-		combat_zone_manager.set_speed(10.0)
-	else:
-		print("Missing combat zone manager reference")
+	#var combat_zone_manager = (Globals.game_manager.combat_zone_manager as CombatZoneManager)
+	#if(combat_zone_manager):
+		#combat_zone_manager.set_speed(0.5)
+	#else:
+#		print("Missing combat zone manager reference")

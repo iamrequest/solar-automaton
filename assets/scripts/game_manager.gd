@@ -41,6 +41,9 @@ func _on_ship_on_death() -> void:
 
 
 func _on_combat_zone_manager_on_level_end() -> void:
+	set_level_completed()
+
+func set_level_completed() -> void:
 	is_game_over = true
 	on_level_completed.emit()
 	if(pause_on_mission_complete):
