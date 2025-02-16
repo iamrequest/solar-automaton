@@ -66,7 +66,7 @@ size = Vector2(3, 2)
 [sub_resource type="ViewportTexture" id="ViewportTexture_pxiq7"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g614c"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsy0l"]
 render_priority = 127
 transparency = 1
 shading_mode = 0
@@ -81,7 +81,7 @@ size = Vector3(3, 2, 0.02)
 [sub_resource type="ViewportTexture" id="ViewportTexture_qgw1u"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsxur"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4apjo"]
 render_priority = 127
 transparency = 1
 shading_mode = 0
@@ -238,7 +238,7 @@ size = Vector2i(1200, 700)
 
 [node name="Screen" parent="ViewportTitle2" index="1"]
 mesh = SubResource("QuadMesh_oxvbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_g614c")
+surface_material_override/0 = SubResource("StandardMaterial3D_tsy0l")
 
 [node name="StaticBody3D" parent="ViewportTitle2" index="2"]
 viewport_size = Vector2(1200, 700)
@@ -257,7 +257,7 @@ size = Vector2i(1000, 700)
 
 [node name="Screen" parent="ViewportTitle3" index="1"]
 mesh = SubResource("QuadMesh_oxvbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_fsxur")
+surface_material_override/0 = SubResource("StandardMaterial3D_4apjo")
 
 [node name="StaticBody3D" parent="ViewportTitle3" index="2"]
 viewport_size = Vector2(1000, 700)

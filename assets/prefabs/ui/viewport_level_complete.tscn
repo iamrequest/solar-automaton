@@ -24,9 +24,9 @@ size = Vector3(3, 2, 0.02)
 
 [node name="ViewportLevelComplete" instance=ExtResource("1_5e1ro")]
 script = ExtResource("2_2nusr")
-screen_size = Vector2(3, 4)
+screen_size = Vector2(3, 3)
 scene = ExtResource("3_ykf7k")
-viewport_size = Vector2(400, 500)
+viewport_size = Vector2(500, 500)
 material = ExtResource("4_mke3b")
 
 [node name="Screen" parent="." index="1"]

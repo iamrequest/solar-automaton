@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d28fywe8r5x3a"]
+[gd_scene load_steps=9 format=3 uid="uid://d28fywe8r5x3a"]
 
 [ext_resource type="Script" path="res://assets/scripts/ui/ui_combat_menu.gd" id="1_184eg"]
+[ext_resource type="Texture2D" uid="uid://dr4nv6beo412b" path="res://assets/textures/ui/glassPanel_projection.png" id="2_qs33q"]
 [ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="3_eo1lx"]
 [ext_resource type="Script" path="res://assets/scripts/ui/xr_button.gd" id="3_wyy18"]
 [ext_resource type="AudioStream" uid="uid://btpj0qqkajlvn" path="res://assets/audio/sfx/ui/Scroll Wheel A.wav" id="4_qc67k"]
@@ -19,6 +20,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_184eg")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0.025, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qs33q")
+region_rect = Rect2(-1, 0, 101, 100)
+patch_margin_left = 6
+patch_margin_top = 9
+patch_margin_right = 5
+patch_margin_bottom = 9
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0.025, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qs33q")
+region_rect = Rect2(-1, 0, 101, 100)
+patch_margin_left = 6
+patch_margin_top = 9
+patch_margin_right = 5
+patch_margin_bottom = 9
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
