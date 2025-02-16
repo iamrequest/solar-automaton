@@ -12,7 +12,7 @@ class_name WormMover
 @export var lerp_speed:= 0.9
 @export var speedCurve: Curve
 
-var progress = 0.0
+var progress_raw = 0.0
 
 signal path_completed
 
@@ -29,34 +29,34 @@ func _process(delta: float) -> void:
 	if(is_active):
 		do_move(delta)
 
+func reset() -> void:
+	progress_raw = 0
+	
 func do_move(delta):
 	if(!is_instance_valid(worm)):
 		return
 	
 	# Calculate the head position	
-	$PathFollow3D_Head.progress += speedCurve.sample($PathFollow3D_Head.progress_ratio) * speed * delta
+	progress_raw += speedCurve.sample($PathFollow3D_Head.progress_ratio) * speed * delta	
 	
-	# Lerp to the head position
-	worm.head.global_position = worm.head.global_position.slerp($PathFollow3D_Head.global_position, lerp_speed)
-	worm.head.global_rotation = worm.head.global_rotation.slerp($PathFollow3D_Head.global_rotation, lerp_speed)
-	
-	# Given the head position, go through each joint and set its transform to be a little back behind the prev joint in the curve
+	# Given the raw position, go through each joint and set its transform to be a little back behind the raw curve position
 	# This was some hot garbage thrown together to get around the PathFollow3D update issue - I may have been doing something wrong
-	update_worm_joint(worm.spine_columns[0], $PathFollow3D_Head, $PathFollow3D_Spine1, 0)
-	update_worm_joint(worm.spine_columns[1], $PathFollow3D_Head, $PathFollow3D_Spine2, 1)
-	update_worm_joint(worm.spine_columns[2], $PathFollow3D_Head, $PathFollow3D_Spine3, 2)
-	update_worm_joint(worm.spine_columns[3], $PathFollow3D_Head, $PathFollow3D_Spine4, 3)
-	update_worm_joint(worm.spine_columns[4], $PathFollow3D_Head, $PathFollow3D_Spine5, 4)
-	update_worm_joint(worm.spine_columns[5], $PathFollow3D_Head, $PathFollow3D_Spine6, 5)
-	update_worm_joint(worm.spine_columns[6], $PathFollow3D_Head, $PathFollow3D_Spine7, 6)
-	update_worm_joint(worm.spine_columns[7], $PathFollow3D_Head, $PathFollow3D_Spine8, 7)
-	update_worm_joint(worm.tail,             $PathFollow3D_Head, $PathFollow3D_Tail,   8)
+	update_worm_joint(worm.head,             $PathFollow3D_Head,   0)
+	update_worm_joint(worm.spine_columns[0], $PathFollow3D_Spine1, 0)
+	update_worm_joint(worm.spine_columns[1], $PathFollow3D_Spine2, 1)
+	update_worm_joint(worm.spine_columns[2], $PathFollow3D_Spine3, 2)
+	update_worm_joint(worm.spine_columns[3], $PathFollow3D_Spine4, 3)
+	update_worm_joint(worm.spine_columns[4], $PathFollow3D_Spine5, 4)
+	update_worm_joint(worm.spine_columns[5], $PathFollow3D_Spine6, 5)
+	update_worm_joint(worm.spine_columns[6], $PathFollow3D_Spine7, 6)
+	update_worm_joint(worm.spine_columns[7], $PathFollow3D_Spine8, 7)
+	update_worm_joint(worm.tail,             $PathFollow3D_Tail,   8)
 	
-	if($PathFollow3D_Head.progress_ratio >= 1.0):
+	if($PathFollow3D_Tail.progress_ratio >= 1.0):
 		path_completed.emit()
 
-func update_worm_joint(target: Node3D, joint_prev: PathFollow3D, joint: PathFollow3D, offset_multiplier: int):
-	joint.progress = joint_prev.progress - worm.spine_column_length * offset_multiplier
+func update_worm_joint(target: Node3D, joint: PathFollow3D, offset_multiplier: int):
+	joint.progress = progress_raw - worm.spine_column_length * offset_multiplier
 
 	target.global_position = target.global_position.lerp(joint.global_position, lerp_speed)
 	target.global_rotation = target.global_rotation.slerp(joint.global_rotation, lerp_speed)

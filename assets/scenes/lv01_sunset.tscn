@@ -143,9 +143,11 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0027
 [node name="PlayerGround" parent="CombatZoneManager/XRRigMarker" index="0" instance=ExtResource("2_8m3dp")]
 
 [node name="Worm" parent="." index="10" instance=ExtResource("8_b5sr6")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 7.77455, 0, -56.4306)
 
 [node name="WormMover" parent="." index="11" node_paths=PackedStringArray("worm") instance=ExtResource("9_ipplw")]
 worm = NodePath("../Worm")
 speed = 5.0
+editor_update_pos = false
 
 [editable path="Announcer"]
