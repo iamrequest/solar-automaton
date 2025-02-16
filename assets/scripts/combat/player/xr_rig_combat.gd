@@ -12,8 +12,12 @@ func _ready() -> void:
 func recenter() -> void:
 	super()
 	# TODO: Need to align based on HMD
+	#global_position = %GameManager.combat_zone_manager.xr_rig_marker.global_position 
+	#global_rotation = %GameManager.combat_zone_manager.xr_rig_marker.global_rotation 
+	#look_at(%GameManager.combat_zone_manager.spawn_marker.global_position)
 	global_position = %GameManager.combat_zone_manager.xr_rig_marker.global_position 
-	global_rotation = %GameManager.combat_zone_manager.xr_rig_marker.global_rotation 
+	#await get_tree().create_timer(0.3).timeout
+	#global_rotation = Vector3.ZERO
 
 func _on_level_completed() -> void:
 	toggle_laser(true)
