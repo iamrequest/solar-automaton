@@ -98,7 +98,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="TitlePage/VBoxContainer"]
 layout_mode = 2
-text = "Game Name"
+text = "Solar Atomaton"
 label_settings = SubResource("LabelSettings_j2elv")
 horizontal_alignment = 1
 
