@@ -28,6 +28,7 @@ func start_attack() -> void:
 	current_path.reset()
 	current_path.is_active = true
 
+	(%Worm as Worm).on_attack_started()
 	set_worm_blaster_type()
 	set_rotation_multiplier()
 	

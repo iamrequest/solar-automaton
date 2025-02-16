@@ -28,13 +28,13 @@ func configure_rotation():
 		
 func _on_component_death() -> void:
 	num_dead_joints += 1
+	$SpineDestroyed.play_random_sfx()
 	
 	if(!is_alive()):
 		on_worm_death()
 		on_death.emit()
 	else:
 		var bgm_intensity = bgm_intensity[min(bgm_intensity.size() - 1, num_dead_joints)]
-		print("Setting BGM intensity to %s" % str(bgm_intensity))
 		(%GameManager.bgm_manager as BGMManager).FadeIntensity(bgm_intensity, bgm_fade_duration)
 
 func is_alive() -> bool:
@@ -43,6 +43,8 @@ func is_alive() -> bool:
 			return true
 	return false
 
+func on_attack_started() -> void:
+	$AttackStarted.play_random_sfx()
 
 func on_worm_death():
 	pass

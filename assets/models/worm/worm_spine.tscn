@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ce0w1r5brioic"]
+[gd_scene load_steps=23 format=3 uid="uid://ce0w1r5brioic"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_spine_column.gd" id="1_objn5"]
 [ext_resource type="PackedScene" uid="uid://c6y7cdcldpi1d" path="res://assets/models/worm/worm_spine-joint.glb" id="1_y0a8r"]
@@ -9,6 +9,14 @@
 [ext_resource type="Script" path="res://assets/scripts/combat/health/hurtbox.gd" id="5_861n7"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_joint_rotator.gd" id="8_nr3yn"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="9_nm3h5"]
+[ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="10_44ryf"]
+[ext_resource type="AudioStream" uid="uid://vm4ytx56f5oa" path="res://assets/audio/sfx/enemy/damage/Punch Heavy A.wav" id="11_5cpok"]
+[ext_resource type="AudioStream" uid="uid://xq4b7wqo6wef" path="res://assets/audio/sfx/enemy/damage/Punch Heavy B.wav" id="12_581ra"]
+[ext_resource type="AudioStream" uid="uid://ds2sxm5hkfr5m" path="res://assets/audio/sfx/enemy/damage/Punch Heavy C.wav" id="13_b5uib"]
+[ext_resource type="AudioStream" uid="uid://dl5pnbh4xcra7" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 001.wav" id="14_jnvye"]
+[ext_resource type="AudioStream" uid="uid://bdsktaap35hc3" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 002.wav" id="15_qfp2p"]
+[ext_resource type="AudioStream" uid="uid://cm42biio4hkgi" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 003.wav" id="16_tn6bi"]
+[ext_resource type="AudioStream" uid="uid://bpq5coiya4jkg" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 004.wav" id="17_wrdpk"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dvq08"]
 height = 5.73081
@@ -84,5 +92,18 @@ health_component = NodePath("../HealthComponent")
 mesh = NodePath("../Container")
 constant_rotation = SubResource("Resource_w4cve")
 rotation_broken = SubResource("Resource_y6tn4")
+
+[node name="DmgSFX" type="AudioStreamPlayer3D" parent="."]
+volume_db = 1.0
+max_polyphony = 10
+bus = &"SFX"
+script = ExtResource("10_44ryf")
+sfx = Array[AudioStream]([ExtResource("11_5cpok"), ExtResource("12_581ra"), ExtResource("13_b5uib")])
+pitch_scale_base = 1.201
+
+[node name="ExplosionSFX" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+script = ExtResource("10_44ryf")
+sfx = Array[AudioStream]([ExtResource("14_jnvye"), ExtResource("15_qfp2p"), ExtResource("16_tn6bi"), ExtResource("17_wrdpk")])
 
 [editable path="Container/worm_spine-joint"]

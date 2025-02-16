@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://ce0w1r5brioic" path="res://assets/models/worm/worm_spine.tscn" id="2_c0kny"]
 [ext_resource type="PackedScene" uid="uid://ch1noxjor3gdj" path="res://assets/models/worm/worm_tail.tscn" id="3_8po8o"]
 [ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="5_ncic3"]
-[ext_resource type="AudioStream" uid="uid://dl5pnbh4xcra7" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 001.wav" id="6_yf2rf"]
-[ext_resource type="AudioStream" uid="uid://bdsktaap35hc3" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 002.wav" id="7_y3mc0"]
-[ext_resource type="AudioStream" uid="uid://cm42biio4hkgi" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 003.wav" id="8_sm84a"]
-[ext_resource type="AudioStream" uid="uid://bpq5coiya4jkg" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 004.wav" id="9_bgbca"]
+[ext_resource type="AudioStream" uid="uid://jhlrli85pr4p" path="res://assets/audio/sfx/worm/Robot Whale A.wav" id="6_xpc35"]
+[ext_resource type="AudioStream" uid="uid://kpbm0utc7r4c" path="res://assets/audio/sfx/worm/Robot Whale B.wav" id="7_flt3i"]
+[ext_resource type="AudioStream" uid="uid://h83ayuxihnfo" path="res://assets/audio/sfx/worm/Robot Monster A.wav" id="8_8elxi"]
+[ext_resource type="AudioStream" uid="uid://dr4i8572gjrxa" path="res://assets/audio/sfx/worm/Robot Monster B.wav" id="9_v4t13"]
 
 [node name="Worm" type="Node3D" node_paths=PackedStringArray("head", "spine_columns", "tail")]
 script = ExtResource("1_cly7c")
@@ -50,7 +50,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49)
 
 [node name="Attacks" type="Node" parent="."]
 
-[node name="Whale" type="AudioStreamPlayer3D" parent="."]
+[node name="SpineDestroyed" type="AudioStreamPlayer3D" parent="."]
+volume_db = 5.0
 bus = &"SFX"
 script = ExtResource("5_ncic3")
-sfx = Array[AudioStream]([ExtResource("6_yf2rf"), ExtResource("7_y3mc0"), ExtResource("8_sm84a"), ExtResource("9_bgbca")])
+sfx = Array[AudioStream]([ExtResource("6_xpc35"), ExtResource("9_v4t13")])
+
+[node name="AttackStarted" type="AudioStreamPlayer3D" parent="."]
+volume_db = 5.0
+bus = &"SFX"
+script = ExtResource("5_ncic3")
+sfx = Array[AudioStream]([ExtResource("8_8elxi"), ExtResource("7_flt3i")])

@@ -15,8 +15,11 @@ func _process(delta: float) -> void:
 	pass
 
 
+func on_damage_recieved(dmg: int) -> void:
+	$DmgSFX.play_random_sfx()
 
 func _on_death() -> void:
+	$ExplosionSFX.play_random_sfx()
 	destroy()
 	on_death.emit()
 

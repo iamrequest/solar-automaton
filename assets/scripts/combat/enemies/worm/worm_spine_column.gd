@@ -15,6 +15,7 @@ var damage_on_blaster_death := 5
 func _ready() -> void:
 	for blaster in blasters:
 		blaster.on_death.connect(_on_blaster_death)
+	$HealthComponent.on_damage_recieved.connect(on_damage_recieved)
 	$HealthComponent.on_death.connect(_on_death)
 
 
@@ -25,7 +26,11 @@ func _process(delta: float) -> void:
 func _on_blaster_death() -> void:
 	$HealthComponent.apply_damage(damage_on_blaster_death)
 
+func on_damage_recieved(dmg: int) -> void:
+	$DmgSFX.play_random_sfx()
+	
 func _on_death() -> void:
+	$ExplosionSFX.play_random_sfx()
 	$"Container/worm_spine-joint/SpineJoint".set_surface_override_material(0, mat_dead)
 	for blaster in blasters:
 		blaster.destroy()
