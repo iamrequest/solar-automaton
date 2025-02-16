@@ -92,13 +92,16 @@ transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -2.38419
 move_speed = 2.0
 
 [node name="ViewportGameOver" parent="." instance=ExtResource("6_2tx8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339712, 1.35978, -3.01541)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36, -3.015)
+visible = false
 
 [node name="ViewportPause" parent="." instance=ExtResource("7_nge64")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3.38116)
+visible = false
 
 [node name="ViewportLevelComplete" parent="." instance=ExtResource("8_c14nl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.928037, 1.1166, -3.86529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.117, -3.865)
+visible = false
 
 [node name="BaseLevelEnv" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00274301, 0.016634, -0.0049181)

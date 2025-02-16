@@ -6,8 +6,8 @@ var health_component: HealthComponent:
 		return $HealthComponent
 
 # Called when the node enters the scene tree for the first time.
-func setup(worm: Worm) -> void:
-	self.worm = worm
+func setup(worm_ref) -> void:
+	worm = worm_ref
 	$HealthComponent.on_damage_recieved.connect(_on_damaged)
 
 func _on_damaged(damage: int): 
