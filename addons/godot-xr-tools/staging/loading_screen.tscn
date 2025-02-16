@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqumugyvkct4r"]
+[gd_scene load_steps=14 format=3 uid="uid://bqumugyvkct4r"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/loading_screen.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://b0pduhjuar420" path="res://assets/textures/made-by-request.png" id="2_qh2yo"]
 [ext_resource type="Shader" uid="uid://4i0pwdtfmtsv" path="res://addons/godot-xr-tools/staging/loading_screen/loading_screen_shader.tres" id="3"]
 [ext_resource type="Texture2D" uid="uid://clbtsf0ahb3fm" path="res://addons/godot-xr-tools/assets/misc/progress_bar.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://ocyj01x5mtt7" path="res://addons/godot-xr-tools/assets/misc/Hold trigger to continue.png" id="5"]
@@ -17,6 +18,7 @@ size = Vector2(80, 60)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1o2lp"]
 transparency = 1
 shading_mode = 0
+albedo_texture = ExtResource("2_qh2yo")
 
 [sub_resource type="ShaderMaterial" id="18"]
 render_priority = 0
@@ -53,7 +55,6 @@ mesh = SubResource("3")
 
 [node name="PressToContinue" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
-visible = false
 mesh = SubResource("19")
 surface_material_override/0 = SubResource("StandardMaterial3D_k8dyo")
 

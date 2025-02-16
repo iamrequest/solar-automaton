@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0bt1hmnq7q6w"]
+[gd_scene load_steps=26 format=3 uid="uid://c0bt1hmnq7q6w"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ja2qs"]
 [ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_6v0qr"]
@@ -10,6 +10,9 @@
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="5_era21"]
 [ext_resource type="PackedScene" uid="uid://dho7f41yokfuj" path="res://assets/prefabs/ui/viewport_title.tscn" id="6_q30k7"]
 [ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="6_xi52p"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="11_x1vu1"]
+[ext_resource type="PackedScene" uid="uid://dpaudvbdtyfq6" path="res://assets/prefabs/ui/ui_title_advert.tscn" id="12_r7ywn"]
+[ext_resource type="PackedScene" uid="uid://b33i8arxil65c" path="res://assets/prefabs/ui/ui_controls.tscn" id="13_55tsu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ax2p"]
 sky_top_color = Color(0.867338, 0.526165, 0.0738397, 1)
@@ -55,6 +58,36 @@ albedo_texture = ExtResource("4_8hwag")
 texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_kikn2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_oxvbb"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pxiq7"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g614c"]
+render_priority = 127
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = SubResource("ViewportTexture_pxiq7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_at5mv"]
+resource_local_to_scene = true
+size = Vector3(3, 2, 0.02)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qgw1u"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsxur"]
+render_priority = 127
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = SubResource("ViewportTexture_qgw1u")
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_ja2qs")
@@ -193,3 +226,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -84)
 
 [node name="ViewportTitle" parent="." instance=ExtResource("6_q30k7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45453, -4.29699)
+
+[node name="ViewportTitle2" parent="." instance=ExtResource("6_q30k7")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -3, 1.45453, -3.29699)
+script = ExtResource("11_x1vu1")
+scene = ExtResource("12_r7ywn")
+viewport_size = Vector2(1200, 700)
+
+[node name="Viewport" parent="ViewportTitle2" index="0"]
+size = Vector2i(1200, 700)
+
+[node name="Screen" parent="ViewportTitle2" index="1"]
+mesh = SubResource("QuadMesh_oxvbb")
+surface_material_override/0 = SubResource("StandardMaterial3D_g614c")
+
+[node name="StaticBody3D" parent="ViewportTitle2" index="2"]
+viewport_size = Vector2(1200, 700)
+
+[node name="CollisionShape3D" parent="ViewportTitle2/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_at5mv")
+
+[node name="ViewportTitle3" parent="." instance=ExtResource("6_q30k7")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 3, 1.45453, -3.29699)
+script = ExtResource("11_x1vu1")
+scene = ExtResource("13_55tsu")
+viewport_size = Vector2(1000, 700)
+
+[node name="Viewport" parent="ViewportTitle3" index="0"]
+size = Vector2i(1000, 700)
+
+[node name="Screen" parent="ViewportTitle3" index="1"]
+mesh = SubResource("QuadMesh_oxvbb")
+surface_material_override/0 = SubResource("StandardMaterial3D_fsxur")
+
+[node name="StaticBody3D" parent="ViewportTitle3" index="2"]
+viewport_size = Vector2(1000, 700)
+
+[node name="CollisionShape3D" parent="ViewportTitle3/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_at5mv")
+
+[editable path="ViewportTitle2"]
+[editable path="ViewportTitle3"]

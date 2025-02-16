@@ -1,0 +1,161 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpaudvbdtyfq6"]
+
+[ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="1_7x0sb"]
+[ext_resource type="Texture2D" uid="uid://dr4nv6beo412b" path="res://assets/textures/ui/glassPanel_projection.png" id="2_jjbov"]
+
+[sub_resource type="Theme" id="Theme_h3wh4"]
+default_font = ExtResource("1_7x0sb")
+default_font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vhi5"]
+font_size = 32
+
+[node name="ui_title_advert" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.03503
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h3wh4")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0.025, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_right = -98.035
+offset_bottom = -306.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jjbov")
+region_rect = Rect2(-1, 0, 101, 100)
+patch_margin_left = 6
+patch_margin_top = 9
+patch_margin_right = 5
+patch_margin_bottom = 9
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0.025, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_right = -98.035
+offset_bottom = -306.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jjbov")
+region_rect = Rect2(-1, 0, 101, 100)
+patch_margin_left = 6
+patch_margin_top = 9
+patch_margin_right = 5
+patch_margin_bottom = 9
+
+[node name="TitlePage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitlePage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h3wh4")
+
+[node name="TitleSpacing2" type="MarginContainer" parent="TitlePage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30.625)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TitlePage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A game made for Godot XR Jam 2025"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TitlePage/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "You can find my source code, and other games, below"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleSpacing4" type="MarginContainer" parent="TitlePage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30.625)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitlePage/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TitleSpacing3" type="MarginContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="TitlePage/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Website"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="TitlePage/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "request.moe"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="TitlePage/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Github"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="TitlePage/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "github.com/iamrequest"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="TitlePage/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Itch.io"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="TitlePage/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "request.itch.io"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://4xl10jq3jsr3"]
+[gd_scene load_steps=13 format=3 uid="uid://4xl10jq3jsr3"]
 
 [ext_resource type="FontFile" uid="uid://bcfych0cl0la6" path="res://assets/fonts/chequered-ink/Diary of an 8-bit mage.otf" id="1_4nocl"]
 [ext_resource type="Script" path="res://assets/scripts/ui/ui_title.gd" id="2_kmtto"]
 [ext_resource type="Script" path="res://assets/scripts/ui/xr_button.gd" id="3_6w5eg"]
+[ext_resource type="Texture2D" uid="uid://dr4nv6beo412b" path="res://assets/textures/ui/glassPanel_projection.png" id="3_bbp07"]
 [ext_resource type="AudioStream" uid="uid://btpj0qqkajlvn" path="res://assets/audio/sfx/ui/Scroll Wheel A.wav" id="4_mm3qq"]
 [ext_resource type="AudioStream" uid="uid://bkrxodo5h8q67" path="res://assets/audio/sfx/ui/Update Purr A.wav" id="5_rg2kk"]
 [ext_resource type="AudioStream" uid="uid://cwnjwga41x0ms" path="res://assets/audio/sfx/ui/Update Purr C.wav" id="6_07exd"]
@@ -11,6 +12,8 @@
 [sub_resource type="Theme" id="Theme_h3wh4"]
 default_font = ExtResource("1_4nocl")
 default_font_size = 45
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lgyd7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j2elv"]
 font_size = 80
@@ -33,6 +36,42 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_h3wh4")
 script = ExtResource("2_kmtto")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_lgyd7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -4.03503
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bbp07")
+region_rect = Rect2(-1, 0, 101, 100)
+patch_margin_left = 6
+patch_margin_top = 9
+patch_margin_right = 5
+patch_margin_bottom = 9
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_lgyd7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -4.03503
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bbp07")
+region_rect = Rect2(-1, 0, 101, 100)
+patch_margin_left = 6
+patch_margin_top = 9
+patch_margin_right = 5
+patch_margin_bottom = 9
 
 [node name="TitlePage" type="Control" parent="."]
 layout_mode = 1
@@ -96,7 +135,7 @@ sfx_hover = ExtResource("4_mm3qq")
 sfx_select = ExtResource("6_07exd")
 
 [node name="MarginContainer" type="MarginContainer" parent="TitlePage/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 163.02)
+custom_minimum_size = Vector2(0, 126.895)
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
@@ -118,6 +157,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 67.0
+offset_right = -17.035
+offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -147,16 +190,6 @@ sfx_hover = ExtResource("4_mm3qq")
 sfx_select = ExtResource("6_07exd")
 
 [node name="Lv2" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
-visible = false
-layout_mode = 2
-text = "???"
-script = ExtResource("3_6w5eg")
-audio_player = NodePath("../../../SFXPlayer")
-sfx_hover = ExtResource("4_mm3qq")
-sfx_select = ExtResource("6_07exd")
-
-[node name="Lv3" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
-visible = false
 layout_mode = 2
 text = "???"
 script = ExtResource("3_6w5eg")
@@ -185,6 +218,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = 64.0
+offset_right = -29.035
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -252,7 +289,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 75.965)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Announcer SFX"
+text = "Announcer SFX, UI Texture"
 label_settings = SubResource("LabelSettings_3vhi5")
 vertical_alignment = 1
 
@@ -307,5 +344,6 @@ sfx_select = ExtResource("6_07exd")
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToCreditsPageButton" to="." method="_on_go_to_credits_page_button_pressed"]
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LevelSelectPage/VBoxContainer/Lv1" to="." method="_on_lv_1_pressed"]
+[connection signal="pressed" from="LevelSelectPage/VBoxContainer/Lv2" to="." method="_on_lv_2_pressed"]
 [connection signal="pressed" from="LevelSelectPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]
 [connection signal="pressed" from="CreditsPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]

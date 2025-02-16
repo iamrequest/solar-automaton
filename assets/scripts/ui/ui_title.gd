@@ -34,3 +34,7 @@ func go_to_page(page: Control) -> void:
 
 func _on_lv_1_pressed() -> void:
 	load_level(scenes.Scenes.Sunset)
+
+
+func _on_lv_2_pressed() -> void:
+	load_level(scenes.Scenes.WormBoss)
