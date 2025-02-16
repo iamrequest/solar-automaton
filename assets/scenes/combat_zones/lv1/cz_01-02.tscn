@@ -35,7 +35,7 @@ point_count = 3
 [node name="CombatZone" instance=ExtResource("1_3x4cn")]
 
 [node name="CombatZoneEnd" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 122.897)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.897)
 
 [node name="SetSpeedArea" parent="MovingEnv" index="0" instance=ExtResource("2_w7r8n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.5034)

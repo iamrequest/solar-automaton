@@ -11,6 +11,10 @@ var health_component: HealthComponent:
 @export var move_lerp_speed = 0.9
 @export var rotation_lerp_speed = 1.0
 
+@export var dodge_iframes := 0.5
+var is_dodging:= false
+var can_dodge = true
+
 @export_range(0.0, 1.0) var haptics_primary_intensity_on_dmg = 0.75
 @export_range(0.0, 1.0) var haptics_secondary_intensity_on_dmg = 0.5
 @export_range(0.0, 1.0) var haptics_primary_intensity_on_death = 1.0
@@ -22,16 +26,45 @@ func _ready() -> void:
 	Globals.ship = self
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	%GameManager.on_level_completed.connect(_on_level_completed)
-	$HealthComponent.invincibility_enabled = Globals.invincibility_enabled
+	$DodgeSFX/DodgeCooldown.timeout.connect(_on_dodge_cooldown_timeout)
 	
+	$HealthComponent.invincibility_enabled = Globals.invincibility_enabled
 	$HealthComponent.health_max = Globals.health_max
 	$HealthComponent.health_current = Globals.health_max
 
-
+func _on_dodge_cooldown_timeout() -> void:
+	can_dodge = true
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	update_position(delta)
 	update_rotation(delta)
+	process_dodge_input()	
+	
+func process_dodge_input():
+	if(!can_dodge):
+		return
+		
+	# TODO: Would be better to get a method that tests for "first frame pressed"
+	# Likely would just be subscribing to the released signal, but I have 10 mins left
+	if(Globals.xr_rig.get_non_dominant_hand().is_button_pressed("trigger")):
+		dodge()
+		
+func dodge() -> void:
+	is_dodging = true
+	can_dodge = false
+	$DodgeSFX/DodgeCooldown.start()
+	$DodgeSFX.play_random_sfx()
+	
+	Globals.xr_rig.is_right_handed = !Globals.xr_rig.is_right_handed
+	
+	# Toggle iframes
+	var was_invincible = health_component.invincibility_enabled
+	health_component.invincibility_enabled = true
+	await get_tree().create_timer(dodge_iframes).timeout
+	health_component.invincibility_enabled = was_invincible
+	is_dodging = false
+	
 
 func update_position(delta: float):
 	# TODO: Update to snap to point on a plane if it exists

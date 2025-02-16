@@ -10,6 +10,9 @@ extends Node3D
 var is_on_cooldown = false
 	
 func _process(delta: float) -> void:
+	if(Globals.ship.is_dodging):
+		return
+		
 	if(Globals.xr_rig.get_dominant_hand().is_button_pressed("trigger_click")):
 		if(!is_on_cooldown):
 			fire_bullet()

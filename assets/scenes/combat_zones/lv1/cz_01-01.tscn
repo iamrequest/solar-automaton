@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5fn8yvjl8k2l"]
+[gd_scene load_steps=13 format=3 uid="uid://c5fn8yvjl8k2l"]
 
 [ext_resource type="PackedScene" uid="uid://cw8aox52warf7" path="res://assets/prefabs/combat_zones/combat_zone_base.tscn" id="1_htti8"]
 [ext_resource type="PackedScene" uid="uid://u522cylpgift" path="res://assets/prefabs/combat_zones/set_bgm_area.tscn" id="2_6tni7"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="3_8lnat"]
 [ext_resource type="PackedScene" uid="uid://cdgmcil1bee2l" path="res://assets/prefabs/enemies/enemy_activation_zone.tscn" id="4_7n3w2"]
+[ext_resource type="PackedScene" uid="uid://covdv0d0l27gw" path="res://assets/prefabs/combat_zones/set_speed_area.tscn" id="5_mad4t"]
 [ext_resource type="PackedScene" uid="uid://cuakaxl5b30is" path="res://assets/prefabs/enemies/enemy_pickable_slow_fire.tscn" id="5_mgthd"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/path_mover.gd" id="6_61eep"]
 
@@ -143,7 +144,10 @@ path_mover = NodePath("../../../StaticEnv/Wave 2/R/Path3D7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 9.1866)
 path_mover = NodePath("../../../StaticEnv/Wave 2/R/Path3D8")
 
-[node name="SubArchEnemies" type="Node3D" parent="MovingEnv" index="6"]
+[node name="SetSpeedArea" parent="MovingEnv" index="6" instance=ExtResource("5_mad4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5034)
+
+[node name="SubArchEnemies" type="Node3D" parent="MovingEnv" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
 
 [node name="Enemy_SlowBullet" parent="MovingEnv/SubArchEnemies" index="0" instance=ExtResource("5_mgthd")]
@@ -164,7 +168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 5)
 [node name="Enemy_SlowBullet6" parent="MovingEnv/SubArchEnemies" index="5" instance=ExtResource("5_mgthd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 5)
 
-[node name="SubArchEnemies2" type="Node3D" parent="MovingEnv" index="7"]
+[node name="SubArchEnemies2" type="Node3D" parent="MovingEnv" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="Enemy_SlowBullet" parent="MovingEnv/SubArchEnemies2" index="0" instance=ExtResource("5_mgthd")]
@@ -212,7 +216,7 @@ speedCurve = SubResource("Curve_5kq45")
 free_self_on_complete = true
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 1/Path3D4" index="0"]
-transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997515, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
+transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997516, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Wave 1/Path3D4" index="1" instance=ExtResource("5_mgthd")]
@@ -227,7 +231,7 @@ speedCurve = SubResource("Curve_5kq45")
 free_self_on_complete = true
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 1/Path3D5" index="0"]
-transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997515, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
+transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997516, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Wave 1/Path3D5" index="1" instance=ExtResource("5_mgthd")]
@@ -262,7 +266,7 @@ speedCurve = SubResource("Curve_5kq45")
 free_self_on_complete = true
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 2/L/Path3D4" index="0"]
-transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997515, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
+transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997516, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Wave 2/L/Path3D4" index="1" instance=ExtResource("5_mgthd")]
@@ -277,7 +281,7 @@ speedCurve = SubResource("Curve_5kq45")
 free_self_on_complete = true
 
 [node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 2/L/Path3D5" index="0"]
-transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997515, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
+transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997516, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
 loop = false
 
 [node name="Enemy_SlowBullet" parent="StaticEnv/Wave 2/L/Path3D5" index="1" instance=ExtResource("5_mgthd")]

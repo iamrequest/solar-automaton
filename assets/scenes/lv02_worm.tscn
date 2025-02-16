@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dkwduyhx37ym7"]
+[gd_scene load_steps=39 format=3 uid="uid://dkwduyhx37ym7"]
 
 [ext_resource type="PackedScene" uid="uid://d2uk2xiqpck2v" path="res://assets/scenes/combat_scene_base.tscn" id="1_rdqsq"]
 [ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="2_kqtge"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bjtjdjheee1o1" path="res://assets/prefabs/enemies/worm.tscn" id="5_taodn"]
 [ext_resource type="Texture2D" uid="uid://726ui7g204w0" path="res://assets/textures/vfx/request/glow-circle_64x64.png" id="6_x8w80"]
 [ext_resource type="Texture2D" uid="uid://bt3s3woyfms0c" path="res://assets/textures/vfx/request/ring_64x64.png" id="7_qgj5l"]
-[ext_resource type="Script" path="res://assets/scripts/env/env_rotator.gd" id="8_xscqn"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="9_6pv6w"]
 [ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="11_lcau0"]
 [ext_resource type="PackedScene" uid="uid://cyoaq543pakfk" path="res://assets/scenes/combat_zones/lv2/cz_02-01.tscn" id="12_ha1g6"]
@@ -163,7 +162,7 @@ point_count = 8
 [sub_resource type="Curve3D" id="Curve3D_c0tcr"]
 bake_interval = 18.75
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -74.0454, -10.8994, -1.55986, 0, 0, 0, 0, 0, 0, -52.8902, -0.821946, -0.527808, 0, 0, 0, 0, 0, 0, -17.5872, -1.44519, -0.800206, 0, 0, 0, 0, 0, 0, -3.95119, -7.87628, -0.497947),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -57.8114, -16.1789, -1.55986, 0, 0, 0, 0, 0, 0, -52.8902, -0.821946, -0.527808, 0, 0, 0, 0, 0, 0, -17.5872, -1.44519, -0.800206, 0, 0, 0, 0, 0, 0, -10.4121, -18.4196, -0.497946),
 "tilts": PackedFloat32Array(0, -0.236991, 0, 0)
 }
 point_count = 4
@@ -224,7 +223,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_41kvv")
 [node name="SunPlane1" parent="BaseLevelEnv/StaticEnv/Sun" index="1"]
 transform = Transform3D(-3.02258e-06, -69.1486, -2.60738e-20, 69.1486, -3.02258e-06, -3.02258e-06, 3.02258e-06, -1.32121e-13, 69.1486, 4.93173e-21, -3.34, -18.5994)
 surface_material_override/0 = SubResource("StandardMaterial3D_3212q")
-script = ExtResource("8_xscqn")
 rotation_config = SubResource("Resource_tcx2v")
 
 [node name="SunPlane2" parent="BaseLevelEnv/StaticEnv/Sun" index="2"]
@@ -233,13 +231,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_u2itl")
 
 [node name="SunRing" parent="BaseLevelEnv/StaticEnv/Sun" index="3"]
 surface_material_override/0 = SubResource("StandardMaterial3D_et6x3")
-script = ExtResource("8_xscqn")
 rotation_config = SubResource("Resource_5s01v")
 
 [node name="SunRing2" parent="BaseLevelEnv/StaticEnv/Sun" index="4"]
 transform = Transform3D(-6.53346e-06, -149.468, -3.18448e-19, 149.468, -6.53346e-06, -6.53346e-06, 6.53346e-06, -2.85586e-13, 149.468, 4.28586e-20, -3.34, -28.7994)
 surface_material_override/0 = SubResource("StandardMaterial3D_kye37")
-script = ExtResource("8_xscqn")
 rotation_config = SubResource("Resource_y7udg")
 t_scale = 0.5
 
@@ -386,34 +382,34 @@ lerp_speed = 0.75
 editor_update_pos = false
 
 [node name="PathFollow3D_Head" parent="WormAttackManager/InitialAttack/WormMover" index="0"]
-transform = Transform3D(-0.0733114, -0.388298, -0.91845, 1.48989e-08, 0.920922, -0.389349, 0.997155, -0.0285479, -0.0675249, -65.1107, -14.7123, -1.55986)
+transform = Transform3D(-0.0733113, -0.388297, -0.91845, 0, 0.920922, -0.389348, 0.997155, -0.0285478, -0.0675249, -65.1107, -14.7123, -1.55986)
 
 [node name="PathFollow3D_Spine1" parent="WormAttackManager/InitialAttack/WormMover" index="1"]
-transform = Transform3D(-0.0733114, -0.388298, -0.91845, 1.48989e-08, 0.920922, -0.389349, 0.997155, -0.0285479, -0.0675249, -65.1107, -14.7123, -1.55986)
+transform = Transform3D(-0.0733113, -0.388297, -0.91845, 0, 0.920922, -0.389348, 0.997155, -0.0285478, -0.0675249, -65.1107, -14.7123, -1.55986)
 
 [node name="PathFollow3D_Spine2" parent="WormAttackManager/InitialAttack/WormMover" index="2"]
-transform = Transform3D(-0.0733113, -0.388305, -0.918467, 1.48988e-08, 0.920938, -0.389356, 0.997153, -0.0285484, -0.0675262, -65.1107, -14.7123, -1.55986)
+transform = Transform3D(-0.0733111, -0.388304, -0.918467, 0, 0.920938, -0.389356, 0.997153, -0.0285483, -0.0675261, -65.1107, -14.7123, -1.55986)
 
 [node name="PathFollow3D_Spine3" parent="WormAttackManager/InitialAttack/WormMover" index="3"]
-transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+transform = Transform3D(-0.0981598, -0.382784, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675263, -56.5303, -10.7087, -0.912927)
 
 [node name="PathFollow3D_Spine4" parent="WormAttackManager/InitialAttack/WormMover" index="4"]
-transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+transform = Transform3D(-0.0981598, -0.382784, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675263, -56.5303, -10.7087, -0.912927)
 
 [node name="PathFollow3D_Spine5" parent="WormAttackManager/InitialAttack/WormMover" index="5"]
-transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+transform = Transform3D(-0.0981598, -0.382784, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675263, -56.5303, -10.7087, -0.912927)
 
 [node name="PathFollow3D_Spine6" parent="WormAttackManager/InitialAttack/WormMover" index="6"]
-transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+transform = Transform3D(-0.0981598, -0.382784, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675263, -56.5303, -10.7087, -0.912927)
 
 [node name="PathFollow3D_Spine7" parent="WormAttackManager/InitialAttack/WormMover" index="7"]
-transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+transform = Transform3D(-0.0981598, -0.382784, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675263, -56.5303, -10.7087, -0.912927)
 
 [node name="PathFollow3D_Spine8" parent="WormAttackManager/InitialAttack/WormMover" index="8"]
-transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+transform = Transform3D(-0.0981598, -0.382784, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675263, -56.5303, -10.7087, -0.912927)
 
 [node name="PathFollow3D_Tail" parent="WormAttackManager/InitialAttack/WormMover" index="9"]
-transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+transform = Transform3D(-0.0981598, -0.382784, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675263, -56.5303, -10.7087, -0.912927)
 
 [node name="OnDeathAttack" type="Node3D" parent="WormAttackManager" index="1"]
 script = ExtResource("12_qnlan")
