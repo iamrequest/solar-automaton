@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl3q183x34vcw"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_mover.gd" id="1_xxg7b"]
+
+[sub_resource type="Curve3D" id="Curve3D_jve7l"]
+bake_interval = 18.75
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8.33662, 10.3941, 1.11129, 0, 0, 0, 0, 0, 0, -26.9719, 12.6007, 1.47219, 0, 0, 0, 0, 0, 0, -60.4202, 10.4889, 2.97668),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_7wnd3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[node name="WormMover" type="Path3D" node_paths=PackedStringArray("worm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, -37)
+curve = SubResource("Curve3D_jve7l")
+script = ExtResource("1_xxg7b")
+worm = NodePath("")
+speedCurve = SubResource("Curve_7wnd3")
+editor_update_pos = true
+
+[node name="PathFollow3D_Head" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132113, 0.770451, 0.623413, -8.93933e-08, 0.628923, -0.777272, -0.99108, -0.102703, -0.0831024, 0, 0, 0)
+loop = false
+
+[node name="PathFollow3D_Spine1" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132113, 0.770451, 0.623413, -8.93933e-08, 0.628923, -0.777272, -0.99108, -0.102703, -0.0831024, 0, 0, 0)
+loop = false
+
+[node name="PathFollow3D_Spine2" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132113, 0.770465, 0.623425, -8.93931e-08, 0.628934, -0.777286, -0.991078, -0.102705, -0.0831039, 0, 0, 0)
+loop = false
+
+[node name="PathFollow3D_Spine3" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132112, 0.770477, 0.623427, 0, 0.628944, -0.777289, -0.99107, -0.102706, -0.0831042, -7.54621, 9.79014, 1.04445)
+progress = 12.2062
+loop = false
+
+[node name="PathFollow3D_Spine4" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132112, 0.770477, 0.623427, 0, 0.628944, -0.777289, -0.99107, -0.102706, -0.0831042, -7.54621, 9.79014, 1.04445)
+progress = 12.2062
+loop = false
+
+[node name="PathFollow3D_Spine5" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132112, 0.770477, 0.623427, 0, 0.628944, -0.777289, -0.99107, -0.102706, -0.0831042, -7.54621, 9.79014, 1.04445)
+progress = 12.2062
+loop = false
+
+[node name="PathFollow3D_Spine6" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132112, 0.770477, 0.623427, 0, 0.628944, -0.777289, -0.99107, -0.102706, -0.0831042, -7.54621, 9.79014, 1.04445)
+progress = 12.2062
+loop = false
+
+[node name="PathFollow3D_Spine7" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132112, 0.770477, 0.623427, 0, 0.628944, -0.777289, -0.99107, -0.102706, -0.0831042, -7.54621, 9.79014, 1.04445)
+progress = 12.2062
+loop = false
+
+[node name="PathFollow3D_Spine8" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132112, 0.770477, 0.623427, 0, 0.628944, -0.777289, -0.99107, -0.102706, -0.0831042, -7.54621, 9.79014, 1.04445)
+progress = 12.2062
+loop = false
+
+[node name="PathFollow3D_Tail" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.132112, 0.770477, 0.623427, 0, 0.628944, -0.777289, -0.99107, -0.102706, -0.0831042, -7.54621, 9.79014, 1.04445)
+progress = 12.2062
+loop = false

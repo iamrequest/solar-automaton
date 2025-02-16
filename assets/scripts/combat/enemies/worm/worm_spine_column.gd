@@ -6,6 +6,7 @@ var health_component: HealthComponent:
 	get:
 		return $HealthComponent
 
+@export var marker_end: Marker3D
 @export var blasters : Array[WormSpineBlaster]
 var damage_on_blaster_death := 5
 @export var mat_dead: StandardMaterial3D
