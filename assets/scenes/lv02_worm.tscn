@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dkwduyhx37ym7"]
+[gd_scene load_steps=38 format=3 uid="uid://dkwduyhx37ym7"]
 
 [ext_resource type="PackedScene" uid="uid://d2uk2xiqpck2v" path="res://assets/scenes/combat_scene_base.tscn" id="1_rdqsq"]
 [ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="2_kqtge"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://bt3s3woyfms0c" path="res://assets/textures/vfx/request/ring_64x64.png" id="7_qgj5l"]
 [ext_resource type="Script" path="res://assets/scripts/env/env_rotator.gd" id="8_xscqn"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="9_6pv6w"]
+[ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="11_lcau0"]
+[ext_resource type="PackedScene" uid="uid://cyoaq543pakfk" path="res://assets/scenes/combat_zones/lv2/cz_02-01.tscn" id="12_ha1g6"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_attack_manager.gd" id="12_ld0s4"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_attack.gd" id="12_qnlan"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m1vau"]
 sky_top_color = Color(0.440422, 0.115129, 0.574259, 1)
@@ -136,6 +140,34 @@ curve_range_max = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_rv0a5"]
 
+[sub_resource type="Resource" id="Resource_nn7sn"]
+script = ExtResource("11_lcau0")
+spawnable_zones = Array[PackedScene]([ExtResource("12_ha1g6")])
+
+[sub_resource type="Curve3D" id="Curve3D_y1d4i"]
+bake_interval = 74.6
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -65.1107, -14.7123, -1.55986, 0, 0, 0, 0, 0, 0, -23.8698, 2.7705, 1.47219, 0, 0, 0, 0, 0, 0, 4.73218, 1.28688, 2.97668, 0, 0, 0, 0, 0, 0, 12.0617, -13.4342, 0.903065),
+"tilts": PackedFloat32Array(0, -0.236991, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_dk8vx"]
+bake_interval = 85.15
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -15, -15, 0, 0, 0, 0, 0, 0, 0, 22.4556, -15, 0, 0, 0, 0, 0, 0, -27.3066, 38.2898, -22.4414, 0, 0, 0, 0, 0, 0, -33.9101, 43.0269, 16.1458, 0, 0, 0, 0, 0, 0, 8.06934, 37.2039, 31.9911, 0, 0, 0, 0, 0, 0, 26.1891, 24.253, 2.33598, 0, 0, 0, 0, 0, 0, 0, 0, -67.0188, 0, 0, 0, 0, 0, 0, 0, 0, -171.48),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_c0tcr"]
+bake_interval = 18.75
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -74.0454, -10.8994, -1.55986, 0, 0, 0, 0, 0, 0, -52.8902, -0.821946, -0.527808, 0, 0, 0, 0, 0, 0, -17.5872, -1.44519, -0.800206, 0, 0, 0, 0, 0, 0, -3.95119, -7.87628, -0.497947),
+"tilts": PackedFloat32Array(0, -0.236991, 0, 0)
+}
+point_count = 4
+
 [node name="SceneBase" instance=ExtResource("1_rdqsq")]
 
 [node name="OvaniPlayer" parent="." index="1"]
@@ -155,10 +187,15 @@ transform = Transform3D(-1.48618e-05, -200, -3.92004e-07, 0, -8.74228e-06, 8.968
 mesh = SubResource("QuadMesh_84qwg")
 surface_material_override/0 = SubResource("StandardMaterial3D_w33fg")
 
-[node name="PlayerGround" parent="BaseLevelEnv/StaticEnv" index="1" instance=ExtResource("4_kait8")]
+[node name="Plane2" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="1"]
+transform = Transform3D(8.17401e-06, 168, -3.92004e-07, -7.14594e-13, -7.34351e-06, -8.968, -186.999, 7.34351e-06, 1.7135e-14, 0, 77.4451, -2)
+mesh = SubResource("QuadMesh_84qwg")
+surface_material_override/0 = SubResource("StandardMaterial3D_w33fg")
+
+[node name="PlayerGround" parent="BaseLevelEnv/StaticEnv" index="2" instance=ExtResource("4_kait8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00274301, -0.016634, 0.0049181)
 
-[node name="Sun" parent="BaseLevelEnv/StaticEnv" index="2" instance=ExtResource("5_2ir16")]
+[node name="Sun" parent="BaseLevelEnv/StaticEnv" index="3" instance=ExtResource("5_2ir16")]
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -95)
 
@@ -187,113 +224,202 @@ script = ExtResource("8_xscqn")
 rotation_config = SubResource("Resource_y7udg")
 t_scale = 0.5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="4"]
 transform = Transform3D(9.82096, 0, 0, 0, 10.5552, 0, 0, 0, 9.82096, 32.7247, -3.64858, -7.5911)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="4"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="5"]
 transform = Transform3D(9.82096, 0, 0, 0, 10.5552, 0, 0, 0, 9.82096, 36.8838, -1.32225, -10.0978)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="5"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="6"]
 transform = Transform3D(9.63633, 0, 0, 0, 10.3568, 0, 0, 0, 9.63633, 38.9612, -4.31291, -4.00772)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="6"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="7"]
 transform = Transform3D(-9.82096, 0, -8.58575e-07, 0, 10.5552, 0, 8.58575e-07, 0, -9.82096, -32.7942, -3.64856, 36.6539)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="7"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="8"]
 transform = Transform3D(-9.82096, 0, -8.58575e-07, 0, 10.5552, 0, 8.58575e-07, 0, -9.82096, -28.6351, -1.32223, 34.1472)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="8"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="9"]
 transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 10.3568, 0, 8.42434e-07, 0, -9.63633, -25.326, -4.31289, 39.4055)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="9"]
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="10"]
 transform = Transform3D(-4.29288e-07, 0, 9.82096, 0, 10.5552, 0, -9.82096, 0, -4.29288e-07, -40.5769, 0.113761, -2.02088)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="10"]
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="11"]
 transform = Transform3D(-4.29288e-07, 0, 9.82096, 0, 10.5552, 0, -9.82096, 0, -4.29288e-07, -36.4178, 2.44009, -4.52756)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="11"]
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="12"]
 transform = Transform3D(-4.21217e-07, 0, 9.63633, 0, 15.3317, 0, -9.63633, 0, -4.21217e-07, -32.9624, 4.43058, -10.6857)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="12"]
-transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 10.3568, 0, 8.42434e-07, 0, -9.63633, 21.1023, -4.31289, 19.122)
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="13"]
+transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 10.3568, 0, 8.42434e-07, 0, -9.63633, 31.0989, -4.31289, 23.6139)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="13"]
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="14"]
 transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 13.2314, 0, 8.42434e-07, 0, -9.63633, 31.3141, -4.3129, -59.9278)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D18" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="14"]
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="15"]
 transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 13.2314, 0, 8.42434e-07, 0, -9.63633, 34.1356, -0.875972, -65.3662)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D19" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="15"]
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="16"]
 transform = Transform3D(-7.01273, 0, -6.13073e-07, 0, 9.62904, 0, 6.13073e-07, 0, -7.01273, 34.4743, -0.875972, -60.9523)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="16"]
-transform = Transform3D(-3.89239, 0, -3.40283e-07, 0, 4.18339, 0, 3.40283e-07, 0, -3.89239, 16.9053, -1.02194, 8.55743)
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="17"]
+transform = Transform3D(-3.89239, 0, -3.40283e-07, 0, 4.18339, 0, 3.40283e-07, 0, -3.89239, 35.6095, -1.02194, 5.24837)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D16" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="17"]
-transform = Transform3D(-2.06559, 0, -1.8058e-07, 0, 6.61352, 0, 1.8058e-07, 0, -2.06559, 12.7706, -2.48989, 10.8431)
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="18"]
+transform = Transform3D(-2.06559, 0, -1.8058e-07, 0, 6.61352, 0, 1.8058e-07, 0, -2.06559, 31.4748, -2.48989, 7.53404)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D20" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="18"]
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="19"]
+transform = Transform3D(-3.89239, 0, -3.40283e-07, 0, 4.18339, 0, 3.40283e-07, 0, -3.89239, 22.6513, -1.02194, 29.4648)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="20"]
+transform = Transform3D(-2.06559, 0, -1.8058e-07, 0, 6.61352, 0, 1.8058e-07, 0, -2.06559, 18.5165, -2.48989, 31.7505)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="21"]
+transform = Transform3D(5.10425e-07, 0, -3.89239, 0, 4.18339, 0, 3.89239, 0, 5.10425e-07, -43.0729, -1.02194, 7.02517)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="22"]
+transform = Transform3D(2.7087e-07, 0, -2.06559, 0, 6.61352, 0, 2.06559, 0, 2.7087e-07, -40.7872, -2.48989, 11.1599)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="23"]
 transform = Transform3D(1.26365e-06, 0, -9.63633, 0, 10.3568, 0, 9.63633, 0, 1.26365e-06, 29.9194, -3.92782, -35.1663)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D21" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="19"]
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="24"]
 transform = Transform3D(5.10425e-07, 0, -3.89239, 0, 4.18339, 0, 3.89239, 0, 5.10425e-07, 21.4114, -0.636868, -30.9693)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D22" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="20"]
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="25"]
 transform = Transform3D(2.7087e-07, 0, -2.06559, 0, 6.61352, 0, 2.06559, 0, 2.7087e-07, 22.9154, -2.10482, -26.8345)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D23" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="21"]
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="26"]
 transform = Transform3D(-2.10609e-06, 0, 9.63633, 0, 10.3568, 0, -9.63633, 0, -2.10609e-06, -40.8159, -3.92782, -47.125)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D24" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="22"]
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="27"]
 transform = Transform3D(-8.50708e-07, 0, 3.89239, 0, 4.18339, 0, -3.89239, 0, -8.50708e-07, -32.3079, -0.636871, -51.3221)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D25" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="23"]
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="28"]
 transform = Transform3D(-4.5145e-07, 0, 2.06559, 0, 6.61352, 0, -2.06559, 0, -4.5145e-07, -33.8119, -2.10482, -55.4568)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="24"]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="29"]
 transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 14.6423, 0, 8.42434e-07, 0, -9.63633, 11.466, 2.27072, 48.031)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="25"]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="30"]
 transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 14.6423, 0, 8.42434e-07, 0, -9.63633, 13.7664, 0.495312, 41.3298)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="26"]
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="31"]
 transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 14.6423, 0, 8.42434e-07, 0, -9.63633, 8.04961, -2.51426, 43.8569)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="27"]
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="32"]
 transform = Transform3D(-9.63633, 0, -8.87617e-07, 0, 14.6423, 0, 8.42434e-07, 0, -10.1532, -13.9593, 3.68293, 60.5264)
 mesh = SubResource("BoxMesh_rv0a5")
 
-[node name="WormMover" parent="." index="10" node_paths=PackedStringArray("worm") instance=ExtResource("4_oucj7")]
-worm = NodePath("../Worm")
+[node name="CombatZoneManager" parent="." index="9"]
+level_config = SubResource("Resource_nn7sn")
+
+[node name="Worm" parent="." index="10" instance=ExtResource("5_taodn")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, -1, -15, 0, 6.698)
+
+[node name="WormAttackManager" type="Node3D" parent="." index="11" node_paths=PackedStringArray("initial_attack", "on_dead_attack")]
+script = ExtResource("12_ld0s4")
+initial_attack = NodePath("InitialAttack")
+on_dead_attack = NodePath("OnDeathAttack")
+
+[node name="InitialAttack" type="Node3D" parent="WormAttackManager" index="0" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("12_qnlan")
+next_attack_options = [NodePath("../HumpbackBreach")]
+
+[node name="WormMover" parent="WormAttackManager/InitialAttack" index="0" instance=ExtResource("4_oucj7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 11)
+curve = SubResource("Curve3D_y1d4i")
 speed = 5.0
+lerp_speed = 0.75
 editor_update_pos = false
 
-[node name="Worm" parent="." index="11" instance=ExtResource("5_taodn")]
-transform = Transform3D(-1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, -1, -11.6287, 0, 6.6981)
+[node name="PathFollow3D_Head" parent="WormAttackManager/InitialAttack/WormMover" index="0"]
+transform = Transform3D(-0.0733114, -0.388298, -0.91845, 1.48989e-08, 0.920922, -0.389349, 0.997155, -0.0285479, -0.0675249, -65.1107, -14.7123, -1.55986)
+
+[node name="PathFollow3D_Spine1" parent="WormAttackManager/InitialAttack/WormMover" index="1"]
+transform = Transform3D(-0.0733114, -0.388298, -0.91845, 1.48989e-08, 0.920922, -0.389349, 0.997155, -0.0285479, -0.0675249, -65.1107, -14.7123, -1.55986)
+
+[node name="PathFollow3D_Spine2" parent="WormAttackManager/InitialAttack/WormMover" index="2"]
+transform = Transform3D(-0.0733113, -0.388305, -0.918467, 1.48988e-08, 0.920938, -0.389356, 0.997153, -0.0285484, -0.0675262, -65.1107, -14.7123, -1.55986)
+
+[node name="PathFollow3D_Spine3" parent="WormAttackManager/InitialAttack/WormMover" index="3"]
+transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+
+[node name="PathFollow3D_Spine4" parent="WormAttackManager/InitialAttack/WormMover" index="4"]
+transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+
+[node name="PathFollow3D_Spine5" parent="WormAttackManager/InitialAttack/WormMover" index="5"]
+transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+
+[node name="PathFollow3D_Spine6" parent="WormAttackManager/InitialAttack/WormMover" index="6"]
+transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+
+[node name="PathFollow3D_Spine7" parent="WormAttackManager/InitialAttack/WormMover" index="7"]
+transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+
+[node name="PathFollow3D_Spine8" parent="WormAttackManager/InitialAttack/WormMover" index="8"]
+transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+
+[node name="PathFollow3D_Tail" parent="WormAttackManager/InitialAttack/WormMover" index="9"]
+transform = Transform3D(-0.09816, -0.382785, -0.91847, 0.0592957, 0.919041, -0.389357, 0.993238, -0.0926961, -0.0675264, -56.5303, -10.7087, -0.912928)
+
+[node name="OnDeathAttack" type="Node3D" parent="WormAttackManager" index="1"]
+script = ExtResource("12_qnlan")
+
+[node name="WormMover" parent="WormAttackManager/OnDeathAttack" index="0" instance=ExtResource("4_oucj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.205444, -0.731588, 0.0848045)
+curve = SubResource("Curve3D_dk8vx")
+speed = 10.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="HumpbackBreach" type="Node3D" parent="WormAttackManager" index="2"]
+script = ExtResource("12_qnlan")
+
+[node name="Left" parent="WormAttackManager/HumpbackBreach" index="0" instance=ExtResource("4_oucj7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 15)
+curve = SubResource("Curve3D_c0tcr")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Right" parent="WormAttackManager/HumpbackBreach" index="1" instance=ExtResource("4_oucj7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 15)
+curve = SubResource("Curve3D_c0tcr")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
 
 [editable path="Announcer"]
 [editable path="BaseLevelEnv/StaticEnv/Sun"]
+[editable path="WormAttackManager/InitialAttack/WormMover"]

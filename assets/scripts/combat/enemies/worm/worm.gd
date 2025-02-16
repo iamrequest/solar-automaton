@@ -22,6 +22,7 @@ func configure_rotation():
 		
 func _on_component_death() -> void:
 	if(!is_alive()):
+		on_worm_death()
 		on_death.emit()
 
 func is_alive() -> bool:
@@ -29,3 +30,12 @@ func is_alive() -> bool:
 		if(spine.health_component.is_alive):
 			return true
 	return false
+
+
+func on_worm_death():
+	# Resume combat zone speed, to complete the level after a short delay
+	var combat_zone_manager = (Globals.game_manager.combat_zone_manager as CombatZoneManager)
+	if(combat_zone_manager):
+		combat_zone_manager.set_speed(10.0)
+	else:
+		print("Missing combat zone manager reference")

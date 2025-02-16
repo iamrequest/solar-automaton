@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyoaq543pakfk"]
+
+[ext_resource type="PackedScene" uid="uid://cw8aox52warf7" path="res://assets/prefabs/combat_zones/combat_zone_base.tscn" id="1_8t71w"]
+[ext_resource type="PackedScene" uid="uid://covdv0d0l27gw" path="res://assets/prefabs/combat_zones/set_speed_area.tscn" id="2_q2ygi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3bfm3"]
+
+[node name="CombatZone" instance=ExtResource("1_8t71w")]
+
+[node name="SetSpeedArea" parent="MovingEnv" index="0" instance=ExtResource("2_q2ygi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+speed = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingEnv" index="1"]
+transform = Transform3D(1, 0, 0, 0, 7.41448, 0, 0, 0, 1, 5.03557, 0, 0)
+mesh = SubResource("BoxMesh_3bfm3")
