@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5fn8yvjl8k2l"]
+[gd_scene load_steps=12 format=3 uid="uid://c5fn8yvjl8k2l"]
 
 [ext_resource type="PackedScene" uid="uid://cw8aox52warf7" path="res://assets/prefabs/combat_zones/combat_zone_base.tscn" id="1_htti8"]
 [ext_resource type="PackedScene" uid="uid://u522cylpgift" path="res://assets/prefabs/combat_zones/set_bgm_area.tscn" id="2_6tni7"]
@@ -32,8 +32,6 @@ point_count = 5
 [sub_resource type="Curve" id="Curve_0psxj"]
 _data = [Vector2(0.0138889, 1), 0.0, 0.0, 0, 0, Vector2(0.502381, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="BoxMesh" id="BoxMesh_17rei"]
 
 [node name="CombatZone" instance=ExtResource("1_htti8")]
 
@@ -338,6 +336,3 @@ transform = Transform3D(1, 5.96047e-07, -4.47035e-07, 3.8743e-07, 1.00001, -3.27
 
 [node name="Debug_XRRigMarker" type="Marker3D" parent="." index="6"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -149)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_XRRigMarker" index="0"]
-mesh = SubResource("BoxMesh_17rei")

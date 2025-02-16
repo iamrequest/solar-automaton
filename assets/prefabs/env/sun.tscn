@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqde0xknx4nry"]
+[gd_scene load_steps=16 format=3 uid="uid://dqde0xknx4nry"]
 
 [ext_resource type="Texture2D" uid="uid://726ui7g204w0" path="res://assets/textures/vfx/request/glow-circle_64x64.png" id="1_eupcp"]
 [ext_resource type="Texture2D" uid="uid://bt3s3woyfms0c" path="res://assets/textures/vfx/request/ring_64x64.png" id="2_lvy28"]
+[ext_resource type="Script" path="res://assets/scripts/env/env_rotator.gd" id="3_jlxrk"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="4_2l36y"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5prr5"]
 
@@ -24,6 +26,17 @@ albedo_color = Color(0.871657, 0.75131, 0.506193, 1)
 albedo_texture = ExtResource("1_eupcp")
 texture_filter = 0
 
+[sub_resource type="Curve" id="Curve_cg55q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_rhex3"]
+script = ExtResource("4_2l36y")
+rotation_amount = Vector3(0, 0, -0.3)
+curve = SubResource("Curve_cg55q")
+curve_range_min = 0.0
+curve_range_max = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4hgx"]
 transparency = 1
 blend_mode = 1
@@ -34,6 +47,17 @@ albedo_color = Color(0.827451, 0.698039, 0.439216, 1)
 albedo_texture = ExtResource("2_lvy28")
 texture_filter = 0
 
+[sub_resource type="Curve" id="Curve_rg3qp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_g4ih1"]
+script = ExtResource("4_2l36y")
+rotation_amount = Vector3(0, 0, 0.15)
+curve = SubResource("Curve_rg3qp")
+curve_range_min = 0.0
+curve_range_max = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qj0dx"]
 transparency = 1
 blend_mode = 1
@@ -43,6 +67,17 @@ disable_fog = true
 albedo_color = Color(0.989572, 0.573846, 0.40651, 0.486275)
 albedo_texture = ExtResource("2_lvy28")
 texture_filter = 0
+
+[sub_resource type="Curve" id="Curve_ric1d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_65lry"]
+script = ExtResource("4_2l36y")
+rotation_amount = Vector3(0, 0, 0.2)
+curve = SubResource("Curve_ric1d")
+curve_range_min = 0.0
+curve_range_max = 1.0
 
 [node name="Sun" type="Node3D"]
 
@@ -57,6 +92,8 @@ transform = Transform3D(-3.02258e-06, -69.1486, -2.60738e-20, 69.1486, -3.02258e
 mesh = SubResource("QuadMesh_5prr5")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_kufsy")
+script = ExtResource("3_jlxrk")
+rotation_config = SubResource("Resource_rhex3")
 
 [node name="SunPlane2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.5353e-06, -35.1236, -3.32252e-20, 35.1236, -1.5353e-06, -1.5353e-06, 1.5353e-06, -6.71101e-14, 35.1236, 0, -3.34, 13.0776)
@@ -69,9 +106,13 @@ transform = Transform3D(-4.78779e-06, -109.532, -1.20975e-19, 109.532, -4.78779e
 mesh = SubResource("QuadMesh_5prr5")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_l4hgx")
+script = ExtResource("3_jlxrk")
+rotation_config = SubResource("Resource_g4ih1")
 
 [node name="SunRing2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-6.53346e-06, -149.468, -3.18448e-19, 149.468, -6.53346e-06, -6.53346e-06, 6.53346e-06, -2.85586e-13, 149.468, 0, -3.34, -6.82615)
 mesh = SubResource("QuadMesh_5prr5")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qj0dx")
+script = ExtResource("3_jlxrk")
+rotation_config = SubResource("Resource_65lry")
