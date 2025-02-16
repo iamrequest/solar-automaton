@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c12yha7ag7sbx"]
+[gd_scene load_steps=12 format=3 uid="uid://c12yha7ag7sbx"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/player/ship.gd" id="1_4wwgh"]
 [ext_resource type="PackedScene" uid="uid://b4mi7paxqw7q" path="res://assets/models/player/ship_mesh.tscn" id="2_xf4lp"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="6_3ur8m"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/hurtbox.gd" id="6_eqqm2"]
 [ext_resource type="AudioStream" uid="uid://brcstyla614pa" path="res://assets/audio/sfx/player/death/Megaton Mid-Range 002.wav" id="7_bubm0"]
+[ext_resource type="PackedScene" uid="uid://dh20lig1mpk4u" path="res://assets/prefabs/ui/viewport_health_readout.tscn" id="8_2a4aq"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="9_c80uk"]
+[ext_resource type="PackedScene" uid="uid://dn3dcsj3lbd3v" path="res://assets/prefabs/ui/ui_health_readout.tscn" id="9_ldot2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ssy3x"]
 radius = 0.0595276
@@ -71,6 +74,14 @@ sfx = Array[AudioStream]([ExtResource("7_bubm0")])
 script = ExtResource("6_3ur8m")
 sfx = Array[AudioStream]([ExtResource("7_bubm0")])
 pitch_scale_base = 2.0
+
+[node name="ViewportHealthReadout" parent="." instance=ExtResource("8_2a4aq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.141265)
+script = ExtResource("9_c80uk")
+screen_size = Vector2(0.05, 0.05)
+scene = ExtResource("9_ldot2")
+viewport_size = Vector2(600, 600)
+scene_properties_keys = PackedStringArray("ui_health_readout.gd")
 
 [connection signal="on_damage_recieved" from="HealthComponent" to="." method="_on_health_component_on_damage_recieved"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]

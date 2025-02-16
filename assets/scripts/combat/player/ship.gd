@@ -3,6 +3,10 @@ class_name Ship
 
 signal on_death
 
+var health_component: HealthComponent:
+	get:
+		return $HealthComponent
+		
 @export var move_speed := 1.0
 @export var move_lerp_speed = 0.9
 @export var rotation_lerp_speed = 1.0
@@ -75,13 +79,13 @@ func _on_health_component_on_death() -> void:
 	await $DeathTimer.timeout
 	queue_free()
 	
-func _on_health_component_on_damage_recieved(int: Variant) -> void:
+func _on_health_component_on_damage_recieved(damage: int) -> void:
 	time_slow(0.5, 0.5)
 	if($HealthComponent.is_alive()):
 		$DmgSFX.play_random_sfx()
 		Globals.xr_rig.trigger_haptics(Globals.xr_rig.is_right_handed, haptics_primary_intensity_on_dmg, haptics_duration_on_death)
 		Globals.xr_rig.trigger_haptics(!Globals.xr_rig.is_right_handed, haptics_secondary_intensity_on_dmg, haptics_duration_on_death)
-	
+
 
 func _on_level_completed() -> void:
 	visible = false

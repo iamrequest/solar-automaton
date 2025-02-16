@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://dh20lig1mpk4u"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_yc6pi"]
+[ext_resource type="Script" path="res://assets/scripts/ui/viewport_pause.gd" id="2_iuvyf"]
+[ext_resource type="PackedScene" uid="uid://38b43nn0dehm" path="res://assets/prefabs/ui/ui_pause.tscn" id="3_su1mf"]
+[ext_resource type="Material" uid="uid://bmabweb2f316b" path="res://assets/materials/ui/mat_viewport.tres" id="4_5b2oc"]
+[ext_resource type="PackedScene" uid="uid://dih0k1r7s4wvb" path="res://assets/prefabs/ui/sfx_player_ui.tscn" id="5_kpinm"]
+[ext_resource type="AudioStream" uid="uid://bkrxodo5h8q67" path="res://assets/audio/sfx/ui/Update Purr A.wav" id="6_kreub"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xnqwg"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_j6myh"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2yq7"]
+render_priority = 127
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_j6myh")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ohrh4"]
+resource_local_to_scene = true
+size = Vector3(3, 2, 0.02)
+
+[node name="ViewportHealthReadout" instance=ExtResource("1_yc6pi")]
+script = ExtResource("2_iuvyf")
+scene = ExtResource("3_su1mf")
+viewport_size = Vector2(500, 400)
+material = ExtResource("4_5b2oc")
+
+[node name="Screen" parent="." index="1"]
+mesh = SubResource("QuadMesh_xnqwg")
+surface_material_override/0 = SubResource("StandardMaterial3D_e2yq7")
+
+[node name="StaticBody3D" parent="." index="2"]
+viewport_size = Vector2(375, 250)
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_ohrh4")
+
+[node name="SFXPlayer" parent="." index="3" instance=ExtResource("5_kpinm")]
+stream = ExtResource("6_kreub")

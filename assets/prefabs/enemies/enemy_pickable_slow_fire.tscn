@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cuakaxl5b30is"]
+[gd_scene load_steps=13 format=3 uid="uid://cuakaxl5b30is"]
 
 [ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_pickable_base.tscn" id="1_tgkm4"]
-[ext_resource type="Script" path="res://assets/scripts/combat/pickup_spawner.gd" id="2_4hqd3"]
 [ext_resource type="PackedScene" uid="uid://d21ghr4qqcrj1" path="res://assets/models/enemy_small/enemy_small.tscn" id="2_vb2cu"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="4_6qt1d"]
 [ext_resource type="Material" uid="uid://bm5ctk0ly50eg" path="res://assets/materials/enemies/worm/mat_worm_body_dead.tres" id="4_adun5"]
 [ext_resource type="PackedScene" uid="uid://bf72m7oi8h0st" path="res://assets/prefabs/enemies/enemy_blaster.tscn" id="5_xo4vk"]
-[ext_resource type="PackedScene" uid="uid://cqutydvbsb6d5" path="res://assets/prefabs/health/health_pickup.tscn" id="7_dr8xe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mipss"]
 radius = 0.0508231
@@ -70,11 +68,5 @@ sight_radius = 10
 fire_rate = 1.0
 bullet_speed = 1.25
 aim_pos_offset = 0.1
-
-[node name="PickupSpawner" type="Node3D" parent="." index="10" node_paths=PackedStringArray("health_component")]
-script = ExtResource("2_4hqd3")
-health_component = NodePath("../HealthComponent")
-spawn_chance = 0.75
-pickup_prefab = ExtResource("7_dr8xe")
 
 [editable path="Hurtbox"]
