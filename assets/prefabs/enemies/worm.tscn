@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjtjdjheee1o1"]
+[gd_scene load_steps=10 format=3 uid="uid://bjtjdjheee1o1"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm.gd" id="1_cly7c"]
 [ext_resource type="PackedScene" uid="uid://cqwo11r8vcgj4" path="res://assets/models/worm/worm_head.tscn" id="1_mssm7"]
 [ext_resource type="PackedScene" uid="uid://ce0w1r5brioic" path="res://assets/models/worm/worm_spine.tscn" id="2_c0kny"]
 [ext_resource type="PackedScene" uid="uid://ch1noxjor3gdj" path="res://assets/models/worm/worm_tail.tscn" id="3_8po8o"]
+[ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="5_ncic3"]
+[ext_resource type="AudioStream" uid="uid://dl5pnbh4xcra7" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 001.wav" id="6_yf2rf"]
+[ext_resource type="AudioStream" uid="uid://bdsktaap35hc3" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 002.wav" id="7_y3mc0"]
+[ext_resource type="AudioStream" uid="uid://cm42biio4hkgi" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 003.wav" id="8_sm84a"]
+[ext_resource type="AudioStream" uid="uid://bpq5coiya4jkg" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 004.wav" id="9_bgbca"]
 
 [node name="Worm" type="Node3D" node_paths=PackedStringArray("head", "spine_columns", "tail")]
 script = ExtResource("1_cly7c")
@@ -44,3 +49,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49)
 
 [node name="Attacks" type="Node" parent="."]
+
+[node name="Whale" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+script = ExtResource("5_ncic3")
+sfx = Array[AudioStream]([ExtResource("6_yf2rf"), ExtResource("7_y3mc0"), ExtResource("8_sm84a"), ExtResource("9_bgbca")])

@@ -6,9 +6,9 @@
 [ext_resource type="Material" uid="uid://bm5ctk0ly50eg" path="res://assets/materials/enemies/worm/mat_worm_body_dead.tres" id="4_adun5"]
 [ext_resource type="PackedScene" uid="uid://bf72m7oi8h0st" path="res://assets/prefabs/enemies/enemy_blaster.tscn" id="5_xo4vk"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rm7s4"]
-radius = 0.15238
-height = 0.438325
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mipss"]
+radius = 0.0508231
+height = 0.212642
 
 [sub_resource type="Curve" id="Curve_pvsgy"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.233491, 0.715116), 0.0, 0.0, 0, 0, Vector2(0.320755, 0.348837), -0.126416, -0.126416, 0, 0, Vector2(0.42217, 0.55814), 0.0, 0.0, 0, 0, Vector2(0.490566, 0.965116), 0.0, 0.0, 0, 0, Vector2(0.570755, 0.0290697), 0.0, 0.0, 0, 0, Vector2(0.709906, 0.912791), 0.0, 0.0, 0, 0, Vector2(0.981132, 1), 0.0, 0.0, 0, 0]
@@ -48,10 +48,14 @@ mesh = NodePath("mesh")
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(4.0665, 0, 0, 0, 4.0665, 0, 0, 0, 4.0665, 0, 0.394791, 0)
+shape = SubResource("CapsuleShape3D_mipss")
+
+[node name="HealthComponent" parent="." index="1"]
+health_max = 15
 
 [node name="CollisionShape3D" parent="Hurtbox" index="0"]
 transform = Transform3D(3.37513, 0, 0, 0, 3.37513, 0, 0, 0, 3.37513, 0, 0.39762, 0)
-shape = SubResource("CapsuleShape3D_rm7s4")
+shape = SubResource("CapsuleShape3D_mipss")
 
 [node name="mesh" parent="." index="4" node_paths=PackedStringArray("health_component") instance=ExtResource("2_vb2cu")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

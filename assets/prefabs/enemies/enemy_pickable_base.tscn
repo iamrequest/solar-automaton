@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://43o1w333a816"]
+[gd_scene load_steps=19 format=3 uid="uid://43o1w333a816"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/pickable_enemy.gd" id="1_1qw0c"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="1_dh1ev"]
@@ -19,10 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://bc88kx44guj6t" path="res://assets/audio/sfx/enemy/godhand_death/Massive Punch C.wav" id="12_wyenc"]
 [ext_resource type="AudioStream" uid="uid://bpq5coiya4jkg" path="res://assets/audio/sfx/enemy/explosion/Fire Bomb Far 004.wav" id="13_p4bp3"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
-radius = 0.130049
-height = 0.35574
-
 [node name="Enemy" type="RigidBody3D"]
 collision_layer = 516
 collision_mask = 196864
@@ -41,7 +37,6 @@ picked_up_layer = 66048
 release_mode = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_4sr6u")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_dh1ev")
@@ -49,6 +44,9 @@ health_max = 10
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_6d6dm")]
 health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0"]
+shape = null
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.3

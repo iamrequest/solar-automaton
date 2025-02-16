@@ -29,7 +29,8 @@ func _ready() -> void:
 	Globals.game_manager = self
 	
 	await get_tree().process_frame 
-	Globals.xr_rig.get_non_dominant_hand().button_pressed.connect(on_non_dominant_input_pressed)
+	Globals.xr_rig.get_dominant_hand().button_pressed.connect(on_input_pressed)
+	Globals.xr_rig.get_non_dominant_hand().button_pressed.connect(on_input_pressed)
 
 
 func _on_ship_on_death() -> void:
@@ -62,12 +63,12 @@ func load_next_level() -> void:
 	
 
 #region Pausing	
-func on_non_dominant_input_pressed(name: String):
+func on_input_pressed(name: String):
 	if(name == "ax_button"):
 		toggle_pause(true)
 	elif(name == "by_button"):
 		toggle_pause(true)
-			
+
 			
 func toggle_pause(is_paused: bool, force:= false) -> void:
 	if(!can_toggle_pause):

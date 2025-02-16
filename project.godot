@@ -46,6 +46,7 @@ katamari_spawn={
 3d_physics/layer_5="Grappling Target"
 3d_physics/layer_9="Player"
 3d_physics/layer_10="Enemy"
+3d_physics/layer_11="HitboxEnv"
 3d_physics/layer_17="Held Objects"
 3d_physics/layer_18="Player Hands"
 3d_physics/layer_19="Player Body"

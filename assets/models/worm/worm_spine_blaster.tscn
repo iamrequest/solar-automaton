@@ -32,7 +32,7 @@ surface_material_override/1 = ExtResource("3_y851k")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_of5qe")
-health_max = 5
+health_max = 20
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 512
