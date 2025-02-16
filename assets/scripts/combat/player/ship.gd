@@ -18,6 +18,9 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	%GameManager.on_level_completed.connect(_on_level_completed)
 	$HealthComponent.invincibility_enabled = Globals.invincibility_enabled
+	
+	$HealthComponent.health_max = Globals.health_max
+	$HealthComponent.health_current = Globals.health_max
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

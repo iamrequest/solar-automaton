@@ -33,9 +33,4 @@ func is_alive() -> bool:
 
 
 func on_worm_death():
-	# Resume combat zone speed, to complete the level after a short delay
-	var combat_zone_manager = (Globals.game_manager.combat_zone_manager as CombatZoneManager)
-	if(combat_zone_manager):
-		combat_zone_manager.set_speed(10.0)
-	else:
-		print("Missing combat zone manager reference")
+	pass

@@ -26,7 +26,7 @@ shadow_offset = Vector2(6.095, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_3vhi5"]
 font_size = 32
 
-[node name="UiTitle" type="Control"]
+[node name="UiTitle" type="Control" node_paths=PackedStringArray("health_readout", "button_invincibility")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +36,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_h3wh4")
 script = ExtResource("2_kmtto")
+health_readout = NodePath("SettingsPage/VBoxContainer/CreditsEntry4/HealthReadout")
+button_invincibility = NodePath("SettingsPage/VBoxContainer/CreditsEntry5/Invincibility")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -126,6 +128,14 @@ audio_player = NodePath("../../../../SFXPlayer")
 sfx_hover = ExtResource("4_mm3qq")
 sfx_select = ExtResource("6_07exd")
 
+[node name="GoToSettingsPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
+layout_mode = 2
+text = "Difficulty "
+script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
+
 [node name="GoToCreditsPageButton" type="Button" parent="TitlePage/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
 text = "Credits"
@@ -198,6 +208,119 @@ sfx_hover = ExtResource("4_mm3qq")
 sfx_select = ExtResource("6_07exd")
 
 [node name="GoToTitlePageButton" type="Button" parent="LevelSelectPage" node_paths=PackedStringArray("audio_player")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 53.0
+grow_horizontal = 0
+size_flags_horizontal = 10
+text = "Back"
+script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
+
+[node name="SettingsPage" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 67.0
+offset_right = -17.035
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h3wh4")
+theme_override_constants/separation = 0
+
+[node name="Title2" type="Label" parent="SettingsPage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="CreditsEntry4" type="HBoxContainer" parent="SettingsPage/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="SettingsPage/VBoxContainer/CreditsEntry4"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player Health"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="HealthReset" type="Button" parent="SettingsPage/VBoxContainer/CreditsEntry4"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Reset"
+
+[node name="Spacing" type="MarginContainer" parent="SettingsPage/VBoxContainer/CreditsEntry4"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="HealthDecrease" type="Button" parent="SettingsPage/VBoxContainer/CreditsEntry4" node_paths=PackedStringArray("audio_player")]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "<"
+script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
+
+[node name="HealthReadout" type="Label" parent="SettingsPage/VBoxContainer/CreditsEntry4"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "3"
+label_settings = SubResource("LabelSettings_3vhi5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthIncrease" type="Button" parent="SettingsPage/VBoxContainer/CreditsEntry4" node_paths=PackedStringArray("audio_player")]
+layout_mode = 2
+text = ">"
+script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
+
+[node name="Spacing" type="MarginContainer" parent="SettingsPage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="CreditsEntry5" type="HBoxContainer" parent="SettingsPage/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="SettingsPage/VBoxContainer/CreditsEntry5"]
+custom_minimum_size = Vector2(0, 75.965)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Invincibility"
+label_settings = SubResource("LabelSettings_3vhi5")
+vertical_alignment = 1
+
+[node name="Invincibility" type="Button" parent="SettingsPage/VBoxContainer/CreditsEntry5" node_paths=PackedStringArray("audio_player")]
+layout_mode = 2
+text = "Enabled"
+script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
+
+[node name="GoToTitlePageButton" type="Button" parent="SettingsPage" node_paths=PackedStringArray("audio_player")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -341,9 +464,15 @@ sfx_select = ExtResource("6_07exd")
 
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToLevelSelectPageButton" to="." method="_on_go_to_level_select_page_button_pressed"]
+[connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToSettingsPageButton" to="." method="_on_go_to_settings_page_button_pressed"]
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToCreditsPageButton" to="." method="_on_go_to_credits_page_button_pressed"]
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LevelSelectPage/VBoxContainer/Lv1" to="." method="_on_lv_1_pressed"]
 [connection signal="pressed" from="LevelSelectPage/VBoxContainer/Lv2" to="." method="_on_lv_2_pressed"]
 [connection signal="pressed" from="LevelSelectPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]
+[connection signal="pressed" from="SettingsPage/VBoxContainer/CreditsEntry4/HealthReset" to="." method="_on_health_reset_pressed"]
+[connection signal="pressed" from="SettingsPage/VBoxContainer/CreditsEntry4/HealthDecrease" to="." method="_on_health_decrease_pressed"]
+[connection signal="pressed" from="SettingsPage/VBoxContainer/CreditsEntry4/HealthIncrease" to="." method="_on_health_increase_pressed"]
+[connection signal="pressed" from="SettingsPage/VBoxContainer/CreditsEntry5/Invincibility" to="." method="_on_invincibility_pressed"]
+[connection signal="pressed" from="SettingsPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]
 [connection signal="pressed" from="CreditsPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]

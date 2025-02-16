@@ -19,6 +19,7 @@ func _ready() -> void:
 			child.on_attack_finished.connect(_on_attack_finished)
 	
 	initial_attack.on_attack_finished.connect(_on_attack_finished)
+	on_dead_attack.on_attack_started.connect(_on_death_attack_started)
 	start_attack(initial_attack)
 	
 
@@ -29,9 +30,18 @@ func start_attack(attack: WormAttack) -> void:
 func _on_attack_finished(last_attack: WormAttack):
 	if(!%Worm.is_alive()):
 		on_dead_attack.start_attack()
+		
 	else:
 		if(last_attack.next_attack_options.size() == 0):
 			print("Error! No followup attacks listed in attack %s " %last_attack.get_path())
 			on_dead_attack.start_attack()
 		else:
 			start_attack(last_attack.next_attack_options.pick_random())
+
+func _on_death_attack_started(attack: WormAttack) -> void:
+	# Resume combat zone speed, to complete the level after a short delay
+	var combat_zone_manager = (Globals.game_manager.combat_zone_manager as CombatZoneManager)
+	if(combat_zone_manager):
+		combat_zone_manager.set_speed(10.0)
+	else:
+		print("Missing combat zone manager reference")

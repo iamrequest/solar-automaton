@@ -22,6 +22,7 @@ var is_paused:= false
 var can_toggle_pause:= true
 var is_game_over:= false
 var currency:= 0
+@export var pause_on_mission_complete:= true
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -42,7 +43,8 @@ func _on_ship_on_death() -> void:
 func _on_combat_zone_manager_on_level_end() -> void:
 	is_game_over = true
 	on_level_completed.emit()
-	toggle_pause(true, true)
+	if(pause_on_mission_complete):
+		toggle_pause(true, true)
 
 
 func load_next_level() -> void:
