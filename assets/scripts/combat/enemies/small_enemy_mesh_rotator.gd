@@ -8,10 +8,13 @@ extends Node3D
 @export var ring_lower_rotation: RotationConfig
 @export var ring_upper_rotation: RotationConfig
 
+@export var health_component: HealthComponent
+@export var death_mat: StandardMaterial3D
 var t:= 0.0
 
 func _ready() -> void:
 	t = randf_range(0, 500)
+	health_component.on_death.connect(_on_death)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -36,3 +39,6 @@ func apply_rotation(target_mesh: Node3D, rotation_config: RotationConfig):
 	var rotation_amount = rotation_config.rotation_amount * curve_output_remapped
 	target_mesh.rotation_degrees += rotation_amount
 	
+func _on_death() -> void:
+	$enemy_small/body.set_surface_override_material(0, death_mat)
+	$enemy_small/head.set_surface_override_material(0, death_mat)

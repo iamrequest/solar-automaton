@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2rvih8pagkx8"]
+[gd_scene load_steps=11 format=3 uid="uid://2rvih8pagkx8"]
 
 [ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="1_30vi4"]
 [ext_resource type="PackedScene" uid="uid://d2uk2xiqpck2v" path="res://assets/scenes/combat_scene_base.tscn" id="1_ywbp1"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="2_xudlf"]
 [ext_resource type="Resource" uid="uid://ho11of71h2yt" path="res://assets/audio/bgm/synthpop_sunset_strip/synthpop_sunset-strip.tres" id="3_nansp"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="3_vl68n"]
-[ext_resource type="PackedScene" uid="uid://bjtjdjheee1o1" path="res://assets/prefabs/enemies/worm.tscn" id="8_b5sr6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mr7fh"]
 
@@ -134,14 +133,11 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_vl68n")
 
 [node name="CombatZoneManager" parent="." index="9"]
-move_speed = 3
+move_speed = 7
 
 [node name="Sun" parent="CombatZoneManager/SpawnMarker" index="0" instance=ExtResource("2_elror")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00273383, 0.016634, -43.9581)
 
 [node name="PlayerGround" parent="CombatZoneManager/XRRigMarker" index="0" instance=ExtResource("2_8m3dp")]
-
-[node name="Worm" parent="." index="10" instance=ExtResource("8_b5sr6")]
-transform = Transform3D(0, 0, -0.2, 0, 0.2, 0, 0.2, 0, 0, -5.57652, 1.77439, -2.28328)
 
 [editable path="Announcer"]

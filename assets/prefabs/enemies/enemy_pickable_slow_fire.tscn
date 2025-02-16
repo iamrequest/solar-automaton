@@ -1,14 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://cuakaxl5b30is"]
+[gd_scene load_steps=18 format=3 uid="uid://cuakaxl5b30is"]
 
 [ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_pickable_base.tscn" id="1_tgkm4"]
 [ext_resource type="PackedScene" uid="uid://d21ghr4qqcrj1" path="res://assets/models/enemy_small/enemy_small.tscn" id="2_vb2cu"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="4_6qt1d"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/enemy_blaster.gd" id="4_8qs2l"]
+[ext_resource type="Material" uid="uid://bm5ctk0ly50eg" path="res://assets/materials/enemies/worm/mat_worm_body_dead.tres" id="4_adun5"]
 [ext_resource type="PackedScene" uid="uid://dilga1cajf2jy" path="res://assets/prefabs/enemies/bullet_enemy.tscn" id="5_f4ubh"]
 [ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="6_ocfj4"]
 [ext_resource type="AudioStream" uid="uid://cnforw8ok8x0" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 001.wav" id="7_fwx6m"]
 [ext_resource type="AudioStream" uid="uid://dr4861au3880q" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 003.wav" id="8_43e6r"]
 [ext_resource type="AudioStream" uid="uid://bpbxvncl02po1" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 005.wav" id="9_yju14"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rm7s4"]
+radius = 0.15238
+height = 0.438325
 
 [sub_resource type="Curve" id="Curve_pvsgy"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.233491, 0.715116), 0.0, 0.0, 0, 0, Vector2(0.320755, 0.348837), -0.126416, -0.126416, 0, 0, Vector2(0.42217, 0.55814), 0.0, 0.0, 0, 0, Vector2(0.490566, 0.965116), 0.0, 0.0, 0, 0, Vector2(0.570755, 0.0290697), 0.0, 0.0, 0, 0, Vector2(0.709906, 0.912791), 0.0, 0.0, 0, 0, Vector2(0.981132, 1), 0.0, 0.0, 0, 0]
@@ -51,19 +56,22 @@ transform = Transform3D(4.0665, 0, 0, 0, 4.0665, 0, 0, 0, 4.0665, 0, 0.394791, 0
 
 [node name="CollisionShape3D" parent="Hurtbox" index="0"]
 transform = Transform3D(3.37513, 0, 0, 0, 3.37513, 0, 0, 0, 3.37513, 0, 0.39762, 0)
+shape = SubResource("CapsuleShape3D_rm7s4")
 
-[node name="mesh" parent="." index="4" instance=ExtResource("2_vb2cu")]
+[node name="mesh" parent="." index="4" node_paths=PackedStringArray("health_component") instance=ExtResource("2_vb2cu")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 head_rotation = SubResource("Resource_jcmrl")
 ring_lower_rotation = SubResource("Resource_asuqd")
 ring_upper_rotation = SubResource("Resource_p1q6w")
+health_component = NodePath("../HealthComponent")
+death_mat = ExtResource("4_adun5")
 
 [node name="EnemyBlaster" type="Node3D" parent="." index="5" node_paths=PackedStringArray("health_component", "bullet_spawn_points")]
 script = ExtResource("4_8qs2l")
 health_component = NodePath("../HealthComponent")
 bullet_prefab = ExtResource("5_f4ubh")
 bullet_spawn_points = [NodePath("Marker3D")]
-fire_rate = 0.75
+fire_rate = 1.25
 bullet_speed = 0.75
 bullet_lifetime = 10
 fire_mode = 1

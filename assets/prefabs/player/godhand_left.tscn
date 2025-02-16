@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cble3i4adofrw"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/player/godhand.gd" id="1_rxwba"]
+[ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="2_jp67u"]
+[ext_resource type="Material" uid="uid://cyrclf6gf0r3d" path="res://assets/materials/player/mat_hand.tres" id="3_i7wto"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="4_68n2d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sw5aj"]
+size = Vector3(0.0846558, 0.145447, 0.192078)
+
+[node name="Godhand_Left" type="Area3D" node_paths=PackedStringArray("hand")]
+collision_layer = 131072
+collision_mask = 512
+script = ExtResource("1_rxwba")
+hand = NodePath("LeftHand")
+
+[node name="LeftHand" parent="." instance=ExtResource("2_jp67u")]
+hand_material_override = ExtResource("3_i7wto")
+
+[node name="XRToolsFunctionPickup" type="Node3D" parent="."]
+script = ExtResource("4_68n2d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0273743, -0.0413513, 0.0867004)
+shape = SubResource("BoxShape3D_sw5aj")
