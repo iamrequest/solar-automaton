@@ -8,7 +8,7 @@ class_name PathMover
 @export var speed:= 1.0
 @export var lerp_speed:= 0.9
 @export var speedCurve: Curve
-
+@export var free_self_on_complete:= false
 signal path_completed
 
 func _ready() -> void:
@@ -33,6 +33,8 @@ func do_move(delta):
 	
 	if($PathFollow3D.progress_ratio >= 1.0):
 		path_completed.emit()
+		if(free_self_on_complete):
+			queue_free()
 
 func reset():
 	$PathFollow3D.progress_ratio = 0.0

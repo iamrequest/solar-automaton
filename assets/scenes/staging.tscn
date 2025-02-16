@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b0pduhjuar420" path="res://assets/textures/made-by-request.png" id="2_p1u66"]
 
 [node name="Staging" instance=ExtResource("1_tfjvh")]
-main_scene_ref = 2
+main_scene_ref = 3
 prompt_for_continue = false
 
 [node name="LoadingScreen" parent="." index="2"]

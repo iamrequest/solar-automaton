@@ -179,6 +179,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 60.0
+offset_right = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_h3wh4")
@@ -191,15 +193,23 @@ size_flags_horizontal = 3
 text = "Level Select"
 horizontal_alignment = 1
 
-[node name="Lv1" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
+[node name="LvSunset1" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
-text = "Sunset"
+text = "Sunset 1"
 script = ExtResource("3_6w5eg")
 audio_player = NodePath("../../../SFXPlayer")
 sfx_hover = ExtResource("4_mm3qq")
 sfx_select = ExtResource("6_07exd")
 
-[node name="Lv2" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
+[node name="LvSunset2" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
+layout_mode = 2
+text = "Sunset 2"
+script = ExtResource("3_6w5eg")
+audio_player = NodePath("../../../SFXPlayer")
+sfx_hover = ExtResource("4_mm3qq")
+sfx_select = ExtResource("6_07exd")
+
+[node name="LvWorm" type="Button" parent="LevelSelectPage/VBoxContainer" node_paths=PackedStringArray("audio_player")]
 layout_mode = 2
 text = "???"
 script = ExtResource("3_6w5eg")
@@ -467,8 +477,10 @@ sfx_select = ExtResource("6_07exd")
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToSettingsPageButton" to="." method="_on_go_to_settings_page_button_pressed"]
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/GoToCreditsPageButton" to="." method="_on_go_to_credits_page_button_pressed"]
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="LevelSelectPage/VBoxContainer/Lv1" to="." method="_on_lv_1_pressed"]
-[connection signal="pressed" from="LevelSelectPage/VBoxContainer/Lv2" to="." method="_on_lv_2_pressed"]
+[connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvSunset1" to="." method="_on_lv_sunset_1_pressed"]
+[connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvSunset2" to="." method="_on_lv_sunset_2_pressed"]
+[connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvWorm" to="." method="_on_lv_2_pressed"]
+[connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvWorm" to="." method="_on_lv_worm_pressed"]
 [connection signal="pressed" from="LevelSelectPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]
 [connection signal="pressed" from="SettingsPage/VBoxContainer/CreditsEntry4/HealthReset" to="." method="_on_health_reset_pressed"]
 [connection signal="pressed" from="SettingsPage/VBoxContainer/CreditsEntry4/HealthDecrease" to="." method="_on_health_decrease_pressed"]

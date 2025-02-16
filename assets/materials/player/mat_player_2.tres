@@ -5,5 +5,5 @@
 [resource]
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.171211, 0.216693, 0.325375, 1)
+albedo_color = Color(0.15632, 0.351769, 0.439161, 1)
 albedo_texture = ExtResource("1_kwhi8")

@@ -21,7 +21,7 @@ texture_filter = 0
 [node name="Bullet" type="Area3D"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 collision_layer = 512
-collision_mask = 256
+collision_mask = 1280
 script = ExtResource("1_faxv5")
 damage = 1
 

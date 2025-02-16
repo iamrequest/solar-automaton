@@ -50,9 +50,6 @@ mesh = NodePath("mesh")
 transform = Transform3D(4.0665, 0, 0, 0, 4.0665, 0, 0, 0, 4.0665, 0, 0.394791, 0)
 shape = SubResource("CapsuleShape3D_mipss")
 
-[node name="HealthComponent" parent="." index="1"]
-health_max = 15
-
 [node name="CollisionShape3D" parent="Hurtbox" index="0"]
 transform = Transform3D(3.37513, 0, 0, 0, 3.37513, 0, 0, 0, 3.37513, 0, 0.39762, 0)
 shape = SubResource("CapsuleShape3D_mipss")
@@ -67,5 +64,9 @@ death_mat = ExtResource("4_adun5")
 
 [node name="EnemyBlaster" parent="." index="5" node_paths=PackedStringArray("health_component") instance=ExtResource("5_xo4vk")]
 health_component = NodePath("../HealthComponent")
+sight_radius = 10
+fire_rate = 1.0
+bullet_speed = 1.25
+aim_pos_offset = 0.1
 
 [editable path="Hurtbox"]

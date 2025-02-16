@@ -15,6 +15,7 @@ var is_active := true
 @export var fire_mode: FireMode
 @export var fire_mode_grabbed: FireMode
 @export var apply_initial_bullet_velocity := true
+@export var aim_pos_offset: float
 
 var rb : RigidBody3D
 var is_on_cooldown = false
@@ -104,13 +105,20 @@ func init_bullet(bullet: Bullet, spawn_point: Node3D):
 			bullet.speed = bullet_speed
 			
 		FireMode.AimAtShip:
-			bullet.look_at(Globals.xr_rig.get_dominant_hand().global_position)
+			bullet.look_at(Globals.xr_rig.get_dominant_hand().global_position + get_offset_pos())
 			
 			if(apply_initial_bullet_velocity):
 				bullet.initial_velocity = get_linear_velocity()
 				
 			bullet.speed = bullet_speed
 
+func get_offset_pos():
+	var pos = Vector3.ZERO
+	pos.x += randf_range(-aim_pos_offset, aim_pos_offset)
+	pos.y += randf_range(-aim_pos_offset, aim_pos_offset)
+	pos.y += randf_range(-aim_pos_offset, aim_pos_offset)
+	return pos
+	
 func _on_fire_cooldown_timer_timeout() -> void:
 	is_on_cooldown = false
 

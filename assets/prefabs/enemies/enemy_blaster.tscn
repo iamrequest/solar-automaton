@@ -7,9 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://dr4861au3880q" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 003.wav" id="5_0kfmy"]
 [ext_resource type="AudioStream" uid="uid://bpbxvncl02po1" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 005.wav" id="6_pms6r"]
 
-[node name="EnemyBlaster" type="Node3D" node_paths=PackedStringArray("health_component", "bullet_spawn_points")]
+[node name="EnemyBlaster" type="Node3D" node_paths=PackedStringArray("bullet_spawn_points")]
 script = ExtResource("1_eejgi")
-health_component = NodePath("")
 bullet_prefab = ExtResource("2_pcl30")
 bullet_spawn_points = [NodePath("Marker3D")]
 fire_rate = 1.25

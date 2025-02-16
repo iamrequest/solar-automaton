@@ -8,7 +8,7 @@ func _ready() -> void:
 	button_invincibility.text = "Enabled" if Globals.invincibility_enabled else "Disabled"
 	
 func _on_start_button_pressed() -> void:
-	load_level(scenes.Scenes.Sunset)
+	load_level(scenes.Scenes.Sunset_1)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
@@ -41,13 +41,15 @@ func go_to_page(page: Control) -> void:
 	page.visible = true
 
 
-func _on_lv_1_pressed() -> void:
-	load_level(scenes.Scenes.Sunset)
+func _on_lv_sunset_1_pressed() -> void:
+	load_level(scenes.Scenes.Sunset_1)
+
+func _on_lv_sunset_2_pressed() -> void:
+	load_level(scenes.Scenes.Sunset_2)
 
 
-func _on_lv_2_pressed() -> void:
+func _on_lv_worm_pressed() -> void:
 	load_level(scenes.Scenes.WormBoss)
-
 
 func _on_health_decrease_pressed() -> void:
 	Globals.health_max = max(1, Globals.health_max - 1)

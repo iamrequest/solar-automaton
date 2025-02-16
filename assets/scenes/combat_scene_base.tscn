@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2uk2xiqpck2v"]
+[gd_scene load_steps=18 format=3 uid="uid://d2uk2xiqpck2v"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_v4p7m"]
 [ext_resource type="Script" path="res://assets/scripts/game_manager.gd" id="2_xp1kf"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://ld3e3ild5far" path="res://assets/prefabs/ui/viewport_level_complete.tscn" id="8_c14nl"]
 [ext_resource type="PackedScene" uid="uid://d2lli8sr4ipqb" path="res://assets/prefabs/combat_zones/combat_zone_manager.tscn" id="9_ssecv"]
 [ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="10_eq1ch"]
-[ext_resource type="PackedScene" uid="uid://c5fn8yvjl8k2l" path="res://assets/scenes/combat_zones/lv1/cz_01.tscn" id="11_ytf4l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ms8b"]
 sky_top_color = Color(0.867338, 0.526165, 0.0738397, 1)
@@ -52,7 +51,7 @@ volumetric_fog_albedo = Color(0.667028, 0.451124, 0.75044, 1)
 
 [sub_resource type="Resource" id="Resource_4fkhu"]
 script = ExtResource("10_eq1ch")
-spawnable_zones = Array[PackedScene]([ExtResource("11_ytf4l"), ExtResource("11_ytf4l")])
+spawnable_zones = Array[PackedScene]([])
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_v4p7m")

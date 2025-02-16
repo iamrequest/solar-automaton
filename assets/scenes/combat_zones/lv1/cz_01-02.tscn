@@ -1,0 +1,333 @@
+[gd_scene load_steps=13 format=3 uid="uid://deg4mtw5v7dx0"]
+
+[ext_resource type="PackedScene" uid="uid://cw8aox52warf7" path="res://assets/prefabs/combat_zones/combat_zone_base.tscn" id="1_3x4cn"]
+[ext_resource type="PackedScene" uid="uid://u522cylpgift" path="res://assets/prefabs/combat_zones/set_bgm_area.tscn" id="2_5sp3d"]
+[ext_resource type="PackedScene" uid="uid://covdv0d0l27gw" path="res://assets/prefabs/combat_zones/set_speed_area.tscn" id="2_w7r8n"]
+[ext_resource type="PackedScene" uid="uid://cieu51vw0scpy" path="res://assets/prefabs/combat_zones/env_hitbox_.tscn" id="4_otd4v"]
+[ext_resource type="PackedScene" uid="uid://cuakaxl5b30is" path="res://assets/prefabs/enemies/enemy_pickable_slow_fire.tscn" id="5_sjk2j"]
+[ext_resource type="PackedScene" uid="uid://cdgmcil1bee2l" path="res://assets/prefabs/enemies/enemy_activation_zone.tscn" id="6_r2cte"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/path_mover.gd" id="7_mbxi3"]
+
+[sub_resource type="Curve3D" id="Curve3D_jjl08"]
+bake_interval = 213.08
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.425, -4.558, -0.38, 0, 0, 0, 0, 0, 0, 0, 2.125, 0, 0, 0, 0, 0, 0, 0, 3.24265, 1, 0, 0, 0, 0, 0, 0, 0, 3.90479, -3.84768, -3.11292),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_5kq45"]
+_data = [Vector2(0.0138889, 1), 0.0, 0.0, 0, 0, Vector2(0.502381, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_88of7"]
+bake_interval = 213.08
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.425, -4.558, -0.38, 0, 0, 0, 0, 0, 0, 0, 2.125, 0, 0, 0, 0, 0, 0, 0, 3.24265, 1, 0, 0, 0, 0, 0, 0, 0, 3.90479, -3.84768, 3.88708, 0, 0, 0, 0, 0, 0, 4.52515, 0.0651727, 2.71728),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_0psxj"]
+_data = [Vector2(0.0138889, 1), 0.0, 0.0, 0, 0, Vector2(0.502381, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="BoxMesh" id="BoxMesh_17rei"]
+
+[node name="CombatZone" instance=ExtResource("1_3x4cn")]
+
+[node name="CombatZoneEnd" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 122.897)
+
+[node name="SetSpeedArea" parent="MovingEnv" index="0" instance=ExtResource("2_w7r8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.5034)
+speed = 1.5
+
+[node name="SetBGMArea" parent="MovingEnv" index="1" instance=ExtResource("2_5sp3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128.009)
+intensity = 0.25
+fade_duration = 5.0
+
+[node name="SetBGMArea2" parent="MovingEnv" index="2" instance=ExtResource("2_5sp3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.0089)
+intensity = 0.5
+fade_duration = 5.0
+
+[node name="Towers" type="Node3D" parent="MovingEnv" index="3"]
+
+[node name="Env Hitbox5" parent="MovingEnv/Towers" index="0" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -2.16821, -3.32938, 18.7538)
+
+[node name="Env Hitbox6" parent="MovingEnv/Towers" index="1" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -0.23384, -6.5615, 15.7538)
+
+[node name="Env Hitbox24" parent="MovingEnv/Towers" index="2" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -4.23384, -5.5615, 15.7538)
+collision_layer = 1024
+collision_mask = 256
+
+[node name="Env Hitbox7" parent="MovingEnv/Towers" index="3" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, 0.76616, -5.47368, 13.7538)
+
+[node name="Env Hitbox8" parent="MovingEnv/Towers" index="4" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -7.23384, -3.5615, 6.7538)
+
+[node name="Env Hitbox21" parent="MovingEnv/Towers" index="5" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -6.23384, -2.47368, 4.7538)
+
+[node name="Env Hitbox22" parent="MovingEnv/Towers" index="6" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -7.23384, -4.5615, 11.7538)
+
+[node name="Env Hitbox23" parent="MovingEnv/Towers" index="7" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -6.23384, -5.47368, 9.7538)
+
+[node name="Env Hitbox9" parent="MovingEnv/Towers" index="8" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -3.23384, -1.32938, 1.7538)
+
+[node name="Env Hitbox12" parent="MovingEnv/Towers" index="9" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -2.23384, -3.32938, 0.753799)
+
+[node name="Env Hitbox14" parent="MovingEnv/Towers" index="10" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -4.23384, -6.32938, -1.2462)
+
+[node name="Env Hitbox13" parent="MovingEnv/Towers" index="11" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, 1.97325, -3.32938, 9.7538)
+
+[node name="Env Hitbox10" parent="MovingEnv/Towers" index="12" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, 4.76616, -1.32938, 10.7538)
+
+[node name="Env Hitbox11" parent="MovingEnv/Towers" index="13" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, 2.16101, -3.32938, 25.7538)
+
+[node name="Env Hitbox18" parent="MovingEnv/Towers" index="14" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, 5.76616, -1.32938, 21.7538)
+
+[node name="Env Hitbox19" parent="MovingEnv/Towers" index="15" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, 6.76616, -2.32938, 18.7538)
+
+[node name="Env Hitbox20" parent="MovingEnv/Towers" index="16" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, 7.76616, -3.32938, 14.7538)
+
+[node name="Env Hitbox15" parent="MovingEnv/Towers" index="17" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, 0.76616, -6.32938, 24.7538)
+
+[node name="Env Hitbox16" parent="MovingEnv/Towers" index="18" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -4.23384, -5.32938, 20.7538)
+
+[node name="Env Hitbox17" parent="MovingEnv/Towers" index="19" instance=ExtResource("4_otd4v")]
+transform = Transform3D(0.559921, 0, -9.78997e-08, 0, 0.559921, 0, 9.78997e-08, 0, 0.559921, -1.23384, -7.32938, 21.7538)
+
+[node name="Enemy_SlowBullet" parent="MovingEnv/Towers" index="20" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.575, -0.558, 2.62)
+
+[node name="Enemy_SlowBullet3" parent="MovingEnv/Towers" index="21" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.575, 0.442, 5.62)
+
+[node name="Enemy_SlowBullet4" parent="MovingEnv/Towers" index="22" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.575, 3.442, 23.62)
+
+[node name="Enemy_SlowBullet5" parent="MovingEnv/Towers" index="23" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425, 3.4512, 18.5868)
+
+[node name="Enemy_SlowBullet2" parent="MovingEnv/Towers" index="24" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.425, 0.809397, -2.38)
+
+[node name="Wave 1" type="Node3D" parent="MovingEnv" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -144)
+
+[node name="EnemyActivationZone1" parent="MovingEnv/Wave 1" index="0" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 1.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 1/Path3D3")
+
+[node name="EnemyActivationZone2" parent="MovingEnv/Wave 1" index="1" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 5.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 1/Path3D4")
+
+[node name="EnemyActivationZone3" parent="MovingEnv/Wave 1" index="2" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 9.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 1/Path3D5")
+
+[node name="Wave 2L" type="Node3D" parent="MovingEnv" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -104)
+
+[node name="EnemyActivationZone1" parent="MovingEnv/Wave 2L" index="0" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 1.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 2/L/Path3D3")
+
+[node name="EnemyActivationZone2" parent="MovingEnv/Wave 2L" index="1" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 5.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 2/L/Path3D4")
+
+[node name="EnemyActivationZone3" parent="MovingEnv/Wave 2L" index="2" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 9.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 2/L/Path3D5")
+
+[node name="Wave 2R" type="Node3D" parent="MovingEnv" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -104)
+
+[node name="EnemyActivationZone1" parent="MovingEnv/Wave 2R" index="0" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 1.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 2/R/Path3D6")
+
+[node name="EnemyActivationZone2" parent="MovingEnv/Wave 2R" index="1" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 5.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 2/R/Path3D7")
+
+[node name="EnemyActivationZone3" parent="MovingEnv/Wave 2R" index="2" node_paths=PackedStringArray("path_mover") instance=ExtResource("6_r2cte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1684e-19, 1, 9.1866)
+path_mover = NodePath("../../../StaticEnv/Wave 2/R/Path3D8")
+
+[node name="Wave 1" type="Node3D" parent="StaticEnv" index="0"]
+
+[node name="Path3D3" type="Path3D" parent="StaticEnv/Wave 1" index="0" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 3)
+curve = SubResource("Curve3D_jjl08")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_5kq45")
+free_self_on_complete = true
+editor_update_pos = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 1/Path3D3" index="0"]
+transform = Transform3D(-0.0698689, -0.773693, -0.629586, 0, 0.631136, -0.77558, 0.997471, -0.0541941, -0.0441, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 1/Path3D3" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.425, -4.558, -0.38)
+
+[node name="Path3D4" type="Path3D" parent="StaticEnv/Wave 1" index="1" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 3)
+curve = SubResource("Curve3D_jjl08")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_5kq45")
+free_self_on_complete = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 1/Path3D4" index="0"]
+transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997515, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 1/Path3D4" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -12, 0)
+
+[node name="Path3D5" type="Path3D" parent="StaticEnv/Wave 1" index="2" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 3)
+curve = SubResource("Curve3D_jjl08")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_5kq45")
+free_self_on_complete = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 1/Path3D5" index="0"]
+transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997515, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 1/Path3D5" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -12, 0)
+
+[node name="Wave 2" type="Node3D" parent="StaticEnv" index="1"]
+
+[node name="L" type="Node3D" parent="StaticEnv/Wave 2" index="0"]
+
+[node name="Path3D3" type="Path3D" parent="StaticEnv/Wave 2/L" index="0" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 3)
+curve = SubResource("Curve3D_jjl08")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_5kq45")
+free_self_on_complete = true
+editor_update_pos = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 2/L/Path3D3" index="0"]
+transform = Transform3D(-0.0698689, -0.773693, -0.629586, 0, 0.631136, -0.77558, 0.997471, -0.0541941, -0.0441, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 2/L/Path3D3" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.425, -4.558, -0.38)
+
+[node name="Path3D4" type="Path3D" parent="StaticEnv/Wave 2/L" index="1" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 3)
+curve = SubResource("Curve3D_jjl08")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_5kq45")
+free_self_on_complete = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 2/L/Path3D4" index="0"]
+transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997515, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 2/L/Path3D4" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -12, 0)
+
+[node name="Path3D5" type="Path3D" parent="StaticEnv/Wave 2/L" index="2" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 3)
+curve = SubResource("Curve3D_jjl08")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_5kq45")
+free_self_on_complete = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 2/L/Path3D5" index="0"]
+transform = Transform3D(-0.069872, -0.773701, -0.629594, 0, 0.631142, -0.77559, 0.997515, -0.0541947, -0.0441005, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 2/L/Path3D5" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -12, 0)
+
+[node name="R" type="Node3D" parent="StaticEnv/Wave 2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Path3D6" type="Path3D" parent="StaticEnv/Wave 2/R" index="0" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 3)
+curve = SubResource("Curve3D_88of7")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_0psxj")
+free_self_on_complete = true
+editor_update_pos = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 2/R/Path3D6" index="0"]
+transform = Transform3D(-0.0698689, -0.773692, -0.629585, 0, 0.631135, -0.775579, 0.997471, -0.054194, -0.0440999, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 2/R/Path3D6" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.425, -4.558, -0.38)
+
+[node name="Path3D7" type="Path3D" parent="StaticEnv/Wave 2/R" index="1" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 3)
+curve = SubResource("Curve3D_88of7")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_0psxj")
+free_self_on_complete = true
+editor_update_pos = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 2/R/Path3D7" index="0"]
+transform = Transform3D(-0.0698689, -0.773692, -0.629585, 0, 0.631135, -0.775579, 0.997471, -0.054194, -0.0440999, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 2/R/Path3D7" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 5.96047e-07, -4.47035e-07, 3.8743e-07, 1.00001, -3.27826e-07, 5.45382e-06, -3.57628e-07, 1, -5.425, -4.558, -0.38)
+
+[node name="Path3D8" type="Path3D" parent="StaticEnv/Wave 2/R" index="2" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 3)
+curve = SubResource("Curve3D_88of7")
+script = ExtResource("7_mbxi3")
+target_node = NodePath("Enemy_SlowBullet")
+speedCurve = SubResource("Curve_0psxj")
+free_self_on_complete = true
+editor_update_pos = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="StaticEnv/Wave 2/R/Path3D8" index="0"]
+transform = Transform3D(-0.0698689, -0.773692, -0.629585, 0, 0.631135, -0.775579, 0.997471, -0.054194, -0.0440999, -5.425, -4.558, -0.38)
+loop = false
+
+[node name="Enemy_SlowBullet" parent="StaticEnv/Wave 2/R/Path3D8" index="1" instance=ExtResource("5_sjk2j")]
+transform = Transform3D(1, 5.96047e-07, -4.47035e-07, 3.8743e-07, 1.00001, -3.27826e-07, 5.45382e-06, -3.57628e-07, 1, -5.425, -4.558, -0.38)
+
+[node name="Debug_XRRigMarker" type="Marker3D" parent="." index="6"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -149)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_XRRigMarker" index="0"]
+mesh = SubResource("BoxMesh_17rei")
