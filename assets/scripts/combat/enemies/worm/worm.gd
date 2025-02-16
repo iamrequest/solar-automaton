@@ -9,9 +9,17 @@ signal on_death
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	head.setup(self)
 	for spine in spine_columns:
 		spine.health_component.on_death.connect(_on_component_death)
+	configure_rotation()
 
+func configure_rotation():
+	var rot_deg = 0.0
+	for spine in spine_columns:
+		spine.rotator.set_rotation(rot_deg)
+		rot_deg += 10.0
+		
 func _on_component_death() -> void:
 	if(!is_alive()):
 		on_death.emit()

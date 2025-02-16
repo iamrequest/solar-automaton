@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxto61pufeto"]
+[gd_scene load_steps=9 format=3 uid="uid://cxto61pufeto"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_spine_blaster.gd" id="1_4l1re"]
 [ext_resource type="PackedScene" uid="uid://cooqg6aupfjd5" path="res://assets/models/worm/worm_spine-blaster.glb" id="1_uqn6k"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://x13860fm8vxa" path="res://assets/materials/enemies/mat_enemy_eyes.tres" id="3_y851k"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="4_of5qe"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/hurtbox.gd" id="5_wdsxn"]
+[ext_resource type="PackedScene" uid="uid://dxfhr0hajui1a" path="res://assets/prefabs/enemies/worm_blaster.tscn" id="7_c0p1n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
 radius = 0.730765
@@ -34,4 +35,13 @@ health_component = NodePath("../HealthComponent")
 transform = Transform3D(3.35463, 0.370852, -0.0208479, 0.00801167, 0.11715, 3.37309, 0.371351, -3.35265, 0.115558, 0.0492388, 0.413175, -7.19541)
 shape = SubResource("CapsuleShape3D_4sr6u")
 
+[node name="EnemyBlaster" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_c0p1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+health_component = NodePath("../HealthComponent")
+sight_radius = 20
+fire_rate = 3.0
+bullet_speed = 3.0
+apply_initial_bullet_velocity = false
+
 [editable path="mesh"]
+[editable path="EnemyBlaster"]

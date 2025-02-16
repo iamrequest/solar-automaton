@@ -1,10 +1,12 @@
 extends Node3D
+class_name EnemyBlaster
 
 enum FireMode { FollowMarker, AimAtShip }
 var is_active := true
 
 @export var health_component: HealthComponent
 @export var sight_radius := 5
+@export var min_dot_product:= -1.0
 @export var bullet_prefab: PackedScene
 @export var bullet_spawn_points : Array[Node3D]
 @export var fire_rate := 0.5
@@ -18,7 +20,8 @@ var rb : RigidBody3D
 var is_on_cooldown = false
 
 func _ready() -> void:
-	rb = get_parent()
+	if(get_parent() is RigidBody3D):
+		rb = get_parent()
 	
 func _process(delta: float) -> void:
 	if(!is_active):
@@ -34,6 +37,9 @@ func can_fire() -> bool:
 	if(is_behind_player()):
 		return false
 	
+	if(!is_angle_to_player_valid()):
+		return false
+		
 	if(is_below_xr_marker()):
 		return false
 	
@@ -51,6 +57,11 @@ func is_behind_player() -> bool:
 	
 	return dir_to_spawn.dot(dir_to_rig) > 0.5
 
+func is_angle_to_player_valid():
+	var dir_marker_to_player = (Globals.xr_rig.get_dominant_hand().global_position - bullet_spawn_points[0].global_position).normalized()
+	
+	return -bullet_spawn_points[0].global_transform.basis.z.dot(dir_marker_to_player) >= min_dot_product
+
 func is_below_xr_marker() -> bool:
 	return global_position.y < Globals.game_manager.combat_zone_manager.xr_rig_marker.global_position.y
 		
@@ -65,7 +76,13 @@ func fire_bullet():
 	is_on_cooldown = true
 	$BlasterSFX.play_random_sfx()
 	$FireCooldownTimer.start(fire_rate)
-	
+
+func get_linear_velocity() -> Vector3:
+	if(rb):
+		return rb.linear_velocity
+	else:
+		return global_position - position
+			
 func init_bullet(bullet: Bullet, spawn_point: Node3D):
 	# Instantiate as a child of the scene base
 	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
@@ -83,14 +100,14 @@ func init_bullet(bullet: Bullet, spawn_point: Node3D):
 			bullet.global_rotation = spawn_point.global_rotation
 	
 			if(apply_initial_bullet_velocity):
-				bullet.initial_velocity = rb.linear_velocity
+				bullet.initial_velocity = get_linear_velocity()
 			bullet.speed = bullet_speed
 			
 		FireMode.AimAtShip:
 			bullet.look_at(Globals.xr_rig.get_dominant_hand().global_position)
 			
 			if(apply_initial_bullet_velocity):
-				bullet.initial_velocity = rb.linear_velocity
+				bullet.initial_velocity = get_linear_velocity()
 				
 			bullet.speed = bullet_speed
 
@@ -106,3 +123,13 @@ func _on_enemy_grabbed(pickable: Variant, by: Variant) -> void:
 
 func _on_enemy_on_marked_for_death() -> void:
 	pass # Replace with function body.
+
+
+
+#region velocity calculation
+var pos_prev:= Vector3.ZERO
+func _physics_process(delta: float) -> void:
+	# Cheap velocity update- would be better to have velocity calculated over the past N frames
+	# Not necessary for this use-case
+	pos_prev = global_position
+#endregion

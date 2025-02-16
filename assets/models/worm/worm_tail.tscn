@@ -7,9 +7,9 @@
 [node name="WormTail" type="Node3D"]
 
 [node name="worm_tail" parent="." instance=ExtResource("1_8ktek")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="SpineJoint_001" parent="worm_tail" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 surface_material_override/0 = ExtResource("2_t2sru")
 surface_material_override/1 = ExtResource("3_y51hg")
 

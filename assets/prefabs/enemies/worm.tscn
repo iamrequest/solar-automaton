@@ -7,35 +7,39 @@
 
 [node name="Worm" type="Node3D" node_paths=PackedStringArray("head", "spine_columns", "tail")]
 script = ExtResource("1_cly7c")
-head = NodePath("WormHead")
-spine_columns = [NodePath("WormSpine1"), NodePath("WormSpine2"), NodePath("WormSpine3"), NodePath("WormSpine4"), NodePath("WormSpine5"), NodePath("WormSpine6"), NodePath("WormSpine7"), NodePath("WormSpine8")]
-tail = NodePath("WormTail")
+head = NodePath("Components/WormHead")
+spine_columns = [NodePath("Components/WormSpine1"), NodePath("Components/WormSpine2"), NodePath("Components/WormSpine3"), NodePath("Components/WormSpine4"), NodePath("Components/WormSpine5"), NodePath("Components/WormSpine6"), NodePath("Components/WormSpine7"), NodePath("Components/WormSpine8")]
+tail = NodePath("Components/WormTail")
 spine_column_length = 6
 
-[node name="WormHead" parent="." instance=ExtResource("1_mssm7")]
+[node name="Components" type="Node3D" parent="."]
 
-[node name="WormSpine1" parent="." instance=ExtResource("2_c0kny")]
+[node name="WormHead" parent="Components" instance=ExtResource("1_mssm7")]
 
-[node name="WormSpine2" parent="." instance=ExtResource("2_c0kny")]
+[node name="WormSpine1" parent="Components" instance=ExtResource("2_c0kny")]
+
+[node name="WormSpine2" parent="Components" instance=ExtResource("2_c0kny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
-[node name="WormSpine3" parent="." instance=ExtResource("2_c0kny")]
+[node name="WormSpine3" parent="Components" instance=ExtResource("2_c0kny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 
-[node name="WormSpine4" parent="." instance=ExtResource("2_c0kny")]
+[node name="WormSpine4" parent="Components" instance=ExtResource("2_c0kny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
 
-[node name="WormSpine5" parent="." instance=ExtResource("2_c0kny")]
+[node name="WormSpine5" parent="Components" instance=ExtResource("2_c0kny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
 
-[node name="WormSpine6" parent="." instance=ExtResource("2_c0kny")]
+[node name="WormSpine6" parent="Components" instance=ExtResource("2_c0kny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 
-[node name="WormSpine7" parent="." instance=ExtResource("2_c0kny")]
+[node name="WormSpine7" parent="Components" instance=ExtResource("2_c0kny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36)
 
-[node name="WormSpine8" parent="." instance=ExtResource("2_c0kny")]
+[node name="WormSpine8" parent="Components" instance=ExtResource("2_c0kny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42)
 
-[node name="WormTail" parent="." instance=ExtResource("3_8po8o")]
+[node name="WormTail" parent="Components" instance=ExtResource("3_8po8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49)
+
+[node name="Attacks" type="Node" parent="."]

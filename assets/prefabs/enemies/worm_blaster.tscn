@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxfhr0hajui1a"]
+
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/enemy_blaster.gd" id="1_wxmqd"]
+[ext_resource type="PackedScene" uid="uid://dilga1cajf2jy" path="res://assets/prefabs/enemies/bullet_enemy.tscn" id="2_7vqcx"]
+[ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="3_bst2x"]
+[ext_resource type="AudioStream" uid="uid://cnforw8ok8x0" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 001.wav" id="4_ijsur"]
+[ext_resource type="AudioStream" uid="uid://dr4861au3880q" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 003.wav" id="5_ylrlf"]
+[ext_resource type="AudioStream" uid="uid://bpbxvncl02po1" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 005.wav" id="6_yvpx8"]
+
+[node name="EnemyBlaster" type="Node3D" node_paths=PackedStringArray("bullet_spawn_points")]
+script = ExtResource("1_wxmqd")
+min_dot_product = 0.0
+bullet_prefab = ExtResource("2_7vqcx")
+bullet_spawn_points = [NodePath("Marker3D")]
+fire_rate = 1.0
+bullet_speed = 1.0
+bullet_lifetime = 20
+fire_mode = 1
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00212157)
+
+[node name="FireCooldownTimer" type="Timer" parent="."]
+
+[node name="BlasterSFX" type="AudioStreamPlayer3D" parent="."]
+volume_db = -5.714
+bus = &"SFX"
+script = ExtResource("3_bst2x")
+sfx = Array[AudioStream]([ExtResource("4_ijsur"), ExtResource("5_ylrlf"), ExtResource("6_yvpx8")])
+
+[connection signal="timeout" from="FireCooldownTimer" to="." method="_on_fire_cooldown_timer_timeout"]

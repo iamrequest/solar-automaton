@@ -1,15 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cuakaxl5b30is"]
+[gd_scene load_steps=13 format=3 uid="uid://cuakaxl5b30is"]
 
 [ext_resource type="PackedScene" uid="uid://43o1w333a816" path="res://assets/prefabs/enemies/enemy_pickable_base.tscn" id="1_tgkm4"]
 [ext_resource type="PackedScene" uid="uid://d21ghr4qqcrj1" path="res://assets/models/enemy_small/enemy_small.tscn" id="2_vb2cu"]
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="4_6qt1d"]
-[ext_resource type="Script" path="res://assets/scripts/combat/enemies/enemy_blaster.gd" id="4_8qs2l"]
 [ext_resource type="Material" uid="uid://bm5ctk0ly50eg" path="res://assets/materials/enemies/worm/mat_worm_body_dead.tres" id="4_adun5"]
-[ext_resource type="PackedScene" uid="uid://dilga1cajf2jy" path="res://assets/prefabs/enemies/bullet_enemy.tscn" id="5_f4ubh"]
-[ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="6_ocfj4"]
-[ext_resource type="AudioStream" uid="uid://cnforw8ok8x0" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 001.wav" id="7_fwx6m"]
-[ext_resource type="AudioStream" uid="uid://dr4861au3880q" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 003.wav" id="8_43e6r"]
-[ext_resource type="AudioStream" uid="uid://bpbxvncl02po1" path="res://assets/audio/sfx/enemy/blaster/Stick Hit 005.wav" id="9_yju14"]
+[ext_resource type="PackedScene" uid="uid://bf72m7oi8h0st" path="res://assets/prefabs/enemies/enemy_blaster.tscn" id="5_xo4vk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rm7s4"]
 radius = 0.15238
@@ -66,27 +61,7 @@ ring_upper_rotation = SubResource("Resource_p1q6w")
 health_component = NodePath("../HealthComponent")
 death_mat = ExtResource("4_adun5")
 
-[node name="EnemyBlaster" type="Node3D" parent="." index="5" node_paths=PackedStringArray("health_component", "bullet_spawn_points")]
-script = ExtResource("4_8qs2l")
+[node name="EnemyBlaster" parent="." index="5" node_paths=PackedStringArray("health_component") instance=ExtResource("5_xo4vk")]
 health_component = NodePath("../HealthComponent")
-bullet_prefab = ExtResource("5_f4ubh")
-bullet_spawn_points = [NodePath("Marker3D")]
-fire_rate = 1.25
-bullet_speed = 0.75
-bullet_lifetime = 10
-fire_mode = 1
-
-[node name="Marker3D" type="Marker3D" parent="EnemyBlaster" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00212157)
-
-[node name="FireCooldownTimer" type="Timer" parent="EnemyBlaster" index="1"]
-
-[node name="BlasterSFX" type="AudioStreamPlayer3D" parent="EnemyBlaster" index="2"]
-volume_db = -5.714
-bus = &"SFX"
-script = ExtResource("6_ocfj4")
-sfx = Array[AudioStream]([ExtResource("7_fwx6m"), ExtResource("8_43e6r"), ExtResource("9_yju14")])
-
-[connection signal="timeout" from="EnemyBlaster/FireCooldownTimer" to="EnemyBlaster" method="_on_fire_cooldown_timer_timeout"]
 
 [editable path="Hurtbox"]

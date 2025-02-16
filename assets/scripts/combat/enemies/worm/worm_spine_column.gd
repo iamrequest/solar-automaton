@@ -6,8 +6,8 @@ var health_component: HealthComponent:
 	get:
 		return $HealthComponent
 
-@export var marker_end: Marker3D
 @export var blasters : Array[WormSpineBlaster]
+@export var rotator: WormJointRotator
 var damage_on_blaster_death := 5
 @export var mat_dead: StandardMaterial3D
 
@@ -26,7 +26,7 @@ func _on_blaster_death() -> void:
 	$HealthComponent.apply_damage(damage_on_blaster_death)
 
 func _on_death() -> void:
-	$"worm_spine-joint/SpineJoint".set_surface_override_material(0, mat_dead)
+	$"Container/worm_spine-joint/SpineJoint".set_surface_override_material(0, mat_dead)
 	for blaster in blasters:
 		blaster.destroy()
 	on_death.emit()
