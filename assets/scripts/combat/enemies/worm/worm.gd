@@ -11,7 +11,7 @@ signal on_death
 func _ready() -> void:
 	head.setup(self)
 	for spine in spine_columns:
-		spine.health_component.on_death.connect(_on_component_death)
+		spine.on_death.connect(_on_component_death)
 	configure_rotation()
 
 func configure_rotation():
@@ -21,13 +21,15 @@ func configure_rotation():
 		rot_deg += 10.0
 		
 func _on_component_death() -> void:
+	print("Worm spine joint destroyed")
 	if(!is_alive()):
+		print("Worm destroyed destroyed")
 		on_worm_death()
 		on_death.emit()
 
 func is_alive() -> bool:
 	for spine in spine_columns:
-		if(spine.health_component.is_alive):
+		if(spine.health_component.health_current > 0):
 			return true
 	return false
 

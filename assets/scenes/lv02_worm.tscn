@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dkwduyhx37ym7"]
+[gd_scene load_steps=40 format=3 uid="uid://dkwduyhx37ym7"]
 
 [ext_resource type="PackedScene" uid="uid://d2uk2xiqpck2v" path="res://assets/scenes/combat_scene_base.tscn" id="1_rdqsq"]
 [ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="2_kqtge"]
@@ -167,6 +167,22 @@ _data = {
 "tilts": PackedFloat32Array(0, -0.236991, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_ppq23"]
+bake_interval = 85.15
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -15, -15, 0, 0, 0, 0, 0, 0, 0, 105.478, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_vy1ct"]
+bake_interval = 85.15
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -15, -15, 0, 0, 0, 0, 0, 0, 0, 140, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="SceneBase" instance=ExtResource("1_rdqsq")]
 
@@ -348,7 +364,7 @@ level_config = SubResource("Resource_nn7sn")
 
 [node name="Worm" parent="." index="10" instance=ExtResource("5_taodn")]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, -1, -15, 0, 6.698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -31)
 
 [node name="WormAttackManager" type="Node3D" parent="." index="11" node_paths=PackedStringArray("initial_attack", "on_dead_attack")]
 script = ExtResource("12_ld0s4")
@@ -357,7 +373,7 @@ on_dead_attack = NodePath("OnDeathAttack")
 
 [node name="InitialAttack" type="Node3D" parent="WormAttackManager" index="0" node_paths=PackedStringArray("next_attack_options")]
 script = ExtResource("12_qnlan")
-next_attack_options = [NodePath("../OnDeathAttack")]
+next_attack_options = [NodePath("../GoToSky")]
 
 [node name="WormMover" parent="WormAttackManager/InitialAttack" index="0" instance=ExtResource("4_oucj7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 11)
@@ -406,8 +422,9 @@ speed = 10.0
 lerp_speed = 0.75
 editor_update_pos = false
 
-[node name="HumpbackBreach" type="Node3D" parent="WormAttackManager" index="2"]
+[node name="HumpbackBreach" type="Node3D" parent="WormAttackManager" index="2" node_paths=PackedStringArray("next_attack_options")]
 script = ExtResource("12_qnlan")
+next_attack_options = [NodePath("../GoToSky")]
 
 [node name="Left" parent="WormAttackManager/HumpbackBreach" index="0" instance=ExtResource("4_oucj7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 15)
@@ -420,6 +437,56 @@ editor_update_pos = false
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 15)
 curve = SubResource("Curve3D_c0tcr")
 speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="GoToSky" type="Node3D" parent="WormAttackManager" index="3" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("12_qnlan")
+next_attack_options = [NodePath("../Divebomb")]
+
+[node name="Center" parent="WormAttackManager/GoToSky" index="0" instance=ExtResource("4_oucj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+curve = SubResource("Curve3D_ppq23")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Left" parent="WormAttackManager/GoToSky" index="1" instance=ExtResource("4_oucj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 9)
+curve = SubResource("Curve3D_ppq23")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Right" parent="WormAttackManager/GoToSky" index="2" instance=ExtResource("4_oucj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
+curve = SubResource("Curve3D_ppq23")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Divebomb" type="Node3D" parent="WormAttackManager" index="4" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("12_qnlan")
+next_attack_options = [NodePath("../GoToSky"), NodePath("../HumpbackBreach")]
+
+[node name="Center" parent="WormAttackManager/Divebomb" index="0" instance=ExtResource("4_oucj7")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -20.0517, 99, 2)
+curve = SubResource("Curve3D_vy1ct")
+speed = 10.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="LeftToRight" parent="WormAttackManager/Divebomb" index="1" instance=ExtResource("4_oucj7")]
+transform = Transform3D(-0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0, 1, -23.0345, 99, 2)
+curve = SubResource("Curve3D_vy1ct")
+speed = 10.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="RightToLeft" parent="WormAttackManager/Divebomb" index="2" instance=ExtResource("4_oucj7")]
+transform = Transform3D(-0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0, 0, 1, 23.035, 99, 2)
+curve = SubResource("Curve3D_vy1ct")
+speed = 10.0
 lerp_speed = 0.75
 editor_update_pos = false
 

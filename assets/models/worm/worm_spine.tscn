@@ -36,8 +36,9 @@ curve = SubResource("Curve_t6wsv")
 curve_range_min = -1.0
 curve_range_max = 1.0
 
-[node name="WormSpine" type="Node3D" node_paths=PackedStringArray("rotator")]
+[node name="WormSpine" type="Node3D" node_paths=PackedStringArray("blasters", "rotator")]
 script = ExtResource("1_objn5")
+blasters = [NodePath("Container/WormSpineBlaster"), NodePath("Container/WormSpineBlaster2"), NodePath("Container/WormSpineBlaster3"), NodePath("Container/WormSpineBlaster4")]
 rotator = NodePath("Rotator")
 mat_dead = ExtResource("2_r57ax")
 

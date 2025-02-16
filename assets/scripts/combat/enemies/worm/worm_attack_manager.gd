@@ -20,9 +20,10 @@ func _ready() -> void:
 	
 	initial_attack.on_attack_finished.connect(_on_attack_finished)
 	on_dead_attack.on_attack_started.connect(_on_death_attack_started)
-	start_attack(initial_attack)
 	
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(5.0).timeout
+	start_attack(initial_attack)
+	await get_tree().create_timer(5.0).timeout
 	(%GameManager.bgm_manager as BGMManager).FadeIntensity(0.5, 10.0)
 	
 
@@ -32,6 +33,7 @@ func start_attack(attack: WormAttack) -> void:
 
 func _on_attack_finished(last_attack: WormAttack):
 	if(!%Worm.is_alive()):
+		print("Worm is dead - playing death attack")
 		on_dead_attack.start_attack()
 		
 	else:
