@@ -16,8 +16,10 @@ speed = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MovingEnv" index="1"]
 transform = Transform3D(1, 0, 0, 0, 7.41448, 0, 0, 0, 1, 5.03557, 0, 32)
+visible = false
 mesh = SubResource("BoxMesh_3bfm3")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MovingEnv" index="2"]
 transform = Transform3D(1, 0, 0, 0, 7.41448, 0, 0, 0, 1, 5.03557, 0, 36)
+visible = false
 mesh = SubResource("BoxMesh_3bfm3")

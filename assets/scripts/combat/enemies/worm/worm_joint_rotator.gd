@@ -13,6 +13,7 @@ enum JointRotationMode { None, Constant, Broken }
 @export var rotation_broken: RotationConfig
 
 var t:= 0.0
+@export var rotation_multiplier:= 1.0
 
 func _ready() -> void:
 	if(health_component):
@@ -34,7 +35,7 @@ func apply_rotation(rotation_config: RotationConfig):
 	var curve_output = rotation_config.curve.sample_baked(t_mod)
 	var curve_output_remapped = remap(curve_output, 0.0, 1.0, rotation_config.curve_range_min, rotation_config.curve_range_max)
 	
-	var rotation_amount = rotation_config.rotation_amount * curve_output_remapped
+	var rotation_amount = rotation_config.rotation_amount * curve_output_remapped * rotation_multiplier
 	mesh.rotation_degrees += rotation_amount
 
 func set_rotation(t: float):

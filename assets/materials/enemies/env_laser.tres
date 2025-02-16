@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://du21dhq63phaj"]
+
+[resource]
+render_priority = 40
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.872727, 0.196541, 0.490056, 0.694118)
+emission_enabled = true
+emission = Color(0.845839, 0.397028, 0.10109, 1)
+emission_energy_multiplier = 3.6
+texture_filter = 0
+texture_repeat = false
+disable_receive_shadows = true
+grow_amount = -0.95

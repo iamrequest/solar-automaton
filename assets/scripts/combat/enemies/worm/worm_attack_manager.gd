@@ -24,7 +24,7 @@ func _ready() -> void:
 	await get_tree().create_timer(5.0).timeout
 	start_attack(initial_attack)
 	await get_tree().create_timer(5.0).timeout
-	(%GameManager.bgm_manager as BGMManager).FadeIntensity(0.5, 10.0)
+	(%GameManager.bgm_manager as BGMManager).FadeIntensity(0.5, 5.0)
 	
 
 func start_attack(attack: WormAttack) -> void:

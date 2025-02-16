@@ -10,7 +10,8 @@ script = ExtResource("1_cly7c")
 head = NodePath("Components/WormHead")
 spine_columns = [NodePath("Components/WormSpine1"), NodePath("Components/WormSpine2"), NodePath("Components/WormSpine3"), NodePath("Components/WormSpine4"), NodePath("Components/WormSpine5"), NodePath("Components/WormSpine6"), NodePath("Components/WormSpine7"), NodePath("Components/WormSpine8")]
 tail = NodePath("Components/WormTail")
-spine_column_length = 6
+bgm_intensity = Array[float]([0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
+bgm_fade_duration = 3.0
 
 [node name="Components" type="Node3D" parent="."]
 

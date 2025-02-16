@@ -51,7 +51,7 @@ volumetric_fog_albedo = Color(0.667028, 0.451124, 0.75044, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_84qwg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w33fg"]
-render_priority = 1
+render_priority = 5
 transparency = 1
 albedo_texture = ExtResource("2_tdcfk")
 texture_filter = 0
@@ -364,7 +364,7 @@ level_config = SubResource("Resource_nn7sn")
 
 [node name="Worm" parent="." index="10" instance=ExtResource("5_taodn")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -19, -31)
 
 [node name="WormAttackManager" type="Node3D" parent="." index="11" node_paths=PackedStringArray("initial_attack", "on_dead_attack")]
 script = ExtResource("12_ld0s4")
@@ -373,7 +373,10 @@ on_dead_attack = NodePath("OnDeathAttack")
 
 [node name="InitialAttack" type="Node3D" parent="WormAttackManager" index="0" node_paths=PackedStringArray("next_attack_options")]
 script = ExtResource("12_qnlan")
-next_attack_options = [NodePath("../GoToSky")]
+next_attack_options = [NodePath("../Whale_Laser")]
+blaster_type = 2
+blaster_init_delay = 4.145
+blaster_per_joint_delay = 0.3
 
 [node name="WormMover" parent="WormAttackManager/InitialAttack" index="0" instance=ExtResource("4_oucj7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 11)
@@ -422,27 +425,51 @@ speed = 10.0
 lerp_speed = 0.75
 editor_update_pos = false
 
-[node name="HumpbackBreach" type="Node3D" parent="WormAttackManager" index="2" node_paths=PackedStringArray("next_attack_options")]
+[node name="Whale_Projectile" type="Node3D" parent="WormAttackManager" index="2" node_paths=PackedStringArray("next_attack_options")]
 script = ExtResource("12_qnlan")
-next_attack_options = [NodePath("../GoToSky")]
+next_attack_options = [NodePath("../Whale_Laser"), NodePath("../GoToSky")]
+blaster_type = 1
 
-[node name="Left" parent="WormAttackManager/HumpbackBreach" index="0" instance=ExtResource("4_oucj7")]
+[node name="Left" parent="WormAttackManager/Whale_Projectile" index="0" instance=ExtResource("4_oucj7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 15)
 curve = SubResource("Curve3D_c0tcr")
 speed = 5.0
 lerp_speed = 0.75
 editor_update_pos = false
 
-[node name="Right" parent="WormAttackManager/HumpbackBreach" index="1" instance=ExtResource("4_oucj7")]
+[node name="Right" parent="WormAttackManager/Whale_Projectile" index="1" instance=ExtResource("4_oucj7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 15)
 curve = SubResource("Curve3D_c0tcr")
 speed = 5.0
 lerp_speed = 0.75
 editor_update_pos = false
 
-[node name="GoToSky" type="Node3D" parent="WormAttackManager" index="3" node_paths=PackedStringArray("next_attack_options")]
+[node name="Whale_Laser" type="Node3D" parent="WormAttackManager" index="3" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("12_qnlan")
+next_attack_options = [NodePath("../Whale_Projectile"), NodePath("../GoToSky")]
+blaster_type = 2
+rotation_speed_multiplier = 5.0
+
+[node name="Left" parent="WormAttackManager/Whale_Laser" index="0" instance=ExtResource("4_oucj7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 15)
+curve = SubResource("Curve3D_c0tcr")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Right" parent="WormAttackManager/Whale_Laser" index="1" instance=ExtResource("4_oucj7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 15)
+curve = SubResource("Curve3D_c0tcr")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="GoToSky" type="Node3D" parent="WormAttackManager" index="4" node_paths=PackedStringArray("next_attack_options")]
 script = ExtResource("12_qnlan")
 next_attack_options = [NodePath("../Divebomb")]
+blaster_type = 2
+blaster_per_joint_delay = 0.1
+rotation_speed_multiplier = 5.0
 
 [node name="Center" parent="WormAttackManager/GoToSky" index="0" instance=ExtResource("4_oucj7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
@@ -465,26 +492,28 @@ speed = 5.0
 lerp_speed = 0.75
 editor_update_pos = false
 
-[node name="Divebomb" type="Node3D" parent="WormAttackManager" index="4" node_paths=PackedStringArray("next_attack_options")]
+[node name="Divebomb" type="Node3D" parent="WormAttackManager" index="5" node_paths=PackedStringArray("next_attack_options")]
 script = ExtResource("12_qnlan")
-next_attack_options = [NodePath("../GoToSky"), NodePath("../HumpbackBreach")]
+next_attack_options = [NodePath("../Whale_Laser"), NodePath("../Whale_Projectile")]
+blaster_type = 2
+rotation_speed_multiplier = 3.0
 
 [node name="Center" parent="WormAttackManager/Divebomb" index="0" instance=ExtResource("4_oucj7")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -20.0517, 99, 2)
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -20.052, 99, 0)
 curve = SubResource("Curve3D_vy1ct")
 speed = 10.0
 lerp_speed = 0.75
 editor_update_pos = false
 
 [node name="LeftToRight" parent="WormAttackManager/Divebomb" index="1" instance=ExtResource("4_oucj7")]
-transform = Transform3D(-0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0, 1, -23.0345, 99, 2)
+transform = Transform3D(-0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0, 1, -23.035, 99, 0)
 curve = SubResource("Curve3D_vy1ct")
 speed = 10.0
 lerp_speed = 0.75
 editor_update_pos = false
 
 [node name="RightToLeft" parent="WormAttackManager/Divebomb" index="2" instance=ExtResource("4_oucj7")]
-transform = Transform3D(-0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0, 0, 1, 23.035, 99, 2)
+transform = Transform3D(-0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0, 0, 1, 23.035, 99, 0)
 curve = SubResource("Curve3D_vy1ct")
 speed = 10.0
 lerp_speed = 0.75

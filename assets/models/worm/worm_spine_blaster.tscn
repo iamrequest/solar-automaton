@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxto61pufeto"]
+[gd_scene load_steps=13 format=3 uid="uid://cxto61pufeto"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_spine_blaster.gd" id="1_4l1re"]
 [ext_resource type="PackedScene" uid="uid://cooqg6aupfjd5" path="res://assets/models/worm/worm_spine-blaster.glb" id="1_uqn6k"]
@@ -7,12 +7,21 @@
 [ext_resource type="Script" path="res://assets/scripts/combat/health/health_component.gd" id="4_of5qe"]
 [ext_resource type="Script" path="res://assets/scripts/combat/health/hurtbox.gd" id="5_wdsxn"]
 [ext_resource type="PackedScene" uid="uid://dxfhr0hajui1a" path="res://assets/prefabs/enemies/worm_blaster.tscn" id="7_c0p1n"]
+[ext_resource type="Material" uid="uid://du21dhq63phaj" path="res://assets/materials/enemies/env_laser.tres" id="8_dapi7"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_laser_blaster.gd" id="8_paqum"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4sr6u"]
 radius = 0.730765
 height = 1.46153
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f08rs"]
+height = 30.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b128h"]
+height = 30.0
+
 [node name="WormSpineBlaster" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506401, 0.0129366, 0.000232697)
 script = ExtResource("1_4l1re")
 
 [node name="mesh" parent="." instance=ExtResource("1_uqn6k")]
@@ -42,6 +51,20 @@ sight_radius = 20
 fire_rate = 3.0
 bullet_speed = 3.0
 apply_initial_bullet_velocity = false
+
+[node name="Laser" type="Area3D" parent="."]
+collision_mask = 256
+script = ExtResource("8_paqum")
+damage = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Laser"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.00536e-06, -23)
+mesh = SubResource("CapsuleMesh_f08rs")
+surface_material_override/0 = ExtResource("8_dapi7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Laser"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.00536e-06, -23)
+shape = SubResource("CapsuleShape3D_b128h")
 
 [editable path="mesh"]
 [editable path="EnemyBlaster"]

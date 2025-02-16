@@ -30,3 +30,10 @@ func _on_death() -> void:
 	for blaster in blasters:
 		blaster.destroy()
 	on_death.emit()
+
+func set_blaster_type(blaster_type: WormSpineBlaster.BlasterType):
+	for blaster in blasters:
+		blaster.set_blaster_type(blaster_type)
+
+func set_rotation_multiplier(mult: float):
+	rotator.rotation_multiplier = mult

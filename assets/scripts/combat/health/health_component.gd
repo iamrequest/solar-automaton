@@ -25,6 +25,9 @@ func apply_damage(damage: int):
 		return
 	if(invincibility_enabled):
 		return
+	if(health_current <= 0):
+		return
+		
 	try_set_iframes()
 	
 	health_current -= damage

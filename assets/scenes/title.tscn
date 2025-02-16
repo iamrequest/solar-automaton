@@ -63,31 +63,31 @@ texture_filter = 0
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pxiq7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_k74n1"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsy0l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0ubc"]
 render_priority = 127
 transparency = 1
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = SubResource("ViewportTexture_pxiq7")
+albedo_texture = SubResource("ViewportTexture_k74n1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_at5mv"]
 resource_local_to_scene = true
 size = Vector3(3, 2, 0.02)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qgw1u"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4fsol"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4apjo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wma3d"]
 render_priority = 127
 transparency = 1
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = SubResource("ViewportTexture_qgw1u")
+albedo_texture = SubResource("ViewportTexture_4fsol")
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_ja2qs")
@@ -228,7 +228,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -84)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45453, -4.29699)
 
 [node name="ViewportTitle2" parent="." instance=ExtResource("6_q30k7")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -3, 1.45453, -3.29699)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -3, 1.11661, -3.29699)
 script = ExtResource("11_x1vu1")
 scene = ExtResource("12_r7ywn")
 viewport_size = Vector2(1200, 700)
@@ -238,7 +238,7 @@ size = Vector2i(1200, 700)
 
 [node name="Screen" parent="ViewportTitle2" index="1"]
 mesh = SubResource("QuadMesh_oxvbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_tsy0l")
+surface_material_override/0 = SubResource("StandardMaterial3D_t0ubc")
 
 [node name="StaticBody3D" parent="ViewportTitle2" index="2"]
 viewport_size = Vector2(1200, 700)
@@ -247,7 +247,7 @@ viewport_size = Vector2(1200, 700)
 shape = SubResource("BoxShape3D_at5mv")
 
 [node name="ViewportTitle3" parent="." instance=ExtResource("6_q30k7")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 3, 1.45453, -3.29699)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 3, 0.959883, -3.29699)
 script = ExtResource("11_x1vu1")
 scene = ExtResource("13_55tsu")
 viewport_size = Vector2(1000, 700)
@@ -257,7 +257,7 @@ size = Vector2i(1000, 700)
 
 [node name="Screen" parent="ViewportTitle3" index="1"]
 mesh = SubResource("QuadMesh_oxvbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_4apjo")
+surface_material_override/0 = SubResource("StandardMaterial3D_wma3d")
 
 [node name="StaticBody3D" parent="ViewportTitle3" index="2"]
 viewport_size = Vector2(1000, 700)
