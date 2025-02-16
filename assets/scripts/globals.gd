@@ -8,3 +8,4 @@ var health_default := 3
 
 var xr_rig: XRRig
 var game_manager: GameManager
+var ship: Ship

@@ -33,6 +33,6 @@ func _on_timer_timeout() -> void:
 	collect()
 	
 func collect():
-	%GameManager.currency += value
-	# TODO: SFX, VFX
+	Globals.ship.add_health(1)
+	$CollectSFX.play_random_sfx()
 	queue_free()

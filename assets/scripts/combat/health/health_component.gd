@@ -65,3 +65,6 @@ func can_damage() -> bool:
 		return false
 		
 	return true
+
+func add_health(added_health: int): 
+	health_current = max(health_current + added_health, health_max)

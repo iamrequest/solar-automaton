@@ -15,6 +15,7 @@ signal on_death
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.ship = self
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	%GameManager.on_level_completed.connect(_on_level_completed)
 	$HealthComponent.invincibility_enabled = Globals.invincibility_enabled
@@ -93,3 +94,6 @@ func time_slow(time_scale: float, duration: float):
 	if(%GameManager.is_paused):
 		return
 	%GameManager.request_time_scale(1.0)
+
+func add_health(added_health: int) -> void:
+	$HealthComponent.add_health(added_health)
