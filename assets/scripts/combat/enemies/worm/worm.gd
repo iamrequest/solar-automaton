@@ -12,6 +12,9 @@ var num_dead_joints:= 0
 @export_range(0.0, 3.0) var bgm_fade_duration: float
 @export var enable_lasers_after_joint_death_count := 3
 
+@export var haptics_on_spine_destroyed: HapticsProfile
+@export var haptics_on_death: HapticsProfile
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	head.setup(self)
@@ -32,10 +35,12 @@ func _on_component_death() -> void:
 	
 	if(!is_alive()):
 		on_worm_death()
+		haptics_on_death.fire()
 		on_death.emit()
 	else:
 		var bgm_intensity = bgm_intensity[min(bgm_intensity.size() - 1, num_dead_joints)]
 		(%GameManager.bgm_manager as BGMManager).FadeIntensity(bgm_intensity, bgm_fade_duration)
+		haptics_on_spine_destroyed.fire()
 
 func is_alive() -> bool:
 	for spine in spine_columns:

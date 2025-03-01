@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjtjdjheee1o1"]
+[gd_scene load_steps=13 format=3 uid="uid://bjtjdjheee1o1"]
 
 [ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm.gd" id="1_cly7c"]
 [ext_resource type="PackedScene" uid="uid://cqwo11r8vcgj4" path="res://assets/models/worm/worm_head.tscn" id="1_mssm7"]
+[ext_resource type="Script" path="res://assets/scripts/haptics/haptics_profile.gd" id="2_64dh1"]
 [ext_resource type="PackedScene" uid="uid://ce0w1r5brioic" path="res://assets/models/worm/worm_spine.tscn" id="2_c0kny"]
 [ext_resource type="PackedScene" uid="uid://ch1noxjor3gdj" path="res://assets/models/worm/worm_tail.tscn" id="3_8po8o"]
 [ext_resource type="Script" path="res://assets/prefabs/player/random_sfx_player.gd" id="5_ncic3"]
@@ -10,6 +11,18 @@
 [ext_resource type="AudioStream" uid="uid://h83ayuxihnfo" path="res://assets/audio/sfx/worm/Robot Monster A.wav" id="8_8elxi"]
 [ext_resource type="AudioStream" uid="uid://dr4i8572gjrxa" path="res://assets/audio/sfx/worm/Robot Monster B.wav" id="9_v4t13"]
 
+[sub_resource type="Resource" id="Resource_hvcng"]
+script = ExtResource("2_64dh1")
+intensity_primary = 0.75
+intensity_secondary = 0.75
+intensity_duration = 1.0
+
+[sub_resource type="Resource" id="Resource_fq1o0"]
+script = ExtResource("2_64dh1")
+intensity_primary = 1.0
+intensity_secondary = 1.0
+intensity_duration = 5.0
+
 [node name="Worm" type="Node3D" node_paths=PackedStringArray("head", "spine_columns", "tail")]
 script = ExtResource("1_cly7c")
 head = NodePath("Components/WormHead")
@@ -17,6 +30,8 @@ spine_columns = [NodePath("Components/WormSpine1"), NodePath("Components/WormSpi
 tail = NodePath("Components/WormTail")
 bgm_intensity = Array[float]([0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
 bgm_fade_duration = 3.0
+haptics_on_spine_destroyed = SubResource("Resource_hvcng")
+haptics_on_death = SubResource("Resource_fq1o0")
 
 [node name="Components" type="Node3D" parent="."]
 

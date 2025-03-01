@@ -15,3 +15,7 @@ data_*/
 mono_crash.*.json
 
 build/
+
+# Krita temp files
+itchio/*.png~
+itchio/*.kra~

@@ -83,7 +83,7 @@ func rotate_to_dominant_hand(delta: float):
 	
 	if(dominant_hand):
 		# TODO: Also snap rotation to a point on the game plane?
-		quaternion = quaternion.slerp(dominant_hand.quaternion, rotation_lerp_speed)
+		quaternion = quaternion.slerp(dominant_hand.global_basis.get_rotation_quaternion(), rotation_lerp_speed)
 		
 		
 # Lookat non-dominant hand, up is dominant hand

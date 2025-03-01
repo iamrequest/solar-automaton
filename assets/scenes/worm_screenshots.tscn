@@ -1,0 +1,617 @@
+[gd_scene load_steps=40 format=3 uid="uid://clbyquspta75u"]
+
+[ext_resource type="PackedScene" uid="uid://d2uk2xiqpck2v" path="res://assets/scenes/combat_scene_base.tscn" id="1_ymnuc"]
+[ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="2_4nco1"]
+[ext_resource type="Resource" uid="uid://csi8labn1d87a" path="res://assets/audio/bgm/horror_vol5_indicate/horror_indicate.tres" id="3_ogr5x"]
+[ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="4_ws047"]
+[ext_resource type="PackedScene" uid="uid://dypf7c8mc28nt" path="res://assets/prefabs/env/player_ground.tscn" id="5_ofpe7"]
+[ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="6_us3d5"]
+[ext_resource type="Texture2D" uid="uid://726ui7g204w0" path="res://assets/textures/vfx/request/glow-circle_64x64.png" id="7_iu2fp"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/rotation_config.gd" id="8_qrxg8"]
+[ext_resource type="Texture2D" uid="uid://bt3s3woyfms0c" path="res://assets/textures/vfx/request/ring_64x64.png" id="9_ju60e"]
+[ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="10_hu83o"]
+[ext_resource type="PackedScene" uid="uid://cyoaq543pakfk" path="res://assets/scenes/combat_zones/lv2/cz_02-01.tscn" id="11_k883m"]
+[ext_resource type="PackedScene" uid="uid://bjtjdjheee1o1" path="res://assets/prefabs/enemies/worm.tscn" id="12_nph0e"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_attack_manager.gd" id="13_khtf3"]
+[ext_resource type="Script" path="res://assets/scripts/combat/enemies/worm/worm_attack.gd" id="14_lnf1q"]
+[ext_resource type="PackedScene" uid="uid://bl3q183x34vcw" path="res://assets/prefabs/enemies/worm_mover.tscn" id="15_6rv2d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m1vau"]
+sky_top_color = Color(0.440422, 0.115129, 0.574259, 1)
+sky_horizon_color = Color(0.149608, 0.124337, 0.422638, 1)
+sky_curve = 1.883
+sky_cover_modulate = Color(0.793325, 0.802181, 0.808046, 1)
+ground_bottom_color = Color(0.098513, 0.089771, 0.0933615, 1)
+ground_horizon_color = Color(0.149608, 0.124337, 0.422638, 1)
+ground_curve = 0.428709
+sun_angle_max = 0.0
+sun_curve = 0.231705
+energy_multiplier = 1.5
+
+[sub_resource type="Sky" id="Sky_svgos"]
+sky_material = SubResource("ProceduralSkyMaterial_m1vau")
+
+[sub_resource type="Environment" id="Environment_vhnt3"]
+background_mode = 2
+sky = SubResource("Sky_svgos")
+sky_rotation = Vector3(-1.5708, 0, 0)
+ambient_light_source = 3
+ambient_light_color = Color(0.634138, 0.612172, 0.650433, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.40532, 0.150556, 0.642321, 1)
+fog_density = 0.0196
+fog_sky_affect = 0.0
+fog_height = 1.0
+fog_height_density = 1.2308
+volumetric_fog_albedo = Color(0.667028, 0.451124, 0.75044, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_84qwg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w33fg"]
+render_priority = 5
+transparency = 1
+albedo_texture = ExtResource("4_ws047")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41kvv"]
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("7_iu2fp")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3212q"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.538294, 0.122973, 0.721443, 1)
+albedo_texture = ExtResource("7_iu2fp")
+texture_filter = 0
+
+[sub_resource type="Curve" id="Curve_3xq8w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_tcx2v"]
+script = ExtResource("8_qrxg8")
+rotation_amount = Vector3(0, 0, -0.2)
+curve = SubResource("Curve_3xq8w")
+curve_range_min = 0.0
+curve_range_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2itl"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.538294, 0.122973, 0.721443, 1)
+albedo_texture = ExtResource("7_iu2fp")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_et6x3"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.817505, 3.46541e-06, 0.495265, 1)
+albedo_texture = ExtResource("9_ju60e")
+texture_filter = 0
+
+[sub_resource type="Curve" id="Curve_2ka5p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_5s01v"]
+script = ExtResource("8_qrxg8")
+rotation_amount = Vector3(0, 0, 0.2)
+curve = SubResource("Curve_2ka5p")
+curve_range_min = 0.0
+curve_range_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kye37"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.674358, 0.173151, 0.418194, 1)
+albedo_texture = ExtResource("9_ju60e")
+texture_filter = 0
+
+[sub_resource type="Curve" id="Curve_c2gwf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_y7udg"]
+script = ExtResource("8_qrxg8")
+rotation_amount = Vector3(0, 0, -0.3)
+curve = SubResource("Curve_c2gwf")
+curve_range_min = 0.0
+curve_range_max = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rv0a5"]
+
+[sub_resource type="Resource" id="Resource_nn7sn"]
+script = ExtResource("10_hu83o")
+spawnable_zones = Array[PackedScene]([ExtResource("11_k883m")])
+
+[sub_resource type="Curve3D" id="Curve3D_y1d4i"]
+bake_interval = 74.6
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -65.1107, -14.7123, -1.55986, 0, 0, 0, 0, 0, 0, -23.8698, 2.7705, 1.47219, 0, 0, 0, 0, 0, 0, 4.73218, 1.28688, 2.97668, 0, 0, 0, 0, 0, 0, 12.0617, -13.4342, 0.903065),
+"tilts": PackedFloat32Array(0, -0.236991, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_dk8vx"]
+bake_interval = 85.15
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -15, -15, 0, 0, 0, 0, 0, 0, 0, 22.4556, -15, 0, 0, 0, 0, 0, 0, -27.3066, 38.2898, -22.4414, 0, 0, 0, 0, 0, 0, -33.9101, 43.0269, 16.1458, 0, 0, 0, 0, 0, 0, 8.06934, 37.2039, 31.9911, 0, 0, 0, 0, 0, 0, 26.1891, 24.253, 2.33598, 0, 0, 0, 0, 0, 0, 0, 0, -67.0188, 0, 0, 0, 0, 0, 0, 0, 0, -171.48),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_c0tcr"]
+bake_interval = 18.75
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -57.8114, -16.1789, -1.55986, 0, 0, 0, 0, 0, 0, -52.8902, -0.821946, -0.527808, 0, 0, 0, 0, 0, 0, -17.5872, -1.44519, -0.800206, 0, 0, 0, 0, 0, 0, -10.4121, -18.4196, -0.497946),
+"tilts": PackedFloat32Array(0, -0.236991, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_ppq23"]
+bake_interval = 85.15
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -15, -15, 0, 0, 0, 0, 0, 0, 0, 105.478, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_vy1ct"]
+bake_interval = 85.15
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -15, -15, 0, 0, 0, 0, 0, 0, 0, 140, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ts2ds"]
+bake_interval = 74.6
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -98.0369, 11.724, -1.3967, 0, 0, 0, 0, 0, 0, -44.8067, 16.5594, 1.3056, 0, 0, 0, 0, 0, 0, -28.8492, 17.7783, -13.3169),
+"tilts": PackedFloat32Array(-2.01271, -0.597593, 0.321069)
+}
+point_count = 3
+
+[node name="SceneBase" instance=ExtResource("1_ymnuc")]
+
+[node name="GameManager" parent="." index="0"]
+pause_on_mission_complete = false
+
+[node name="OvaniPlayer" parent="." index="1"]
+QueuedSongs = Array[ExtResource("2_4nco1")]([ExtResource("3_ogr5x")])
+
+[node name="Announcer" parent="." index="2"]
+visible = false
+
+[node name="XROrigin3D" parent="." index="3"]
+visible = false
+
+[node name="Ship" parent="." index="4"]
+visible = false
+
+[node name="WorldEnvironment" parent="BaseLevelEnv" index="0"]
+environment = SubResource("Environment_vhnt3")
+
+[node name="DirectionalLight3D" parent="BaseLevelEnv" index="1"]
+light_color = Color(0.997521, 0.778313, 0.8029, 1)
+light_energy = 1.226
+
+[node name="StaticEnv" type="Node3D" parent="BaseLevelEnv" index="2"]
+
+[node name="Plane" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="0"]
+transform = Transform3D(-1.48618e-05, -200, -3.92004e-07, 0, -8.74228e-06, 8.968, -339.999, 8.74228e-06, 1.7135e-14, 0, -3.34, -2)
+mesh = SubResource("QuadMesh_84qwg")
+surface_material_override/0 = SubResource("StandardMaterial3D_w33fg")
+
+[node name="Plane2" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="1"]
+transform = Transform3D(8.17401e-06, 168, -3.92004e-07, -7.14594e-13, -7.34351e-06, -8.968, -186.999, 7.34351e-06, 1.7135e-14, 0, 77.4451, -2)
+mesh = SubResource("QuadMesh_84qwg")
+surface_material_override/0 = SubResource("StandardMaterial3D_w33fg")
+
+[node name="PlayerGround" parent="BaseLevelEnv/StaticEnv" index="2" instance=ExtResource("5_ofpe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00274301, -0.016634, 0.0049181)
+
+[node name="Sun" parent="BaseLevelEnv/StaticEnv" index="3" instance=ExtResource("6_us3d5")]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -95)
+
+[node name="SunBase" parent="BaseLevelEnv/StaticEnv/Sun" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_41kvv")
+
+[node name="SunPlane1" parent="BaseLevelEnv/StaticEnv/Sun" index="1"]
+transform = Transform3D(-3.02258e-06, -69.1486, -2.60738e-20, 69.1486, -3.02258e-06, -3.02258e-06, 3.02258e-06, -1.32121e-13, 69.1486, 4.93173e-21, -3.34, -18.5994)
+surface_material_override/0 = SubResource("StandardMaterial3D_3212q")
+rotation_config = SubResource("Resource_tcx2v")
+
+[node name="SunPlane2" parent="BaseLevelEnv/StaticEnv/Sun" index="2"]
+transform = Transform3D(-1.5353e-06, -35.1236, -3.32252e-20, 35.1236, -1.5353e-06, -1.5353e-06, 1.5353e-06, -6.71101e-14, 35.1236, 3.37608e-20, -3.34, -17.698)
+surface_material_override/0 = SubResource("StandardMaterial3D_u2itl")
+
+[node name="SunRing" parent="BaseLevelEnv/StaticEnv/Sun" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_et6x3")
+rotation_config = SubResource("Resource_5s01v")
+
+[node name="SunRing2" parent="BaseLevelEnv/StaticEnv/Sun" index="4"]
+transform = Transform3D(-6.53346e-06, -149.468, -3.18448e-19, 149.468, -6.53346e-06, -6.53346e-06, 6.53346e-06, -2.85586e-13, 149.468, 4.28586e-20, -3.34, -28.7994)
+surface_material_override/0 = SubResource("StandardMaterial3D_kye37")
+rotation_config = SubResource("Resource_y7udg")
+t_scale = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="4"]
+transform = Transform3D(9.82096, 0, 0, 0, 10.5552, 0, 0, 0, 9.82096, 32.7247, -3.64858, -7.5911)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="5"]
+transform = Transform3D(9.82096, 0, 0, 0, 10.5552, 0, 0, 0, 9.82096, 36.8838, -1.32225, -10.0978)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="6"]
+transform = Transform3D(9.63633, 0, 0, 0, 10.3568, 0, 0, 0, 9.63633, 38.9612, -4.31291, -4.00772)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="7"]
+transform = Transform3D(-9.82096, 0, -8.58575e-07, 0, 10.5552, 0, 8.58575e-07, 0, -9.82096, -32.7942, -3.64856, 36.6539)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="8"]
+transform = Transform3D(-9.82096, 0, -8.58575e-07, 0, 10.5552, 0, 8.58575e-07, 0, -9.82096, -28.6351, -1.32223, 34.1472)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="9"]
+transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 10.3568, 0, 8.42434e-07, 0, -9.63633, -25.326, -4.31289, 39.4055)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="10"]
+transform = Transform3D(-4.29288e-07, 0, 9.82096, 0, 10.5552, 0, -9.82096, 0, -4.29288e-07, -40.5769, 0.113761, -2.02088)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="11"]
+transform = Transform3D(-4.29288e-07, 0, 9.82096, 0, 10.5552, 0, -9.82096, 0, -4.29288e-07, -36.4178, 2.44009, -4.52756)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="12"]
+transform = Transform3D(-4.21217e-07, 0, 9.63633, 0, 15.3317, 0, -9.63633, 0, -4.21217e-07, -32.9624, 4.43058, -10.6857)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="13"]
+transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 10.3568, 0, 8.42434e-07, 0, -9.63633, 31.0989, -4.31289, 23.6139)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="14"]
+transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 13.2314, 0, 8.42434e-07, 0, -9.63633, 31.3141, -4.3129, -59.9278)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="15"]
+transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 13.2314, 0, 8.42434e-07, 0, -9.63633, 34.1356, -0.875972, -65.3662)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="16"]
+transform = Transform3D(-7.01273, 0, -6.13073e-07, 0, 9.62904, 0, 6.13073e-07, 0, -7.01273, 34.4743, -0.875972, -60.9523)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="17"]
+transform = Transform3D(-3.89239, 0, -3.40283e-07, 0, 4.18339, 0, 3.40283e-07, 0, -3.89239, 35.6095, -1.02194, 5.24837)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="18"]
+transform = Transform3D(-2.06559, 0, -1.8058e-07, 0, 6.61352, 0, 1.8058e-07, 0, -2.06559, 31.4748, -2.48989, 7.53404)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="19"]
+transform = Transform3D(-3.89239, 0, -3.40283e-07, 0, 4.18339, 0, 3.40283e-07, 0, -3.89239, 22.6513, -1.02194, 29.4648)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="20"]
+transform = Transform3D(-2.06559, 0, -1.8058e-07, 0, 6.61352, 0, 1.8058e-07, 0, -2.06559, 18.5165, -2.48989, 31.7505)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="21"]
+transform = Transform3D(5.10425e-07, 0, -3.89239, 0, 4.18339, 0, 3.89239, 0, 5.10425e-07, -43.0729, -1.02194, 7.02517)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="22"]
+transform = Transform3D(2.7087e-07, 0, -2.06559, 0, 6.61352, 0, 2.06559, 0, 2.7087e-07, -40.7872, -2.48989, 11.1599)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="23"]
+transform = Transform3D(1.26365e-06, 0, -9.63633, 0, 10.3568, 0, 9.63633, 0, 1.26365e-06, 29.9194, -3.92782, -35.1663)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="24"]
+transform = Transform3D(5.10425e-07, 0, -3.89239, 0, 4.18339, 0, 3.89239, 0, 5.10425e-07, 21.4114, -0.636868, -30.9693)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="25"]
+transform = Transform3D(2.7087e-07, 0, -2.06559, 0, 6.61352, 0, 2.06559, 0, 2.7087e-07, 22.9154, -2.10482, -26.8345)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="26"]
+transform = Transform3D(-2.10609e-06, 0, 9.63633, 0, 10.3568, 0, -9.63633, 0, -2.10609e-06, -40.8159, -3.92782, -47.125)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="27"]
+transform = Transform3D(-8.50708e-07, 0, 3.89239, 0, 4.18339, 0, -3.89239, 0, -8.50708e-07, -32.3079, -0.636871, -51.3221)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="28"]
+transform = Transform3D(-4.5145e-07, 0, 2.06559, 0, 6.61352, 0, -2.06559, 0, -4.5145e-07, -33.8119, -2.10482, -55.4568)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="29"]
+transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 14.6423, 0, 8.42434e-07, 0, -9.63633, 11.466, 2.27072, 48.031)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="30"]
+transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 14.6423, 0, 8.42434e-07, 0, -9.63633, 13.7664, 0.495312, 41.3298)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="31"]
+transform = Transform3D(-9.63633, 0, -8.42434e-07, 0, 14.6423, 0, 8.42434e-07, 0, -9.63633, 8.04961, -2.51426, 43.8569)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="32"]
+transform = Transform3D(-9.63633, 0, -8.87617e-07, 0, 14.6423, 0, 8.42434e-07, 0, -10.1532, -13.9593, 3.68293, 60.5264)
+mesh = SubResource("BoxMesh_rv0a5")
+
+[node name="CombatZoneManager" parent="." index="9"]
+level_config = SubResource("Resource_nn7sn")
+
+[node name="Worm" parent="." index="10" instance=ExtResource("12_nph0e")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -19, -31)
+
+[node name="WormHead" parent="Worm/Components" index="0"]
+transform = Transform3D(-0.997528, 0.0663662, 0.0180579, 0.0648409, 0.995081, -0.074649, -0.022922, -0.0733021, -0.997016, 1.22125, 21.6291, 1.66022)
+
+[node name="WormSpine1" parent="Worm/Components" index="1"]
+transform = Transform3D(-0.997528, 0.0663662, 0.0180579, 0.0648409, 0.995081, -0.074649, -0.022922, -0.0733021, -0.997016, 1.22125, 21.6291, 1.66022)
+
+[node name="WormSpine2" parent="Worm/Components" index="2"]
+transform = Transform3D(-0.922058, 0.307879, 0.234448, 0.296261, 0.951389, -0.084139, -0.248952, -0.0081237, -0.968464, -1.59186, 21.3593, -4.03187)
+
+[node name="WormSpine3" parent="Worm/Components" index="3"]
+transform = Transform3D(-0.750851, 0.492759, 0.439661, 0.50935, 0.855849, -0.0893089, -0.420285, 0.156889, -0.8937, -2.07342, 20.8208, -11.6685)
+
+[node name="WormSpine4" parent="Worm/Components" index="4"]
+transform = Transform3D(-0.628019, 0.604751, 0.489688, 0.653311, 0.751629, -0.0903505, -0.422708, 0.263188, -0.867172, -0.38356, 20.3281, -17.1078)
+
+[node name="WormSpine5" parent="Worm/Components" index="5"]
+transform = Transform3D(-0.524834, 0.696193, 0.48969, 0.763649, 0.639224, -0.09036, -0.375944, 0.326529, -0.867176, 1.96401, 19.8295, -22.1517)
+
+[node name="WormSpine6" parent="Worm/Components" index="6"]
+transform = Transform3D(-0.408192, 0.770378, 0.489695, 0.855102, 0.510464, -0.0903518, -0.319597, 0.381844, -0.867185, 5.01971, 19.2413, -27.8923)
+
+[node name="WormSpine7" parent="Worm/Components" index="7"]
+transform = Transform3D(-0.281399, 0.825214, 0.489692, 0.924993, 0.369044, -0.0903684, -0.255298, 0.427537, -0.86718, 8.53683, 18.5995, -34.0253)
+
+[node name="WormSpine8" parent="Worm/Components" index="8"]
+transform = Transform3D(-0.147412, 0.859249, 0.489665, 0.971601, 0.21827, -0.0905454, -0.184697, 0.462422, -0.867131, 12.2686, 17.9396, -40.2463)
+
+[node name="WormTail" parent="Worm/Components" index="9"]
+transform = Transform3D(-0.00991116, 0.87178, 0.489649, 0.993841, 0.0622698, -0.0907498, -0.109611, 0.485773, -0.867103, 15.9683, 17.2974, -46.2508)
+
+[node name="WormAttackManager" type="Node3D" parent="." index="11" node_paths=PackedStringArray("initial_attack", "on_dead_attack")]
+script = ExtResource("13_khtf3")
+initial_attack = NodePath("InitialAttack")
+on_dead_attack = NodePath("OnDeathAttack")
+
+[node name="InitialAttack" type="Node3D" parent="WormAttackManager" index="0" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("14_lnf1q")
+next_attack_options = [NodePath("../Whale_Laser")]
+blaster_type = 2
+blaster_init_delay = 4.145
+blaster_per_joint_delay = 0.3
+
+[node name="WormMover" parent="WormAttackManager/InitialAttack" index="0" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 11)
+curve = SubResource("Curve3D_y1d4i")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="PathFollow3D_Head" parent="WormAttackManager/InitialAttack/WormMover" index="0"]
+transform = Transform3D(-0.0733113, -0.388297, -0.91845, 0, 0.920922, -0.389348, 0.997155, -0.0285478, -0.0675248, -65.1107, -14.7123, -1.55986)
+
+[node name="PathFollow3D_Spine1" parent="WormAttackManager/InitialAttack/WormMover" index="1"]
+transform = Transform3D(-0.0733113, -0.388297, -0.91845, 0, 0.920922, -0.389348, 0.997155, -0.0285478, -0.0675248, -65.1107, -14.7123, -1.55986)
+
+[node name="PathFollow3D_Spine2" parent="WormAttackManager/InitialAttack/WormMover" index="2"]
+transform = Transform3D(-0.0733111, -0.388304, -0.918467, 0, 0.920938, -0.389356, 0.997153, -0.0285483, -0.0675261, -65.1107, -14.7123, -1.55986)
+
+[node name="PathFollow3D_Spine3" parent="WormAttackManager/InitialAttack/WormMover" index="3"]
+transform = Transform3D(-0.0981599, -0.382784, -0.91847, 0.0592958, 0.919041, -0.389357, 0.993238, -0.092696, -0.0675263, -56.5303, -10.7087, -0.912927)
+
+[node name="PathFollow3D_Spine4" parent="WormAttackManager/InitialAttack/WormMover" index="4"]
+transform = Transform3D(-0.0981599, -0.382784, -0.91847, 0.0592958, 0.919041, -0.389357, 0.993238, -0.092696, -0.0675263, -56.5303, -10.7087, -0.912927)
+
+[node name="PathFollow3D_Spine5" parent="WormAttackManager/InitialAttack/WormMover" index="5"]
+transform = Transform3D(-0.0981599, -0.382784, -0.91847, 0.0592958, 0.919041, -0.389357, 0.993238, -0.092696, -0.0675263, -56.5303, -10.7087, -0.912927)
+
+[node name="PathFollow3D_Spine6" parent="WormAttackManager/InitialAttack/WormMover" index="6"]
+transform = Transform3D(-0.0981599, -0.382784, -0.91847, 0.0592958, 0.919041, -0.389357, 0.993238, -0.092696, -0.0675263, -56.5303, -10.7087, -0.912927)
+
+[node name="PathFollow3D_Spine7" parent="WormAttackManager/InitialAttack/WormMover" index="7"]
+transform = Transform3D(-0.0981599, -0.382784, -0.91847, 0.0592958, 0.919041, -0.389357, 0.993238, -0.092696, -0.0675263, -56.5303, -10.7087, -0.912927)
+
+[node name="PathFollow3D_Spine8" parent="WormAttackManager/InitialAttack/WormMover" index="8"]
+transform = Transform3D(-0.0981599, -0.382784, -0.91847, 0.0592958, 0.919041, -0.389357, 0.993238, -0.092696, -0.0675263, -56.5303, -10.7087, -0.912927)
+
+[node name="PathFollow3D_Tail" parent="WormAttackManager/InitialAttack/WormMover" index="9"]
+transform = Transform3D(-0.0981599, -0.382784, -0.91847, 0.0592958, 0.919041, -0.389357, 0.993238, -0.092696, -0.0675263, -56.5303, -10.7087, -0.912927)
+
+[node name="OnDeathAttack" type="Node3D" parent="WormAttackManager" index="1"]
+script = ExtResource("14_lnf1q")
+
+[node name="WormMover" parent="WormAttackManager/OnDeathAttack" index="0" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.205444, -0.731588, 0.0848045)
+curve = SubResource("Curve3D_dk8vx")
+speed = 10.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Whale_Projectile" type="Node3D" parent="WormAttackManager" index="2" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("14_lnf1q")
+next_attack_options = [NodePath("../Whale_Laser"), NodePath("../GoToSky")]
+blaster_type = 1
+
+[node name="Left" parent="WormAttackManager/Whale_Projectile" index="0" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 15)
+curve = SubResource("Curve3D_c0tcr")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Right" parent="WormAttackManager/Whale_Projectile" index="1" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 15)
+curve = SubResource("Curve3D_c0tcr")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Whale_Laser" type="Node3D" parent="WormAttackManager" index="3" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("14_lnf1q")
+next_attack_options = [NodePath("../Whale_Projectile"), NodePath("../GoToSky")]
+blaster_type = 2
+rotation_speed_multiplier = 5.0
+
+[node name="Left" parent="WormAttackManager/Whale_Laser" index="0" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 15)
+curve = SubResource("Curve3D_c0tcr")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Right" parent="WormAttackManager/Whale_Laser" index="1" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 15)
+curve = SubResource("Curve3D_c0tcr")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="GoToSky" type="Node3D" parent="WormAttackManager" index="4" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("14_lnf1q")
+next_attack_options = [NodePath("../Divebomb")]
+blaster_type = 2
+blaster_per_joint_delay = 0.1
+rotation_speed_multiplier = 5.0
+
+[node name="Center" parent="WormAttackManager/GoToSky" index="0" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+curve = SubResource("Curve3D_ppq23")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Left" parent="WormAttackManager/GoToSky" index="1" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 9)
+curve = SubResource("Curve3D_ppq23")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Right" parent="WormAttackManager/GoToSky" index="2" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
+curve = SubResource("Curve3D_ppq23")
+speed = 5.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="Divebomb" type="Node3D" parent="WormAttackManager" index="5" node_paths=PackedStringArray("next_attack_options")]
+script = ExtResource("14_lnf1q")
+next_attack_options = [NodePath("../Whale_Laser"), NodePath("../Whale_Projectile")]
+blaster_type = 2
+rotation_speed_multiplier = 3.0
+
+[node name="Center" parent="WormAttackManager/Divebomb" index="0" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -20.052, 99, 0)
+curve = SubResource("Curve3D_vy1ct")
+speed = 10.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="LeftToRight" parent="WormAttackManager/Divebomb" index="1" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0, 1, -23.035, 99, 0)
+curve = SubResource("Curve3D_vy1ct")
+speed = 10.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="RightToLeft" parent="WormAttackManager/Divebomb" index="2" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0, 0, 1, 23.035, 99, 0)
+curve = SubResource("Curve3D_vy1ct")
+speed = 10.0
+lerp_speed = 0.75
+editor_update_pos = false
+
+[node name="WormMover" parent="." index="12" instance=ExtResource("15_6rv2d")]
+transform = Transform3D(-0.446932, 0, -0.894568, 0, 1, 0, 0.894568, 0, -0.446932, -36.3788, -14.9404, -4.33206)
+curve = SubResource("Curve3D_ts2ds")
+speed = 5.0
+lerp_speed = 0.75
+progress_raw = 67.07
+editor_update_pos_ratio = 1.0
+
+[node name="PathFollow3D_Head" parent="WormMover" index="0"]
+transform = Transform3D(0.424927, -0.0951054, -0.899967, 0.0647622, 0.993788, -0.0746513, 0.901761, -0.0265558, 0.429443, -32.0249, 17.5695, -8.14597)
+progress = 67.07
+
+[node name="PathFollow3D_Spine1" parent="WormMover" index="1"]
+transform = Transform3D(0.424927, -0.0951054, -0.899967, 0.0647622, 0.993788, -0.0746513, 0.901761, -0.0265558, 0.429443, -32.0249, 17.5695, -8.14597)
+progress = 67.07
+
+[node name="PathFollow3D_Spine2" parent="WormMover" index="2"]
+transform = Transform3D(0.18937, -0.144807, -0.971065, 0.296158, 0.951032, -0.0841403, 0.935984, -0.271622, 0.223091, -35.8596, 17.2997, -3.08548)
+progress = 61.07
+
+[node name="PathFollow3D_Spine3" parent="WormMover" index="3"]
+transform = Transform3D(-0.0405506, -0.0801396, -0.992445, 0.509256, 0.855672, -0.0893099, 0.85924, -0.510923, 0.0060953, -42.4758, 16.7612, 0.758347)
+progress = 55.07
+
+[node name="PathFollow3D_Spine4" parent="WormMover" index="4"]
+transform = Transform3D(-0.097446, -0.0348511, -0.994635, 0.653049, 0.751315, -0.090353, 0.750948, -0.657891, -0.0504938, -48.0969, 16.2686, 1.67768)
+progress = 49.07
+
+[node name="PathFollow3D_Spine5" parent="WormMover" index="5"]
+transform = Transform3D(-0.101739, -0.0190431, -0.994734, 0.763677, 0.639257, -0.090362, 0.637547, -0.768764, -0.0504989, -53.6582, 15.7699, 1.83188)
+progress = 43.07
+
+[node name="PathFollow3D_Spine6" parent="WormMover" index="6"]
+transform = Transform3D(-0.103459, -0.00272981, -0.994635, 0.854994, 0.510426, -0.090353, 0.508033, -0.859577, -0.0504938, -60.1593, 15.1818, 1.66401)
+progress = 37.07
+
+[node name="PathFollow3D_Spine7" parent="WormMover" index="7"]
+transform = Transform3D(-0.102601, 0.0136496, -0.994822, 0.925002, 0.36905, -0.09037, 0.365858, -0.929245, -0.0505034, -67.2176, 14.5399, 1.25875)
+progress = 31.07
+
+[node name="PathFollow3D_Spine8" parent="WormMover" index="8"]
+transform = Transform3D(-0.0991575, 0.029689, -0.996809, 0.971713, 0.218302, -0.0905505, 0.214449, -0.975445, -0.0506042, -74.4505, 13.88, 0.70076)
+progress = 25.07
+
+[node name="PathFollow3D_Tail" parent="WormMover" index="9"]
+transform = Transform3D(-0.0932218, 0.0451525, -0.999073, 0.994, 0.0622791, -0.0907562, 0.0576466, -1.00086, -0.0507191, -81.4755, 13.2378, 0.0747024)
+progress = 19.07
+
+[editable path="Announcer"]
+[editable path="BaseLevelEnv/StaticEnv/Sun"]
+[editable path="Worm"]
+[editable path="WormAttackManager/InitialAttack/WormMover"]
+[editable path="WormMover"]

@@ -1,0 +1,315 @@
+[gd_scene load_steps=19 format=3 uid="uid://3ospccq6sso4"]
+
+[ext_resource type="PackedScene" uid="uid://d2uk2xiqpck2v" path="res://assets/scenes/combat_scene_base.tscn" id="1_seymq"]
+[ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="2_v5mik"]
+[ext_resource type="Resource" uid="uid://ho11of71h2yt" path="res://assets/audio/bgm/synthpop_sunset_strip/synthpop_sunset-strip.tres" id="3_amie3"]
+[ext_resource type="PackedScene" uid="uid://bjtjdjheee1o1" path="res://assets/prefabs/enemies/worm.tscn" id="4_eyetd"]
+[ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="5_xuxnw"]
+[ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="6_ugdkw"]
+[ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="7_iyjsy"]
+[ext_resource type="PackedScene" uid="uid://c5fn8yvjl8k2l" path="res://assets/scenes/combat_zones/lv1/cz_01-01.tscn" id="8_0pvcc"]
+[ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="9_2umpa"]
+[ext_resource type="PackedScene" uid="uid://dypf7c8mc28nt" path="res://assets/prefabs/env/player_ground.tscn" id="10_oc78c"]
+[ext_resource type="PackedScene" uid="uid://cuakaxl5b30is" path="res://assets/prefabs/enemies/enemy_pickable_slow_fire.tscn" id="11_ajcma"]
+[ext_resource type="PackedScene" uid="uid://bl3q183x34vcw" path="res://assets/prefabs/enemies/worm_mover.tscn" id="12_uppg6"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mr7fh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfyn5"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("5_xuxnw")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_xauvp"]
+
+[sub_resource type="Resource" id="Resource_0fci6"]
+script = ExtResource("7_iyjsy")
+spawnable_zones = Array[PackedScene]([ExtResource("8_0pvcc")])
+
+[sub_resource type="BoxMesh" id="BoxMesh_nbgut"]
+
+[sub_resource type="Curve3D" id="Curve3D_gqegp"]
+bake_interval = 74.6
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -91.1984, -6.74487, -4.81326, 0, 0, 0, 0, 0, 0, -44.8067, 19.0933, 1.30561, 0, 0, 0, 0, 0, 0, -20.9905, -3.18041, -11.2098),
+"tilts": PackedFloat32Array(-2.075, -0.207, 0.415)
+}
+point_count = 3
+
+[node name="SceneBase" instance=ExtResource("1_seymq")]
+
+[node name="GameManager" parent="." index="0"]
+next_level = 2
+
+[node name="OvaniPlayer" parent="." index="1"]
+QueuedSongs = Array[ExtResource("2_v5mik")]([ExtResource("3_amie3")])
+
+[node name="Announcer" parent="." index="2"]
+visible = false
+
+[node name="XROrigin3D" parent="." index="3"]
+visible = false
+
+[node name="Worm" parent="." index="4" instance=ExtResource("4_eyetd")]
+unique_name_in_owner = true
+transform = Transform3D(-0.992941, 0, -0.118612, 0, 1, 0, 0.118612, 0, -0.992941, -13.2551, 2.7711, -20.0009)
+visible = false
+
+[node name="WormHead" parent="Worm/Components" index="0"]
+transform = Transform3D(1.00705, -0.028223, -0.0216195, 0.0276573, 0.998898, -0.0358574, 0.0226748, 0.0350703, 1.00392, -1.26023, 10.0973, 1.64054)
+
+[node name="WormSpine1" parent="Worm/Components" index="1"]
+transform = Transform3D(1.00662, -0.028223, -0.0216176, 0.0276455, 0.998898, -0.0358542, 0.0226651, 0.0350703, 1.00383, -1.26023, 10.0973, 1.64054)
+
+[node name="WormSpine2" parent="Worm/Components" index="2"]
+transform = Transform3D(0.989053, -0.147632, -0.112039, 0.11808, 0.963418, -0.242853, 0.143851, 0.224228, 0.969675, 0.530958, 14.2582, 6.77514)
+
+[node name="WormSpine3" parent="Worm/Components" index="3"]
+transform = Transform3D(0.947843, -0.279306, -0.196509, 0.173927, 0.885162, -0.435094, 0.296429, 0.373733, 0.88363, 1.38303, 16.2812, 12.4557)
+
+[node name="WormSpine4" parent="Worm/Components" index="4"]
+transform = Transform3D(0.868754, -0.453888, -0.21726, 0.310239, 0.819726, -0.484796, 0.398646, 0.351205, 0.85075, 1.1381, 15.7861, 17.2297)
+
+[node name="WormSpine5" parent="Worm/Components" index="5"]
+transform = Transform3D(0.754378, -0.624058, -0.21726, 0.474238, 0.737772, -0.484906, 0.462953, 0.261142, 0.85075, 0.301938, 13.9442, 22.2922)
+
+[node name="WormSpine6" parent="Worm/Components" index="6"]
+transform = Transform3D(0.607089, -0.7669, -0.217161, 0.617576, 0.623132, -0.484607, 0.506981, 0.159265, 0.850363, -0.973314, 11.1073, 27.9538)
+
+[node name="WormSpine7" parent="Worm/Components" index="7"]
+transform = Transform3D(0.43375, -0.876527, -0.217165, 0.733952, 0.481509, -0.484736, 0.529139, 0.0506285, 0.850379, -2.54866, 7.58925, 33.9365)
+
+[node name="WormSpine8" parent="Worm/Components" index="8"]
+transform = Transform3D(0.240485, -0.947027, -0.216976, 0.815925, 0.317646, -0.488403, 0.530438, -0.0592519, 0.849637, -4.28512, 3.70374, 39.9622)
+
+[node name="WormTail" parent="Worm/Components" index="9"]
+transform = Transform3D(0.0331915, -0.978869, -0.212488, 0.849351, 0.140568, -0.512967, 0.532101, -0.163318, 0.832064, -6.04369, -0.235467, 45.7527)
+
+[node name="Ship" parent="." index="5"]
+transform = Transform3D(0.69393, -0.713634, 0.095853, 0.709383, 0.654751, -0.260914, 0.123437, 0.249053, 0.960592, -0.058763, 1.72659, 0.0434026)
+
+[node name="ring_large" parent="Ship/Ship/player" index="1"]
+transform = Transform3D(0.56881, -0.415779, 0, 0.56881, 0.415779, 0, 0, 0, 0.804419, 0, 0, -0.639963)
+
+[node name="ring_small" parent="Ship/Ship/player" index="2"]
+transform = Transform3D(-3.51623e-08, 0.588, 0, -0.804419, -2.57023e-08, 0, 0, 0, 0.804419, 0, 0, -0.639963)
+
+[node name="ViewportHealthReadout" parent="Ship" index="9"]
+visible = false
+
+[node name="StaticEnv" type="Node3D" parent="BaseLevelEnv" index="0"]
+
+[node name="Plane" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="0"]
+transform = Transform3D(-1.48618e-05, -72.4667, 0, 0, 0, 8.9677, -339.999, 3.16762e-06, 0, 0, -3.34, -2)
+mesh = SubResource("QuadMesh_mr7fh")
+surface_material_override/0 = SubResource("StandardMaterial3D_bfyn5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="1"]
+transform = Transform3D(3.68494, -7.23623, 4.96322, -4.91419, 13.4077, 3.06228, -7.63637, -12.12, 0.424355, -25.5209, -1.30722, -18.4121)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="2"]
+transform = Transform3D(8.27446, 0.717708, 3.12306, -4.74528, 8.13795, 4.24571, -2.24893, -14.5304, 2.53212, -18.6116, -5.51382, -25.4598)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="3"]
+transform = Transform3D(3.68494, -7.23623, 4.96322, -4.91419, 13.4077, 3.06228, -7.63637, -12.12, 0.424355, -25.5209, -1.30722, -47.9595)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="4"]
+transform = Transform3D(8.27446, 0.717708, 3.12306, -4.74528, 8.13795, 4.24571, -2.24893, -14.5304, 2.53212, -18.6116, -5.51382, -55.0072)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="5"]
+transform = Transform3D(8.27446, 0.717708, 3.12306, -4.74528, 8.13795, 4.24571, -2.24893, -14.5304, 2.53212, -18.6116, -5.51382, -79.4014)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="6"]
+transform = Transform3D(4.46016, -1.27099, -5.18753, 7.65835, 8.53161, 2.08691, 4.18314, -14.2643, 1.71041, 15.8676, -1.53737, -20.2739)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="7"]
+transform = Transform3D(0.432425, 10.4164, -4.55785, -4.91419, 11.4801, 3.06228, 8.46793, 6.13028, 2.00988, 15.9529, 0.916507, 0.854013)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="8"]
+transform = Transform3D(4.46016, -1.27099, -5.18753, 5.62967, 13.109, 1.32797, 6.66753, -10.2183, 2.34887, 15.8676, -3.32018, -39.3431)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="9"]
+transform = Transform3D(1.52146, 3.07818, -5.67461, -2.55043, 15.9247, 0.819478, 9.3393, 3.84732, 1.14823, 18.2571, -6.64643, -33.8278)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="10"]
+transform = Transform3D(-1.71188, 5.53283, -5.42044, -0.68276, -15.724, -1.89812, -9.62524, 0.13133, 1.09869, -24.0925, 0.916507, -8.57418)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="11"]
+transform = Transform3D(-8.60017, 4.18203, -2.38918, 0.766925, -12.7657, -3.73227, -4.63582, -9.8702, 3.81485, -19.9334, 0.916507, 1.42126)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="12"]
+transform = Transform3D(7.42324, 10.4742, 1.03659, 2.76053, -1.15973, -5.59578, -5.77209, 12.9158, -1.34309, -12.0492, 0.916507, 19.0562)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="13"]
+transform = Transform3D(8.15611, 9.23809, -0.0900728, 3.64194, -9.63945, -4.24687, -4.03188, 9.9806, -4.01835, -12.0492, 5.28006, 19.0562)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="14"]
+transform = Transform3D(9.52876, 3.64804, 0.479238, 2.258, -13.9887, -2.88059, -0.382528, 8.2994, -5.06594, -8.39987, 7.05061, 20.7626)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="15"]
+transform = Transform3D(-0.111798, -10.0427, -4.66657, -3.88778, -12.167, 3.25499, -8.99526, 5.38343, -1.34882, 8.24246, 7.55805, 20.2549)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="16"]
+transform = Transform3D(-0.273595, -15.3812, -2.2481, -5.69513, -4.96688, 4.42819, -7.97074, 4.07681, -3.08679, 11.7439, 4.96748, 19.992)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="BaseLevelEnv/StaticEnv" index="17"]
+transform = Transform3D(-3.1198, -15.4507, -1.16279, -7.45781, 2.07997, 3.72268, -5.53985, 5.90107, -4.35668, 10.7631, 0.721653, 19.3793)
+mesh = SubResource("BoxMesh_xauvp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ugdkw")
+
+[node name="CombatZoneManager" parent="." index="10"]
+level_config = SubResource("Resource_0fci6")
+
+[node name="Sun" parent="CombatZoneManager/SpawnMarker" index="0" instance=ExtResource("9_2umpa")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00273803, 0.016634, -91.9581)
+
+[node name="SunPlane1" parent="CombatZoneManager/SpawnMarker/Sun" index="1"]
+transform = Transform3D(-3.02258e-06, -69.1486, -2.60738e-20, 69.1486, -3.02258e-06, -3.02258e-06, 3.02258e-06, -1.32121e-13, 69.1486, 0, -3.34, -15.5279)
+
+[node name="SunPlane2" parent="CombatZoneManager/SpawnMarker/Sun" index="2"]
+transform = Transform3D(-1.5353e-06, -35.1236, -3.32252e-20, 35.1236, -1.5353e-06, -1.5353e-06, 1.5353e-06, -6.71101e-14, 35.1236, 0, -3.34, -14.8472)
+
+[node name="SunRing" parent="CombatZoneManager/SpawnMarker/Sun" index="3"]
+transform = Transform3D(-4.78779e-06, -109.532, -1.20975e-19, 109.532, -4.78779e-06, -4.78779e-06, 4.78779e-06, -2.09281e-13, 109.532, 0, -3.34, -4.76418)
+
+[node name="SunRing2" parent="CombatZoneManager/SpawnMarker/Sun" index="4"]
+transform = Transform3D(-6.53346e-06, -149.468, -3.18448e-19, 149.468, -6.53346e-06, -6.53346e-06, 6.53346e-06, -2.85586e-13, 149.468, 0, -3.34, -1.40114)
+
+[node name="PlayerGround" parent="CombatZoneManager/XRRigMarker" index="0" instance=ExtResource("10_oc78c")]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 0.886131, -0.463435, 0, 0.463435, 0.886131, -0.189889, 0.985618, -3.73219)
+fov = 94.5558
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.0577177)
+visible = false
+mesh = SubResource("BoxMesh_nbgut")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.0577177)
+visible = false
+mesh = SubResource("BoxMesh_nbgut")
+
+[node name="Enemy_SlowBullet" parent="." index="12" instance=ExtResource("11_ajcma")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.160154, 1.73925, -1.20867)
+
+[node name="Enemy_SlowBullet2" parent="." index="13" instance=ExtResource("11_ajcma")]
+transform = Transform3D(0.309498, -0.031096, -0.950391, -0.222225, 0.969423, -0.104087, 0.924568, 0.243416, 0.293125, 0.821164, 2.76929, -1.9844)
+
+[node name="Enemy_SlowBullet3" parent="." index="14" instance=ExtResource("11_ajcma")]
+transform = Transform3D(0.989998, 0, 0, 0, 0.989998, 0, 0, 0, 0.989998, 1.82512, 2.23558, -2.71004)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="15"]
+transform = Transform3D(-0.0899255, -0.935879, -0.340653, 0.401721, -0.347064, 0.847447, -0.911336, -0.0606401, 0.407172, 0, 2.39579, 0)
+light_color = Color(0.890151, 0.724427, 0.553827, 1)
+light_energy = 2.688
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="WormMover" parent="." index="16" instance=ExtResource("12_uppg6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 11)
+curve = SubResource("Curve3D_gqegp")
+speed = 5.0
+lerp_speed = 0.75
+progress_raw = 67.07
+editor_update_pos_ratio = 1.0
+
+[node name="PathFollow3D_Head" parent="WormMover" index="0"]
+transform = Transform3D(0.0961156, -0.0381144, -0.994636, 0.0274052, 0.997488, -0.0356864, 0.994163, -0.023812, 0.0971451, -32.7793, 12.8684, -2.80164)
+progress = 67.07
+
+[node name="PathFollow3D_Spine1" parent="WormMover" index="1"]
+transform = Transform3D(0.0961156, -0.0381144, -0.994636, 0.0274052, 0.997488, -0.0356864, 0.994163, -0.023812, 0.0971451, -32.7793, 12.8684, -2.80164)
+progress = 67.07
+
+[node name="PathFollow3D_Spine2" parent="WormMover" index="2"]
+transform = Transform3D(-0.0253558, -0.240097, -0.970343, 0.117306, 0.963112, -0.241433, 0.992674, -0.119945, 0.00374503, -37.6652, 17.0293, -0.414076)
+progress = 61.07
+
+[node name="PathFollow3D_Spine3" parent="WormMover" index="3"]
+transform = Transform3D(-0.180707, -0.405408, -0.892903, 0.172333, 0.883741, -0.433208, 0.968361, -0.232928, -0.0895304, -43.2046, 19.0523, 1.10577)
+progress = 55.07
+
+[node name="PathFollow3D_Spine4" parent="WormMover" index="4"]
+transform = Transform3D(-0.29124, -0.402083, -0.867836, 0.308496, 0.818609, -0.483347, 0.905423, -0.408251, -0.114464, -47.974, 18.5572, 1.42882)
+progress = 49.07
+
+[node name="PathFollow3D_Spine5" parent="WormMover" index="5"]
+transform = Transform3D(-0.36865, -0.332953, -0.867986, 0.472295, 0.737078, -0.483431, 0.800651, -0.588098, -0.114484, -53.0999, 16.7153, 1.19903)
+progress = 43.07
+
+[node name="PathFollow3D_Spine6" parent="WormMover" index="6"]
+transform = Transform3D(-0.429814, -0.248844, -0.867879, 0.615278, 0.62242, -0.483371, 0.660605, -0.741621, -0.11447, -58.8728, 13.8784, 0.604313)
+progress = 37.07
+
+[node name="PathFollow3D_Spine7" parent="WormMover" index="7"]
+transform = Transform3D(-0.472252, -0.15398, -0.868044, 0.731452, 0.480848, -0.483463, 0.49179, -0.863041, -0.114491, -65.0001, 10.3604, -0.250294)
+progress = 31.07
+
+[node name="PathFollow3D_Spine8" parent="WormMover" index="8"]
+transform = Transform3D(-0.493979, -0.0523176, -0.873644, 0.815554, 0.318081, -0.486582, 0.301379, -0.946504, -0.11523, -71.1892, 6.47484, -1.25977)
+progress = 25.07
+
+[node name="PathFollow3D_Tail" parent="WormMover" index="9"]
+transform = Transform3D(-0.494057, 0.0522498, -0.920734, 0.863917, 0.143051, -0.512809, 0.0977497, -1.00021, -0.121441, -77.1475, 2.53563, -2.3191)
+progress = 19.07
+
+[editable path="Announcer"]
+[editable path="Worm"]
+[editable path="Ship"]
+[editable path="Ship/Ship"]
+[editable path="Ship/Ship/player"]
+[editable path="CombatZoneManager/SpawnMarker/Sun"]
+[editable path="WormMover"]
