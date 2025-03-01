@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c0bt1hmnq7q6w"]
+[gd_scene load_steps=24 format=3 uid="uid://c0bt1hmnq7q6w"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ja2qs"]
 [ext_resource type="PackedScene" uid="uid://bt25pg66rpmen" path="res://assets/prefabs/player/xr_camera_rig_simple.tscn" id="2_6v0qr"]
@@ -9,45 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="4_8hwag"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="5_era21"]
 [ext_resource type="PackedScene" uid="uid://dho7f41yokfuj" path="res://assets/prefabs/ui/viewport_title.tscn" id="6_q30k7"]
+[ext_resource type="Environment" uid="uid://cssvxg6dvb3o0" path="res://assets/materials/env/env_title.tres" id="6_xalyj"]
 [ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="6_xi52p"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="11_x1vu1"]
 [ext_resource type="PackedScene" uid="uid://dpaudvbdtyfq6" path="res://assets/prefabs/ui/ui_title_advert.tscn" id="12_r7ywn"]
 [ext_resource type="PackedScene" uid="uid://b33i8arxil65c" path="res://assets/prefabs/ui/ui_controls.tscn" id="13_55tsu"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ax2p"]
-sky_top_color = Color(0.867338, 0.526165, 0.0738397, 1)
-sky_horizon_color = Color(0.522832, 0.21298, 0.343928, 1)
-sky_curve = 1.6
-sky_energy_multiplier = 1.5
-sky_cover_modulate = Color(0.793325, 0.802181, 0.808046, 1)
-ground_bottom_color = Color(0.21591, 0.102174, 0.354899, 1)
-ground_horizon_color = Color(0.522832, 0.21298, 0.343928, 1)
-ground_curve = 0.428709
-ground_energy_multiplier = 1.5
-sun_angle_max = 0.0
-sun_curve = 0.231705
-use_debanding = false
-energy_multiplier = 1.5
-
-[sub_resource type="Sky" id="Sky_ose2n"]
-sky_material = SubResource("ProceduralSkyMaterial_5ax2p")
-
-[sub_resource type="Environment" id="Environment_5mvs7"]
-background_mode = 2
-sky = SubResource("Sky_ose2n")
-sky_rotation = Vector3(-1.5708, 0, 0)
-ambient_light_source = 3
-ambient_light_color = Color(0.634138, 0.612172, 0.650433, 1)
-tonemap_mode = 2
-glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0.667028, 0.451124, 0.75044, 1)
-fog_light_energy = 0.38
-fog_density = 0.0196
-fog_sky_affect = 0.0
-fog_height = 1.0
-fog_height_density = 1.2308
-volumetric_fog_albedo = Color(0.667028, 0.451124, 0.75044, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_7wnfj"]
 
@@ -63,31 +29,31 @@ texture_filter = 0
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_k74n1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ekapi"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0ubc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bbsf"]
 render_priority = 127
 transparency = 1
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = SubResource("ViewportTexture_k74n1")
+albedo_texture = SubResource("ViewportTexture_ekapi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_at5mv"]
 resource_local_to_scene = true
 size = Vector3(3, 2, 0.02)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4fsol"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_n83hp"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wma3d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emha7"]
 render_priority = 127
 transparency = 1
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = SubResource("ViewportTexture_4fsol")
+albedo_texture = SubResource("ViewportTexture_n83hp")
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_ja2qs")
@@ -101,7 +67,7 @@ Bus = &"BGM"
 [node name="XROrigin3D" parent="." instance=ExtResource("2_6v0qr")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5mvs7")
+environment = ExtResource("6_xalyj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1.02516, 4.02194, -7.79253)
@@ -238,7 +204,7 @@ size = Vector2i(1200, 700)
 
 [node name="Screen" parent="ViewportTitle2" index="1"]
 mesh = SubResource("QuadMesh_oxvbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_t0ubc")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bbsf")
 
 [node name="StaticBody3D" parent="ViewportTitle2" index="2"]
 viewport_size = Vector2(1200, 700)
@@ -257,7 +223,7 @@ size = Vector2i(1000, 700)
 
 [node name="Screen" parent="ViewportTitle3" index="1"]
 mesh = SubResource("QuadMesh_oxvbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_wma3d")
+surface_material_override/0 = SubResource("StandardMaterial3D_emha7")
 
 [node name="StaticBody3D" parent="ViewportTitle3" index="2"]
 viewport_size = Vector2(1000, 700)

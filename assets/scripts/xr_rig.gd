@@ -30,6 +30,8 @@ func set_handedness(is_right_handed: bool):
 	on_handedness_changed.emit()
 
 func toggle_laser(is_enabled: bool) -> void:
+	$LeftHand/FunctionPointer.enabled = is_enabled
+	$LeftHand/FunctionPointer.visible = is_enabled
 	$RightHand/FunctionPointer.enabled = is_enabled
 	$RightHand/FunctionPointer.visible = is_enabled
 

@@ -17,6 +17,7 @@ haptics_duration = 0.3
 wait_time = 0.1
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -10.0
 max_polyphony = 5
 bus = &"SFX"
 script = ExtResource("3_j4v4r")

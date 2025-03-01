@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://udssb6oc7moi"]
+[gd_scene load_steps=15 format=3 uid="uid://udssb6oc7moi"]
 
 [ext_resource type="PackedScene" uid="uid://d2uk2xiqpck2v" path="res://assets/scenes/combat_scene_base.tscn" id="1_kyhev"]
 [ext_resource type="Script" path="res://addons/ovani/OvaniSong.gd" id="2_ebml3"]
 [ext_resource type="Resource" uid="uid://ho11of71h2yt" path="res://assets/audio/bgm/synthpop_sunset_strip/synthpop_sunset-strip.tres" id="3_pgqs3"]
 [ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="4_v5klx"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="5_6g46i"]
+[ext_resource type="Environment" uid="uid://bb4wne11chok0" path="res://assets/materials/env/env_sunset.tres" id="6_ljb3h"]
 [ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="6_qqhrd"]
 [ext_resource type="PackedScene" uid="uid://deg4mtw5v7dx0" path="res://assets/scenes/combat_zones/lv1/cz_01-02.tscn" id="7_earaa"]
 [ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="8_momfn"]
@@ -140,6 +141,9 @@ transform = Transform3D(-3.1198, -15.4507, -1.16279, -7.45781, 2.07997, 3.72268,
 mesh = SubResource("BoxMesh_xauvp")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_6g46i")
+
+[node name="WorldEnvironment" parent="BaseLevelEnv" index="1"]
+environment = ExtResource("6_ljb3h")
 
 [node name="CombatZoneManager" parent="." index="9"]
 level_config = SubResource("Resource_2yph2")

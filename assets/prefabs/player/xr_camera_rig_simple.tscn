@@ -35,6 +35,8 @@ mesh = SubResource("SphereMesh_is43q")
 skeleton = NodePath("../../RightHand")
 surface_material_override/0 = SubResource("StandardMaterial3D_kttsd")
 
+[node name="FunctionPointer" parent="LeftHand" instance=ExtResource("2_355kr")]
+
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"

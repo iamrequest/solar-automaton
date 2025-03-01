@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2uk2xiqpck2v"]
+[gd_scene load_steps=15 format=3 uid="uid://d2uk2xiqpck2v"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_v4p7m"]
 [ext_resource type="Script" path="res://assets/scripts/game_manager.gd" id="2_xp1kf"]
@@ -13,41 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://ld3e3ild5far" path="res://assets/prefabs/ui/viewport_level_complete.tscn" id="8_c14nl"]
 [ext_resource type="PackedScene" uid="uid://d2lli8sr4ipqb" path="res://assets/prefabs/combat_zones/combat_zone_manager.tscn" id="9_ssecv"]
 [ext_resource type="Script" path="res://assets/scripts/combat/combat_zone/level_config.gd" id="10_eq1ch"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ms8b"]
-sky_top_color = Color(0.867338, 0.526165, 0.0738397, 1)
-sky_horizon_color = Color(0.522832, 0.21298, 0.343928, 1)
-sky_curve = 1.6
-sky_energy_multiplier = 1.5
-sky_cover_modulate = Color(0.793325, 0.802181, 0.808046, 1)
-ground_bottom_color = Color(0.21591, 0.102174, 0.354899, 1)
-ground_horizon_color = Color(0.522832, 0.21298, 0.343928, 1)
-ground_curve = 0.428709
-ground_energy_multiplier = 1.5
-sun_angle_max = 0.0
-sun_curve = 0.231705
-use_debanding = false
-energy_multiplier = 1.5
-
-[sub_resource type="Sky" id="Sky_ose2n"]
-sky_material = SubResource("ProceduralSkyMaterial_2ms8b")
-
-[sub_resource type="Environment" id="Environment_l3kqv"]
-background_mode = 2
-sky = SubResource("Sky_ose2n")
-sky_rotation = Vector3(-1.5708, 0, 0)
-ambient_light_source = 3
-ambient_light_color = Color(0.634138, 0.612172, 0.650433, 1)
-tonemap_mode = 2
-glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0.667028, 0.451124, 0.75044, 1)
-fog_light_energy = 0.38
-fog_density = 0.0196
-fog_sky_affect = 0.0
-fog_height = 1.0
-fog_height_density = 1.2308
-volumetric_fog_albedo = Color(0.667028, 0.451124, 0.75044, 1)
 
 [sub_resource type="Resource" id="Resource_4fkhu"]
 script = ExtResource("10_eq1ch")
@@ -106,7 +71,6 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00274301, 0.016634, -0.0049181)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="BaseLevelEnv"]
-environment = SubResource("Environment_l3kqv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="BaseLevelEnv"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1.02516, 4.02194, -7.79253)
