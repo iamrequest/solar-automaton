@@ -5,7 +5,7 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_1scex"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jim2q"]
-render_priority = 3
+render_priority = 5
 transparency = 1
 blend_mode = 1
 disable_fog = true

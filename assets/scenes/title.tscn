@@ -8,8 +8,8 @@
 [ext_resource type="Resource" uid="uid://c2bf6hwmn54ev" path="res://assets/audio/bgm/synthwave_fantasy_morning/synthwave_fantasy_morning.tres" id="4_3ad67"]
 [ext_resource type="Texture2D" uid="uid://cf7bvctpnf83v" path="res://assets/textures/vfx/request/mask_cube-1_64x64.png" id="4_8hwag"]
 [ext_resource type="Material" uid="uid://dogmlywm000t1" path="res://assets/materials/env/whitebox.tres" id="5_era21"]
+[ext_resource type="Environment" uid="uid://b5lie3bfv3ial" path="res://assets/materials/env/env_sunset.tres" id="6_l156p"]
 [ext_resource type="PackedScene" uid="uid://dho7f41yokfuj" path="res://assets/prefabs/ui/viewport_title.tscn" id="6_q30k7"]
-[ext_resource type="Environment" uid="uid://cssvxg6dvb3o0" path="res://assets/materials/env/env_title.tres" id="6_xalyj"]
 [ext_resource type="PackedScene" uid="uid://dqde0xknx4nry" path="res://assets/prefabs/env/sun.tscn" id="6_xi52p"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="11_x1vu1"]
 [ext_resource type="PackedScene" uid="uid://dpaudvbdtyfq6" path="res://assets/prefabs/ui/ui_title_advert.tscn" id="12_r7ywn"]
@@ -29,31 +29,31 @@ texture_filter = 0
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ekapi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5f3bc"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bbsf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6yrm"]
 render_priority = 127
 transparency = 1
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = SubResource("ViewportTexture_ekapi")
+albedo_texture = SubResource("ViewportTexture_5f3bc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_at5mv"]
 resource_local_to_scene = true
 size = Vector3(3, 2, 0.02)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n83hp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_g4fg0"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emha7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tikxm"]
 render_priority = 127
 transparency = 1
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = SubResource("ViewportTexture_n83hp")
+albedo_texture = SubResource("ViewportTexture_g4fg0")
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1_ja2qs")
@@ -67,7 +67,7 @@ Bus = &"BGM"
 [node name="XROrigin3D" parent="." instance=ExtResource("2_6v0qr")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("6_xalyj")
+environment = ExtResource("6_l156p")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1.02516, 4.02194, -7.79253)
@@ -204,7 +204,7 @@ size = Vector2i(1200, 700)
 
 [node name="Screen" parent="ViewportTitle2" index="1"]
 mesh = SubResource("QuadMesh_oxvbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_1bbsf")
+surface_material_override/0 = SubResource("StandardMaterial3D_y6yrm")
 
 [node name="StaticBody3D" parent="ViewportTitle2" index="2"]
 viewport_size = Vector2(1200, 700)
@@ -223,7 +223,7 @@ size = Vector2i(1000, 700)
 
 [node name="Screen" parent="ViewportTitle3" index="1"]
 mesh = SubResource("QuadMesh_oxvbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_emha7")
+surface_material_override/0 = SubResource("StandardMaterial3D_tikxm")
 
 [node name="StaticBody3D" parent="ViewportTitle3" index="2"]
 viewport_size = Vector2(1000, 700)

@@ -98,7 +98,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="TitlePage/VBoxContainer"]
 layout_mode = 2
-text = "Solar Atomaton"
+text = "Solar Automaton"
 label_settings = SubResource("LabelSettings_j2elv")
 horizontal_alignment = 1
 
@@ -479,8 +479,8 @@ sfx_select = ExtResource("6_07exd")
 [connection signal="pressed" from="TitlePage/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvSunset1" to="." method="_on_lv_sunset_1_pressed"]
 [connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvSunset2" to="." method="_on_lv_sunset_2_pressed"]
-[connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvWorm" to="." method="_on_lv_2_pressed"]
 [connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvWorm" to="." method="_on_lv_worm_pressed"]
+[connection signal="pressed" from="LevelSelectPage/VBoxContainer/LvWorm" to="." method="_on_lv_2_pressed"]
 [connection signal="pressed" from="LevelSelectPage/GoToTitlePageButton" to="." method="_on_go_to_title_page_button_pressed"]
 [connection signal="pressed" from="SettingsPage/VBoxContainer/CreditsEntry4/HealthReset" to="." method="_on_health_reset_pressed"]
 [connection signal="pressed" from="SettingsPage/VBoxContainer/CreditsEntry4/HealthDecrease" to="." method="_on_health_decrease_pressed"]
