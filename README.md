@@ -1,25 +1,27 @@
-# Simple Free-Look Camera
-A simple 3D 100-line free-look camera for Godot 4.0 that mimics the functionality of the editor's camera for in-game use.
+# Solar Automaton
 
-Ported from [Adamviola's Godot 3.2 version](https://github.com/adamviola/simple-free-look-camera).
+Get ready to blast some mechs in this third person VR bullet hell, inspired by Nier Automata's flight unit sections! 
 
-## Usage
-Use **W** and **S** to move forward and backward.
+ <p align="center">
+    <img src="./itchio/titlecard.png ">
+</p>
 
-Use **A** and **D** to move left and right.
+# Features
 
-Use **Q** and **E** to move up and down.
+* 2 auto-scrolling levels
+* A really cool worm boss fight!
 
-Roll the **scroll wheel** to increase and decrease movement speed.
+# About
 
-Press **shift** to move faster, and hold **alt** to move slower.
+This was my submission to "Godot XR Game Jam 3 (February 2025)", a 7 day game jam. The goal for this one was to try out Godot as a game development engine - the feature set is intentionally pretty sparse, since the focus was to get familiar with the engine.
 
-Hold down the **right mouse button** to rotate the camera.
-There's a slider in the editor to control mouse sensitivity.
+You can download the game for free [here, on itch.io](https://request.itch.io/solar-automaton),
+or you can check out my other projects at [request.moe](https://request.moe). A postmortem will be available for this project shortly!
 
-## Installation
-Attach `camera.gd` to your Camera3D node. That's it!
 
-## License
-[MIT](https://opensource.org/licenses/MIT).
+This project was made with:
+* Godot 4.3
+* Godot XR Toggle
+* Ovani BGM plugin
 
+This project includes some paid assets that are *not* included in this repository - the project will likely have some errors if you try to import them.
