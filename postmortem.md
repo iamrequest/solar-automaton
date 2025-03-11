@@ -54,7 +54,7 @@ While neatly polished, this UI is fairly simple. UI elements are used in the tit
 
 For interaction, the player has a pair of laser pointers on each hand, which can click on buttons in the UI. UI buttons trigger a haptic pulse and SFX on hover/press.
 
-The UI is made up of Godot’s Control nodes, arranged via a series of HBoxContainer and VBoxContainer. The UI itself is displayed in 3D world space via XRTools’ `Viewport2Din3D` node (https://godotvr.github.io/godot-xr-tools/docs/pointer/).
+The UI is made up of Godot’s Control nodes, arranged via a series of HBoxContainer and VBoxContainer. The UI itself is displayed in 3D world space via [XRTools’ `Viewport2Din3D` node](https://godotvr.github.io/godot-xr-tools/docs/pointer/).
 
 ## Levels 1 & 2 (Scrolling Levels)
 
@@ -137,7 +137,7 @@ First, the BGM intensity bumps up a notch every time a spine column is destroyed
 
 Second, when enough of Jim’s spine sections get destroyed, his “Projectile” attacks also fire his lasers at the same time. It was a quick way to add a little extra danger mid-fight - one that I’m not very satisfied with for reasons I’ll get into shortly.
 
-In comparison, The Masked Man’s boss fight in Shattered Skies (https://request.itch.io/shattered-skies) had much more variance. The whole fight sped up as he took damage - he shot more projectiles during his spell cast attack, and he spawned more falling sky shards during his overhead portal attack. The overhead portal attack also lasted longer as he took more damage, so it would be an active threat as he continued to iterate over his other attack states. 
+In comparison, The Masked Man’s boss fight in [Shattered Skies](https://request.itch.io/shattered-skies) had much more variance. The whole fight sped up as he took damage - he shot more projectiles during his spell cast attack, and he spawned more falling sky shards during his overhead portal attack. The overhead portal attack also lasted longer as he took more damage, so it would be an active threat as he continued to iterate over his other attack states. 
 
 The next time I make another boss fight (and have the time/spoons to get into it), I’d like to give it more variance like this. 
 
@@ -151,7 +151,7 @@ While there was a theme to the jam, I decided to just make the game I wanted to 
 
 Spellcasting was something that I figured could be a neat way to implement the “Enchantment” theme. It’s a partial fit - I felt like “enchantment” was more of something you applied to something else, rather than an action you took. Something more like Minecraft’s enchantment system, rather than the “cast fireball” type of magic you’d find in Skyrim.
 
-But, it was something I considered nonetheless! I wanted to have a light version of the *A VR Game about Magic, and Ducks in Cosplay*’s magic casting system. In *Cosplay Ducks*, the player draws spell sigils as splines to select spells - for this idea, players would instead have a set of ~6 spheres evenly spaced out around the border of a spell plane, and the player’s selected spell would be chosen based on the order of the spheres they touch. Funny enough, this was implemented in another game for this jam, *Keziah’s House* (https://itch.io/jam/godot-xr-game-jam-feb-2025/rate/3331240)!
+But, it was something I considered nonetheless! I wanted to have a light version of the *A VR Game about Magic, and Ducks in Cosplay*’s magic casting system. In *Cosplay Ducks*, the player draws spell sigils as splines to select spells - for this idea, players would instead have a set of ~6 spheres evenly spaced out around the border of a spell plane, and the player’s selected spell would be chosen based on the order of the spheres they touch. Funny enough, this was implemented in another game for this jam, [Keziah’s House](https://itch.io/jam/godot-xr-game-jam-feb-2025/rate/3331240)!
 
 ![Sigil casting in A VR Game about Magic, and Ducks in Cosplay](/postmortem/cosplay-duck_sigil-drawing.gif)
 
@@ -171,7 +171,7 @@ I’m not willing to rule this out as a cool game mechanic for this game, but it
 
 ## Godhand
 
-One of the features I prototyped and eventually cut was Godhand - comparable to the Mystic Hands mod for Blade and Sorcery (https://www.nexusmods.com/bladeandsorcery/mods/4027). You would have a transparent hand on your off-hand that could punch and grab enemies, possibly also acting as a shield. Once dropped, enemies died after a short duration.
+One of the features I prototyped and eventually cut was Godhand - comparable to the [Mystic Hands mod for Blade and Sorcery](https://www.nexusmods.com/bladeandsorcery/mods/4027). You would have a transparent hand on your off-hand that could punch and grab enemies, possibly also acting as a shield. Once dropped, enemies died after a short duration.
 
 This could’ve been a neat way to implement the “Enchantment” theme to the jam - maybe the player was a mage or something, and the Godhand was one of the spells they could cast.
 
@@ -419,7 +419,7 @@ One thing I do mind, is that I miss having private variables! There’s often so
 
 ### XRTools interactions
 
-My current project is comparable to Shattered Skies (https://request.itch.io/shattered-skies), in that it emphasizes physics melee combat. The physics interactions are made super easy with HurricaneVR (https://assetstore.unity.com/packages/tools/physics/hurricane-vr-physics-interaction-toolkit-177300), which has made its way into the heart of the past 5/12 games I’ve made. Absolutely adore it. At the moment, Godot doesn’t really have anything like it (at least until XRTools 2.0 releases). 
+My current project is comparable to [Shattered Skies](https://request.itch.io/shattered-skies), in that it emphasizes physics melee combat. The physics interactions are made super easy with [HurricaneVR](https://assetstore.unity.com/packages/tools/physics/hurricane-vr-physics-interaction-toolkit-177300), which has made its way into the heart of the past 5/12 games I’ve made. Absolutely adore it. At the moment, Godot doesn’t really have anything like it (at least until XRTools 2.0 releases). 
 
 > As a side tip, if a good asset costs $50 on sale, and it would take tens to hundreds of hours to do it yourself, $50 is an absolute bargain. I can’t recommend HurricaneVR enough, if you’re making VR games in Unity.
 > 
@@ -449,7 +449,7 @@ I had 2 ideas in the weeks leading up to the jam that I gave a shot:
 
 Both ideas were not suited for Godot for a few reasons.
 
-The nunchuck idea is something that I whiteboxed in Unity a few years ago - made by attaching a simple `SpringJoint` to a pair of `Rigidbodies`. Fundamentally nothing too different than the grappling hook I made for Tall Walls (https://request.itch.io/the-tall-wall-falls). This didn’t work out in Godot because it turns out there’s no implementation for a 3D Spring Joint! Godot has a **`Generic6DOFJoint3D`** (its version of Unity’s `ConfigJoint`) - but I just wasn’t able to get it to act as a spring joint. Tried to read the documentation, but the terminology used in the property descriptions was going over my head. Wasn’t able to find any great videos talking about how to configure the spring joints, and I’m not about to ask a random number generator to explain/write the code for me - so it’s on the backburner for now.
+The nunchuck idea is something that I whiteboxed in Unity a few years ago - made by attaching a simple `SpringJoint` to a pair of `Rigidbodies`. Fundamentally nothing too different than the grappling hook I made for [Tall Walls](https://request.itch.io/the-tall-wall-falls). This didn’t work out in Godot because it turns out there’s no implementation for a 3D Spring Joint! Godot has a **`Generic6DOFJoint3D`** (its version of Unity’s `ConfigJoint`) - but I just wasn’t able to get it to act as a spring joint. Tried to read the documentation, but the terminology used in the property descriptions was going over my head. Wasn’t able to find any great videos talking about how to configure the spring joints, and I’m not about to ask a random number generator to explain/write the code for me - so it’s on the backburner for now.
 
 The latter is fundamentally pretty simple, and should’ve been pretty easy to implement. After all, Arctic Eggs was also made in Godot, so it’s very likely I was missing something! After switching to Jolt physics and bumping up the physics tick rate, I did get better results, both with collision detection and in an overall reduction in jitteryness, but the results were still not great. I was still getting some gross clipping between the held frying pan `Rigidbody`, and the `Rigidbodies` I was trying to cook in the frying pan.
 
