@@ -28,7 +28,7 @@ Solar Automaton was made for Godot Game Jam February 2025, which lasted 7 days.
 
 In the end, I ranked 18/27, which I’m pretty satisfied with given that the gameplay was very simple, and I intentionally ignored the theme of the jam. Could’ve been better, but getting a good ranking wasn’t the point of joining the jam!
 
-![image.png](attachment:94458165-c8ec-4abc-99aa-2d63e2f22d75:image.png)
+![Jam ranking](/postmortem/jam-ranking.png)
 
 ## Topics of Interest
 
@@ -103,17 +103,17 @@ There were some enemies that would follow a `Curve3D`, placed either in the stat
 
 When I was scoping the game, I knew I wanted to have a colossal boss fight. Scale is one of those things that hits extra hard in VR, My partner said it needed a name, and settled on Jim!
 
-![image.png](attachment:ed4eddb5-fd4f-41d1-a9d6-0f6aa89e852f:image.png)
+![A shot of Jim the worm, the boss in the third stage of the game](/postmortem/jim.png)
 
 ### Worm Structure, ~~a podcast by Hideo Kojima~~
 
 Jim is made up of the head, 8 spine pieces, and a tail. To beat the boss, you have to destroy each of its 8 spine segments - upon doing so, it begins its “on death attack”. This attack starts a timer to mark the level as completed, and has the worm move along a dramatic winding path around the player before returning into the void.
 
-![image.png](attachment:a743aff9-5b44-44ad-9ce0-b0ef630aa715:image.png)
+![Another shot of Jim the worm, zoomed out to show their whole body](/postmortem/jim-overview.png)
 
 Each spine component is its own Node, which has a set of 4 blasters, meant to resemble vertebrae. These could be shot and destroyed, preventing the worm from using it as means to damage the player. Each time the player destroys a vertebrae, the spine segment takes a small amount of damage. This was mainly put in place because it would be too hard to hit the spine column otherwise - since Jim is moving so fast and the spine segments are rotating, it’s a bit hard to hit the spine itself.
 
-![image.png](attachment:548ecf50-7e63-42f5-b833-3f6f401d1dd3:image.png)
+![A third shot of Jim the worm, showing a single segment of their spine](/postmortem/jim-overview-spine.png)
 
 ### Locomotion
 
@@ -153,9 +153,7 @@ Spellcasting was something that I figured could be a neat way to implement the �
 
 But, it was something I considered nonetheless! I wanted to have a light version of the *A VR Game about Magic, and Ducks in Cosplay*’s magic casting system. In *Cosplay Ducks*, the player draws spell sigils as splines to select spells - for this idea, players would instead have a set of ~6 spheres evenly spaced out around the border of a spell plane, and the player’s selected spell would be chosen based on the order of the spheres they touch. Funny enough, this was implemented in another game for this jam, *Keziah’s House* (https://itch.io/jam/godot-xr-game-jam-feb-2025/rate/3331240)!
 
-![Sigil casting in Cosplay Ducks](attachment:51bec114-a61a-4049-a187-989d537262c0:cosplay-duck_sigil-drawing.gif)
-
-Sigil casting in Cosplay Ducks
+![Sigil casting in A VR Game about Magic, and Ducks in Cosplay](/postmortem/cosplay-duck_sigil-drawing.gif)
 
 I decided to cut this for the following reasons:
 
@@ -200,15 +198,15 @@ One mechanic that I really liked in Nier Automata’s flight unit parts was that
 
 It was really cool how they framed some combat sections differently, to frame combat in a different way. For example, in this very blurry YouTube screenshot, the combat is in a top-down point of view:
 
-![image.png](attachment:3cc2f975-bfbc-467a-aeeb-9478570a04cc:image.png)
+![Gameplay of Nier Automata's Flight Unit section, in a top-down view](/postmortem/nier-1.png)
 
 Later on in the same scene, combat switches to a forward-facing point of view:
 
-![image.png](attachment:0dea7ba3-2be6-4f98-86aa-8d6be76e528a:image.png)
+![Gameplay of Nier Automata's Flight Unit section, in a front-facing view](/postmortem/nier-2.png)
 
 Shortly after, it takes on a side-scroller point of view:
 
-![image.png](attachment:b63cea63-0134-44d0-a937-bf9a455fe097:image.png)
+![Gameplay of Nier Automata's Flight Unit section, in a side-scroller view](/postmortem/nier-3.png)
 
 The camera positioning is very dynamic, and changes to frame the fight better, based on what’s going on in the scene (what enemies the player is fighting, what’s going on in the background, where is the player going). This is a fun challenge in VR, given that the player has full freedom of motion in 3D space - both in their HMD and controllers. 
 
@@ -216,9 +214,9 @@ By default, the ship lerps its transform to match that of the player’s hand. T
 
 The below images show what this could look like - the ship’s would lerp to a position projected onto the light blue plane/line at certain times in gameplay.
 
-![image.png](attachment:d92b626d-af39-41af-9c70-55f44a524093:image.png)
+![An example of what the ship projection system could look like. The blue area is a plane that the ship's position would be projected onto.](/postmortem/ship-projection-1.png)
 
-![image.png](attachment:e7fffa50-fad5-4256-96b9-73f8b230f5c7:image.png)
+![An example of what the ship projection system could look like. The blue area is a line that the ship's position would be projected onto.](/postmortem/ship-projection-2.png)
 
 I figured that this would make certain sections of the game stand out more - maybe during the sections where the worm does a humpback whale breach attack to the side of the player, the player would have their motion projected on a plane 
 
