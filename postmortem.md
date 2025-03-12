@@ -8,7 +8,10 @@ The post-game analysis is broken up into 2 sections:
 2. Info-dumping about notable things that I wanted to add, but didn’t have time (cut content and next steps)
 3. A postmortem analysis of the game and its implementation
 
-Feel free to only read the parts that interest you - this document was made as means to reflect on my work post-jam, so some sections may not be interesting or relevant!
+Feel free to only read the parts that interest you - this document was made as means to reflect on my work post-jam, so some sections may not be interesting or relevant! 
+
+> [!Tip]
+> Github offers a table of contents in the top right of the page
 
 ## About the Game
 
