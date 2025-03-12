@@ -16,7 +16,7 @@ Get ready to blast some mechs in this third person VR bullet hell, inspired by N
 This was my submission to "Godot XR Game Jam 3 (February 2025)", a 7 day game jam. The goal for this one was to try out Godot as a game development engine - the feature set is intentionally pretty sparse, since the focus was to get familiar with the engine.
 
 You can download the game for free [here, on itch.io](https://request.itch.io/solar-automaton),
-or you can check out my other projects at [request.moe](https://request.moe). A postmortem will be available for this project shortly!
+or you can check out my other projects at [request.moe](https://request.moe). You can also find [the postmortem for this project, here](/postmortem.md)!
 
 
 This project was made with:
